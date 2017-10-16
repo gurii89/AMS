@@ -10,36 +10,37 @@ import org.springframework.stereotype.Repository;
  
 @Repository
 public class BoardDao { 
+	private final String NS = "cafe.jjdev.web.service.BoardMapper";
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
     
     public int updateBoard(Board board) {
-        return sqlSessionTemplate.update("cafe.jjdev.board.service.BoardMapper.updateBoard", board);
+        return sqlSessionTemplate.update(NS+".updateBoard", board);
     }
     
     public int deleteBoard(int boardNo, String boardPw) {
         Board board = new Board();
         board.setBoardNo(boardNo);
         board.setBoardPw(boardPw);
-        return sqlSessionTemplate.delete("cafe.jjdev.board.service.BoardMapper.deleteBoard", board);
+        return sqlSessionTemplate.delete(NS+".deleteBoard", board);
     }
     
     public Board getBoard(int boardNo) {
-        return sqlSessionTemplate.selectOne("cafe.jjdev.board.service.BoardMapper.getBoard", boardNo);
+        return sqlSessionTemplate.selectOne(NS+".getBoard", boardNo);
     }
  
     public List<Board> getBoardList(int currentPage, int pagePerRow) {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("beginRow", (currentPage-1)*pagePerRow);
         map.put("pagePerRow", pagePerRow);
-        return sqlSessionTemplate.selectList("cafe.jjdev.board.service.BoardMapper.getBoardList", map);
+        return sqlSessionTemplate.selectList(".BoardMapper.getBoardList", map);
     }
     
     public int getBoardCount() {
-        return sqlSessionTemplate.selectOne("cafe.jjdev.board.service.BoardMapper.getBoardCount");
+        return sqlSessionTemplate.selectOne(NS+".getBoardCount");
     }
  
     public int insertBoard(Board board) {
-        return sqlSessionTemplate.insert("cafe.jjdev.board.service.BoardMapper.insertBoard", board);
+        return sqlSessionTemplate.insert(NS+".insertBoard", board);
     }
 }
