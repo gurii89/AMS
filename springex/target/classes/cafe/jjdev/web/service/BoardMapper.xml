@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="cafe.jjdev.web.service.BoardMapper">
+    <update id="updateBoard" parameterType="cafe.jjdev.web.service.Board">
+        UPDATE board 
+            SET board_title = #{boardTitle}
+            , board_content = #{boardContent} 
+        WHERE board_no = #{boardNo} 
+        AND board_pw = #{boardPw}
+    </update>
+    
+    <delete id="deleteBoard" parameterType="cafe.jjdev.web.service.Board">
+        DELETE FROM board 
+        WHERE board_no = #{boardNo} 
+        AND board_pw = #{boardPw}
+    </delete>
+    
+    <select id="getBoard" parameterType="int" resultType="cafe.jjdev.web.service.Board">
+        SELECT
+            board_no AS boardNo 
+            ,board_title AS boardTitle
+            , board_content AS boardContent
+            , board_user AS boardUser
+            , board_date AS boardDate
+        FROM board 
+        WHERE board_no=#{boardNo}
+    </select>
+    
+    <select id="getBoardList" parameterType="java.util.Map" resultType="cafe.jjdev.web.service.Board">
+        SELECT 
+            board_no AS boardNo
+            , board_title AS boardTitle
+            , board_user AS boardUser
+            , board_date As boardDate
+        FROM board 
+        ORDER BY board_date DESC 
+        LIMIT #{beginRow}, #{pagePerRow}
+    </select>
+    
+    <select id="getBoardCount" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+    
+    <insert id="insertBoard" parameterType="cafe.jjdev.web.service.Board">
+        INSERT INTO board(
+            board_pw
+            , board_title
+            , board_content
+            , board_user
+            , board_date) 
+        VALUES(
+            #{boardPw}
+            , #{boardTitle}
+            , #{boardContent}
+            , #{boardUser}
+            ,now()
+        )
+    </insert>
+</mapper>
