@@ -33,7 +33,7 @@ public class BoardDao {
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("beginRow", (currentPage-1)*pagePerRow);
         map.put("pagePerRow", pagePerRow);
-        return sqlSessionTemplate.selectList(".BoardMapper.getBoardList", map);
+        return sqlSessionTemplate.selectList(".getBoardList", map);
     }
     
     public int getBoardCount() {
