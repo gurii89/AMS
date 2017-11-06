@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>
-	Hello AMS!!!! update test. 1106
+	Hello AMS!!!! update test. 1106 ggigigigi
+	
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
