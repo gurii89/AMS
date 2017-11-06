@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.cate.CateMapper">
+	
+	<insert id="cateAdd" parameterType="com.cafe24.guribyn.cate.Cate">
+		INSERT INTO category(
+			e_id
+			, cate_large
+			, cate_small
+			, cate_name
+			, cate_date
+		)
+		VALUES(
+			10
+			, #{cateLarge}
+			, #{cateSmall}
+			, #{cateName}
+			, now()
+		)	
+	</insert>
+</mapper>
