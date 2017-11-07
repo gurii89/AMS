@@ -3,6 +3,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.cate.CateMapper">
+	<resultMap type="com.cafe24.guribyn.cate.Cate" id="resultCate">
+		<result column="cate_code" property="cateCode" />
+		<result column="cate_large" property="cateLarge" />
+		<result column="cate_small" property="cateSmall" />
+		<result column="cate_name" property="cateName" />
+		<result column="cate_date" property="cateDate" />
+		<result column="e_id" property="eId" />
+	</resultMap>
+	
+	<select id="cateSmall" resultMap="resultCate">
+		SELECT DISTINCT cate_small FROM category WHERE cate_large = #{large}
+	</select>
+	
+	<select id="cateAddList" resultMap="resultCate">
+		SELECT DISTINCT cate_large FROM category
+	</select>
+	
+	<select id="cateNameCheck" resultMap="resultCate">
+		SELECT cate_name FROM category WHERE cate_name = #{name}
+	</select>
 	
 	<insert id="cateAdd" parameterType="com.cafe24.guribyn.cate.Cate">
 		INSERT INTO category(
@@ -13,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, cate_date
 		)
 		VALUES(
-			10
+			#{eId}
 			, #{cateLarge}
 			, #{cateSmall}
 			, #{cateName}
