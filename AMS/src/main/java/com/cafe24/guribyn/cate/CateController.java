@@ -41,6 +41,6 @@ public class CateController {
 	@RequestMapping(value = "/cateAdd", method = RequestMethod.POST)
 	public String cateAdd(Cate cate) {
 		cateDao.cateAdd(cate);
-		return "cateAdd";
+		return "redirect:/cateAdd";
 	}
 }

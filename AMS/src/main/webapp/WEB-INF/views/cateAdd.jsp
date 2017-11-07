@@ -12,17 +12,23 @@
 			var largeCheck = true
 			// 대분류 직접 버튼 클릭시 직접 입력창 생성
 			$('#btnLarge').click(function(){
-				$('#large').html('<input type="text" name="cateLarge" id="cateLarge">');
+				$('#large').html('<input type="text" name="cateLarge" id="cateLarge">')
+				$('#small').html('<input type="text" name="cateSmall" id="cateSmall">')
+				$('#btnLarge').html('')
+				$('#btnSmall').html('')
 				largeCheck = false
 			});
 			// 소분류 직적 입력 버튼 클릭시 직접 입력창 생성
 			$('#btnSmall').click(function(){
 				$('#small').html('<input type="text" name="cateSmall" id="cateSmall">')
+				$('#btnSmall').html('')
 			})
 			// 대분류 선택시 소분류 출력
 			$('#cateLarge').click(function(){
 				if(largeCheck && $('#cateLarge').val() != ""){
 					// 유효한 대분류 선택시 초기값
+					$('#btnLarge').html('')
+					$('#btnSmall').html('직접 입력')
 					$('#cateSmall').html('<option value="">선택하세요</option>')
 					$.ajax({
 						url:"cateSmall",
@@ -41,7 +47,11 @@
 					});
 				// 유효하지 않은 대분류 선택시 소분류 초기화
 				}else if($('#cateLarge').val() == ""){
-					$('#cateSmall').html('<option value="">대분류를 선택하세요</option>')
+					$('#small').html('<select name="cateSmall" id="cateSmall">'
+									+'<option value="">대분류를 선택하세요</option></select>')
+					$('#btnLarge').html('직접 입력')
+					$('#btnSmall').html('')
+					largeCheck = true
 				}
 			})
 			$('#btn').click(function(){
@@ -90,7 +100,7 @@
 					<option value="">대분류를 선택하세요</option>
 				</select>
 			</span>
-			<span id="btnSmall">직접 입력</span>
+			<span id="btnSmall"></span>
 		</div>
 		<div>
 			카테고리명 : 
