@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT DISTINCT cate_large FROM category
 	</select>
 	
-	<select id="cateNameCheck" resultMap="resultCate">
-		SELECT cate_name FROM category WHERE cate_name = #{name}
+	<select id="cateNameCheck" parameterType="java.util.Map" resultMap="resultCate">
+		SELECT cate_name FROM category WHERE cate_name = #{name} AND cate_small = #{small}
 	</select>
 	
 	<insert id="cateAdd" parameterType="com.cafe24.guribyn.cate.Cate">

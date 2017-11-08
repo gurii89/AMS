@@ -29,8 +29,11 @@ public class CateDao {
 	}
 	
 	// 카테고리명 중복검사를 위한 select, 중복없을시 ok 중복시 no
-	public String cateNameCheck(String name) {
-		if(SST.selectOne(NS+"cateNameCheck", name) == null) {
+	public String cateNameCheck(String name, String small) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("name", name);
+		map.put("small", small);
+		if(SST.selectOne(NS+"cateNameCheck", map) == null) {
 			return "ok";
 		} else {
 			return "no";

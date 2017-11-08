@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
+<script>
 		$('document').ready(function(){
 			var largeCheck = true
 			// 대분류 직접 버튼 클릭시 직접 입력창 생성
@@ -61,12 +62,12 @@
 					$.ajax({
 						url:"cateNameCheck",
 						type:"GET",
-						data:"name="+ $('#cateName').val(),
+						data:"name="+ $('#cateName').val()+"&small="+$('#cateSmall').val(),
 						success:function(data){
 							if(data == "ok"){
 								$('#frm').submit()
 							}else{
-								alert('중복된 이름입니다')
+								alert(data+'중복된 이름입니다')
 								$('#cateName').focus()								
 							}
 						},
@@ -79,8 +80,39 @@
 		})
 	</script>
 </head>
+ <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      
+      background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+      height: 150%;
+    }
+    .top{
+    	background-color: #ffffff;
+    	height: 13%;
+    }
+    .right{
+    	background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+    }    
+  </style>
 <body>
-	<form action="cateAdd" method="post" id="frm">
+
+   <div class="container-fluid">
+      <div class="row content">
+      
+<!-- ////////////////////////////////////왼쪽 메뉴 시작///////////////////////////////////////// -->     
+<%@ include file= "division/left.jsp"%>
+<!-- ////////////////////////////////////왼쪽 메뉴 끝///////////////////////////////////////// -->
+<!-- ////////////////////////////////////상단 메뉴 시작///////////////////////////////////////// -->
+<%@ include file= "division/top.jsp"%>
+<!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
+<!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
+			 <div class="col-sm-10 top">
+			 <h3>카테고리 등록</h3> 
+			<form action="cateAdd" method="post" id="frm">
 		<div>
 			대분류 : 
 			<span id="large">
@@ -110,5 +142,13 @@
 			<input type="button" id="btn" value="등록">
 		</div>
 	</form>
+			 </div>
+<!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
+<!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 
+<%@ include file= "division/right.jsp"%>
+<!-- ////////////////////////////////////오른쪽 메뉴 끝///////////////////////////////////////// -->	         
+		</div>
+	</div>
+	
 </body>
 </html>

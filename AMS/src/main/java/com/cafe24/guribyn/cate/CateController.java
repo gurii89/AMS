@@ -20,14 +20,14 @@ public class CateController {
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
 		model.addAttribute("list", cateDao.cateAddList());
-		return "cateAdd2";
+		return "cateAdd";
 	}
 	
 	// 카테고리명 중복확인
 	@ResponseBody
 	@RequestMapping(value = "/cateNameCheck")
-	public String cateNameCheck(@RequestParam ("name") String name) {
-		return cateDao.cateNameCheck(name);
+	public String cateNameCheck(@RequestParam ("name") String name, @RequestParam ("small") String small) {
+		return cateDao.cateNameCheck(name, small);
 	}
 	
 	// 대분류 선택시 소분류 출력
