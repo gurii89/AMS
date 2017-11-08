@@ -11,6 +11,9 @@
                <li class="active">
                <p class="loginfo">${loginemployee.eName}(${loginemployee.eId})님</p>
                <p class="loginfo">안녕하세요!</p>
+               <form method="post" action="./logout">
+               <input type="submit" value="LOGOUT">
+               </form>
                </li>
                <li><a href="#section2">직원</a></li>
                <li><a href="#section3">프론트</a></li>

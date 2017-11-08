@@ -49,4 +49,11 @@ public class LoginController{
 			return "home";	
 		}
 	}
+	@RequestMapping(value="/logout", method = RequestMethod.POST)	
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 }
+
+
