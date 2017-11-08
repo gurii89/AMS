@@ -39,11 +39,13 @@ public class LoginController{
 			return "redirect:/";
 		}else {
 			System.out.println("로그인완료");
-			session.setAttribute("loginemployee", loginemployee);
 			
 			//로그인이력저장
 			loginService.logHistory(loginemployee);
 			System.out.println("로그인이력 저장");
+			
+			//로그인 세션 정보 세팅
+			session.setAttribute("loginemployee", loginemployee);
 			return "home";	
 		}
 	}

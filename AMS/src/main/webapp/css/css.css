@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+	.loginfo {
+		font-size: 1em;
+		font-weight: bold;
+	}
+    .row.content {
+    	height: 550px
+    }
+    
+    .sidenav {
+      background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+      height: 150%;
+    }
+    .top{
+    	background-color: #ffffff;
+    	height: 13%;
+    }
+    .right{
+    	background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+    }    
+    .copyright{
+    	font-size: 1ex;
+    }

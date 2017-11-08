@@ -8,24 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
- <style>
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 550px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      
-      background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-      height: 150%;
-    }
-    .top{
-    	background-color: #ffffff;
-    	height: 13%;
-    }
-    .right{
-    	background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
-    }    
-  </style>
+
 <body>
 
    <div class="container-fluid">

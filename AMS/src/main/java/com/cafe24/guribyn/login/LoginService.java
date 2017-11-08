@@ -1,7 +1,6 @@
 package com.cafe24.guribyn.login;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +22,5 @@ public class LoginService {
 		
 		return loginDao.insertloginHistory(lh);
 	}
+	
 }
