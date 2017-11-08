@@ -13,17 +13,17 @@ public class LoginDao {
 	
 	private final String NS="com.cafe24.guribyn.login.LoginMapper";
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public EmployeeTest login(EmployeeTest employeetest) {
 		return sqlSessionTemplate.selectOne(NS+".login", employeetest);
 	}
 	
-	//·Î±×ÀÎ ÀÌ·Â
+	//ë¡œê·¸ì¸ ì´ë ¥ ì €ì¥
 	public int insertloginHistory(LoginHistory loginHistory) {
 		return sqlSessionTemplate.insert(NS+".insertloginHistory", loginHistory);
 	}
 	
-	//Å¬¶óÀÌ¾ğÆ® ipÃ¼Å©
+	//ì‚¬ìš©ì ip ì²´í¬
 	public String getIpAddress(HttpServletRequest request) {
 		String userIp = request.getHeader("X-Forwarded-For");
         if ( userIp == null  || "".equals(userIp) ) {
@@ -32,7 +32,7 @@ public class LoginDao {
         if ( userIp == null  || "".equals(userIp) ) {
             return "";
         }
-        System.out.println(userIp+"<------------»ç¿ëÀÚ ip");
+        System.out.println(userIp+"<------------ìœ ì € ip");
         
         String getUserIp = userIp;
         return getUserIp;

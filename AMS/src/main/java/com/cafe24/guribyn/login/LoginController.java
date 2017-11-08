@@ -19,34 +19,32 @@ public class LoginController{
 	@Autowired
 	private LoginService loginService;
 	
-	//·Î±×ÀÎÆû ¿äÃ»
+	//ë¡œê·¸ì¸ í¼ ìš”ì²­
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String loginform(HttpSession session) {
-		System.out.println("ÆäÀÌÁö ¿äÃ» --- ·Î±×ÀÎÆû --- login.jsp");
+		System.out.println("ë¡œê·¸ì¸í¼ ìš”ì²­---------login.jsp");
 		if(session.getAttribute("loginemployee") == null) {
 		return "login";
 		}else {
 		return "redirect:/cateAdd";
 		}
 	}
-	//·Î±×ÀÎ Ã³¸®
+	//ë¡œê·¸ì¸ ì²˜ë¦¬
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String loginPro(EmployeeTest employeetest, HttpSession session) {
 		EmployeeTest loginemployee = loginDao.login(employeetest);
-		System.out.println("¿äÃ» --- ·Î±×ÀÎÃ³¸® --- loginemployee --------> " + loginemployee);
+		System.out.println("ë¡œê·¸ì¸ì •ë³´--------->" + loginemployee);
 		if(loginemployee == null) {
-			System.out.println("½ÇÆĞ");	
+			System.out.println("ë¡œê·¸ì¸ì‹¤íŒ¨");	
 			return "redirect:/";
 		}else {
-			System.out.println("·Î±×ÀÎ¼º°ø");
+			System.out.println("ë¡œê·¸ì¸ì™„ë£Œ");
 			session.setAttribute("loginemployee", loginemployee);
 			
-			//·Î±×ÀÎ ÀÌ·Â ÀúÀå
+			//ë¡œê·¸ì¸ì´ë ¥ì €ì¥
 			loginService.logHistory(loginemployee);
-			System.out.println("·Î±×ÀÎÀÌ·ÂÀúÀå¿Ï·á");
-			return "redirect:/cateAdd";	
+			System.out.println("ë¡œê·¸ì¸ì´ë ¥ ì €ì¥");
+			return "home";	
 		}
 	}
-
-	
 }

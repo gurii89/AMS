@@ -20,7 +20,7 @@ public class CateController {
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
 		model.addAttribute("list", cateDao.cateAddList());
-		return "cateAdd";
+		return "cateAdd2";
 	}
 	
 	// 카테고리명 중복확인
