@@ -53,7 +53,7 @@
 				밤은 깊어도 더 빛나는 너너의 그 눈빛이 다 내게 말해기분 좋은 밤 넌 원하고 있어알아 It’s ok 이제 시작해Let’s go!
 				It’s about to go goDown down baby리듬에 온몸을It goes down down baby맡기고 소리쳐 Oh 우린 OhGoing Ko Ko Bop
 				
-				Down down baby귓가에 속삭여It goes down down baby내 맘을 불태워 Oh 미쳐 OhGoing Ko Ko Bop</p>
+				Down down baby귓가에 속삭여It goes down down baby내 맘을 불태워 Oh 미쳐 OhGoing Ko Ko Bop 스타일 모으기</p>
 			 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 
