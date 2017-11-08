@@ -30,6 +30,7 @@
         <property name="mapperLocations">
             <list>
                 <value>classpath:com/cafe24/guribyn/cate/CateMapper.xml</value>
+                <value>classpath:com/cafe24/guribyn/login/LoginMapper.xml</value>
             </list>
         </property>
     </bean>
