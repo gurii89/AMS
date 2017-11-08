@@ -1,7 +1,5 @@
 package com.cafe24.guribyn.cate;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,33 +12,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CateController {
 	
 	@Autowired
-	CateDao cateDao;
+	CateService cateService;
 	
 	// 카테고리 등록화면
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
-		model.addAttribute("list", cateDao.cateAddList());
+		model.addAttribute("list", cateService.cateLarge());
 		return "cateAdd";
-	}
-	
-	// 카테고리명 중복확인
-	@ResponseBody
-	@RequestMapping(value = "/cateNameCheck")
-	public String cateNameCheck(@RequestParam ("name") String name, @RequestParam ("small") String small) {
-		return cateDao.cateNameCheck(name, small);
 	}
 	
 	// 대분류 선택시 소분류 출력
 	@ResponseBody
 	@RequestMapping(value = "/cateSmall")
 	public String cateSmall(@RequestParam ("large") String large) {
-		return cateDao.cateSmall(large);
+		return cateService.cateSmall(large);
+	}
+	
+	// 카테고리명 중복확인
+	@ResponseBody
+	@RequestMapping(value = "/cateNameCheck")
+	public String cateNameCheck(@RequestParam ("name") String name, @RequestParam ("small") String small) {
+		return cateService.cateNameCheck(name, small);
 	}
 	
 	// 카테고리 등록처리
 	@RequestMapping(value = "/cateAdd", method = RequestMethod.POST)
 	public String cateAdd(Cate cate) {
-		cateDao.cateAdd(cate);
+		cateService.cateAdd(cate);
 		return "redirect:/cateAdd";
 	}
 }

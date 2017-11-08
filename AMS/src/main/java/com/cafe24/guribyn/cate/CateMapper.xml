@@ -12,12 +12,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 	</resultMap>
 	
-	<select id="cateSmall" resultMap="resultCate">
-		SELECT DISTINCT cate_small FROM category WHERE cate_large = #{large}
+	<select id="cateLarge" resultMap="resultCate">
+		SELECT DISTINCT cate_large FROM category
 	</select>
 	
-	<select id="cateAddList" resultMap="resultCate">
-		SELECT DISTINCT cate_large FROM category
+	<select id="cateSmall" resultMap="resultCate">
+		SELECT DISTINCT cate_small FROM category WHERE cate_large = #{large}
 	</select>
 	
 	<select id="cateNameCheck" parameterType="java.util.Map" resultMap="resultCate">

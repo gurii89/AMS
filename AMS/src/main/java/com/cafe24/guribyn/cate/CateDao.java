@@ -6,8 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.google.gson.Gson;
-
 @Repository
 public class CateDao {
 	@Autowired
@@ -15,34 +13,22 @@ public class CateDao {
 	private String NS = "com.cafe24.guribyn.cate.CateMapper.";
 	
 	// 대분류 출력을 위한 select
-	public List<Cate> cateAddList() {
-		return SST.selectList(NS+"cateAddList");
+	public List<Cate> cateLarge() {
+		return SST.selectList(NS+"cateLarge");
 	}
 	
 	// 대분류 선택 후 소분류 출력을 위한 select
-	public String cateSmall(String large) {			
-		List<Cate> list = SST.selectList(NS+"cateSmall", large);
-		Gson gson = new Gson();
-		String result = gson.toJson(list);
-		System.out.println(result);
-		return result;
+	public List<Cate> cateSmall(String large) {			
+		return SST.selectList(NS+"cateSmall", large);
 	}
 	
-	// 카테고리명 중복검사를 위한 select, 중복없을시 ok 중복시 no
-	public String cateNameCheck(String name, String small) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("name", name);
-		map.put("small", small);
-		if(SST.selectOne(NS+"cateNameCheck", map) == null) {
-			return "ok";
-		} else {
-			return "no";
-		}
+	// 카테고리명 중복검사를 위한 select
+	public Cate cateNameCheck(Map<String, String> map) {
+		return SST.selectOne(NS+"cateNameCheck", map);
 	}
 	
 	// 카테고리 등록처리
 	public void cateAdd(Cate cate) {
-		System.out.println(cate);
 		SST.insert(NS+"cateAdd", cate);
 	}
 }
