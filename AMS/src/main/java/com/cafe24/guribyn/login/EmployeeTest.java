@@ -1,6 +1,6 @@
 package com.cafe24.guribyn.login;
 public class EmployeeTest {
-	private int eId;
+	private String eId;
 	private int eNation;
 	private int eLevel;
 	private int eGender;
@@ -17,10 +17,10 @@ public class EmployeeTest {
 	private int ePhone;
 	private String eMemo;
 	private String eDate;
-	public int geteId() {
+	public String geteId() {
 		return eId;
 	}
-	public void seteId(int eId) {
+	public void seteId(String eId) {
 		this.eId = eId;
 	}
 	public int geteNation() {

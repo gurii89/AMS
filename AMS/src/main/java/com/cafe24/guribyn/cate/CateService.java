@@ -4,15 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cafe24.guribyn.login.EmployeeTest;
 import com.google.gson.Gson;
 
 @Service
 public class CateService {
 	@Autowired
 	CateDao cateDao;
+	
+	@Autowired
+	HttpSession session;
 	
 	// 대분류 출력
 	public List<Cate> cateLarge(){
@@ -40,7 +46,8 @@ public class CateService {
 	
 	// 카테고리 등록
 	public void cateAdd(Cate cate){
+		EmployeeTest result = (EmployeeTest)session.getAttribute("loginemployee");
+		cate.seteId(result.geteId());
 		cateDao.cateAdd(cate);
-	}
-	
+	}	
 }

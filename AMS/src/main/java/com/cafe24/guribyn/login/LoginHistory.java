@@ -1,7 +1,7 @@
 package com.cafe24.guribyn.login;
 public class LoginHistory {
 	private int lCode;
-	private int eId;
+	private String eId;
 	private String lDate;
 	private String lCheack;
 	private String lIp;
@@ -11,10 +11,10 @@ public class LoginHistory {
 	public void setlCode(int lCode) {
 		this.lCode = lCode;
 	}
-	public int geteId() {
+	public String geteId() {
 		return eId;
 	}
-	public void seteId(int eId) {
+	public void seteId(String eId) {
 		this.eId = eId;
 	}
 	public String getlDate() {
