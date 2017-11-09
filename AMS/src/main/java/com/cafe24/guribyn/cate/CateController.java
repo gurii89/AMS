@@ -56,7 +56,7 @@ public class CateController {
 	
 	// 로그인 확인
 	private boolean sessionCheck() {
-		if(session.getAttribute("loginemployee") != null) {
+		if(session.getAttribute("loginfor") != null) {
 			return true;
 		}else {
 			return false;
