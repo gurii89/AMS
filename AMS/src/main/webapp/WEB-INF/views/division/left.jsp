@@ -1,8 +1,5 @@
-<%@ page isELIgnored ="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.cafe24.guribyn.login.EmployeeTest" %>
-<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 
          <div class="col-sm-1 sidenav">
@@ -30,4 +27,5 @@
             </ul>
             <br>
          </div>
+
          

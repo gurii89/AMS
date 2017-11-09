@@ -12,6 +12,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 	</resultMap>
 	
+	<select id="cateCount" resultType="int">
+		SELECT COUNT(*) FROM category
+	</select>
+	
+	<select id="cateList" resultMap="resultCate">
+		SELECT 
+			cate_code
+			, cate_large
+			, cate_small
+			, cate_name
+			, IFNULL(e_id, "") AS e_id
+			, cate_date 
+		FROM category
+	</select>
+	
 	<select id="cateLarge" resultMap="resultCate">
 		SELECT DISTINCT cate_large FROM category
 	</select>

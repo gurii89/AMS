@@ -5,12 +5,10 @@ import java.sql.Date;
 public class Employee {
 	private String eId;
 	private int eNation;
-	private int eLevel;
 	private int eGender;
 	private int ePosition;
 	private int eDepartment;
-	private int eLanguage1;
-	private int eLanguage2;
+	private int eLanguage;
 	private int mId;
 	private String eName;
 	private String ePw;
@@ -20,7 +18,6 @@ public class Employee {
 	private int ePhone;
 	private String eMemo;
 	private Date eDate;
-	
 	public String geteId() {
 		return eId;
 	}
@@ -32,12 +29,6 @@ public class Employee {
 	}
 	public void seteNation(int eNation) {
 		this.eNation = eNation;
-	}
-	public int geteLevel() {
-		return eLevel;
-	}
-	public void seteLevel(int eLevel) {
-		this.eLevel = eLevel;
 	}
 	public int geteGender() {
 		return eGender;
@@ -57,17 +48,11 @@ public class Employee {
 	public void seteDepartment(int eDepartment) {
 		this.eDepartment = eDepartment;
 	}
-	public int geteLanguage1() {
-		return eLanguage1;
+	public int geteLanguage() {
+		return eLanguage;
 	}
-	public void seteLanguage1(int eLanguage1) {
-		this.eLanguage1 = eLanguage1;
-	}
-	public int geteLanguage2() {
-		return eLanguage2;
-	}
-	public void seteLanguage2(int eLanguage2) {
-		this.eLanguage2 = eLanguage2;
+	public void seteLanguage(int eLanguage) {
+		this.eLanguage = eLanguage;
 	}
 	public int getmId() {
 		return mId;
@@ -125,11 +110,9 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "EmployeeTest [eId=" + eId + ", eNation=" + eNation + ", eLevel=" + eLevel + ", eGender=" + eGender
-				+ ", ePosition=" + ePosition + ", eDepartment=" + eDepartment + ", eLanguage1=" + eLanguage1
-				+ ", eLanguage2=" + eLanguage2 + ", mId=" + mId + ", eName=" + eName + ", ePw=" + ePw + ", eBirthdate="
-				+ eBirthdate + ", eEmail=" + eEmail + ", eAddress=" + eAddress + ", ePhone=" + ePhone + ", eMemo="
-				+ eMemo + ", eDate=" + eDate + "]";
-	}
-	
+		return "Employee [eId=" + eId + ", eNation=" + eNation + ", eGender=" + eGender + ", ePosition=" + ePosition
+				+ ", eDepartment=" + eDepartment + ", eLanguage=" + eLanguage + ", mId=" + mId + ", eName=" + eName
+				+ ", ePw=" + ePw + ", eBirthdate=" + eBirthdate + ", eEmail=" + eEmail + ", eAddress=" + eAddress
+				+ ", ePhone=" + ePhone + ", eMemo=" + eMemo + ", eDate=" + eDate + "]";
+	}	
 }
