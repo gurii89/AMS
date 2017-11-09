@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="col-sm-11 top">
-	<c:if test="${noticetop=='top'}">
+	<c:if test="${top == 'notice'}">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="">공지사항 리스트</a></li>

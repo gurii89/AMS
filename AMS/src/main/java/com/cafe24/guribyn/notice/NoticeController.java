@@ -16,8 +16,6 @@ public class NoticeController {
 	@RequestMapping(value="/noticeAdd", method = RequestMethod.GET)
 	public String noticeAddForm(Model model) {
 		System.out.println("---공지사항 등록 폼---------from controller");
-		String top = "top";
-		model.addAttribute("noticetop", top);
 		return "/notice/noticeAdd";
 	}
 	
@@ -25,8 +23,8 @@ public class NoticeController {
 	@RequestMapping(value="/noticeList", method = RequestMethod.GET)
 	public String noticeList(Model model) {
 		System.out.println("---공지사항 리스트---------from controller");
-		String top = "top";
-		model.addAttribute("noticetop", top);
+		//top session 설정
+		noticeService.NoticeSesseion();
 		return "/notice/noticeList";
 	}
 	
