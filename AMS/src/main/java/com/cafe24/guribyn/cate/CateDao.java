@@ -17,6 +17,10 @@ public class CateDao {
 		return SST.selectList(NS+"cateList");
 	}
 	
+	public int cateCount() {
+		return SST.selectOne(NS+"cateCount");
+	}
+	
 	// 대분류 출력을 위한 select
 	public List<Cate> cateLarge() {
 		return SST.selectList(NS+"cateLarge");

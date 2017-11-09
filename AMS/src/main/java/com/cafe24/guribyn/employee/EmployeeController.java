@@ -12,10 +12,10 @@ public class EmployeeController {
 	@Autowired
 	CateService cateService;
 	
-	// 카테고리 등록화면
+	// 직원 등록시 카테고리 확인
 	@RequestMapping(value = "/employeeAdd")
-	public String cateAdd(Model model) {
-		model.addAttribute("list", cateService.cateList());
+	public String employeeCate(Model model) {
+		cateService.cateList(model, 0);
 		return "employeeAdd";
 	}
 }

@@ -7,7 +7,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
 			$('document').ready(function(){
 				var largeCheck = true
@@ -80,57 +79,46 @@
 			})
 		</script>
 	</head>
-<body>
-
-   <div class="container-fluid">
-      <div class="row content">
-      
-<!-- ////////////////////////////////////왼쪽 메뉴 시작///////////////////////////////////////// -->     
-<%@ include file= "division/left.jsp"%>
-<!-- ////////////////////////////////////왼쪽 메뉴 끝///////////////////////////////////////// -->
-<!-- ////////////////////////////////////상단 메뉴 시작///////////////////////////////////////// -->
-<%@ include file= "division/top.jsp"%>
-<!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
-<!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
-			 <div class="col-sm-10 top">
-			 <h3>카테고리 등록</h3> 
-			<form action="cateAdd" method="post" id="frm">
-		<div>
-			대분류 : 
-			<span id="large">
-				<select name="cateLarge" id="cateLarge">
-					<option value="">선택하세요</option>
-					<c:forEach items="${list }" var="large">
-						<option value="${large.cateLarge }">${large.cateLarge }</option>
-					</c:forEach>
-				</select>
-			</span>
-			<span id="btnLarge">직접 입력</span>
-		</div>
-		<div>
-			소분류 : 
-			<span id="small">
-				<select name="cateSmall" id="cateSmall">
-					<option value="">대분류를 선택하세요</option>
-				</select>
-			</span>
-			<span id="btnSmall"></span>
-		</div>
-		<div>
-			카테고리명 : 
-			<span id="name"><input type="text" name="cateName" id="cateName"></span>
-		</div>		
-		<div>
-			<input type="button" id="btn" value="등록">
-		</div>
-	</form>
-			 </div>
-<!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
-<!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 
-<%@ include file= "division/right.jsp"%>
-<!-- ////////////////////////////////////오른쪽 메뉴 끝///////////////////////////////////////// -->	         
-		</div>
-	</div>
-	
-</body>
+	<body>
+		<div class="container-fluid">
+			<div class="row content">     
+				<%@ include file= "division/left.jsp"%>
+				<%@ include file= "division/top.jsp"%>			
+				<div class="col-sm-10 top">
+					<h3>카테고리 등록</h3> 
+					<form action="cateAdd" method="post" id="frm">
+						<div>
+							대분류 : 
+							<span id="large">
+								<select name="cateLarge" id="cateLarge">
+									<option value="">선택하세요</option>
+									<c:forEach items="${list }" var="large">
+										<option value="${large.cateLarge }">${large.cateLarge }</option>
+									</c:forEach>
+								</select>
+							</span>
+							<span id="btnLarge">직접 입력</span>
+						</div>
+						<div>
+							소분류 : 
+							<span id="small">
+								<select name="cateSmall" id="cateSmall">
+									<option value="">대분류를 선택하세요</option>
+								</select>
+							</span>
+							<span id="btnSmall"></span>
+						</div>
+						<div>
+							카테고리명 : 
+							<span id="name"><input type="text" name="cateName" id="cateName"></span>
+						</div>		
+						<div>
+							<input type="button" id="btn" value="등록">
+						</div>
+					</form>
+				</div>				 
+				<%@ include file= "division/right.jsp"%>
+			</div>
+		</div>	
+	</body>
 </html>

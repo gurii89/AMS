@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.login.Login;
 import com.google.gson.Gson;
@@ -52,7 +53,15 @@ public class CateService {
 	}
 	
 	// 전체 카테고리 select
-	public List<Cate> cateList(){
-		return cateDao.cateList();
+	public void cateList(Model model, int currentPage){
+		if(currentPage != 0) {
+			int cateCount = cateDao.cateCount();
+	        int pagePerRow = 10;
+	        int lastPage = (int)(Math.ceil(cateCount / pagePerRow));
+	        model.addAttribute("currentPage", currentPage);
+	        model.addAttribute("cateCount", cateCount);
+	        model.addAttribute("lastPage", lastPage);
+		}
+		model.addAttribute("list", cateDao.cateList());
 	}
 }

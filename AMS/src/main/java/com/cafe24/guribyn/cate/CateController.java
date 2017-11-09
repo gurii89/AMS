@@ -18,6 +18,14 @@ public class CateController {
 	@Autowired
 	HttpSession session;
 	
+	// 카테고리 목록
+	@RequestMapping(value = "/cateList")
+	public String cateList(Model model
+				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+		cateService.cateList(model, currentPage);
+		return "cateList";
+	}
+	
 	// 카테고리 등록화면
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
