@@ -61,6 +61,7 @@ public class CateService {
 	        model.addAttribute("currentPage", currentPage);
 	        model.addAttribute("cateCount", cateCount);
 	        model.addAttribute("lastPage", lastPage);
+	        session.setAttribute("top", "cate");
 		}
 		model.addAttribute("list", cateDao.cateList());
 	}

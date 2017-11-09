@@ -9,6 +9,13 @@
 			<li><a href="./noticeAdd">공지사항 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top == 'cate' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="cateList">분류 목록</a></li>
+			<li><a href="cateAdd">분류 등록</a></li>
+		</ul>
+	</c:if>
 	<br>
 
 		<br>
