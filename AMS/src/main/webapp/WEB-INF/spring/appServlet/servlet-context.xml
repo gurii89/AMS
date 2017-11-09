@@ -44,6 +44,7 @@
             <list>
                 <value>classpath:com/cafe24/guribyn/cate/CateMapper.xml</value>
                 <value>classpath:com/cafe24/guribyn/login/LoginMapper.xml</value>
+                <value>classpath:com/cafe24/guribyn/employee/EmployeeMapper.xml</value>
             </list>
         </property>
     </bean>

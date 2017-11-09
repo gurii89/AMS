@@ -49,5 +49,10 @@ public class CateService {
 		EmployeeTest result = (EmployeeTest)session.getAttribute("loginemployee");
 		cate.seteId(result.geteId());
 		cateDao.cateAdd(cate);
-	}	
+	}
+	
+	// 전체 카테고리 select
+	public List<Cate> cateList(){
+		return cateDao.cateList();
+	}
 }

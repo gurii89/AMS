@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 	</resultMap>
 	
+	<select id="cateList" resultMap="resultCate">
+		SELECT * FROM category
+	</select>
+	
 	<select id="cateLarge" resultMap="resultCate">
 		SELECT DISTINCT cate_large FROM category
 	</select>

@@ -12,6 +12,11 @@ public class CateDao {
 	private SqlSessionTemplate SST;
 	private String NS = "com.cafe24.guribyn.cate.CateMapper.";
 	
+	// 전체 select
+	public List<Cate> cateList(){
+		return SST.selectList(NS+"cateList");
+	}
+	
 	// 대분류 출력을 위한 select
 	public List<Cate> cateLarge() {
 		return SST.selectList(NS+"cateLarge");
