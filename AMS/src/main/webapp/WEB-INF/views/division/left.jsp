@@ -25,7 +25,7 @@
                <li><a href="#section3">메뉴8</a></li>
                <li><a href="#section3">메뉴9</a></li>
                <li><a href="#section3">메뉴10</a></li>
-               <li><a href="#section3">공지사항</a></li>
+               <li><a href="./noticeList">공지사항</a></li>
                <li><a href="./cateAdd">카테고리</a></li>
             </ul>
             <br>

@@ -41,7 +41,7 @@ public class LoginService {
 		lh.setlCheack(loginfor.getlCheack());
 		lh.setlIp(getUserIp);
 		
-		return loginDao.insertloginHistory(lh);
+		return loginDao.loginHistoryAdd(lh);
 	}
 	
 	//로그인

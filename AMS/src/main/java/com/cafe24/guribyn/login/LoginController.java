@@ -14,9 +14,6 @@ import com.cafe24.guribyn.login.Login;
 public class LoginController{
 	
 	@Autowired
-	private LoginDao loginDao;
-	
-	@Autowired
 	private LoginService loginService;
 	
 	//로그인 폼 요청
@@ -29,6 +26,7 @@ public class LoginController{
 		return "redirect:/cateAdd";
 		}
 	}
+	
 	//로그인 처리
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String loginPro(Login login, HttpSession session) {
@@ -37,7 +35,7 @@ public class LoginController{
 	}
 	//로그아웃 처리
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	
-	public String logout(HttpSession session) {
+	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
 	}
 }
