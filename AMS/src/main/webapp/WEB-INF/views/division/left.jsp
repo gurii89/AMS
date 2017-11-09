@@ -9,7 +9,7 @@
             <h2>로고메</h2><br>
             <ul class="nav nav-pills nav-stacked">
                <li class="active">
-               <p class="loginfo">${loginemployee.eName}(${loginemployee.eId})님</p>
+               <p class="loginfo">${loginfor.eName}(${loginfor.eId})님</p>
                <p class="loginfo">안녕하세요!</p>
                <form method="post" action="./logout">
                <input type="submit" value="LOGOUT">

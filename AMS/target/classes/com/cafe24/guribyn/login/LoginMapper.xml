@@ -3,35 +3,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.login.LoginMapper">
-	<resultMap type="com.cafe24.guribyn.login.EmployeeTest" id="resultEmployeeTest">
+	<resultMap type="com.cafe24.guribyn.login.Login" id="resultLogin">
+		<result column="l_Code" property="lCode"></result>
 		<result column="e_id" property="eId"></result>
-		<result column="e_nation" property="eNation"></result>
-		<result column="e_level" property="eLevel"></result>
-		<result column="e_gender" property="eGender"></result>
-		<result column="e_position" property="ePosition"></result>
-		<result column="e_department" property="eDepartment"></result>
-		<result column="e_language1" property="eLanguage1"></result>
-		<result column="e_language2" property="eLanguage2"></result>
-		<result column="m_id" property="mId"></result>
-		<result column="e_name" property="eName"></result>
-		<result column="e_pw" property="ePw"></result>
-		<result column="e_birthdate" property="eBirthdate"></result>
-		<result column="e_email" property="eEmail"></result>
-		<result column="e_address" property="eAddress"></result>
-		<result column="e_phone" property="ePhone"></result>
-		<result column="e_memo" property="eMemo"></result>
-		<result column="e_date" property="eDate"></result>
+		<result column="e_Pw" property="ePw"></result>
+		<result column="e_Name" property="eName"></result>
+		<result column="e_Level" property="eLevel"></result>
+		<result column="l_Date" property="lDate"></result>
+		<result column="l_Cheack" property="lCheack"></result>
+		<result column="l_Ip" property="lIp"></result>
 	</resultMap>
 	
 	<!-- 로그인 -->
-	<select id="login" resultMap="resultEmployeeTest" parameterType="com.cafe24.guribyn.login.EmployeeTest"> 
+	<select id="login" resultMap="resultLogin" parameterType="com.cafe24.guribyn.login.Login"> 
 		SELECT e_id, e_name 
 		FROM employee
 		WHERE e_id=#{eId} AND e_pw=#{ePw}
 	</select>
 	
 	<!-- 로그인 이력 저장 -->
-	<insert id="insertloginHistory" parameterType="com.cafe24.guribyn.login.LoginHistory">
+	<insert id="insertloginHistory" parameterType="com.cafe24.guribyn.login.Login">
 		INSERT INTO login(
 			e_id,
 			l_date,
@@ -41,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(
 			#{eId},
 			now(),
-			"IN",
+			#{lCheack},
 			INET_ATON(#{lIp})
 		)
 	</insert>

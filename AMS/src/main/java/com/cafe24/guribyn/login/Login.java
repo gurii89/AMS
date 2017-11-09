@@ -1,7 +1,10 @@
 package com.cafe24.guribyn.login;
-public class LoginHistory {
+public class Login {
 	private int lCode;
 	private String eId;
+	private String ePw;
+	private String eName;
+	private String eLevel;
 	private String lDate;
 	private String lCheack;
 	private String lIp;
@@ -16,6 +19,24 @@ public class LoginHistory {
 	}
 	public void seteId(String eId) {
 		this.eId = eId;
+	}
+	public String getePw() {
+		return ePw;
+	}
+	public void setePw(String ePw) {
+		this.ePw = ePw;
+	}
+	public String geteName() {
+		return eName;
+	}
+	public void seteName(String eName) {
+		this.eName = eName;
+	}
+	public String geteLevel() {
+		return eLevel;
+	}
+	public void seteLevel(String eLevel) {
+		this.eLevel = eLevel;
 	}
 	public String getlDate() {
 		return lDate;
@@ -37,8 +58,8 @@ public class LoginHistory {
 	}
 	@Override
 	public String toString() {
-		return "LoginHistory [lCode=" + lCode + ", eId=" + eId + ", lDate=" + lDate + ", lCheack=" + lCheack + ", lIp="
-				+ lIp + "]";
+		return "Login [lCode=" + lCode + ", eId=" + eId + ", ePw=" + ePw + ", eName=" + eName + ", eLevel=" + eLevel
+				+ ", lDate=" + lDate + ", lCheack=" + lCheack + ", lIp=" + lIp + "]";
 	}
-	
+
 }

@@ -14,12 +14,12 @@ public class LoginDao {
 	private final String NS="com.cafe24.guribyn.login.LoginMapper";
 	
 	//로그인
-	public EmployeeTest login(EmployeeTest employeetest) {
-		return sqlSessionTemplate.selectOne(NS+".login", employeetest);
+	public Login login(Login login) {
+		return sqlSessionTemplate.selectOne(NS+".login", login);
 	}
 	
 	//로그인 이력 저장
-	public int insertloginHistory(LoginHistory loginHistory) {
+	public int insertloginHistory(Login loginHistory) {
 		return sqlSessionTemplate.insert(NS+".insertloginHistory", loginHistory);
 	}
 	
@@ -37,4 +37,15 @@ public class LoginDao {
         String getUserIp = userIp;
         return getUserIp;
 	}
+	
+	//로그인 인아웃 체크1
+	public Login inCheck(Login inoutcheck) {
+		inoutcheck.setlCheack("IN");
+		return inoutcheck;
+		}
+	//로그인 인아웃 체크2
+	public Login outCheck(Login inoutcheck) {
+		inoutcheck.setlCheack("OUT");
+		return inoutcheck;
+		}
 }
