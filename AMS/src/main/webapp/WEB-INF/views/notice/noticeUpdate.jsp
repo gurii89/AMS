@@ -23,27 +23,23 @@
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 			 <div class="col-sm-10 top">
 			
-			 <h3>공지사항 리스트</h3> 
-			 <table border="1">
-			 	<tr>
-			 		<th>공지사항 번호</th>
-			 		<th>등록인</th>
-			 		<th>등록날짜</th>
-			 		<th>상세보기</th>
-			 		<th>수정</th>
-			 		<th>삭제</th>
-			 	</tr>
-			 	<c:forEach items="${list}" var="notice">
-			 		<tr>
-			 			<td>${notice.nCode}</td>
-			 			<td>${notice.eId}</td>
-			 			<td>${notice.nDate}</td>
-			 			<td>${notice.nMemo}</td>
-			 			<td><a href="./noticeUpdate?nCode=${notice.nCode}">수정</a></td>
-			 			<td></td>
-			 		</tr>
-			 	</c:forEach>
-			 </table>
+			 <h3>공지사항 수정</h3> 
+			 <form action="./noticeUpdate" method="post">
+				 <input type="hidden" value="${noticed.nCode}" name="nCode">
+				 <p>등록인</p>
+				 <input type="text" value="${noticed.eId}" name="eId" readonly="readonly">
+				 <P>공지사항 내용</P>
+				 <textarea name="nMemo">${noticed.nMemo}</textarea>
+					<c:choose>
+						<c:when test="${loginfor.eId == noticed.eId}">
+							<input type="submit" value="등록">
+						</c:when>
+						<c:otherwise>
+						수정 권한이 없습니다.
+						</c:otherwise>
+					</c:choose>
+				</form>
+			 
 			 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 

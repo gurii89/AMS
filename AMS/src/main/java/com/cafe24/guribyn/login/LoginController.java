@@ -19,7 +19,7 @@ public class LoginController{
 	//로그인 폼 요청
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String loginform(HttpSession session) {
-		System.out.println("---로그인폼 요청---------login.jsp");
+		System.out.println("---로그인요청---------from controller");
 		if(session.getAttribute("loginfor") == null) {
 		return "login";
 		}else {
@@ -37,6 +37,14 @@ public class LoginController{
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	
 	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
+	}
+	
+	//home 요청
+	@RequestMapping(value="/home", method = RequestMethod.GET)
+	public String home() {
+		System.out.println("---home---------from controller");
+		loginService.HomeSesseion();
+		return "home";
 	}
 }
 

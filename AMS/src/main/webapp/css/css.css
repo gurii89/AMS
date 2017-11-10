@@ -1,24 +1,66 @@
 @charset "UTF-8";
 
-	.loginfo {
-		font-size: 1em;
-		font-weight: bold;
-	}
-    .row.content {
-    	height: 550px
-    }
-    
-    .sidenav {
-      background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-      height: 150%;
-    }
-    .top{
-    	background-color: #ffffff;
-    	height: 13%;
-    }
-    .right{
-    	background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
-    }    
-    .copyright{
-    	font-size: 1ex;
-    }
+/* --------------------------------------login.jsp */
+.loginfo {
+	font-size: 7px;
+	font-weight: bold;
+}
+
+
+.copyright {
+	font-size: 1ex;
+}
+
+/* --------------------------------------left.jsp */
+.logout {
+	background-color: transparent;
+	border: 0px transparent solid;
+	font-weight: bold;
+	color: #466498;
+	letter-spacing: -1px;
+}
+
+
+.myinfor:visited, .myinfor:link {
+	text-decoration: none;
+	color: #70658B;
+	font-size: 12px;
+}
+
+.level {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.testtest {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.tohome {
+	width: 100px;
+	height: 70px;
+}
+
+.sidenav {
+	background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+	height: 150%;
+}
+
+.row.content {
+	height: 550px
+}
+
+
+/* --------------------------------------left.jsp */
+
+.top {
+	background-color: #ffffff;
+	height: 50%;
+}
+
+/* --------------------------------------left.jsp */
+
+.right {
+	background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+}

@@ -16,6 +16,8 @@ public class LoginService {
 	@Autowired
 	private LoginDao loginDao;
 	
+	@Autowired
+	HttpSession session;
 	
 	//사용자 ip 체크
 	public String getIpAddress(HttpServletRequest request) {
@@ -62,6 +64,7 @@ public class LoginService {
 			
 			//로그인 세션 정보 세팅
 			session.setAttribute("loginfor", loginfor);
+			session.setAttribute("top", "home");
 		}
 		return "home";
 	}
@@ -79,7 +82,10 @@ public class LoginService {
 	
 		return "redirect:/";
 	}
-
 	
+	//home 세션 설정
+	public String HomeSesseion() {
+		session.setAttribute("top", "home");
+		return "";
+	}
 }
-

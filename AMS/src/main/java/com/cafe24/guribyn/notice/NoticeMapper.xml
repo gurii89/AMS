@@ -22,4 +22,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{nMemo}
 			)
 	</insert>
+	
+	<select id="NoticeAllSelect" resultMap="resultNotice">
+		SELECT
+			n_code,
+			e_id,
+			n_date,
+			n_memo
+		FROM notice
+	</select>
+	
+	<select id="NoticeOneSelect" resultMap="resultNotice">
+		SELECT
+			n_code,
+			e_id,
+			n_date,
+			n_memo
+		FROM notice
+		WHERE n_code=#{nCode}
+	</select>
+	
+	<update id="UpdateNotice" parameterType="com.cafe24.guribyn.notice.Notice">
+		UPDATE notice
+		SET
+			n_memo = #{nMemo}
+		WHERE
+			n_code = #{nCode}
+	</update>
+	
 </mapper>

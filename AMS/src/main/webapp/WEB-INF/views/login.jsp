@@ -26,9 +26,9 @@
 						<label for="inputsm">ID</label>
 						<input class="form-control input-sm" name="eId" type="text">
 						<label for="inputsm">PW</label>
-						<input class="form-control input-sm" name="ePw" type="text">
+						<input class="form-control input-sm" name="ePw" type="password">
 						<br>
-						<input type="submit" value="LOGIN">
+						<input type="submit" value="LOGIN" class="btn-default btn-sm">
 					</form>
 				</div>
 			</div>

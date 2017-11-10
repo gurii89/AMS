@@ -5,8 +5,8 @@
 	<c:if test="${top == 'notice'}">
 		<br>
 		<ul class="nav navbar-nav">
-			<li><a href="">공지사항 리스트</a></li>
-			<li><a href="./noticeAdd">공지사항 등록</a></li>
+			<li><a href="./noticeList" class="level">공지사항 리스트</a></li>
+			<li><a href="./noticeAdd" class="testtest">공지사항 등록</a></li>
 		</ul>
 	</c:if>
 	<c:if test="${top == 'cate' }">
@@ -16,16 +16,11 @@
 			<li><a href="cateAdd">분류 등록</a></li>
 		</ul>
 	</c:if>
-	<br>
-
+	<c:if test="${top == 'home'}">
 		<br>
 		<ul class="nav navbar-nav">
-			<li><a href="#">직원 목록</a></li>
-			<li><a href="employeeAdd">직원 등록</a></li>
-			<li><a href="#">Page 3333</a></li>
-			<li><a href="#">Page 4444</a></li>
-			<li><a href="#">Page 5555</a></li>
+			<li><a href="">메인입니당</a></li>
 		</ul>
-		<br>
+	</c:if>
 </div>
 

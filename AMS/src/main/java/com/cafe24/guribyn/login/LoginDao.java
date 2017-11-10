@@ -20,7 +20,4 @@ public class LoginDao {
 	public int loginHistoryAdd(Login loginHistory) {
 		return sqlSessionTemplate.insert(NS+".insertloginHistory", loginHistory);
 	}
-	
-
-
 }

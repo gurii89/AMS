@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="login" resultMap="resultLogin" parameterType="com.cafe24.guribyn.login.Login"> 
-		SELECT e_id, e_name 
+		SELECT e_id, e_name, e_level
 		FROM employee
 		WHERE e_id=#{eId} AND e_pw=#{ePw}
 	</select>

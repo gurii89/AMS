@@ -3,29 +3,30 @@
 <!DOCTYPE html>
 
          <div class="col-sm-1 sidenav">
-            <h2>로고메</h2><br>
+         <br>
+            <a href="./home"><img class="tohome" src="<%=request.getContextPath()%>/img/3333.png"></a>
             <ul class="nav nav-pills nav-stacked">
                <li class="active">
-               <p class="loginfo">${loginfor.eName}(${loginfor.eId})님</p>
-               <p class="loginfo">안녕하세요!</p>
+               <span class="glyphicon glyphicon-user"><span class="level">권한:${loginfor.eLevel}</span></span>
+               <div class="loginfo"><a href="#" class="myinfor">${loginfor.eName}(${loginfor.eId})님</a></div>
+               <div class="loginfo">안녕하세요!</div>
                <form method="post" action="./logout">
-               <input type="submit" value="LOGOUT">
+               <input class="logout" type="submit" value="LOGOUT">
                </form>
                </li>
-               <li><a href="#section2">직원</a></li>
-               <li><a href="#section3">프론트</a></li>
-               <li><a href="#section3">객실</a></li>
-               <li><a href="#section3">예약</a></li>
-               <li><a href="#section3">서비스</a></li>
-               <li><a href="#section3">메뉴6</a></li>
-               <li><a href="#section3">메뉴7</a></li>
-               <li><a href="#section3">메뉴8</a></li>
-               <li><a href="#section3">메뉴9</a></li>
-               <li><a href="#section3">메뉴10</a></li>
-               <li><a href="./noticeList">공지사항</a></li>
-               <li><a href="cateList">카테고리</a></li>
+               <br>
+               <li><a href="#section2" class="level">직원</a></li>
+               <li><a href="#section3" class="level">프론트</a></li>
+               <li><a href="#section3" class="level">객실</a></li>
+               <li><a href="#section3" class="level">예약</a></li>
+               <li><a href="#section3" class="level">서비스</a></li>
+               <li><a href="#section3" class="level">메뉴6</a></li>
+               <li><a href="#section3" class="level">메뉴7</a></li>
+               <li><a href="#section3" class="level">메뉴8</a></li>
+               <li><a href="#section3" class="level">메뉴9</a></li>
+               <li><a href="#section3" class="level">메뉴10</a></li>
+               <li><a href="./noticeList" class="level">공지사항</a></li>
+               <li><a href="cateList" class="level">카테고리</a></li>
             </ul>
             <br>
          </div>
-
-         
