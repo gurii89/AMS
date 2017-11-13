@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.extra.ExtraMapper">
+<resultMap type="com.cafe24.guribyn.extra.Extra" id="resultExtra">
+	<result column="extra_code" property="extraCode"></result>
+	<result column="cate_code" property="cateCode"></result>
+	<result column="e_id" property="eId"></result>
+	<result column="extra_name" property="extraName"></result>
+	<result column="extra_rate" property="extraRate"></result>
+	<result column="extra_date" property="extraDate"></result>
+</resultMap>
+</mapper>
