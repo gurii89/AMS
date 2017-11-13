@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId"></result>
 		<result column="e_Pw" property="ePw"></result>
 		<result column="e_Name" property="eName"></result>
-		<result column="e_Level" property="eLevel"></result>
+		<result column="e_department" property="eDepartment"></result>
 		<result column="l_Date" property="lDate"></result>
 		<result column="l_Cheack" property="lCheack"></result>
 		<result column="l_Ip" property="lIp"></result>
@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="login" resultMap="resultLogin" parameterType="com.cafe24.guribyn.login.Login"> 
-		SELECT e_id, e_name, e_level
+		SELECT e_id, e_name, e_department
 		FROM employee
 		WHERE e_id=#{eId} AND e_pw=#{ePw}
 	</select>

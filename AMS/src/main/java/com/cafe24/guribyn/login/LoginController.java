@@ -21,9 +21,9 @@ public class LoginController{
 	public String loginform(HttpSession session) {
 		System.out.println("---로그인요청---------from controller");
 		if(session.getAttribute("loginfor") == null) {
-		return "login";
+			return "login";
 		}else {
-		return "redirect:/cateAdd";
+			return "redirect:/home";
 		}
 	}
 	

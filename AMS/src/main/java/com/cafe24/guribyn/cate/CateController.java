@@ -1,7 +1,5 @@
 package com.cafe24.guribyn.cate;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +13,6 @@ public class CateController {
 	@Autowired
 	CateService cateService;
 	
-	@Autowired
-	HttpSession session;
-	
 	// 카테고리 목록
 	@RequestMapping(value = "/cateList")
 	public String cateList(Model model
@@ -29,12 +24,8 @@ public class CateController {
 	// 카테고리 등록화면
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
-		if(sessionCheck()) {
-			model.addAttribute("list", cateService.cateLarge());
-			return "cateAdd";
-		}else {
-			return "login";
-		}
+		model.addAttribute("list", cateService.cateLarge());
+		return "cateAdd";
 	}
 	
 	// 대분류 선택시 소분류 출력
@@ -54,20 +45,7 @@ public class CateController {
 	// 카테고리 등록처리
 	@RequestMapping(value = "/cateAdd", method = RequestMethod.POST)
 	public String cateAdd(Cate cate) {
-		if(sessionCheck()) {
-			cateService.cateAdd(cate);
-			return "redirect:/cateAdd";
-		}else {
-			return "login";
-		}
-	}
-	
-	// 로그인 확인
-	private boolean sessionCheck() {
-		if(session.getAttribute("loginfor") != null) {
-			return true;
-		}else {
-			return false;
-		}
+		cateService.cateAdd(cate);
+		return "redirect:/cateAdd";
 	}
 }
