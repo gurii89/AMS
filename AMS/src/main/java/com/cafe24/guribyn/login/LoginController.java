@@ -23,7 +23,7 @@ public class LoginController{
 		if(session.getAttribute("loginfor") == null) {
 			return "login";
 		}else {
-			return "redirect:/home";
+			return "home";
 		}
 	}
 	
@@ -37,14 +37,6 @@ public class LoginController{
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	
 	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
-	}
-	
-	//home 요청
-	@RequestMapping(value="/home", method = RequestMethod.GET)
-	public String home() {
-		System.out.println("---home---------from controller");
-		loginService.HomeSesseion();
-		return "home";
 	}
 }
 

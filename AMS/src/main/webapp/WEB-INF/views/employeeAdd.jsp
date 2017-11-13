@@ -5,23 +5,8 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script>
-			$('document').ready(function(){
-				$('#btn').click(function(){
-					// 모든 항목이 입력 되었는지 확인
-					if($('#eId').val() != "" && $('#eNation').val() != "" && $('#eDepartment').val() != ""
-						&& $('#eGender').val() != "" && $('#ePosition').val() != "" && $('#eName').val() != ""
-						&& $('#eName').val() != "" && $('#eBirthdate').val() != "" && $('#eEmail').val() != ""
-						&& $('#eAddress').val() != "" && $('#ePhone').val() != ""
-					){					
-						$('#frm').submit()
-					}
-				})
-			})
-		</script>
 	</head>
 	<body>
 	
@@ -39,15 +24,15 @@
 					<h3>직원 등록</h3> 
 						<form action="employeeAdd" method="post" id="frm">
 							<div>
-								<input type="hidden" name="mId" id="mId" value="">
+								<input type="hidden" name="mId" id="mId" value="${loginfor.eId }">
 							</div>
 							<div>
 								직원 아이디 :
-								<input type="text" name="eId" id="eId">
+								<input type="text" name="eId" id="eId" required>
 							</div>
 							<div>
 								직원 국적 :
-								<select name="eNation" id="eNation">
+								<select name="eNation" id="eNation" required>
 									<option value="">국적을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
 										<c:if test="${cate.cateSmall == 'nation' }">
@@ -58,7 +43,7 @@
 							</div>
 							<div>
 								직원 부서 :
-								<select name="eDepartment" id="eDepartment">
+								<select name="eDepartment" id="eDepartment" required>
 									<option value="">권한을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
 										<c:if test="${cate.cateSmall == 'department' }">
@@ -69,7 +54,7 @@
 							</div>
 							<div>
 								직원 성별 :
-								<select name="eGender" id="eGender">
+								<select name="eGender" id="eGender" required>
 									<option value="">성별을 선택하세요</option>
 									<option value="남">남</option>
 									<option value="여">여</option>
@@ -77,7 +62,7 @@
 							</div>
 							<div>
 								직원 직급 :
-								<select name="ePosition" id="ePosition">
+								<select name="ePosition" id="ePosition" required>
 									<option value="">직급을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
 										<c:if test="${cate.cateSmall == 'position' }">
@@ -87,9 +72,9 @@
 								</select>
 							</div>
 							<div>
-								직원 외국어1 :
-								<select name="eLanguage1" id="eLanguage1">
-									<option value="">외국어를 선택하세요</option>
+								직원 외국어 :
+								<select name="eLanguage" id="eLanguage">
+									<option value="null">외국어를 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
 										<c:if test="${cate.cateSmall == 'language' }">
 											<option value="${cate.cateCode }">${cate.cateName }</option>
@@ -99,34 +84,34 @@
 							</div>
 							<div>
 								직원 이름 :
-								<input type="text" name="eName" id="eName">
+								<input type="text" name="eName" id="eName" required>
 							</div>
 							<div>
 								직원 비밀번호 :
-								<input type="text" name="ePw" id="ePw">
+								<input type="text" name="ePw" id="ePw" required>
 							</div>
 							<div>
 								직원 생년월일 :
-								<input type="date" name="eBirthdate" id="eBirthdate">
+								<input type="date" name="eBirthdate" id="eBirthdate" required>
 							</div>
 							<div>
 								직원 이메일 :
-								<input type="text" name="eEmail" id="eEmail">
+								<input type="text" name="eEmail" id="eEmail" required>
 							</div>
 							<div>
 								직원 주소 :
-								<input type="text" name="eAddress" id="eAddress">
+								<input type="text" name="eAddress" id="eAddress" required>
 							</div>
 							<div>
 								직원 핸드폰 :
-								<input type="text" name="ePhone" id="ePhone">
+								<input type="text" name="ePhone" id="ePhone" required>
 							</div>
 							<div>
 								직원 특이사항 :
 								<input type="text" name="eMemo" id="eMemo">
 							</div>
 							<div>
-								<input type="button" id="btn" value="등록">
+								<input type="submit" value="등록">
 							</div>
 						</form>
 				 </div>
