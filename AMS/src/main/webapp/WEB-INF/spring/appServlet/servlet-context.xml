@@ -69,4 +69,31 @@
 	
 	<context:component-scan base-package="com.cafe24.guribyn" />
 	
+	<!-- 컨트롤러로 요청 가기 전 인터셉트 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 하기 경로 접근시 컨트롤러보다 인터셉트를 먼저 거쳐야 함(모든 경로) -->
+			<mvc:mapping path="/**"/>
+			<!-- 하기 경로는 인터셉트를 거치지 않음(예외) -->			
+			<mvc:exclude-mapping path="/"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/logout"/>
+			<bean class="com.cafe24.guribyn.Interceptor"/>
+		</mvc:interceptor>
+		<!-- 뒤로가기 제한 -->
+		<bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+	        <property name="cacheSeconds" value="0" />
+			<property name="useExpiresHeader" value="true" />
+			<property name="useCacheControlHeader" value="true" />
+			<property name="useCacheControlNoStore" value="true" />
+			<property name="cacheMappings">
+			<props> <!-- 하기 주소 뒤로가기 제한 -->
+				<prop key="/">86400</prop>
+			</props>
+    		</property>
+		</bean>	
+	</mvc:interceptors>
+	
 </beans>

@@ -1,64 +1,62 @@
 package com.cafe24.guribyn.employee;
 
-import java.sql.Date;
-
 public class Employee {
 	private String eId;
-	private int eNation;
-	private int eGender;
-	private int ePosition;
-	private int eDepartment;
-	private int eLanguage;
-	private int mId;
+	private String mId;
+	private String eNation;
+	private String eDepartment;
+	private String eGender;
+	private String ePosition;
+	private String eLanguage;
 	private String eName;
 	private String ePw;
 	private String eBirthdate;
 	private String eEmail;
 	private String eAddress;
-	private int ePhone;
+	private String ePhone;
 	private String eMemo;
-	private Date eDate;
+	private String eDate;
 	public String geteId() {
 		return eId;
 	}
 	public void seteId(String eId) {
 		this.eId = eId;
 	}
-	public int geteNation() {
-		return eNation;
-	}
-	public void seteNation(int eNation) {
-		this.eNation = eNation;
-	}
-	public int geteGender() {
-		return eGender;
-	}
-	public void seteGender(int eGender) {
-		this.eGender = eGender;
-	}
-	public int getePosition() {
-		return ePosition;
-	}
-	public void setePosition(int ePosition) {
-		this.ePosition = ePosition;
-	}
-	public int geteDepartment() {
-		return eDepartment;
-	}
-	public void seteDepartment(int eDepartment) {
-		this.eDepartment = eDepartment;
-	}
-	public int geteLanguage() {
-		return eLanguage;
-	}
-	public void seteLanguage(int eLanguage) {
-		this.eLanguage = eLanguage;
-	}
-	public int getmId() {
+	public String getmId() {
 		return mId;
 	}
-	public void setmId(int mId) {
+	public void setmId(String mId) {
 		this.mId = mId;
+	}
+	public String geteNation() {
+		return eNation;
+	}
+	public void seteNation(String eNation) {
+		this.eNation = eNation;
+	}
+	public String geteDepartment() {
+		return eDepartment;
+	}
+	public void seteDepartment(String eDepartment) {
+		this.eDepartment = eDepartment;
+	}
+	public String geteGender() {
+		return eGender;
+	}
+	public void seteGender(String eGender) {
+		this.eGender = eGender;
+	}
+	public String getePosition() {
+		return ePosition;
+	}
+	public void setePosition(String ePosition) {
+		this.ePosition = ePosition;
+	}
+	public String geteLanguage() {
+		return eLanguage;
+	}
+	public void seteLanguage(String eLanguage) {
+		this.eLanguage = eLanguage;
 	}
 	public String geteName() {
 		return eName;
@@ -90,10 +88,10 @@ public class Employee {
 	public void seteAddress(String eAddress) {
 		this.eAddress = eAddress;
 	}
-	public int getePhone() {
+	public String getePhone() {
 		return ePhone;
 	}
-	public void setePhone(int ePhone) {
+	public void setePhone(String ePhone) {
 		this.ePhone = ePhone;
 	}
 	public String geteMemo() {
@@ -102,17 +100,17 @@ public class Employee {
 	public void seteMemo(String eMemo) {
 		this.eMemo = eMemo;
 	}
-	public Date geteDate() {
+	public String geteDate() {
 		return eDate;
 	}
-	public void seteDate(Date eDate) {
+	public void seteDate(String eDate) {
 		this.eDate = eDate;
 	}
 	@Override
 	public String toString() {
-		return "Employee [eId=" + eId + ", eNation=" + eNation + ", eGender=" + eGender + ", ePosition=" + ePosition
-				+ ", eDepartment=" + eDepartment + ", eLanguage=" + eLanguage + ", mId=" + mId + ", eName=" + eName
+		return "Employee [eId=" + eId + ", mId=" + mId + ", eNation=" + eNation + ", eDepartment=" + eDepartment
+				+ ", eGender=" + eGender + ", ePosition=" + ePosition + ", eLanguage=" + eLanguage + ", eName=" + eName
 				+ ", ePw=" + ePw + ", eBirthdate=" + eBirthdate + ", eEmail=" + eEmail + ", eAddress=" + eAddress
 				+ ", ePhone=" + ePhone + ", eMemo=" + eMemo + ", eDate=" + eDate + "]";
-	}	
+	}
 }

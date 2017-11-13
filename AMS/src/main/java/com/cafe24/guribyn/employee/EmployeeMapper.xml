@@ -6,12 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="com.cafe24.guribyn.employee.Employee" id="resultEmployee">
 		<result column="e_id" property="eId" />
 		<result column="e_nation" property="eNation" />
-		<result column="e_level" property="eLevel" />
 		<result column="e_gender" property="eGender" />
 		<result column="e_position" property="ePosition" />
 		<result column="e_department" property="eDepartment" />
-		<result column="e_language1" property="eLanguage1" />
-		<result column="e_language2" property="eLanguage2" />
+		<result column="e_language" property="eLanguage" />
 		<result column="m_id" property="mId" />
 		<result column="e_name" property="eName" />
 		<result column="e_pw" property="ePw" />
@@ -28,12 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			employee(
 			e_id
 			,e_nation
-			,e_level
 			,e_gender
 			,e_position
 			,e_department
-			,e_language1
-			,e_language2
+			,e_language
 			,m_id
 			,e_name
 			,e_pw
@@ -45,16 +41,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,e_date
 			
 		) VALUES (
-			seq_id.nextval
+			#{eId}
 			,#{eNation}
-			,#{eLevel}
 			,#{eGender}
 			,#{ePosition}
 			,#{eDepartment}
-			,#{eLanguage1}
-			,#{eLanguage2}
+			,#{eLanguage}
 			,#{mId}
 			,#{eName}
+			,#{ePw}
 			,#{eBirthdate}
 			,#{eEmail}
 			,#{eAddress}

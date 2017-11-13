@@ -53,7 +53,6 @@ public class LoginService {
 		
 		if(loginfor == null) {
 			System.out.println("---로그인실패");	
-			return "redirect:/";
 		}else {
 			System.out.println("---로그인완료");
 
@@ -66,7 +65,7 @@ public class LoginService {
 			session.setAttribute("loginfor", loginfor);
 			session.setAttribute("top", "home");
 		}
-		return "home";
+		return "redirect:/";
 	}
 	
 	//로그아웃

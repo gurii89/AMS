@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css.css">
@@ -16,8 +17,8 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row content">     
-				<%@ include file= "division/left.jsp"%>
-				<%@ include file= "division/top.jsp"%>			
+				<c:import url="/WEB-INF/views/division/left.jsp" />
+				<c:import url="/WEB-INF/views/division/top.jsp" />			
 				<div class="col-sm-10 top">
 					<table>
 						<tr>
@@ -48,7 +49,7 @@
 				        </c:if>
 				    </ul>
 				</div>				 
-				<%@ include file= "division/right.jsp"%>
+				<c:import url="/WEB-INF/views/division/right.jsp" />
 			</div>
 		</div>	
 	</body>

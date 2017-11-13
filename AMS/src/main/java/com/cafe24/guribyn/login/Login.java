@@ -4,7 +4,7 @@ public class Login {
 	private String eId;
 	private String ePw;
 	private String eName;
-	private String eLevel;
+	private String eDepartment;
 	private String lDate;
 	private String lCheack;
 	private String lIp;
@@ -32,11 +32,11 @@ public class Login {
 	public void seteName(String eName) {
 		this.eName = eName;
 	}
-	public String geteLevel() {
-		return eLevel;
+	public String geteDepartment() {
+		return eDepartment;
 	}
-	public void seteLevel(String eLevel) {
-		this.eLevel = eLevel;
+	public void seteDepartment(String eDepartment) {
+		this.eDepartment = eDepartment;
 	}
 	public String getlDate() {
 		return lDate;
@@ -58,7 +58,7 @@ public class Login {
 	}
 	@Override
 	public String toString() {
-		return "Login [lCode=" + lCode + ", eId=" + eId + ", ePw=" + ePw + ", eName=" + eName + ", eLevel=" + eLevel
+		return "Login [lCode=" + lCode + ", eId=" + eId + ", ePw=" + ePw + ", eName=" + eName + ", eDepartment=" + eDepartment
 				+ ", lDate=" + lDate + ", lCheack=" + lCheack + ", lIp=" + lIp + "]";
 	}
 
