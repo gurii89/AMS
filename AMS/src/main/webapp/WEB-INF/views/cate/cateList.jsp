@@ -29,7 +29,7 @@
 							<th>등록자</th>
 							<th>등록일</th>
 						</tr>
-						<c:forEach items="${list }" var="cate">
+						<c:forEach items="${cateList }" var="cate">
 							<tr>
 								<td>${cate.cateCode }</td>
 								<td>${cate.cateLarge }</td>

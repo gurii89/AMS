@@ -21,6 +21,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_date" property="eDate" />
 	</resultMap>
 	
+	<select id="employeeMod" resultMap="resultEmployee">
+		SELECT e_id
+			,e_nation
+			,e_department
+			,e_position
+			,e_language
+			,IFNULL(m_id, "")
+			,e_gender
+			,e_name
+			,e_pw
+			,e_birthdate
+			,e_email
+			,e_address
+			,e_phone
+			,IFNULL(e_memo, "")
+			,e_date 
+		FROM employee
+		WHERE e_id = #{eId}
+	</select>
+	
 	<insert id="employeeAdd" parameterType="com.cafe24.guribyn.employee.Employee">
 		INSERT INTO 
 			employee(
@@ -58,4 +78,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,now()
 			)
 	</insert>
+	
+	<update id="employeeModPro" parameterType="com.cafe24.guribyn.employee.Employee">
+		UPDATE employee
+		SET
+				e_nation = #{eNation}
+				,e_gender = #{eGender}
+				,e_position = #{ePosition}
+				,e_department = #{eDepartment}
+				,e_language = #{eLanguage}
+				,e_name = #{eName}
+				,e_pw = #{ePw}
+				,e_birthdate = #{eBirthdate}
+				,e_email = #{eEmail}
+				,e_address = #{eAddress}
+				,e_phone = #{ePhone}
+				,e_memo = #{eMemo}
+		WHERE e_id = #{eId}
+	</update>
 </mapper>
