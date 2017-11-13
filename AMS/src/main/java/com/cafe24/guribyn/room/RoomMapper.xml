@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.room.RoomMapper">
+<resultMap type="com.cafe24.guribyn.room.RoomType" id="resultRoom">
+	<result column="room_TypeCode" property=" roomTypeCode"></result>
+	<result column="e_Id" property=" eId"></result>
+	<result column="room_TypeName" property=" roomTypeName"></result>
+	<result column="room_TypeRate" property=" roomTypeRate"></result>
+	<result column="room_TypeDate" property=" roomTypeDate"></result>
+	<result column="room_TypeCount" property=" roomTypeCount"></result>
+</resultMap>
+	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
+		INSERT INTO room_type(
+				e_id,
+				room_type_name,
+				room_type_rate,
+				room_type_date,
+				room_type_count
+			)
+				VALUES(
+				#{eId},
+				#{roomTypeName},
+				#{roomTypeRate},
+				now(),
+				#{roomTypeCount}	
+			)
+	</insert>	
+</mapper>
