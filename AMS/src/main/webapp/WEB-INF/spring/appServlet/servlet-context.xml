@@ -79,6 +79,7 @@
 			<mvc:exclude-mapping path="/img/**"/>
 			<mvc:exclude-mapping path="/css/**"/>
 			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/logout"/>
 			<bean class="com.cafe24.guribyn.Interceptor"/>
 		</mvc:interceptor>
 		<!-- 뒤로가기 제한 -->

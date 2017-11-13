@@ -7,7 +7,7 @@
             <a href="./"><img class="tohome" src="<%=request.getContextPath()%>/img/3333.png"></a>
             <ul class="nav nav-pills nav-stacked">
                <li class="active">
-               <span class="glyphicon glyphicon-user"><span class="level">권한:${loginfor.eLevel}</span></span>
+               <span class="glyphicon glyphicon-user"><span class="level">권한:${loginfor.eDepartment}</span></span>
                <div class="loginfo"><a href="#" class="myinfor">${loginfor.eName}(${loginfor.eId})님</a></div>
                <div class="loginfo">안녕하세요!</div>
                <form method="post" action="./logout">

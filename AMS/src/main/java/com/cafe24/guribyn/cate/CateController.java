@@ -18,14 +18,14 @@ public class CateController {
 	public String cateList(Model model
 				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		cateService.cateList(model, currentPage);
-		return "cateList";
+		return "cate/cateList";
 	}
 	
 	// 카테고리 등록화면
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
 		model.addAttribute("list", cateService.cateLarge());
-		return "cateAdd";
+		return "cate/cateAdd";
 	}
 	
 	// 대분류 선택시 소분류 출력
@@ -46,6 +46,6 @@ public class CateController {
 	@RequestMapping(value = "/cateAdd", method = RequestMethod.POST)
 	public String cateAdd(Cate cate) {
 		cateService.cateAdd(cate);
-		return "redirect:/cateAdd";
+		return "redirect:/cate/cateList";
 	}
 }

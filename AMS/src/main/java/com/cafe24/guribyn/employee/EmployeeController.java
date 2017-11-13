@@ -20,13 +20,13 @@ public class EmployeeController {
 	@RequestMapping(value = "/employeeAdd")
 	public String employeeCate(Model model) {
 		cateService.cateList(model, 0);
-		return "employeeAdd";
+		return "employee/employeeAdd";
 	}
 	
 	// 직원 등록 처리
 	@RequestMapping(value = "/employeeAdd", method = RequestMethod.POST)
 	public String employee(Employee employee) {
 		employeeService.employeeAdd(employee);
-		return "redirect:/employeeAdd";
+		return "redirect:/employee/employeeAdd";
 	}
 }

@@ -14,10 +14,10 @@
 			<div class="row content">
       
 <!-- ////////////////////////////////////왼쪽 메뉴 시작///////////////////////////////////////// -->     
-			<%@ include file= "division/left.jsp"%>
+			<c:import url="/WEB-INF/views/division/left.jsp" />
 <!-- ////////////////////////////////////왼쪽 메뉴 끝///////////////////////////////////////// -->
 <!-- ////////////////////////////////////상단 메뉴 시작///////////////////////////////////////// -->
-			<%@ include file= "division/top.jsp"%>
+			<c:import url="/WEB-INF/views/division/top.jsp" />
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 				<div class="col-sm-10 top">
@@ -35,7 +35,7 @@
 								<select name="eNation" id="eNation" required>
 									<option value="">국적을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
-										<c:if test="${cate.cateSmall == 'nation' }">
+										<c:if test="${cate.cateSmall eq 'nation' }">
 											<option value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
@@ -46,7 +46,7 @@
 								<select name="eDepartment" id="eDepartment" required>
 									<option value="">권한을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
-										<c:if test="${cate.cateSmall == 'department' }">
+										<c:if test="${cate.cateSmall eq 'department' }">
 											<option value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
@@ -65,7 +65,7 @@
 								<select name="ePosition" id="ePosition" required>
 									<option value="">직급을 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
-										<c:if test="${cate.cateSmall == 'position' }">
+										<c:if test="${cate.cateSmall eq 'position' }">
 											<option value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
@@ -76,7 +76,7 @@
 								<select name="eLanguage" id="eLanguage">
 									<option value="null">외국어를 선택하세요</option>
 									<c:forEach items="${list }" var="cate">
-										<c:if test="${cate.cateSmall == 'language' }">
+										<c:if test="${cate.cateSmall eq 'language' }">
 											<option value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
@@ -117,7 +117,7 @@
 				 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 
-			<%@ include file= "division/right.jsp"%>
+			<c:import url="/WEB-INF/views/division/right.jsp" />
 <!-- ////////////////////////////////////오른쪽 메뉴 끝///////////////////////////////////////// -->	         
 			</div>
 		</div>		
