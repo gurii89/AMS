@@ -16,6 +16,13 @@
 			<li><a href="cateAdd">분류 등록</a></li>
 		</ul>
 	</c:if>
+		<c:if test="${top eq 'room' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="#">객실 타입 목록</a></li>
+			<li><a href="roomTypeAdd">객실 타입 등록</a></li>
+		</ul>
+	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
 		<ul class="nav navbar-nav">

@@ -30,13 +30,11 @@ public class NoticeService {
 		System.out.println("---공지사항 전체리스트---------from service");
 		return noticeDao.noticeList();
 	}
-	
 	//공지사항 수정폼
 	public Notice noticeUpdateForm(String nCode) {
 		System.out.println("---공지사항 수정폼---------from service");
 		return noticeDao.noticeOneSelect(nCode);
 	}
-	
 	//공지사항 수정처리
 	public int NoticeUpdate(Notice notice) {
 		System.out.println("---공지사항 수정처리---------from service");

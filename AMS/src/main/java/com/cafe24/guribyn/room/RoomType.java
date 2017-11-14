@@ -1,21 +1,21 @@
 package com.cafe24.guribyn.room;
 public class RoomType {
-	private int roomTypeCode;
-	private int eId;
+	private String roomTypeCode;
+	private String eId;
 	private String roomTypeName;
-	private int roomTypeRate;
+	private String roomTypeRate;
 	private String roomTypeDate;
-	private int roomTypeCount;
-	public int getRoomTypeCode() {
+	private String roomTypeCount;
+	public String getRoomTypeCode() {
 		return roomTypeCode;
 	}
-	public void setRoomTypeCode(int roomTypeCode) {
+	public void setRoomTypeCode(String roomTypeCode) {
 		this.roomTypeCode = roomTypeCode;
 	}
-	public int geteId() {
+	public String geteId() {
 		return eId;
 	}
-	public void seteId(int eId) {
+	public void seteId(String eId) {
 		this.eId = eId;
 	}
 	public String getRoomTypeName() {
@@ -24,10 +24,10 @@ public class RoomType {
 	public void setRoomTypeName(String roomTypeName) {
 		this.roomTypeName = roomTypeName;
 	}
-	public int getRoomTypeRate() {
+	public String getRoomTypeRate() {
 		return roomTypeRate;
 	}
-	public void setRoomTypeRate(int roomTypeRate) {
+	public void setRoomTypeRate(String roomTypeRate) {
 		this.roomTypeRate = roomTypeRate;
 	}
 	public String getRoomTypeDate() {
@@ -36,10 +36,10 @@ public class RoomType {
 	public void setRoomTypeDate(String roomTypeDate) {
 		this.roomTypeDate = roomTypeDate;
 	}
-	public int getRoomTypeCount() {
+	public String getRoomTypeCount() {
 		return roomTypeCount;
 	}
-	public void setRoomTypeCount(int roomTypeCount) {
+	public void setRoomTypeCount(String roomTypeCount) {
 		this.roomTypeCount = roomTypeCount;
 	}
 	@Override
