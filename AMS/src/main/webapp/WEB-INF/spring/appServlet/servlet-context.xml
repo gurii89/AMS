@@ -47,6 +47,8 @@
                 <value>classpath:com/cafe24/guribyn/notice/NoticeMapper.xml</value>
                 <value>classpath:com/cafe24/guribyn/employee/EmployeeMapper.xml</value>
                 <value>classpath:com/cafe24/guribyn/room/RoomMapper.xml</value>
+                <value>classpath:com/cafe24/guribyn/guest/GuestMapper.xml</value>
+
             </list>
         </property>
     </bean>

@@ -33,7 +33,7 @@ public class EmployeeController {
 	
 	// 직원 수정 폼
 	@RequestMapping(value = "/employeeMod")
-	public String employeeMod(Model model, @RequestParam ("eId") String eId) {
+	public String employeeMod(Model model, @RequestParam (value = "eId", required = true) String eId) {
 		cateService.cateList(model, 0);
 		employeeService.employeeMod(model, eId);
 		return "employee/employeeMod";

@@ -65,4 +65,15 @@ public class CateService {
 		}
 		model.addAttribute("cateList", cateDao.cateList());
 	}
+	
+	// 고객 등록을 위한 국적 select
+	public void cateNation(Model model) {
+		model.addAttribute("cateList", cateDao.cateNation());
+	}
+	
+	// 카테고리 검색(예정)
+	public List<Cate> cateSearch(String cate, String input){
+		
+		return null;
+	}
 }
