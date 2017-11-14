@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.guest.GuestMapper">
+	<resultMap type="com.cafe24.guribyn.guest.Guest" id="resultGuest">
+		<result column="g_code" property="gCode" />
+		<result column="e_id" property="eId" />
+		<result column="g_Name" property="gName" />
+		<result column="g_Country" property="gCountry" />
+		<result column="g_Gender" property="gGender" />
+		<result column="g_Phone" property="gPhone" />
+		<result column="g_Birthdate" property="gBirthdate" />
+		<result column="g_Job" property="gJob" />
+		<result column="g_Email" property="gEmail" />
+		<result column="g_Date" property="gDate" />
+	</resultMap>
+	
+	<select id="guestList" resultMap="resultGuest">
+		SELECT 
+			g_code
+			,g_gender
+			,g_country
+			,e_name e_id
+			,g_name
+			,g_birthdate
+			,g_job
+			,g_phone
+			,g_email
+			,g_date 
+		FROM guest
+		INNER JOIN employee
+		ON guest.e_id = employee.e_id
+	</select>
+	
+	<select id="guestCount" resultType="int">
+		SELECT COUNT(*) FROM guest
+	</select>
+	
+	<insert id="guestAdd" parameterType="com.cafe24.guribyn.guest.Guest">
+		INSERT INTO guest(
+			g_gender
+			,g_country
+			,e_id
+			,g_name
+			,g_birthdate
+			,g_job
+			,g_phone
+			,g_email
+			,g_date
+		)VALUES(
+			#{gGender}
+			<if test="gCountry == null ">
+				, (SELECT cate_code FROM category WHERE cate_name = 'korea')
+			</if>
+			<if test="gCountry != null">
+				, #{gCountry}
+			</if>
+			,#{eId}
+			,#{gName}
+			,#{gBirthdate}
+			,#{gJob}
+			,#{gPhone}
+			,#{gEmail}
+			,now()
+		)
+	</insert>	
+</mapper>

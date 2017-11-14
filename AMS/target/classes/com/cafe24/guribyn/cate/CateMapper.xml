@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 	</resultMap>
 	
+	<select id="cateNation" resultMap="resultCate">
+		SELECT * FROM category WHERE cate_small = 'nation' AND cate_name != 'korea'
+	</select>
+	
 	<select id="cateCount" resultType="int">
 		SELECT COUNT(*) FROM category
 	</select>
@@ -22,9 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, cate_large
 			, cate_small
 			, cate_name
-			, IFNULL(e_id, "") AS e_id
+			, e_name e_id
 			, cate_date 
 		FROM category
+		INNER JOIN employee
+		ON category.e_id = employee.e_id
 	</select>
 	
 	<select id="cateLarge" resultMap="resultCate">

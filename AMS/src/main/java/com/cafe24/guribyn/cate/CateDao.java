@@ -12,11 +12,17 @@ public class CateDao {
 	private SqlSessionTemplate SST;
 	private String NS = "com.cafe24.guribyn.cate.CateMapper.";
 	
+	// 국적 select
+	public List<Cate> cateNation(){
+		return SST.selectList(NS+"cateNation");
+	}
+	
 	// 전체 select
 	public List<Cate> cateList(){
 		return SST.selectList(NS+"cateList");
 	}
 	
+	// 페이징을 위한 카운트
 	public int cateCount() {
 		return SST.selectOne(NS+"cateCount");
 	}
