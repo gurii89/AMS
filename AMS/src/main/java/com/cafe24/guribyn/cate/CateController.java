@@ -24,7 +24,7 @@ public class CateController {
 	// 카테고리 등록화면
 	@RequestMapping(value = "/cateAdd")
 	public String cateAdd(Model model) {
-		model.addAttribute("list", cateService.cateLarge());
+		model.addAttribute("cateList", cateService.cateLarge());
 		return "cate/cateAdd";
 	}
 	
@@ -44,8 +44,8 @@ public class CateController {
 	
 	// 카테고리 등록처리
 	@RequestMapping(value = "/cateAdd", method = RequestMethod.POST)
-	public String cateAdd(Cate cate) {
-		cateService.cateAdd(cate);
-		return "redirect:/cate/cateList";
+	public String cateAddPro(Cate cate) {
+		cateService.cateAddPro(cate);
+		return "redirect:/cateList";
 	}
 }

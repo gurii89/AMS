@@ -93,7 +93,7 @@
 							<span id="large">
 								<select name="cateLarge" id="cateLarge">
 									<option value="">선택하세요</option>
-									<c:forEach items="${list }" var="large">
+									<c:forEach items="${cateList }" var="large">
 										<option value="${large.cateLarge }">${large.cateLarge }</option>
 									</c:forEach>
 								</select>

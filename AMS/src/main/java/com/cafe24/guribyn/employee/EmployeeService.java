@@ -2,6 +2,7 @@ package com.cafe24.guribyn.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 public class EmployeeService {
@@ -9,8 +10,25 @@ public class EmployeeService {
 	@Autowired
 	EmployeeDao employeeDao;
 	
-	public void employeeAdd(Employee employee) {
-		employeeDao.employeeAdd(employee);
+	// 직원 등록 처리
+	public void employeeAddPro(Employee employee) {
+		if(employee.geteLanguage().equals("")) {
+			employee.seteLanguage(null);
+		}
+		employeeDao.employeeAddPro(employee);
+	}
+	
+	// 직원 수정 폼
+	public void employeeMod(Model model, String eId) {
+		model.addAttribute("employee", employeeDao.employeeMod(eId));
+	}
+	
+	// 직원 수정 처리
+	public void employeeModPro(Employee employee) {
+		if(employee.geteLanguage().equals("")) {
+			employee.seteLanguage(null);
+		}
+		employeeDao.employeeModPro(employee);
 	}
 	
 }
