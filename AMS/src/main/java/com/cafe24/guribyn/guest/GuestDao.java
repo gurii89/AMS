@@ -1,6 +1,7 @@
 package com.cafe24.guribyn.guest;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ public class GuestDao {
 	private SqlSessionTemplate SST;
 	private String NS = "com.cafe24.guribyn.guest.GuestMapper.";
 	
-	// 전체 고객
-	public List<Guest> guestList(){
-		return SST.selectList(NS+"guestList");
+	// 전체 고객(+페이징)
+	public List<Guest> guestList(Map<String, Integer> map){
+		return SST.selectList(NS+"guestList", map);
 	}
 	
 	// 고객 수

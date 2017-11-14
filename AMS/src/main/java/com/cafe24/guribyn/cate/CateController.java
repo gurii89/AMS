@@ -13,6 +13,16 @@ public class CateController {
 	@Autowired
 	CateService cateService;
 	
+	// 카테고리 검색
+	@RequestMapping(value = "/cateSearch", method = RequestMethod.POST)
+	public String cateSearch(Model model
+				, @RequestParam("cate") String cate
+				, @RequestParam("input") String input
+				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+		cateService.cateSearch(model, cate, input, currentPage);
+		return "cate/cateList";
+	}
+	
 	// 카테고리 목록
 	@RequestMapping(value = "/cateList")
 	public String cateList(Model model

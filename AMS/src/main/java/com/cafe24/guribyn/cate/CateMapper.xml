@@ -16,11 +16,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM category WHERE cate_small = 'nation' AND cate_name != 'korea'
 	</select>
 	
-	<select id="cateCount" resultType="int">
+	<select id="cateCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM category
+		<if test="cate != null">
+			WHERE ${cate} = #{input}
+			<if test="start != null">
+				LIMIT ${start}, ${pagePerRow}
+			</if>			
+		</if>
 	</select>
 	
-	<select id="cateList" resultMap="resultCate">
+	<select id="cateList" parameterType="java.util.Map" resultMap="resultCate">
 		SELECT 
 			cate_code
 			, cate_large
@@ -29,8 +35,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_name e_id
 			, cate_date 
 		FROM category
-		INNER JOIN employee
+		LEFT JOIN employee
 		ON category.e_id = employee.e_id
+		<if test="input != null">
+			WHERE category.${cate} = #{input}
+		</if>
+		ORDER BY cate_small
+		<if test="start != null">
+			LIMIT ${start}, ${pagePerRow}
+		</if>
 	</select>
 	
 	<select id="cateLarge" resultMap="resultCate">

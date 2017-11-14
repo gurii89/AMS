@@ -29,8 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,g_email
 			,g_date 
 		FROM guest
-		INNER JOIN employee
+		LEFT JOIN employee
 		ON guest.e_id = employee.e_id
+		ORDER BY g_code
+		LIMIT #{start}, #{pagePerRow}
 	</select>
 	
 	<select id="guestCount" resultType="int">

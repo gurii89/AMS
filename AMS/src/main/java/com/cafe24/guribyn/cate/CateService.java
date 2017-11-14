@@ -45,25 +45,35 @@ public class CateService {
 		}		
 	}
 	
-	// 카테고리 등록
+	// 카테고리 등록 처리
 	public void cateAddPro(Cate cate){
 		Login result = (Login)session.getAttribute("loginfor");
 		cate.seteId(result.geteId());
 		cateDao.cateAddPro(cate);
 	}
 	
-	// 전체 카테고리 select
+	// 전체 카테고리 select(+페이징)
 	public void cateList(Model model, int currentPage){
-		if(currentPage != 0) {
-			int cateCount = cateDao.cateCount();
-	        int pagePerRow = 10;
-	        int lastPage = (int)(Math.ceil(cateCount / pagePerRow));
-	        model.addAttribute("currentPage", currentPage);
-	        model.addAttribute("cateCount", cateCount);
-	        model.addAttribute("lastPage", lastPage);
-	        session.setAttribute("top", "cate");
-		}
-		model.addAttribute("cateList", cateDao.cateList());
+		int cateCount = cateDao.cateCount();
+        int pagePerRow = 2;
+        int lastPage = cateCount / pagePerRow;
+        if((cateCount % pagePerRow) != 0) {
+        	lastPage += 1;
+        }
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("lastPage", lastPage);
+        model.addAttribute("page", "cateList");
+        session.setAttribute("top", "cate");
+        
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("start", (currentPage-1)*pagePerRow);
+        map.put("pagePerRow", pagePerRow);
+		model.addAttribute("cateList", cateDao.cateList(map));
+	}
+	
+	// 전체 카테고리 select(폼 옵션용, 페이징x)
+	public void cateOption(Model model){
+		model.addAttribute("cateList", cateDao.cateOption());
 	}
 	
 	// 고객 등록을 위한 국적 select
@@ -71,9 +81,33 @@ public class CateService {
 		model.addAttribute("cateList", cateDao.cateNation());
 	}
 	
-	// 카테고리 검색(예정)
-	public List<Cate> cateSearch(String cate, String input){
+	// 카테고리 검색(+페이징)
+	public void cateSearch(Model model, String cate, String input, int currentPage){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", cate);
+		map.put("input", input);
 		
-		return null;
+		int cateCount = cateDao.cateSearchCount(map);
+        int pagePerRow = 2;
+        int lastPage = cateCount / pagePerRow;
+        if((cateCount % pagePerRow) != 0) {
+        	lastPage += 1;
+        }
+        
+        map.put("start", Integer.toString((currentPage-1)*pagePerRow));
+        map.put("pagePerRow", Integer.toString(pagePerRow));
+		
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("lastPage", lastPage);
+        model.addAttribute("cateList", cateDao.cateSearch(map));
+        model.addAttribute("page", "cateSearch");
+	}
+	
+	// 카테고리 검색(폼 옵션용, 페이징x) / cate 컬럼명, input 검색어 
+	public void cateOptionSearch(Model model, String cate, String input) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", cate);
+		map.put("input", input);
+		model.addAttribute("cateList", cateDao.cateSearch(map));
 	}
 }

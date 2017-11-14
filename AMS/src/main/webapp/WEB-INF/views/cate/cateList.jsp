@@ -20,6 +20,18 @@
 				<c:import url="/WEB-INF/views/division/left.jsp" />
 				<c:import url="/WEB-INF/views/division/top.jsp" />			
 				<div class="col-sm-10 top">
+					<form action="cateSearch" method="post">
+						<select name="cate" required>
+							<option value="">검색 조건 선택</option>
+							<option value="cate_code">분류 번호</option>
+							<option value="e_id">등록자</option>
+							<option value="cate_large">대분류</option>
+							<option value="cate_small">소분류</option>						
+							<option value="cate_name">분류명</option>
+						</select>
+						<input type="text" name="input" required>
+						<input type="submit" value="검색">
+					</form>
 					<table>
 						<tr>
 							<th>분류 번호</th>
@@ -42,10 +54,10 @@
 					</table>
 					<ul class="pager">
 				        <c:if test="${currentPage > 1}">
-				            <li class="previous"><a href="cateList?currentPage=${currentPage-1}">이전</a></li>
+				            <li class="previous"><a href="${page }?currentPage=${currentPage-1}">이전</a></li>
 				        </c:if>
 				        <c:if test="${currentPage < lastPage}">
-				            <li class="next"><a href="cateList?currentPage=${currentPage+1}">다음</a></li>
+				            <li class="next"><a href="${page }?currentPage=${currentPage+1}">다음</a></li>
 				        </c:if>
 				    </ul>
 				</div>				 

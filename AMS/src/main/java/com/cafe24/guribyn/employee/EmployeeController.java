@@ -20,7 +20,7 @@ public class EmployeeController {
 	// 직원 등록 폼 + 카테고리 확인
 	@RequestMapping(value = "/employeeAdd")
 	public String employeeCate(Model model) {
-		cateService.cateList(model, 0);
+		cateService.cateOption(model);
 		return "employee/employeeAdd";
 	}
 	
@@ -34,7 +34,7 @@ public class EmployeeController {
 	// 직원 수정 폼
 	@RequestMapping(value = "/employeeMod")
 	public String employeeMod(Model model, @RequestParam (value = "eId", required = true) String eId) {
-		cateService.cateList(model, 0);
+		cateService.cateOption(model);
 		employeeService.employeeMod(model, eId);
 		return "employee/employeeMod";
 	}

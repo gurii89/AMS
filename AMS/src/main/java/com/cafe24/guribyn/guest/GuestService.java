@@ -1,5 +1,8 @@
 package com.cafe24.guribyn.guest;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +23,23 @@ public class GuestService {
 	@Autowired
 	CateService cateService;
 	
-	// 고객 목록
+	// 고객 목록(+페이징)
 	public void guestList(Model model, int currentPage){
-		if(currentPage != 0) {
-			int guestCount = guestDao.guestCount();
-	        int pagePerRow = 10;
-	        int lastPage = (int)(Math.ceil(guestCount / pagePerRow));
-	        model.addAttribute("currentPage", currentPage);
-	        model.addAttribute("cateCount", guestCount);
-	        model.addAttribute("lastPage", lastPage);
-	        session.setAttribute("top", "guest");
-		}
-		model.addAttribute("guestList", guestDao.guestList());
+		int guestCount = guestDao.guestCount();
+        int pagePerRow = 2;
+        int lastPage = guestCount / pagePerRow;
+        if((guestCount % pagePerRow) != 0) {
+        	lastPage += 1;
+        }        
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("lastPage", lastPage);
+        session.setAttribute("top", "guest");
+        
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("start", (currentPage-1)*pagePerRow);
+        map.put("pagePerRow", pagePerRow);
+		model.addAttribute("guestList", guestDao.guestList(map));
+		model.addAttribute("page", "guestList");
 	}
 	
 	// 고객 등록 처리
