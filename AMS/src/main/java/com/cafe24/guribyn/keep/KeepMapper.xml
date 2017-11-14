@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, #{cateCode}
 		, #{eId}
 		, #{kName}
-		, #{kDatetime}
+		, now()
 		, #{kSite}
 		, #{kMemo}
 	)

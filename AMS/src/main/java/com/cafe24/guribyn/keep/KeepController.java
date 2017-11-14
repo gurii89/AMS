@@ -22,7 +22,7 @@ public class KeepController {
 	@RequestMapping(value = "/keepAdd")
 	public String keepAddCate(Model model) {
 		System.out.println("KeepController 보관품 등록폼+카테고리");
-		cateService.cateList(model, 0);
+		cateService.cateOptionSearch(model, "cate_small", "keep");
 		return "keep/keepAdd";
 	}
 		

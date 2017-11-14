@@ -19,7 +19,7 @@ public class KeepDao {
 	//보관품 등록처리
 	public int KeepAdd(Keep keep) {
 		System.out.println("보관품 등록처리 KeepDao");
-		return sst.insert(NS+"keepAdd", keep);
+		return sst.insert(NS+".keepAdd", keep);
 	}
 	//보관품 전체 리스트
 	public List<Keep> keepList(){

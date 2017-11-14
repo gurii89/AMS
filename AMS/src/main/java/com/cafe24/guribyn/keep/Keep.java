@@ -6,7 +6,7 @@ public class Keep {
 
 	private int kCode;
 	private String cateCode;
-	private String e_id;
+	private String eId;
 	private String kName;
 	private Date kDatetime;
 	private String kSite;
@@ -23,11 +23,11 @@ public class Keep {
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
 	}
-	public String getE_id() {
-		return e_id;
+	public String geteId() {
+		return eId;
 	}
-	public void setE_id(String e_id) {
-		this.e_id = e_id;
+	public void seteId(String eId) {
+		this.eId = eId;
 	}
 	public String getkName() {
 		return kName;
@@ -55,7 +55,8 @@ public class Keep {
 	}
 	@Override
 	public String toString() {
-		return "Keep [kCode=" + kCode + ", cateCode=" + cateCode + ", e_id=" + e_id + ", kName=" + kName
-				+ ", kDatetime=" + kDatetime + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
+		return "Keep [kCode=" + kCode + ", cateCode=" + cateCode + ", eId=" + eId + ", kName=" + kName + ", kDatetime="
+				+ kDatetime + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
 	}
+	
 }
