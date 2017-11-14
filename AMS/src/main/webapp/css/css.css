@@ -20,7 +20,6 @@
 	letter-spacing: -1px;
 }
 
-
 .myinfor:visited, .myinfor:link {
 	text-decoration: none;
 	color: #70658B;
@@ -56,7 +55,7 @@
 
 .top {
 	background-color: #ffffff;
-	height: 50%;
+	height: 10%;
 }
 
 /* --------------------------------------left.jsp */

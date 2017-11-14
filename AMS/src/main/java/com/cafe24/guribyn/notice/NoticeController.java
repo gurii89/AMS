@@ -19,18 +19,15 @@ public class NoticeController {
 		System.out.println("---공지사항 등록 폼---------from controller");
 		return "/notice/noticeAdd";
 	}
-	
 	//공지사항 리스트
 	@RequestMapping(value="/noticeList", method = RequestMethod.GET)
 	public String noticeList(Model model) {
 		System.out.println("---공지사항 리스트---------from controller");
 		//top session 설정
 		noticeService.NoticeSesseion();
-		
 		model.addAttribute("list", noticeService.noticeList());
 		return "/notice/noticeList";
 	}
-	
 	//공지사항 등록처리
 	@RequestMapping(value="/noticeAdd", method = RequestMethod.POST)
 	public String noticeAddPro(Notice notice) {
@@ -38,7 +35,6 @@ public class NoticeController {
 		noticeService.NoticeAdd(notice);
 		return "redirect:/noticeList";	
 	}
-	
 	//한 공지사항 수정폼
 	@RequestMapping(value="/noticeUpdate", method = RequestMethod.GET)
 		public String noticeUpdateForm(Model model, @RequestParam ("nCode") String nCode) {

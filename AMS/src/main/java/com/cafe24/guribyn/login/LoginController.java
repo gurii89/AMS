@@ -26,12 +26,10 @@ public class LoginController{
 			return "home";
 		}
 	}
-	
 	//로그인 처리
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String loginPro(Login login, HttpSession session) {
 		return loginService.login(login, session);
-	
 	}
 	//로그아웃 처리
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	

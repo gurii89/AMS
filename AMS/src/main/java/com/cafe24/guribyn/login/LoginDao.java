@@ -15,7 +15,6 @@ public class LoginDao {
 	public Login login(Login login) {
 		return sqlSessionTemplate.selectOne(NS+".login", login);
 	}
-	
 	//로그인 이력 저장
 	public int loginHistoryAdd(Login loginHistory) {
 		return sqlSessionTemplate.insert(NS+".insertloginHistory", loginHistory);
