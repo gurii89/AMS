@@ -3,13 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.room.RoomMapper">
-<resultMap type="com.cafe24.guribyn.room.RoomType" id="resultRoom">
-	<result column="room_TypeCode" property=" roomTypeCode"></result>
-	<result column="e_Id" property=" eId"></result>
-	<result column="room_TypeName" property=" roomTypeName"></result>
-	<result column="room_TypeRate" property=" roomTypeRate"></result>
-	<result column="room_TypeDate" property=" roomTypeDate"></result>
-	<result column="room_TypeCount" property=" roomTypeCount"></result>
+<resultMap type="com.cafe24.guribyn.room.RoomType" id="resultRoomType">
+	<result column="room_Type_Code" property="roomTypeCode"></result>
+	<result column="e_Id" property="eId"></result>
+	<result column="room_Type_Name" property="roomTypeName"></result>
+	<result column="room_Type_Rate" property="roomTypeRate"></result>
+	<result column="room_Type_Date" property="roomTypeDate"></result>
+	<result column="room_Type_Count" property="roomTypeCount"></result>
+</resultMap>
+<resultMap type="com.cafe24.guribyn.room.Room" id="resultRoom">
+	<result column="room_Code" property="roomCode"></result>
+	<result column="room_Type_Code" property="roomTypeCode"></result>
+	<result column="e_Id" property="eId"></result>
+	<result column="room_Name" property="roomName"></result>
+	<result column="room_Date" property="roomDate"></result>
+	<result column="room_Size" property="roomSize"></result>
 </resultMap>
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
@@ -26,5 +34,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				now(),
 				#{roomTypeCount}	
 			)
-	</insert>	
+	</insert>
+	
+	<select id="selectRoomType" resultMap="resultRoomType">
+		SELECT 
+			room_type_code,
+			e_id,
+			room_type_name,
+			room_type_rate,
+			room_type_date,
+			room_type_count
+		FROM room_type
+	</select>
+	
+	<insert id="insertRoom" parameterType="com.cafe24.guribyn.room.Room">
+		INSERT INTO room(
+				room_code,
+				room_type_code,
+				e_id,
+				room_name,
+				room_date,
+				room_size
+			)
+				VALUES(
+				#{roomCode},
+				#{roomTypeCode},
+				#{eId},
+				#{roomName},
+				now(),
+				#{roomSize}
+			)
+	</insert>
+	
+	<select id="selectRoom" resultMap="resultRoom">
+		SELECT 
+			r.room_code,
+			rt.room_type_name as room_type_code,
+			r.e_id,
+			r.room_name,
+			r.room_date,
+			r.room_size
+		FROM room_type as rt inner join room as r 
+		WHERE r.room_type_code = rt.room_type_code
+	</select>
 </mapper>

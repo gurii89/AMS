@@ -6,7 +6,7 @@
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="./noticeList" class="level">공지사항 리스트</a></li>
-			<li><a href="./noticeAdd" class="testtest">공지사항 등록</a></li>
+			<li><a href="./noticeAdd" class="level">공지사항 등록</a></li>
 		</ul>
 	</c:if>
 	<c:if test="${top eq 'cate' }">
@@ -19,8 +19,10 @@
 		<c:if test="${top eq 'room' }">
 		<br>
 		<ul class="nav navbar-nav">
-			<li><a href="#">객실 타입 목록</a></li>
-			<li><a href="roomTypeAdd">객실 타입 등록</a></li>
+			<li><a href="roomTypeList" class="level">객실 타입 목록</a></li>
+			<li><a href="roomTypeAdd" class="level">객실 타입 등록</a></li>
+			<li><a href="roomList" class="level">객실 목록</a></li>
+			<li><a href="roomAdd" class="level">객실 등록</a></li>
 		</ul>
 	</c:if>
 	<c:if test="${top eq 'home'}">

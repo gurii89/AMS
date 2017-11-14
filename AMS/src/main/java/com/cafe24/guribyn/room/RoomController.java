@@ -25,11 +25,47 @@ public class RoomController {
 		System.out.println("---객실타입등록폼---------from controller");
 		return "/room/roomTypeAdd";
 	}
-	//객실타입등록
+	//객실타입등록 처리
 	@RequestMapping(value="/roomTypeAdd", method = RequestMethod.POST)
 	public String roomTypeAdd(RoomType roomType) {
 		System.out.println("---객실타입등록처리---------from controller");
 		roomService.RoomTypeAdd(roomType);
-		return "redirect:/roomMain";	
+		return "redirect:/roomTypeList";	
+	}
+	//객실타입 리스트
+	@RequestMapping(value="/roomTypeList", method = RequestMethod.GET)
+	public String roomTypeList(Model model) {
+		System.out.println("---객실타입 리스트---------from controller");
+		model.addAttribute("roomTypeList", roomService.roomTypeList());
+		System.out.println(model);
+		return "/room/roomTypeList";
+	}
+	//객실특징등록폼
+	@RequestMapping(value="/roomOptionAdd", method = RequestMethod.GET)
+	public String roomOptionAddForm() {
+		System.out.println("---객실특징등록폼---------from controller");
+		return "/room/roomOptionAdd";
+	}
+	//객실등록폼
+	@RequestMapping(value="/roomAdd", method = RequestMethod.GET)
+	public String roomAddForm(Model model) {
+		System.out.println("---객실등록폼---------from controller");
+		model.addAttribute("roomTypeSelect", roomService.roomTypeList());
+		return "/room/roomAdd";
+	}
+	//객실등록처리
+	@RequestMapping(value="/roomAdd", method = RequestMethod.POST)
+	public String roomAdd(Room room) {
+		System.out.println("---객실등록처리---------from controller");
+		roomService.RoomAdd(room);
+		return "redirect:/roomTypeList";	
+	}
+	//객실 리스트
+	@RequestMapping(value="/roomList", method = RequestMethod.GET)
+	public String roomList(Model model) {
+		System.out.println("---객실 리스트---------from controller");
+		model.addAttribute("roomList", roomService.roomList());
+		System.out.println(model);
+		return "/room/roomList";
 	}
 }

@@ -22,17 +22,17 @@
 <c:import url="/WEB-INF/views/division/top.jsp" />
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
-			 <div class="col-sm-10 top">
-			
-			 <h3>공지사항 등록</h3> 
-			 <form action="./noticeAdd" method="post">
-				 <p>등록인</p>
-				 <input type="text" value="${loginfor.eId}" name="eId" readonly="readonly">
-				 <P>공지사항 내용</P>
-				 <textarea name="nMemo"></textarea>
-				 <input type="submit" value="등록">
+			<div class="col-sm-10 top">
+			<div class="topb">공지사항 등록</div> 
+			 <form action="./noticeAdd" method="post" class="form-horizontal">
+				 <div class="formb">등록인 :
+					 <input type="text" value="${loginfor.eId}" name="eId" readonly="readonly" class="input-sm">
+				</div>
+				<div class="formb">내용 :</div>
+				<textarea name="nMemo" class="input-sm" rows="10" cols="80"></textarea>
+				<br><br>
+				 <input type="submit" value="등록" class="btn-default btn-sm">
 			 </form>
-			 
 			 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 

@@ -22,20 +22,22 @@
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 			 <div class="col-sm-10 top">
-			
-			 <h3>객실 타입 등록</h3> 
-			 <form action="" method="post">
-				 <p>등록인</p>
-				 <input type="text" value="${loginfor.eId}" name="eId" readonly="readonly">
-				 <p>객실 타입 명</p>
-				 <input type="text" name="roomTypeName">
-				 <p>객실 타임 가격</p>
-				 <input type="text" name="roomTypeRate">
-				 <p>객실 타임 최대 수용 인원</p>
-				 <input type="text" name="roomTypeCount">
-				 <input type="submit" value="등록">
+			 <div class="topb">객실 타입 등록</div>
+			 <form action="roomTypeAdd" method="post" class="form-horizontal">
+				 <div class="formb">등록인 :
+				 	<input type="text" value="${loginfor.eId}" name="eId" readonly="readonly" class="input-sm" required>
+				 </div>
+				 <div class="formb">객실 타입명 :
+				 	<input type="text" name="roomTypeName" class="input-sm" required>
+				 </div>
+				 <div class="formb">객실 타입가격 :
+				 	<input type="text" name="roomTypeRate" class="input-sm" required>
+				 </div>
+				 <div class="formb">최대 수용 인원 :
+				 	<input type="text" name="roomTypeCount" class="input-sm" required>
+				 </div>
+				 <input type="submit" value="등록" class="btn-default btn-sm">
 			 </form>
-			 
 			 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 
