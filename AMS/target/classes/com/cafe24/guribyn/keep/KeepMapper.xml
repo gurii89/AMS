@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.keep.KeepMapper">
+<resultMap type="com.cafe24.guribyn.keep.Keep" id="resultKeep">
+	<result column="k_code" property="kCode" />
+	<result column="cate_code" property="cateCode" />
+	<result column="e_id" property="eId" />
+	<result column="k_name" property="kName" />
+	<result column="k_datetime" property="kDatetime" />
+	<result column="k_site" property="kSite" />
+	<result column="k_memo" property="kMemo" />
+</resultMap>
+
+	<insert id="keepAdd" parameterType="com.cafe24.guribyn.keep.Keep">
+	INSERT INTO keep(
+		k_code
+		, cate_code
+		, e_id
+		, k_name
+		, k_datetime
+		, k_site
+		, k_memo
+	)
+	Values(
+		#{kCode}
+		, #{cateCode}
+		, #{eId}
+		, #{kName}
+		, #{kDatetime}
+		, #{kSite}
+		, #{kMemo}
+	)
+	</insert>
+</mapper>
