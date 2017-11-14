@@ -46,10 +46,10 @@ public class CateService {
 	}
 	
 	// 카테고리 등록
-	public void cateAdd(Cate cate){
+	public void cateAddPro(Cate cate){
 		Login result = (Login)session.getAttribute("loginfor");
 		cate.seteId(result.geteId());
-		cateDao.cateAdd(cate);
+		cateDao.cateAddPro(cate);
 	}
 	
 	// 전체 카테고리 select
@@ -63,6 +63,6 @@ public class CateService {
 	        model.addAttribute("lastPage", lastPage);
 	        session.setAttribute("top", "cate");
 		}
-		model.addAttribute("list", cateDao.cateList());
+		model.addAttribute("cateList", cateDao.cateList());
 	}
 }

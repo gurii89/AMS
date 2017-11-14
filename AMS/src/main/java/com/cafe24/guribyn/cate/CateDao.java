@@ -37,7 +37,7 @@ public class CateDao {
 	}
 	
 	// 카테고리 등록처리
-	public void cateAdd(Cate cate) {
+	public void cateAddPro(Cate cate) {
 		SST.insert(NS+"cateAdd", cate);
 	}
 }
