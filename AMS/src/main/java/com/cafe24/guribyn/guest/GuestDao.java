@@ -12,6 +12,7 @@ public class GuestDao {
 
 	@Autowired
 	private SqlSessionTemplate SST;
+	
 	private String NS = "com.cafe24.guribyn.guest.GuestMapper.";
 	
 	// 전체 고객(+페이징)

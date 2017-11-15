@@ -32,6 +32,13 @@
 			<li><a href="guestAdd" class="level">고객 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'extra' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="extraList" class="level">서비스 목록</a></li>
+			<li><a href="extraAdd" class="level">서비스 등록</a></li>
+		</ul>
+	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
 		<ul class="nav navbar-nav">

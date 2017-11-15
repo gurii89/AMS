@@ -67,7 +67,7 @@
 									<input type="text" name="gEmail" id="gEmail" value="${guest.gEmail }">
 								</div>
 								<div>
-									<input type="submit" value="등록">
+									<input type="submit" value="수정">
 								</div>
 							</form>
 					 </div>				 
