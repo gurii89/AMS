@@ -16,6 +16,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="g_Date" property="gDate" />
 	</resultMap>
 	
+	<select id="guestOne" resultMap="resultGuest">
+		SELECT 
+			g_code
+			,g_gender
+			,g_country
+			,e_name e_id
+			,g_name
+			,g_birthdate
+			,g_job
+			,g_phone
+			,g_email
+			,g_date 
+		FROM guest
+		LEFT JOIN employee
+		ON guest.e_id = employee.e_id
+		WHERE g_code = #{gCode}
+	</select>
+	
 	<select id="guestList" resultMap="resultGuest">
 		SELECT 
 			g_code
@@ -66,5 +84,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,#{gEmail}
 			,now()
 		)
-	</insert>	
+	</insert>
+	
+	<update id="guestMod" parameterType="com.cafe24.guribyn.guest.Guest">
+		UPDATE guest
+		SET
+			g_gender = #{gGender}
+			, g_country = #{gCountry}
+			, g_name = #{gName}
+			, g_birthdate = #{gBirthdate}
+			, g_job = #{gJob}
+			, g_phone = #{gPhone}
+			, g_email = #{gEmail}
+		WHERE g_code=#{gCode}
+	</update>
 </mapper>

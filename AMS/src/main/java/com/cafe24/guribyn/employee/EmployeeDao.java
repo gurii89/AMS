@@ -17,12 +17,12 @@ public class EmployeeDao {
 	}
 	
 	// 직원 수정 폼
-	public Employee employeeMod(String eId) {
-		return SST.selectOne(NS+"employeeMod", eId);
+	public Employee employeeOne(String eId) {
+		return SST.selectOne(NS+"employeeOne", eId);
 	}
 	
 	// 직원 수정 처리
-	public void employeeModPro(Employee employee) {
-		SST.update(NS+"employeeModPro", employee);
+	public void employeeMod(Employee employee) {
+		SST.update(NS+"employeeMod", employee);
 	}
 }

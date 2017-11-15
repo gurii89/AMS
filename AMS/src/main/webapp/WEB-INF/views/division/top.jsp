@@ -25,6 +25,13 @@
 			<li><a href="roomAdd" class="level">객실 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'guest' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="guestList" class="level">고객 목록</a></li>
+			<li><a href="guestAdd" class="level">고객 등록</a></li>
+		</ul>
+	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
 		<ul class="nav navbar-nav">

@@ -23,7 +23,7 @@ public class LoginController{
 		if(session.getAttribute("loginfor") == null) {
 			return "login";
 		}else {
-			return "home";
+			return "redirect:/home";
 		}
 	}
 	//로그인 처리
@@ -35,6 +35,11 @@ public class LoginController{
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	
 	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
+	}
+	//인덱스
+	@RequestMapping(value="/home")	
+	public String home() {
+		return "home";
 	}
 }
 

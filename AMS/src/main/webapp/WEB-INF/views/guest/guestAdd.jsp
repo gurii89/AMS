@@ -35,7 +35,9 @@
 								<select name="gCountry" id="gCountry">
 									<option value="">내국인</option>
 									<c:forEach items="${cateList }" var="cate">
-										<option value="${cate.cateCode }">${cate.cateName }</option>
+										<c:if test="${cate.cateName != 'korea' }">
+											<option value="${cate.cateCode }">${cate.cateName }</option>
+										</c:if>
 									</c:forEach>
 								</select>
 							</div>

@@ -39,4 +39,18 @@ public class GuestController {
 			guestService.guestList(model, currentPage);
 		return "guest/guestList";
 	}
+	
+	// 고객 수정 폼
+	@RequestMapping(value = "/guestMod")
+	public String guestMod(Model model, @RequestParam(value = "gCode", required = true) int gCode) {
+		guestService.guestOne(model, gCode);
+		return "guest/guestMod";
+	}
+	
+	// 고객 수정 처리
+	@RequestMapping(value = "/guestMod", method = RequestMethod.POST)
+	public String guestModPro(Guest guest) {
+		guestService.guestMod(guest);
+		return "redirect:/guestList";
+	}
 }

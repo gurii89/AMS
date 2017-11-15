@@ -19,15 +19,15 @@ public class EmployeeService {
 	}
 	
 	// 직원 수정 폼
-	public void employeeMod(Model model, String eId) {
-		model.addAttribute("employee", employeeDao.employeeMod(eId));
+	public void employeeOne(Model model, String eId) {
+		model.addAttribute("employee", employeeDao.employeeOne(eId));
 	}
 	
 	// 직원 수정 처리
-	public void employeeModPro(Employee employee) {
+	public void employeeMod(Employee employee) {
 		if(employee.geteLanguage().equals("")) {
 			employee.seteLanguage(null);
 		}
-		employeeDao.employeeModPro(employee);
+		employeeDao.employeeMod(employee);
 	}
 }

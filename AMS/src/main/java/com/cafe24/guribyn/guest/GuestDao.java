@@ -28,4 +28,14 @@ public class GuestDao {
 	public void guestAddPro(Guest guest) {
 		SST.insert(NS+"guestAdd", guest);
 	}
+	
+	// 고객 단일 select
+	public Guest guestOne(int gCode) {
+		return SST.selectOne(NS+"guestOne", gCode);
+	}
+	
+	// 고객 수정 처리
+	public void guestMod(Guest guest) {
+		SST.update(NS+"guestMod", guest);
+	}
 }

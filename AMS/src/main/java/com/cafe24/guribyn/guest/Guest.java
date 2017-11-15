@@ -5,7 +5,7 @@ public class Guest {
 	private String eId;
 	private String gName;
 	private String gCountry;
-	private char gGender;
+	private String gGender;
 	private String gPhone;
 	private String gBirthdate;
 	private String gJob;
@@ -35,10 +35,10 @@ public class Guest {
 	public void setgCountry(String gCountry) {
 		this.gCountry = gCountry;
 	}
-	public char getgGender() {
+	public String getgGender() {
 		return gGender;
 	}
-	public void setgGender(char gGender) {
+	public void setgGender(String gGender) {
 		this.gGender = gGender;
 	}
 	public String getgPhone() {

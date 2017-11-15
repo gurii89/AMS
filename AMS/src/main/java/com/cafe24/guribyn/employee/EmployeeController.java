@@ -35,14 +35,14 @@ public class EmployeeController {
 	@RequestMapping(value = "/employeeMod")
 	public String employeeMod(Model model, @RequestParam (value = "eId", required = true) String eId) {
 		cateService.cateOption(model);
-		employeeService.employeeMod(model, eId);
+		employeeService.employeeOne(model, eId);
 		return "employee/employeeMod";
 	}
 	
 	// 직원 수정 처리
 	@RequestMapping(value = "/employeeMod", method = RequestMethod.POST)
 	public String employeeMod(Employee employee) {
-		employeeService.employeeModPro(employee);
+		employeeService.employeeMod(employee);
 		return "redirect:/employeeList";
 	}
 }

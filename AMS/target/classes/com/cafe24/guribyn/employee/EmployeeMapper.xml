@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_date" property="eDate" />
 	</resultMap>
 	
-	<select id="employeeMod" resultMap="resultEmployee">
+	<select id="employeeOne" resultMap="resultEmployee">
 		SELECT e_id
 			,e_nation
 			,e_department
@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			)
 	</insert>
 	
-	<update id="employeeModPro" parameterType="com.cafe24.guribyn.employee.Employee">
+	<update id="employeeMod" parameterType="com.cafe24.guribyn.employee.Employee">
 		UPDATE employee
 		SET
 				e_nation = #{eNation}

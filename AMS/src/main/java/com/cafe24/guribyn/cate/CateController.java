@@ -14,7 +14,7 @@ public class CateController {
 	CateService cateService;
 	
 	// 카테고리 검색
-	@RequestMapping(value = "/cateSearch", method = RequestMethod.POST)
+	@RequestMapping(value = "/cateSearch")
 	public String cateSearch(Model model
 				, @RequestParam("cate") String cate
 				, @RequestParam("input") String input

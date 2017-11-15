@@ -34,6 +34,7 @@
 							<th>고객 직업</th>
 							<th>고객 이메일</th>
 							<th>고객 등록일</th>
+							<th>수정</th>
 						</tr>
 						<c:forEach items="${guestList }" var="guest">
 							<tr>
@@ -47,17 +48,11 @@
 								<td>${guest.gJob }</td>
 								<td>${guest.gEmail }</td>
 								<td>${guest.gDate }</td>
+								<td><a href="guestMod?gCode=${guest.gCode }">수정</a></td>
 							</tr>
 						</c:forEach>
 					</table>
-					<ul class="pager">
-				        <c:if test="${currentPage > 1}">
-				            <li class="previous"><a href="${page }?currentPage=${currentPage-1}">이전</a></li>
-				        </c:if>
-				        <c:if test="${currentPage < lastPage}">
-				            <li class="next"><a href="${page }?currentPage=${currentPage+1}">다음</a></li>
-				        </c:if>
-				    </ul>
+					<c:import url="/WEB-INF/views/division/paging.jsp" />
 				 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 

@@ -1,6 +1,5 @@
 package com.cafe24.guribyn.guest;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.CommonService;
 import com.cafe24.guribyn.cate.CateService;
 
 @Service
@@ -23,21 +23,13 @@ public class GuestService {
 	@Autowired
 	CateService cateService;
 	
+	@Autowired
+	CommonService commonService;
+	
 	// 고객 목록(+페이징)
 	public void guestList(Model model, int currentPage){
-		int guestCount = guestDao.guestCount();
-        int pagePerRow = 2;
-        int lastPage = guestCount / pagePerRow;
-        if((guestCount % pagePerRow) != 0) {
-        	lastPage += 1;
-        }        
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("lastPage", lastPage);
-        session.setAttribute("top", "guest");
-        
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("start", (currentPage-1)*pagePerRow);
-        map.put("pagePerRow", pagePerRow);
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 2, guestDao.guestCount());        
+		session.setAttribute("top", "guest");
 		model.addAttribute("guestList", guestDao.guestList(map));
 		model.addAttribute("page", "guestList");
 	}
@@ -51,5 +43,19 @@ public class GuestService {
 			guest.setgBirthdate(null);
 		}
 		guestDao.guestAddPro(guest);
+	}
+	
+	// 고객 수정 폼
+	public void guestOne(Model model, int gCode) {
+		cateService.cateNation(model);
+		model.addAttribute("guest", guestDao.guestOne(gCode));
+	}
+	
+	// 고객 수정 처리
+	public void guestMod(Guest guest) {
+		if(guest.getgBirthdate().equals("")) {
+			guest.setgBirthdate(null);
+		}
+		guestDao.guestMod(guest);
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.CommonService;
 import com.cafe24.guribyn.login.Login;
 import com.google.gson.Gson;
 
@@ -20,6 +21,9 @@ public class CateService {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	CommonService commonService;
 	
 	// 대분류 출력
 	public List<Cate> cateLarge(){
@@ -54,20 +58,9 @@ public class CateService {
 	
 	// 전체 카테고리 select(+페이징)
 	public void cateList(Model model, int currentPage){
-		int cateCount = cateDao.cateCount();
-        int pagePerRow = 2;
-        int lastPage = cateCount / pagePerRow;
-        if((cateCount % pagePerRow) != 0) {
-        	lastPage += 1;
-        }
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("lastPage", lastPage);
-        model.addAttribute("page", "cateList");
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 2, cateDao.cateCount());
         session.setAttribute("top", "cate");
-        
-        Map<String, Integer> map = new HashMap<String, Integer>();
-        map.put("start", (currentPage-1)*pagePerRow);
-        map.put("pagePerRow", pagePerRow);
+        model.addAttribute("page", "cateList");
 		model.addAttribute("cateList", cateDao.cateList(map));
 	}
 	
@@ -85,20 +78,8 @@ public class CateService {
 	public void cateSearch(Model model, String cate, String input, int currentPage){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("cate", cate);
-		map.put("input", input);
-		
-		int cateCount = cateDao.cateSearchCount(map);
-        int pagePerRow = 2;
-        int lastPage = cateCount / pagePerRow;
-        if((cateCount % pagePerRow) != 0) {
-        	lastPage += 1;
-        }
-        
-        map.put("start", Integer.toString((currentPage-1)*pagePerRow));
-        map.put("pagePerRow", Integer.toString(pagePerRow));
-		
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("lastPage", lastPage);
+		map.put("input", input);		
+		map = commonService.searchPaging(model, currentPage, 2, cateDao.cateSearchCount(map), map);
         model.addAttribute("cateList", cateDao.cateSearch(map));
         model.addAttribute("page", "cateSearch");
 	}
