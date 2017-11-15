@@ -18,7 +18,7 @@
 					$('#search').val(opt).prop("selected", true);
 					
 					//이전 다음 버튼 눌렀을시 검색조건 전송되도록
-					$('a').click(function(){
+					$('.paging').click(function(){
 						var url = $(this).attr('href')
 						var str = '&cate='+$('#search').val()+'&input='+$('#input').val()
 						$(this).attr('href', url+str)

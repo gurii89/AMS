@@ -22,11 +22,6 @@ public class CateDao {
 		return SST.selectOne(NS+"cateCount", map);
 	}
 	
-	// 국적 select
-	public List<Cate> cateNation(){
-		return SST.selectList(NS+"cateNation");
-	}
-	
 	// 전체 select(폼 옵션 용 페이징x)
 	public List<Cate> cateOption(){
 		return SST.selectList(NS+"cateList");

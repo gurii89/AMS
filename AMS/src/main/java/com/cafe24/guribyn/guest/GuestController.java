@@ -21,7 +21,7 @@ public class GuestController {
 	// 고객 등록 폼
 	@RequestMapping(value = "/guestAdd")
 	public String guestAdd(Model model) {
-		cateService.cateNation(model);
+		cateService.cateOptionSearch(model, "cate_small", "nation");
 		return "guest/guestAdd";
 	}
 	

@@ -69,11 +69,6 @@ public class CateService {
 		model.addAttribute("cateList", cateDao.cateOption());
 	}
 	
-	// 고객 등록을 위한 국적 select
-	public void cateNation(Model model) {
-		model.addAttribute("cateList", cateDao.cateNation());
-	}
-	
 	// 카테고리 검색(+페이징)
 	public void cateSearch(Model model, String cate, String input, int currentPage){
 		Map<String, String> map = new HashMap<String, String>();

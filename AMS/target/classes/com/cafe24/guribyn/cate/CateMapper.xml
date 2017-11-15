@@ -12,10 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 	</resultMap>
 	
-	<select id="cateNation" resultMap="resultCate">
-		SELECT * FROM category WHERE cate_small = 'nation'
-	</select>
-	
 	<select id="cateCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM category
 		<if test="cate != null">

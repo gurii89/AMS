@@ -4,7 +4,7 @@
 
          <div class="col-sm-1 sidenav">
          <br>
-            <a href="./"><img class="tohome" src="<%=request.getContextPath()%>/img/3333.png"></a>
+            <a href="home"><img class="tohome" src="<%=request.getContextPath()%>/img/3333.png"></a>
             <ul class="nav nav-pills nav-stacked">
                <li class="active">
                <span class="glyphicon glyphicon-user"><span class="level">권한:${loginfor.eDepartment}</span></span>

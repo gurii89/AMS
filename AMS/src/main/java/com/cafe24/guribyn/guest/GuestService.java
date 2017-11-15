@@ -47,7 +47,7 @@ public class GuestService {
 	
 	// 고객 수정 폼
 	public void guestOne(Model model, int gCode) {
-		cateService.cateNation(model);
+		cateService.cateOptionSearch(model, "cate_small", "nation");
 		model.addAttribute("guest", guestDao.guestOne(gCode));
 	}
 	
