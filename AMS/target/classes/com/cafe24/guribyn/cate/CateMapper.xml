@@ -54,6 +54,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT DISTINCT cate_small FROM category WHERE cate_large = #{large}
 	</select>
 	
+	<select id="cateRTlarge" resultMap="resultCate">
+		SELECT DISTINCT cate_small FROM category WHERE cate_large = 'Room'
+	</select>
+	
+	<select id="cateOnlySmallName" resultMap="resultCate">
+		SELECT DISTINCT cate_name, cate_code FROM category WHERE cate_small = #{small}
+	</select>
+	
 	<select id="cateNameCheck" parameterType="java.util.Map" resultMap="resultCate">
 		SELECT cate_name FROM category WHERE cate_name = #{name} AND cate_small = #{small}
 	</select>

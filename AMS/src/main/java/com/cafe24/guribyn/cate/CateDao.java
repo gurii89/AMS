@@ -61,4 +61,13 @@ public class CateDao {
 	public void cateAddPro(Cate cate) {
 		SST.insert(NS+"cateAdd", cate);
 	}
+	
+	// RoomOption에서 이용 시작-----------------------------------------------------
+	public List<Cate> cateSmallOnly(){
+		return SST.selectList(NS+"cateRTlarge");
+	}
+	public List<Cate> cateSmallOnlyName(String small) {			
+		return SST.selectList(NS+"cateOnlySmallName", small);
+	}
+	// RoomOption에서 이용 끝-----------------------------------------------------
 }

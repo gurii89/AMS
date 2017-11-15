@@ -3,6 +3,8 @@ package com.cafe24.guribyn.room;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -40,12 +42,6 @@ public class RoomController {
 		System.out.println(model);
 		return "/room/roomTypeList";
 	}
-	//객실특징등록폼
-	@RequestMapping(value="/roomOptionAdd", method = RequestMethod.GET)
-	public String roomOptionAddForm() {
-		System.out.println("---객실특징등록폼---------from controller");
-		return "/room/roomOptionAdd";
-	}
 	//객실등록폼
 	@RequestMapping(value="/roomAdd", method = RequestMethod.GET)
 	public String roomAddForm(Model model) {
@@ -67,5 +63,27 @@ public class RoomController {
 		model.addAttribute("roomList", roomService.roomList());
 		System.out.println(model);
 		return "/room/roomList";
+	}
+	//객실 특징 등록폼
+	@RequestMapping(value="/roomOptionAdd", method = RequestMethod.GET)
+	public String roomOptionForm(Model model, @RequestParam("rtcode") String rtcode) {
+		System.out.println("---객실 특징 등록폼---------from controller");
+		model.addAttribute("rtcode", rtcode);
+		model.addAttribute("roomOptionCatelarge", roomService.RoomOptionCate());
+		return "/room/roomOptionAdd";
+	}
+	//특징 명 가져오기
+	@ResponseBody
+	@RequestMapping(value = "/roomOptionCateSamll")
+	public String cateSmall(@RequestParam ("large") String large) {
+		//System.out.println("대분류선택햇나"+large);
+		return roomService.cateSmallOnlyName(large);
+	}
+	//객실 특징 등록처리
+	@RequestMapping(value="/roomOptionAdd", method = RequestMethod.POST)
+	public String roomOptionAdd(RoomOption roomOption) {
+		System.out.println("---객실 특징 등록처리---------from controller");
+		roomService.RoomOptionAdd(roomOption);
+		return "/room/roomOptionAdd";
 	}
 }

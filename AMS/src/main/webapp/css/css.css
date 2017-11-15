@@ -111,3 +111,8 @@ table.bs td {
 	font-size: 12px;
 	font-weight: bold;
 }
+
+.toshow
+{
+    display: none;
+}

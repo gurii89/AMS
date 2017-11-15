@@ -25,7 +25,7 @@ public class CateService {
 	public List<Cate> cateLarge(){
 		return cateDao.cateLarge();
 	}
-	
+
 	// 대분류에 연동된 소분류 출력용, list 값을 json으로 변경해 전송
 	public String cateSmall(String large){
 		List<Cate> list = cateDao.cateSmall(large);
@@ -110,4 +110,17 @@ public class CateService {
 		map.put("input", input);
 		model.addAttribute("cateList", cateDao.cateSearch(map));
 	}
+	
+	// RoomOption에서 이용 시작-----------------------------------------------------
+	public List<Cate> cateSmallOnly(){
+		return cateDao.cateSmallOnly();
+	}
+	public String cateSmallOnlyName(String small){
+		List<Cate> list = cateDao.cateSmallOnlyName(small);
+		System.out.println("카테서비스까지옴"+list);
+		Gson RommOptiongson = new Gson();
+		return RommOptiongson.toJson(list);
+	}
+	// RoomOption에서 이용 끝 ------------------------------------------------------
+	
 }

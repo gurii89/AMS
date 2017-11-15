@@ -33,4 +33,9 @@ public class RoomDao {
 		System.out.println("---객실 전체리스트---------from dao");
 		return sqlSessionTemplate.selectList(NS+".selectRoom");
 	}
+	//객실 특징 등록처리
+	public int RoomOptionAdd(RoomOption roomOption) {
+		System.out.println("---객실등록처리---------from dao");
+		return sqlSessionTemplate.insert(NS+".insertRoomOption", roomOption);
+	}
 }

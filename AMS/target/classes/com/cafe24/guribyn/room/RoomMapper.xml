@@ -77,4 +77,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM room_type as rt inner join room as r 
 		WHERE r.room_type_code = rt.room_type_code
 	</select>
+	
+	<insert id="insertRoomOption" parameterType="com.cafe24.guribyn.room.RoomOption">
+		INSERT INTO room_option(
+			room_type_code,
+			cate_code,
+			e_id,
+			room_opt_date
+		)
+		VALUES(
+			#{roomTypeCode},
+			#{cateCode},
+			#{eId},
+			now()
+		)
+		
+	</insert>
 </mapper>
