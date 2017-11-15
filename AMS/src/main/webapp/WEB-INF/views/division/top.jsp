@@ -45,5 +45,12 @@
 			<li><a href="">메인입니당</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'keep'}">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="keepList" class="level">보관품 목록</a></li>
+			<li><a href="keepAdd" class="level">보관품 등록</a></li>
+		</ul>
+	</c:if>
 </div>
 

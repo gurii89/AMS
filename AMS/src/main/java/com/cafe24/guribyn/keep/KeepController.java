@@ -35,7 +35,7 @@ public class KeepController {
 	}
 	
 	//보관품 리스트
-	@RequestMapping(value="/keepList", method = RequestMethod.POST)
+	@RequestMapping(value="/keepList", method = RequestMethod.GET)
 	public String keepList(Model model) {
 		System.out.println("KeepController 보관품 리스트");
 		/*keepService.KeepSession();*/
