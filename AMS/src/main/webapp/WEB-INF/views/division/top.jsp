@@ -32,10 +32,31 @@
 			<li><a href="guestAdd" class="level">고객 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'extra' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="extraList" class="level">서비스 목록</a></li>
+			<li><a href="extraAdd" class="level">서비스 등록</a></li>
+		</ul>
+	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="">메인입니당</a></li>
+		</ul>
+	</c:if>
+	<c:if test="${top eq 'keep'}">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="keepList" class="level">보관품 목록</a></li>
+			<li><a href="keepAdd" class="level">보관품 등록</a></li>
+		</ul>
+	</c:if>
+	<c:if test="${top eq 'employee' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="employeeList" class="level">직원 목록</a></li>
+			<li><a href="employeeAdd" class="level">직원 등록</a></li>
 		</ul>
 	</c:if>
 </div>

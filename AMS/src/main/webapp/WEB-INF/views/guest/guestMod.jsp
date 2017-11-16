@@ -14,23 +14,23 @@
 				<c:import url="/WEB-INF/views/division/left.jsp" />
 				<c:import url="/WEB-INF/views/division/top.jsp" />			
 					<div class="col-sm-10 top">
-						<h3>고객 수정</h3> 
-							<form action="guestMod" method="post" id="frm">
+						<div class="topb">고객 수정</div> 
+							<form action="guestMod" method="post" id="frm" class="form-horizontal">
 								<input type="hidden" name="gCode" value="${guest.gCode }">
 								<div>
 									고객명 :
-									<input type="text" name="gName" id="gName" value="${guest.gName }" required>
+									<input type="text" name="gName" id="gName" value="${guest.gName }" required class="input-sm">
 								</div>
 								<div>
 									고객 국적 :
-									<select name="gCountry" id="gCountry">
+									<select name="gCountry" id="gCountry" class="input-sm">
 										<c:forEach items="${cateList }" var="cate">
 											<c:choose>
 												<c:when test="${cate.cateCode eq guest.gCountry }">
-													<option selected value="${cate.cateCode }">${cate.cateName }</option>
+													<option selected value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
 												</c:when>
 												<c:otherwise>
-													<option value="${cate.cateCode }">${cate.cateName }</option>
+													<option value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
@@ -38,36 +38,36 @@
 								</div>
 								<div>
 									고객 성별 :
-									<select name="gGender" id="gGender" required>
-										<option value="${guest.gGender }">${guest.gGender }</option>
+									<select name="gGender" id="gGender" required class="input-sm">
+										<option value="${guest.gGender }" class="input-sm">${guest.gGender }</option>
 										<c:choose>
 											<c:when test="${guest.gGender eq '남' }">
-												<option value="여">여</option>
+												<option value="여" class="input-sm">여</option>
 											</c:when>
 											<c:when test="${guest.gGender eq '여' }">
-												<option value="남">남</option>
+												<option value="남" class="input-sm">남</option>
 											</c:when>
 										</c:choose>
 									</select>
 								</div>
 								<div>
 									고객 연락처 : 
-									<input type="text" name="gPhone" id="gPhone" value="${guest.gPhone }" required>
+									<input type="text" name="gPhone" id="gPhone" value="${guest.gPhone }" required class="input-sm">
 								</div>
 								<div>
 									고객 생년월일 : 
-									<input type="date" name="gBirthdate" id="gBirthdate" value="${guest.gBirthdate }">
+									<input type="date" name="gBirthdate" id="gBirthdate" value="${guest.gBirthdate }" class="input-sm">
 								</div>
 								<div>
 									고객 직업 : 
-									<input type="text" name="gJob" id="gJob" value="${guest.gJob }">
+									<input type="text" name="gJob" id="gJob" value="${guest.gJob }" class="input-sm">
 								</div>
 								<div>
 									고객 이메일 : 
-									<input type="text" name="gEmail" id="gEmail" value="${guest.gEmail }">
+									<input type="text" name="gEmail" id="gEmail" value="${guest.gEmail }" class="input-sm">
 								</div>
 								<div>
-									<input type="submit" value="등록">
+									<input type="submit" value="수정" class="btn-default btn-sm">
 								</div>
 							</form>
 					 </div>				 

@@ -4,6 +4,7 @@
 <html>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,29 +22,46 @@
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 				<div class="col-sm-10 top">
-					<div class="topb">서비스 등록</div> 
-						<form action="extraAdd" method="post" id="frm" class="form-horizontal">
-							<div class="formb">
-								서비스명 :
-								<input type="text" name="extraName" required class="input-sm">
-							</div>
-							<div class="formb">
-								서비스 분류 :
-								<select name="cateCode" required class="input-sm">
-									<option value="" class="input-sm">분류 선택</option>
-									<c:forEach items="${cateList }" var="cate">
-										<option value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="formb">
-								서비스 가격 : 
-								<input type="text" name="extraRate" required class="input-sm" >
-							</div>
-							<div class="formb">
-								<input type="submit" value="등록" class="btn-default btn-sm">
-							</div>
-						</form>
+					<div class="topb">직원 목록</div> 
+					<table class="bs">
+						<tr>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>부서</th>
+							<th>직급</th>
+							<th>성별</th>
+							<th>생년월일</th>
+							<th>국적</th>
+							<th>외국어</th>
+							<th>연락처</th>	
+							<th>주소</th>						
+							<th>이메일</th>
+							<th>등록일</th>
+							<th>등록자</th>
+							<th>메모</th>
+							<th>수정</th>
+						</tr>
+						<c:forEach items="${employeeList }" var="employee">
+							<tr>
+								<td>${employee.eId }</td>
+								<td>${employee.eName }</td>
+								<td>${employee.eDepartment }</td>
+								<td>${employee.ePosition }</td>
+								<td>${employee.eGender }</td>
+								<td>${employee.eBirthdate }</td>
+								<td>${employee.eNation }</td>
+								<td>${employee.eLanguage }</td>
+								<td>${employee.ePhone }</td>
+								<td>${employee.eAddress }</td>
+								<td>${employee.eEmail }</td>
+								<td>${employee.eDate }</td>
+								<td>${employee.mId }</td>
+								<td>${employee.eMemo }</td>
+								<td><a class="btn-default btn-sm" href="employeeMod?eId=${employee.eId }">수정</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+					<c:import url="/WEB-INF/views/division/paging.jsp" />
 				 </div>
 <!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////오른쪽 메뉴 시작///////////////////////////////////////// -->				 

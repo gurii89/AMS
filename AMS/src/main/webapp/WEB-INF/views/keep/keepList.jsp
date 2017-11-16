@@ -9,11 +9,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script>
-			$('document').ready(function(){
-				// 이건
-			})
-</script>
 </head>
 
 <body>
@@ -42,7 +37,7 @@
 			 <th>수정</th>
 			 <th>삭제</th>
 			 </tr>
-			 <c:forEach items="${list}" var="keep">
+			 <c:forEach items="${keepList}" var="keep">
 			 <tr>
 			 	<td>${keep.kCode}</td>
 			 	<td>${keep.cateCode}</td>
@@ -56,16 +51,9 @@
 			 	<td><a href="./keepDelete?kCode=${keep.kCode}">삭제</a>
 			 	</td>
 			 </c:forEach>
-			 </table>
-			 <ul class="pager">
-				        <c:if test="${currentPage > 1}">
-				            <li class="previous"><a href="cateList?currentPage=${currentPage-1}">이전</a></li>
-				        </c:if>
-				        <c:if test="${currentPage < lastPage}">
-				            <li class="next"><a href="cateList?currentPage=${currentPage+1}">다음</a></li>
-				        </c:if>
-				    </ul>
-				</div>				 
+			 </table>		
+			 <c:import url="/WEB-INF/views/division/paging.jsp" />
+				 </div>	 
 				<c:import url="/WEB-INF/views/division/right.jsp" />
 			</div>
 		</div>	

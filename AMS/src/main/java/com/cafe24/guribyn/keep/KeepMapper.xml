@@ -33,4 +33,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, #{kMemo}
 	)
 	</insert>
+	
+	<select id="keepList" resultMap="resultKeep">
+		SELECT 
+			k_code
+		, cate_code
+		, e_id
+		, k_name
+		, k_datetime
+		, k_site
+		, k_memo
+		FROM keep
+	
+	</select>
 </mapper>

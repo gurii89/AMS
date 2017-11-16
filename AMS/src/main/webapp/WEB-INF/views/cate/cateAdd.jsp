@@ -13,15 +13,15 @@
 				var largeCheck = true
 				// 대분류 직접 버튼 클릭시 직접 입력창 생성
 				$('#btnLarge').click(function(){
-					$('#large').html('<input type="text" name="cateLarge" id="cateLarge">')
-					$('#small').html('<input type="text" name="cateSmall" id="cateSmall">')
+					$('#large').html('<input type="text" name="cateLarge" id="cateLarge" class="input-sm">')
+					$('#small').html('<input type="text" name="cateSmall" id="cateSmall" class="input-sm">')
 					$('#btnLarge').html('')
 					$('#btnSmall').html('')
 					largeCheck = false
 				});
 				// 소분류 직적 입력 버튼 클릭시 직접 입력창 생성
 				$('#btnSmall').click(function(){
-					$('#small').html('<input type="text" name="cateSmall" id="cateSmall">')
+					$('#small').html('<input type="text" name="cateSmall" id="cateSmall" class="input-sm">')
 					$('#btnSmall').html('')
 				})
 				// 대분류 선택시 소분류 출력
@@ -30,7 +30,7 @@
 						// 유효한 대분류 선택시 초기값
 						$('#btnLarge').html('')
 						$('#btnSmall').html('직접 입력')
-						$('#cateSmall').html('<option value="">선택하세요</option>')
+						$('#cateSmall').html('<option class="input-sm" value="">선택하세요</option>')
 						$.ajax({
 							url:"cateSmall",
 							type:"GET",
@@ -39,7 +39,7 @@
 								var small = JSON.parse(data)							
 								// 대분류 하위 소분류 옵션으로 추가
 								for(var i=0; i<small.length; i++){
-									$('#cateSmall').append('<option value="'+small[i].cateSmall+'">'+small[i].cateSmall+'</option>')
+									$('#cateSmall').append('<option class="input-sm" value="'+small[i].cateSmall+'">'+small[i].cateSmall+'</option>')
 								}
 							},
 							error:function(request, status, error){
@@ -48,8 +48,8 @@
 						});
 					// 유효하지 않은 대분류 선택시 소분류 초기화
 					}else if($('#cateLarge').val() == ""){
-						$('#small').html('<select name="cateSmall" id="cateSmall">'
-										+'<option value="">대분류를 선택하세요</option></select>')
+						$('#small').html('<select name="cateSmall" id="cateSmall" class="input-sm">'
+										+'<option class="input-sm" value="">대분류를 선택하세요</option></select>')
 						$('#btnLarge').html('직접 입력')
 						$('#btnSmall').html('')
 						largeCheck = true
@@ -86,35 +86,35 @@
 				<c:import url="/WEB-INF/views/division/left.jsp" />
 				<c:import url="/WEB-INF/views/division/top.jsp" />			
 				<div class="col-sm-10 top">
-					<h3>카테고리 등록</h3> 
-					<form action="cateAdd" method="post" id="frm">
-						<div>
+					<div class="topb">분류 등록</div> 
+					<form action="cateAdd" class="form-horizontal" method="post" id="frm">
+						<div class="formb">
 							대분류 : 
 							<span id="large">
-								<select name="cateLarge" id="cateLarge">
-									<option value="">선택하세요</option>
+								<select name="cateLarge" id="cateLarge" class="input-sm">
+									<option class="input-sm" value="">선택하세요</option>
 									<c:forEach items="${cateList }" var="large">
-										<option value="${large.cateLarge }">${large.cateLarge }</option>
+										<option class="input-sm" value="${large.cateLarge }">${large.cateLarge }</option>
 									</c:forEach>
 								</select>
 							</span>
 							<span id="btnLarge">직접 입력</span>
 						</div>
-						<div>
+						<div class="formb">
 							소분류 : 
 							<span id="small">
-								<select name="cateSmall" id="cateSmall">
-									<option value="">대분류를 선택하세요</option>
+								<select name="cateSmall" id="cateSmall" class="input-sm">
+									<option class="input-sm" value="">대분류를 선택하세요</option>
 								</select>
 							</span>
 							<span id="btnSmall"></span>
 						</div>
-						<div>
+						<div class="formb">
 							카테고리명 : 
-							<span id="name"><input type="text" name="cateName" id="cateName"></span>
+							<span id="name"><input type="text" name="cateName" id="cateName" class="input-sm"></span>
 						</div>		
-						<div>
-							<input type="button" id="btn" value="등록">
+						<div class="formb">
+							<input type="button" id="btn" class="btn-default btn-sm" value="등록" >
 						</div>
 					</form>
 				</div>				 

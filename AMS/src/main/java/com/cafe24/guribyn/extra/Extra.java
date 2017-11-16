@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Extra {
 	private int extraCode;
-	private int cateCode;
-	private int eId;
+	private String cateCode;
+	private String eId;
 	private String extraName;
 	private int extraRate;
 	private Date extraDate;
@@ -15,16 +15,16 @@ public class Extra {
 	public void setExtraCode(int extraCode) {
 		this.extraCode = extraCode;
 	}
-	public int getCateCode() {
+	public String getCateCode() {
 		return cateCode;
 	}
-	public void setCateCode(int cateCode) {
+	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
 	}
-	public int geteId() {
+	public String geteId() {
 		return eId;
 	}
-	public void seteId(int eId) {
+	public void seteId(String eId) {
 		this.eId = eId;
 	}
 	public String getExtraName() {

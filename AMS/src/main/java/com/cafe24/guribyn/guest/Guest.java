@@ -1,5 +1,7 @@
 package com.cafe24.guribyn.guest;
 
+import java.sql.Date;
+
 public class Guest {
 	private int gCode;
 	private String eId;
@@ -7,10 +9,10 @@ public class Guest {
 	private String gCountry;
 	private String gGender;
 	private String gPhone;
-	private String gBirthdate;
+	private Date gBirthdate;
 	private String gJob;
 	private String gEmail;
-	private String gDate;
+	private Date gDate;
 	public int getgCode() {
 		return gCode;
 	}
@@ -47,10 +49,10 @@ public class Guest {
 	public void setgPhone(String gPhone) {
 		this.gPhone = gPhone;
 	}
-	public String getgBirthdate() {
+	public Date getgBirthdate() {
 		return gBirthdate;
 	}
-	public void setgBirthdate(String gBirthdate) {
+	public void setgBirthdate(Date gBirthdate) {
 		this.gBirthdate = gBirthdate;
 	}
 	public String getgJob() {
@@ -65,10 +67,10 @@ public class Guest {
 	public void setgEmail(String gEmail) {
 		this.gEmail = gEmail;
 	}
-	public String getgDate() {
+	public Date getgDate() {
 		return gDate;
 	}
-	public void setgDate(String gDate) {
+	public void setgDate(Date gDate) {
 		this.gDate = gDate;
 	}
 	@Override
@@ -76,5 +78,5 @@ public class Guest {
 		return "Guest [gCode=" + gCode + ", eId=" + eId + ", gName=" + gName + ", gCountry=" + gCountry + ", gGender="
 				+ gGender + ", gPhone=" + gPhone + ", gBirthdate=" + gBirthdate + ", gJob=" + gJob + ", gEmail="
 				+ gEmail + ", gDate=" + gDate + "]";
-	}	
+	}
 }

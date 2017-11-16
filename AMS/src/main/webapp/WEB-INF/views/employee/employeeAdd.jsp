@@ -21,97 +21,94 @@
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 				<div class="col-sm-10 top">
-					<h3>직원 등록</h3> 
-						<form action="employeeAdd" method="post" id="frm">
-							<div>
-								<input type="hidden" name="mId" id="mId" value="${loginfor.eId }">
-							</div>
-							<div>
+					<div class="topb">직원 등록</div> 
+						<form action="employeeAdd" method="post" id="frm" class="form-horizontal">
+							<div class="formb">
 								직원 아이디 :
-								<input type="text" name="eId" id="eId" required>
+								<input type="text" name="eId" id="eId" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 국적 :
-								<select name="eNation" id="eNation" required>
-									<option value="">국적을 선택하세요</option>
+								<select name="eNation" id="eNation" required class="input-sm">
+									<option class="input-sm" value="">국적을 선택하세요</option>
 									<c:forEach items="${cateList }" var="cate">
 										<c:if test="${cate.cateSmall eq 'nation' }">
-											<option value="${cate.cateCode }">${cate.cateName }</option>
+											<option class="input-sm" value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
 								</select>
 							</div>
-							<div>
+							<div class="formb">
 								직원 부서 :
-								<select name="eDepartment" id="eDepartment" required>
-									<option value="">권한을 선택하세요</option>
+								<select name="eDepartment" id="eDepartment" required class="input-sm">
+									<option value="" class="input-sm">권한을 선택하세요</option>
 									<c:forEach items="${cateList }" var="cate">
 										<c:if test="${cate.cateSmall eq 'department' }">
-											<option value="${cate.cateCode }">${cate.cateName }</option>
+											<option class="input-sm" value="${cate.cateCode }">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
 								</select>
 							</div>
-							<div>
+							<div class="formb">
 								직원 성별 :
-								<select name="eGender" id="eGender" required>
-									<option value="">성별을 선택하세요</option>
-									<option value="남">남</option>
-									<option value="여">여</option>
+								<select name="eGender" id="eGender" required class="input-sm">
+									<option class="input-sm" value="">성별을 선택하세요</option>
+									<option class="input-sm" value="남">남</option>
+									<option class="input-sm" value="여">여</option>
 								</select>
 							</div>
-							<div>
+							<div class="formb">
 								직원 직급 :
-								<select name="ePosition" id="ePosition" required>
-									<option value="">직급을 선택하세요</option>
+								<select name="ePosition" id="ePosition" required class="input-sm">
+									<option value="" class="input-sm">직급을 선택하세요</option>
 									<c:forEach items="${cateList }" var="cate">
 										<c:if test="${cate.cateSmall eq 'position' }">
-											<option value="${cate.cateCode }">${cate.cateName }</option>
+											<option value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
 								</select>
 							</div>
-							<div>
+							<div class="formb">
 								직원 외국어 :
-								<select name="eLanguage" id="eLanguage">
-									<option value="">외국어를 선택하세요</option>
+								<select name="eLanguage" id="eLanguage" class="input-sm">
+									<option value="" class="input-sm">외국어를 선택하세요</option>
 									<c:forEach items="${cateList }" var="cate">
 										<c:if test="${cate.cateSmall eq 'language' }">
-											<option value="${cate.cateCode }">${cate.cateName }</option>
+											<option value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
 										</c:if>
 									</c:forEach>
 								</select>
 							</div>
-							<div>
+							<div class="formb">
 								직원 이름 :
-								<input type="text" name="eName" id="eName" required>
+								<input type="text" name="eName" id="eName" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 비밀번호 :
-								<input type="text" name="ePw" id="ePw" required>
+								<input type="text" name="ePw" id="ePw" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 생년월일 :
-								<input type="date" name="eBirthdate" id="eBirthdate" required>
+								<input type="date" name="eBirthdate" id="eBirthdate" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 이메일 :
-								<input type="text" name="eEmail" id="eEmail" required>
+								<input type="text" name="eEmail" id="eEmail" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 주소 :
-								<input type="text" name="eAddress" id="eAddress" required>
+								<input type="text" name="eAddress" id="eAddress" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 핸드폰 :
-								<input type="text" name="ePhone" id="ePhone" required>
+								<input type="text" name="ePhone" id="ePhone" required class="input-sm">
 							</div>
-							<div>
+							<div class="formb">
 								직원 특이사항 :
-								<input type="text" name="eMemo" id="eMemo">
+								<input type="text" name="eMemo" id="eMemo" class="input-sm">
 							</div>
-							<div>
-								<input type="submit" value="등록">
+							<div class="formb">
+								<input type="submit" value="등록" class="btn-default btn-sm">
 							</div>
 						</form>
 				 </div>

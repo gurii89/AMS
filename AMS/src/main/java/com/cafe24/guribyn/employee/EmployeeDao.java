@@ -1,5 +1,7 @@
 package com.cafe24.guribyn.employee;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,4 +27,10 @@ public class EmployeeDao {
 	public void employeeMod(Employee employee) {
 		SST.update(NS+"employeeMod", employee);
 	}
+	
+	// 직원 목록
+	public List<Employee> employeeList(){
+		return SST.selectList(NS+"employeeList");
+	}
+	
 }

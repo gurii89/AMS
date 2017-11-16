@@ -21,13 +21,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_date" property="eDate" />
 	</resultMap>
 	
+	<select id="employeeList" resultMap="resultEmployee">
+		SELECT 
+			employee.e_id
+			,nat.cate_name e_nation
+			,dep.cate_name e_department
+			,pos.cate_name e_position
+			,lang.cate_name e_language
+			,emp.e_name m_id
+			,employee.e_gender
+			,employee.e_name
+			,employee.e_pw
+			,employee.e_birthdate
+			,employee.e_email
+			,employee.e_address
+			,employee.e_phone
+			,employee.e_memo
+			,employee.e_date 
+		FROM employee
+		LEFT JOIN category nat
+			ON employee.e_nation = nat.cate_code
+		LEFT JOIN employee emp
+			ON employee.m_id = emp.e_id
+		LEFT JOIN category dep
+			ON employee.e_department = dep.cate_code
+		LEFT JOIN category pos
+			ON employee.e_position = pos.cate_code
+		LEFT JOIN category lang
+			ON employee.e_language = lang.cate_code
+	</select>
+	
 	<select id="employeeOne" resultMap="resultEmployee">
 		SELECT e_id
 			,e_nation
 			,e_department
 			,e_position
 			,e_language
-			,IFNULL(m_id, "")
+			,m_id
 			,e_gender
 			,e_name
 			,e_pw
@@ -35,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,e_email
 			,e_address
 			,e_phone
-			,IFNULL(e_memo, "")
+			,e_memo
 			,e_date 
 		FROM employee
 		WHERE e_id = #{eId}
