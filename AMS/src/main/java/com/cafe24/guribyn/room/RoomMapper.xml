@@ -19,6 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="room_Date" property="roomDate"></result>
 	<result column="room_Size" property="roomSize"></result>
 </resultMap>
+<resultMap type="com.cafe24.guribyn.room.RoomOption" id="resultRoomOption">
+	<result column="room_Opt_Code" property="roomOptCode"></result>
+	<result column="room_Type_Code" property="roomTypeCode"></result>
+	<result column="cate_Code" property="cateCode"></result>
+	<result column="e_Id" property="eId"></result>
+	<result column="room_Opt_Date" property="roomOptDate"></result>
+</resultMap>
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
 				e_id,
@@ -91,6 +98,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{eId},
 			now()
 		)
-		
 	</insert>
+	
+	<select id="selectRoomOption" resultMap="resultRoomOption">
+		SELECT
+			ro.room_opt_code, 
+			ro.room_type_code AS rtc, 
+			ro.cate_code AS cc,
+			ro.e_id,
+			ro.room_opt_date,
+			ca.cate_name as cate_code,
+			rt.room_type_name as room_type_code
+		FROM room_option AS ro INNER JOIN category AS ca INNER JOIN room_type AS rt
+		WHERE ro.cate_code = ca.cate_code AND ro.room_type_code = rt.room_type_code AND ro.room_type_code= #{roomTypeCode}
+	</select>
+	
+	<select id="optionCheck" parameterType="java.util.Map" resultMap="resultRoomOption">
+		SELECT 
+			cate_code
+		FROM room_option
+		WHERE room_type_code = #{roomTypeCode}	AND cate_code IN (SELECT cate_code FROM category WHERE cate_small = #{cateCode})
+	</select>
 </mapper>

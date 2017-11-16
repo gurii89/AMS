@@ -26,6 +26,23 @@
 				fail: function(request, status, error){
 					alert("실패");
 				}
+			})
+		});
+		$('#btn').click(function(){
+			$.ajax({
+				url:"optionCheck",
+				type:"GET",
+				data:"cateCode="+$('#cateLarge').val()+"&roomTypeCode="+$('#rt').val(),
+				success:function(data){
+					if(data == "ok"){
+						alert(data+'등록이 완료되었습니다.')
+						$('#f').submit()
+					}else{
+						alert(data+'이미 등록된 특징입니다.')
+					}
+				},
+				error:function(request, status, error){
+				}
 			});
 		})
 	})
@@ -46,9 +63,9 @@
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->
 			<div class="col-sm-10 top">
 				<div class="topb">객실 특징</div>
-				<form action="roomOptionAdd" method="post" class="form-horizontal">
+				<form action="roomOptionAdd" method="post" class="form-horizontal" id="f">
 					<div class="formb">객실 타입 코드 :
-						<input type="text" value="${rtcode}" name="roomTypeCode" readonly="readonly" class="input-sm">
+						<input type="text" value="${rtcode}" name="roomTypeCode" readonly="readonly" class="input-sm" id="rt">
 					</div>
 					<div class="formb">등록인 :
 				 		<input type="text" value="${loginfor.eId}" name="eId" readonly="readonly" class="input-sm">
@@ -66,7 +83,8 @@
 							<option value="">분류를 선택하세요</option>
 						</select>
 					</div>
-					<input type="submit" value="등록" class="btn-default btn-sm">
+					<input type="text" id="testt">
+					<input type="button" value="등록" class="btn-default btn-sm" id="btn">
 				</form>
 			</div>
 			<!-- ////////////////////////////////////가운데 메뉴 끝///////////////////////////////////////// -->	

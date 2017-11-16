@@ -1,6 +1,8 @@
 package com.cafe24.guribyn.room;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,17 +31,17 @@ public class RoomService {
 		return roomDao.RoomTypeList();	
 	}
 	//객실 세션 설정
-	public String RoomSesseion() {
+	public String RoomSesseion(){
 		session.setAttribute("top", "room");
 		return "";
 	}
 	//객실타입 등록처리
-	public int RoomTypeAdd(RoomType roomType) {
+	public int RoomTypeAdd(RoomType roomType){
 		System.out.println("---객실타입등록처리---------from service");
 		return roomDao.RoomTypeAdd(roomType);
 	}
 	//객실 등록처리
-	public int RoomAdd(Room room) {
+	public int RoomAdd(Room room){
 		System.out.println("---객실타입등록처리---------from service");
 		return roomDao.RoomAdd(room);
 	}
@@ -49,16 +51,34 @@ public class RoomService {
 		return roomDao.RoomList();	
 	}
 	//카테고리 불러오기
-	public List<Cate> RoomOptionCate() {
+	public List<Cate> RoomOptionCate(){
 		return cateService.cateSmallOnly();
 	}
 	//카테고리 불러오기 2
-	public String cateSmallOnlyName(String large) {
+	public String cateSmallOnlyName(String large){
 		return cateService.cateSmallOnlyName(large);
 	}
 	//객실 특징 등록처리
-	public int RoomOptionAdd(RoomOption roomOption) {
+	public int RoomOptionAdd(RoomOption roomOption){
 		System.out.println("---객실타입등록처리---------from service");
 		return roomDao.RoomOptionAdd(roomOption);
+	}
+	//객실 특징 목록
+	public List<RoomOption> RoomOptionList(String roomTypeCode){
+		System.out.println("---객실 특징 리스트---------from service");
+		return roomDao.RommOptionList(roomTypeCode);
+	}
+	//객실 특징 중복 체크
+	public String optionCheck(String cateCode, String roomTypeCode) {
+		System.out.println("---객실 특징 중복검사---------from service");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cateCode", cateCode);
+		map.put("roomTypeCode", roomTypeCode);
+		System.out.println("map>>>>>>>>>" + map);
+		if(roomDao.optionCheck(map).isEmpty()) {
+			return "ok";
+		}else {
+			return "no";
+		}
 	}
 }

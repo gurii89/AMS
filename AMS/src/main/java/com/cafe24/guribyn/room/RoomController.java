@@ -84,6 +84,21 @@ public class RoomController {
 	public String roomOptionAdd(RoomOption roomOption) {
 		System.out.println("---객실 특징 등록처리---------from controller");
 		roomService.RoomOptionAdd(roomOption);
-		return "/room/roomOptionAdd";
+		return "redirect:/roomTypeList";
+	}
+	//객실 특징 목록
+	@RequestMapping(value="/roomOptionList", method = RequestMethod.GET)
+	public String roomOptionList(Model model, @RequestParam("roomTypeCode") String roomTypeCode) {
+		System.out.println("---객실 특징 리스트---------from controller");
+		model.addAttribute("roomOptionList", roomService.RoomOptionList(roomTypeCode));
+		return "/room/roomOptionList";
+	}
+	//객실 특징 중복검사
+	@ResponseBody
+	@RequestMapping(value="/optionCheck")
+	public String optionCheck(@RequestParam ("cateCode") String cateCode, @RequestParam ("roomTypeCode") String roomTypeCode) {
+		System.out.println("---객실 특징 중복검사---------from controller");
+		System.out.println("컨트롤러"+cateCode + roomTypeCode);
+		return roomService.optionCheck(cateCode, roomTypeCode);
 	}
 }

@@ -1,6 +1,7 @@
 package com.cafe24.guribyn.room;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,17 @@ public class RoomDao {
 	public int RoomOptionAdd(RoomOption roomOption) {
 		System.out.println("---객실등록처리---------from dao");
 		return sqlSessionTemplate.insert(NS+".insertRoomOption", roomOption);
+	}
+	//객실 특징 목록
+	public List<RoomOption> RommOptionList(String roomTypeCode){
+		System.out.println("---객실특징 리스트---------from dao");
+		return sqlSessionTemplate.selectList(NS+".selectRoomOption", roomTypeCode);
+	}
+	//객실 특징 중복검사
+	public List<RoomOption> optionCheck(Map<String, String> map) {
+		System.out.println("---객실특징 중복검사 --------from dao");
+		List<RoomOption> test = sqlSessionTemplate.selectList(NS+".optionCheck", map);
+		System.out.println(test);
+		return test;
 	}
 }
