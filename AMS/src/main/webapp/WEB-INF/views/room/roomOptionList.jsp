@@ -34,11 +34,11 @@
 			 	</tr>
 			 	<c:forEach items="${roomOptionList}" var="roomOptionList">
 			 		<tr>
-			 			<td>${roomOptionList.roomTypeCode}</td>
+			 			<td>${roomOptionList.roomTypeCode}<div class="hidden">${roomOptionList.roomOptCode}</div></td>
 			 			<td>${roomOptionList.cateCode}</td>
 			 			<td>${roomOptionList.eId}</td>
 			 			<td>${roomOptionList.roomOptDate}</td>
-			 			<td>삭제</td>
+			 			<td><a href="./roomOptionDelete?rocode=${roomOptionList.roomOptCode}">삭제</a></td>
 			 		</tr>
 			 	</c:forEach>
 			 </table>

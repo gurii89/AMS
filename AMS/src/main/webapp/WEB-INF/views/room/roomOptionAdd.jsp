@@ -83,7 +83,6 @@
 							<option value="">분류를 선택하세요</option>
 						</select>
 					</div>
-					<input type="text" id="testt">
 					<input type="button" value="등록" class="btn-default btn-sm" id="btn">
 				</form>
 			</div>

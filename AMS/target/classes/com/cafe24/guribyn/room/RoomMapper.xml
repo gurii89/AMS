@@ -119,4 +119,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM room_option
 		WHERE room_type_code = #{roomTypeCode}	AND cate_code IN (SELECT cate_code FROM category WHERE cate_small = #{cateCode})
 	</select>
+	
+	<delete id="deleteRoomOption" parameterType="com.cafe24.guribyn.room.RoomOption">
+		DELETE FROM room_option
+		WHERE room_opt_code = #{rocode}
+	</delete>
 </mapper>

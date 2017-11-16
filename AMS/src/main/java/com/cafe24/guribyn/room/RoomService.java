@@ -81,4 +81,9 @@ public class RoomService {
 			return "no";
 		}
 	}
+	//객실 특징 삭제
+	public int roomOptionDelete(String rocode) {
+		System.out.println("---객실 특징 삭제---------from service");
+		return roomDao.RoomOptionDelete(rocode);
+	}
 }

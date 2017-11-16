@@ -98,7 +98,14 @@ public class RoomController {
 	@RequestMapping(value="/optionCheck")
 	public String optionCheck(@RequestParam ("cateCode") String cateCode, @RequestParam ("roomTypeCode") String roomTypeCode) {
 		System.out.println("---객실 특징 중복검사---------from controller");
-		System.out.println("컨트롤러"+cateCode + roomTypeCode);
 		return roomService.optionCheck(cateCode, roomTypeCode);
+	}
+	//객실 특징 삭제
+	@RequestMapping(value="/roomOptionDelete", method = RequestMethod.GET)
+	public String roomOptionDelete(@RequestParam ("rocode") String rocode) {
+		System.out.println("---객실 특징 삭제---------from controller");
+		System.out.println(rocode);
+		roomService.roomOptionDelete(rocode);
+		return "redirect:/roomTypeList";
 	}
 }

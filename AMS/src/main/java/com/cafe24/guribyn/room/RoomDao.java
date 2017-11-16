@@ -48,7 +48,11 @@ public class RoomDao {
 	public List<RoomOption> optionCheck(Map<String, String> map) {
 		System.out.println("---객실특징 중복검사 --------from dao");
 		List<RoomOption> test = sqlSessionTemplate.selectList(NS+".optionCheck", map);
-		System.out.println(test);
 		return test;
+	}
+	public int RoomOptionDelete(String rocode) {
+		System.out.println("---객실특징 삭제 --------from dao");
+		System.out.println(rocode);
+		return sqlSessionTemplate.delete(NS+".deleteRoomOption", rocode);
 	}
 }
