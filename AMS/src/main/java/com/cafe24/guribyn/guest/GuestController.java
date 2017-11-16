@@ -28,6 +28,7 @@ public class GuestController {
 	// 고객 등록 처리
 	@RequestMapping(value = "/guestAdd", method = RequestMethod.POST)
 	public String guestAddPro(Guest guest) {
+		System.out.println("넘어온 값 " +guest);
 		guestService.guestAddPro(guest);
 		return "redirect:/guestList";
 	}

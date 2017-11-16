@@ -45,4 +45,12 @@ public class EmployeeController {
 		employeeService.employeeMod(employee);
 		return "redirect:/employeeList";
 	}
+	
+	// 직원 목록
+	@RequestMapping(value = "/employeeList")
+	public String employeeList(Model model) {
+		employeeService.employeeList(model);
+		return "employee/employeeList";
+	}
+	
 }

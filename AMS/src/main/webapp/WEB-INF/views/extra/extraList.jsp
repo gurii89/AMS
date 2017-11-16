@@ -15,8 +15,8 @@
 				<c:import url="/WEB-INF/views/division/left.jsp" />
 				<c:import url="/WEB-INF/views/division/top.jsp" />			
 					<div class="col-sm-10 top">
-						<h3>서비스 목록</h3> 
-						<table>
+						<div class="topb">서비스 목록</div> 
+						<table class="bs">
 							<tr>
 								<th>서비스 번호</th>
 								<th>서비스명</th>

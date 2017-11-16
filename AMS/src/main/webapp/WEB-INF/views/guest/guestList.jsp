@@ -22,8 +22,8 @@
 <!-- ////////////////////////////////////상단 메뉴 끝///////////////////////////////////////// -->	
 <!-- ////////////////////////////////////가운데 메뉴 시작///////////////////////////////////////// -->			
 				<div class="col-sm-10 top">
-					<h3>고객 목록</h3> 
-					<table>
+					<div class="topb">고객 목록</div> 
+					<table class="bs">
 						<tr>
 							<th>고객 번호</th>
 							<th>고객명</th>
@@ -49,7 +49,7 @@
 								<td>${guest.gJob }</td>
 								<td>${guest.gEmail }</td>
 								<td>${guest.gDate }</td>
-								<td><a href="guestMod?gCode=${guest.gCode }">수정</a></td>
+								<td><a class="btn-default btn-sm" href="guestMod?gCode=${guest.gCode }">수정</a></td>
 							</tr>
 						</c:forEach>
 					</table>

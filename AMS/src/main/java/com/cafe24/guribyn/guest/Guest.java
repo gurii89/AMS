@@ -78,5 +78,5 @@ public class Guest {
 		return "Guest [gCode=" + gCode + ", eId=" + eId + ", gName=" + gName + ", gCountry=" + gCountry + ", gGender="
 				+ gGender + ", gPhone=" + gPhone + ", gBirthdate=" + gBirthdate + ", gJob=" + gJob + ", gEmail="
 				+ gEmail + ", gDate=" + gDate + "]";
-	}	
+	}
 }

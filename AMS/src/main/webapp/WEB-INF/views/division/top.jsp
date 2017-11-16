@@ -52,5 +52,12 @@
 			<li><a href="keepAdd" class="level">보관품 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'employee' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="employeeList" class="level">직원 목록</a></li>
+			<li><a href="employeeAdd" class="level">직원 등록</a></li>
+		</ul>
+	</c:if>
 </div>
 

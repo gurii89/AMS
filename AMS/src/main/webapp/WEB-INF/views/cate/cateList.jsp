@@ -33,19 +33,20 @@
 				<c:import url="/WEB-INF/views/division/left.jsp" />
 				<c:import url="/WEB-INF/views/division/top.jsp" />			
 				<div class="col-sm-10 top">
-					<form action="cateSearch" method="post">
-						<select name="cate" id="search" required>
-							<option id="opt" value="${cate }">검색 조건 선택</option>							
-							<option value="cate_code">분류 번호</option>
-							<option value="e_id">등록자</option>
-							<option value="cate_large">대분류</option>
-							<option value="cate_small">소분류</option>						
-							<option value="cate_name">분류명</option>
+					<div class="topb">분류 목록</div>
+					<form action="cateSearch" method="post" class="form-horizontal">
+						<select name="cate" id="search" required class="input-sm">
+							<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
+							<option value="cate_code" class="input-sm">분류 번호</option>
+							<option value="e_id" class="input-sm">등록자</option>
+							<option value="cate_large" class="input-sm">대분류</option>
+							<option value="cate_small" class="input-sm">소분류</option>						
+							<option value="cate_name" class="input-sm">분류명</option>
 						</select>
-						<input type="text" name="input" id="input" value="${input }" required>
-						<input type="submit" value="검색">
+						<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+						<input type="submit" value="검색" class="btn-default btn-sm">
 					</form>
-					<table>
+					<table class="bs">
 						<tr>
 							<th>분류 번호</th>
 							<th>대분류</th>

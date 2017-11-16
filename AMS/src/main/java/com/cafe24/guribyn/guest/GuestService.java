@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.CommonService;
 import com.cafe24.guribyn.cate.CateService;
+import com.cafe24.guribyn.login.Login;
 
 @Service
 public class GuestService {
@@ -42,6 +43,8 @@ public class GuestService {
 		if(guest.getgBirthdate().equals("")) {
 			guest.setgBirthdate(null);
 		}
+		Login result = (Login)session.getAttribute("loginfor");
+		guest.seteId(result.geteId());
 		guestDao.guestAddPro(guest);
 	}
 	
