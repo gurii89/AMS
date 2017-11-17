@@ -3,18 +3,22 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.keep.KeepMapper">
-<resultMap type="com.cafe24.guribyn.keep.Keep" id="resultKeep">
-	<result column="k_code" property="kCode" />
-	<result column="cate_code" property="cateCode" />
-	<result column="e_id" property="eId" />
-	<result column="k_name" property="kName" />
-	<result column="k_datetime" property="kDatetime" />
-	<result column="k_site" property="kSite" />
-	<result column="k_memo" property="kMemo" />
-</resultMap>
+	<resultMap type="com.cafe24.guribyn.keep.Keep" id="resultKeep">
+		<result column="k_code" property="kCode" />
+		<result column="cate_code" property="cateCode" />
+		<result column="e_id" property="eId" />
+		<result column="k_name" property="kName" />
+		<result column="k_datetime" property="kDatetime" />
+		<result column="k_site" property="kSite" />
+		<result column="k_memo" property="kMemo" />
+	</resultMap>
+
+	<select id = "keepCount" resultType="int">
+	SELECT COUNT(*) FROM keep
+	</select>
 
 	<insert id="keepAdd" parameterType="com.cafe24.guribyn.keep.Keep">
-	INSERT INTO keep(
+		INSERT INTO keep(
 		k_code
 		, cate_code
 		, e_id
@@ -22,8 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, k_datetime
 		, k_site
 		, k_memo
-	)
-	Values(
+		)
+		Values(
 		#{kCode}
 		, #{cateCode}
 		, #{eId}
@@ -31,12 +35,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, now()
 		, #{kSite}
 		, #{kMemo}
-	)
+		)
 	</insert>
-	
+
 	<select id="keepList" resultMap="resultKeep">
-		SELECT 
-			k_code
+		SELECT
+		k_code
 		, cate_code
 		, e_id
 		, k_name
@@ -44,6 +48,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, k_site
 		, k_memo
 		FROM keep
-	
 	</select>
+
+	<select id="KeepOneSelect" resultMap="resultKeep">
+		Select
+		k_code
+		, cate_code
+		, e_id
+		, k_name
+		, k_datetime
+		, k_site
+		, k_memo
+		FROM keep
+		WHERE k_code=#{kCode}
+	</select>
+	
+	<update id = "KeepMod" parameterType="com.cafe24.guribyn.keep.Keep">
+	Update keep
+	SET
+		k_name = #{kName}
+		, k_site = #{kSite}
+		, k_memo = #{kMemo}
+	WHERE
+		k_code = #{kCode}
+	</update>
+
 </mapper>
