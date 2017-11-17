@@ -14,7 +14,6 @@ import com.cafe24.guribyn.keep.Keep;;
 
 @Service
 public class KeepService {
-	
 	@Autowired
 	KeepDao keepDao;
 
@@ -24,28 +23,21 @@ public class KeepService {
 	@Autowired
 	CommonService CS;
 	
-	// 보관품 목록 페이징
-	public void keepList(Model model, int currentPage) {
-		Map<String,Integer> map = CS.listPaging(model, currentPage, 2, keepDao.keepCount());
-		HS.setAttribute("top", "keep");
-		model.addAttribute("keepList", keepDao.keepList(map));
-		model.addAttribute("page", "keepList");
-	}
-	
 	// 보관품 등록 처리
-	public int KeepAdd(Keep keep) {
+	public void KeepAddPro(Keep keep) {
 		System.out.println("보관품 등록 처리KeepService");
-		return keepDao.KeepAdd(keep);
+		keepDao.keepAddPro(keep);
+	}
+	//보관품 세션 설정
+	public String KeepSession() {
+		HS.setAttribute("top", "keep");
+		return "";
 	}
 	// 보관품 전체 리스트
 	public List<Keep> keepList() {
 		System.out.println("보관품 전체리스트 KeepService");
 		return keepDao.keepList();
 	}
-	// 보관품 위치 설정
-	/*public String KeepSession() {
-		HS.setAttribute("top", "keep");
-		return "";*/
 	
 	// 보관품 수정폼
 	public Keep keepModForm(String kCode) {

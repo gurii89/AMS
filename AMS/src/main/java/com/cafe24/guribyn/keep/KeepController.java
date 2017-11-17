@@ -29,8 +29,8 @@ public class KeepController {
 	//보관품 등록 처리
 	@RequestMapping(value="/keepAdd", method = RequestMethod.POST)
 	public String keepAddPro(Keep keep) {
-		System.out.println("KeepController 보관품 등록처리");
-		keepService.KeepAdd(keep);
+		System.out.println("KeepController 보관품 등록처리" + keep);
+		keepService.KeepAddPro(keep);
 		return "redirect:/keepList";
 	}
 	
@@ -38,20 +38,25 @@ public class KeepController {
 	@RequestMapping(value="/keepList", method = RequestMethod.GET)
 	public String keepList(Model model) {
 		System.out.println("KeepController 보관품 리스트");
-		/*keepService.KeepSession();*/
-		model.addAttribute("list", keepService.keepList());
+		keepService.KeepSession();
+		model.addAttribute("keepList", keepService.keepList());
 		return "/keep/keepList";
 	}
 	
 	//보관품 수정 폼
-	@RequestMapping(value="/keepMod")
-	public String keepMod(Model model, @RequestParam("eId") String eId) {
+	@RequestMapping(value="/keepMod", method = RequestMethod.GET)
+	public String keepModForm(Model model, @RequestParam("kCode") String kCode) {
+		System.out.println("KeepController 수정폼");
 		cateService.cateList(model, 0);
-		/*keepService.keepMod(model, eId);*/
+		model.addAttribute("keep", keepService.keepModForm(kCode));
 		return "keep/keepMod";
 	}
 	//보관품 수정 처리
-	/*public String keepMod(Keep keep) {
-		keepService.*/
+	@RequestMapping(value="/keepMod", method = RequestMethod.POST)
+	public String keepModPro(Keep keep) {
+		System.out.println("KeepController 보관품 수정 처리");
+		keepService.KeepMod(keep);
+		return "redirect:/keepList";
+	}
 	}
 
