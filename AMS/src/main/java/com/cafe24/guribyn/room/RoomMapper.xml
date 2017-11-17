@@ -26,6 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="e_Id" property="eId"></result>
 	<result column="room_Opt_Date" property="roomOptDate"></result>
 </resultMap>
+	<select id="selectOneRoom" resultMap="resultRoom">
+		SELECT 
+			room_type_code
+		FROM room
+		WHERE room_code = #{roomCode}
+	</select>
+
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
 				e_id,

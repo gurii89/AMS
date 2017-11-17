@@ -55,4 +55,8 @@ public class RoomDao {
 		System.out.println(rocode);
 		return sqlSessionTemplate.delete(NS+".deleteRoomOption", rocode);
 	}
+	public Room roomDetail(String roomCode) {
+		System.out.println("---해당객실 룸타입 불러오기---------from dao");
+		return sqlSessionTemplate.selectOne(NS+".selectOneRoom", roomCode);
+	}
 }

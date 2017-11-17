@@ -104,13 +104,91 @@ table.bs td {
     border-bottom: 1px solid #ccc;
 }
 
-/* */
+/*--- fornt -------------------------------------------*/
+
+table.main {
+    text-align: left;
+    border: 1px solid;
+    line-height: 1;
+  	margin : 20px 10px;
+  	font-size: 12px;
+}
+
+
+table.main td {
+    width: 120px;
+    word-break:break-all;
+    height: 70px;
+    padding: 2px;
+    border: 1px solid;
+}
+.fs1 {
+	font-size: 11px;
+	font-weight: bold;
+}
+.fs2 {
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.visible {
+	display: none;
+}
+.de {
+	clear: none;
+        border: 0px none;
+        float: none;
+        background-color: #ffffff;
+}
+.dert {
+	clear: none;
+    border: 0px none;
+    float: none;
+    color: #4641D9;
+    background-color: transparent;
+    width: 10px;
+}
+.rdtop {
+	font-size: 15px;
+	font-weight: bold;
+	margin : 20px 10px;
+	
+}
+.rdbtn {
+	clear: none;
+    border: 0px none;
+    float: none;
+    color: #4641D9;
+    background-color: transparent;
+    width:40px;
+}
+.rdcon {
+	background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+}
+table.frontdetal {
+	text-align: left;
+    line-height: 1;
+  	margin : 2px 2px;
+}
+table.frontdetal td{
+	width: 120px;
+    word-break:break-all;
+    height: 25px;
+    padding: 2px;
+    font-size: 12px;
+    font-weight: bold;
+ 
+}
+
+/*--- fornt -------------------------------------------*/
 
 .formb {
 	margin : 20px 10px;
 	font-size: 12px;
 	font-weight: bold;
 }
+
 
 .toshow
 {

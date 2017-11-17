@@ -86,4 +86,9 @@ public class RoomService {
 		System.out.println("---객실 특징 삭제---------from service");
 		return roomDao.RoomOptionDelete(rocode);
 	}
+	//객실 하나의 룸타입 불러오기
+	public Room roomDetail(String roomCode) {
+		System.out.println("---해당객실 룸타입 불러오기---------from service");
+		return roomDao.roomDetail(roomCode);
+	}
 }

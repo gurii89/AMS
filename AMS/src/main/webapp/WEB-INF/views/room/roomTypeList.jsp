@@ -8,6 +8,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+	$('document').ready(function(){
+		$('.opbtn').click(function(){
+			alert('test alert >>>>'+$(this).val());
+		})
+	});
+</script>
 </head>
 
 <body>
@@ -33,6 +40,7 @@
 						<th>최대 수용 인원</th>
 						<th>특징추가</th>
 						<th>특징보기</th>
+						<th>특징간략</th>
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
@@ -46,6 +54,7 @@
 			 			<td>${roomType.roomTypeCount}</td>
 			 			<td><a href="./roomOptionAdd?rtcode=${roomType.roomTypeCode}">특징추가</a></td>
 			 			<td><a href="./roomOptionList?roomTypeCode=${roomType.roomTypeCode}">특징보기</a></td>
+			 			<td><input type="button" value="${roomType.roomTypeCode}" class="opbtn"></td>
 			 			<td>수정</td>
 			 			<td>삭제</td>
 			 		</tr>

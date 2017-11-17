@@ -59,5 +59,11 @@
 			<li><a href="employeeAdd" class="level">직원 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'front' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="#" class="level">프론트메뉴</a></li>
+		</ul>
+	</c:if>
 </div>
 
