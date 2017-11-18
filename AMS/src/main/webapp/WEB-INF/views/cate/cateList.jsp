@@ -8,24 +8,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<script>
-			$('document').ready(function(){
-				var opt = $('#opt').val()
-				
-				// 검색 후 다시 페이지로 돌아왔을 때 검색조건 유지
-				if(opt != ""){
-					$('#opt').val('');
-					$('#search').val(opt).prop("selected", true);
-					
-					//이전 다음 버튼 눌렀을시 검색조건 전송되도록
-					$('.paging').click(function(){
-						var url = $(this).attr('href')
-						var str = '&cate='+$('#search').val()+'&input='+$('#input').val()
-						$(this).attr('href', url+str)
-					})
-				}
-			})
-		</script>
 	</head>
 	<body>
 		<div class="container-fluid">

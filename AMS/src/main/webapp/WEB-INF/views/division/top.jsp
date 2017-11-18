@@ -65,5 +65,12 @@
 			<li><a href="#" class="level">프론트메뉴</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'event' }">	
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="eventList" class="level">행사 목록</a></li>
+			<li><a href="eventAdd" class="level">행사 등록</a></li>
+		</ul>
+	</c:if>
 </div>
 

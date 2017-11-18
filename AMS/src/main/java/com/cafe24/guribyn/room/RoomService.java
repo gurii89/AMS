@@ -1,5 +1,6 @@
 package com.cafe24.guribyn.room;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.guribyn.room.RoomDao;
+import com.google.gson.Gson;
 import com.cafe24.guribyn.cate.Cate;
 import com.cafe24.guribyn.cate.CateService;
 
@@ -90,5 +92,26 @@ public class RoomService {
 	public Room roomDetail(String roomCode) {
 		System.out.println("---해당객실 룸타입 불러오기---------from service");
 		return roomDao.roomDetail(roomCode);
+	}
+	// 예약 객실 임시 등록
+	public String cateSmall(String roomTypeCode, String roomSize, String roomName) {
+		List<Room> list;
+		if(session.getAttribute("bookingRoom") == null) {
+			list = new ArrayList<Room>();			
+		}else {
+			list = (List<Room>)session.getAttribute("bookingRoom");
+		}
+
+		Room room = new Room();
+		room.setRoomTypeCode(roomTypeCode);
+		room.setRoomSize(roomSize);
+		room.setRoomName(roomName);
+	
+		list.add(room);
+		session.setAttribute("bookingRoom", list);
+		
+		Gson gson = new Gson();
+		return gson.toJson(room);
+	
 	}
 }

@@ -85,8 +85,7 @@ public class LoginService {
 	}
 	
 	//home 세션 설정
-	public String HomeSesseion() {
+	public void HomeSesseion() {
 		session.setAttribute("top", "home");
-		return "";
 	}
 }

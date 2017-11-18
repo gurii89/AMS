@@ -108,4 +108,11 @@ public class RoomController {
 		roomService.roomOptionDelete(rocode);
 		return "redirect:/roomTypeList";
 	}
+	// 이용 객실 임시 등록(세션에 보관)
+	@ResponseBody
+	@RequestMapping(value = "bookingRoom")
+	public String bookingRoom(@RequestParam ("roomTypeCode") String roomTypeCode, @RequestParam ("roomSize") String roomSize
+							, @RequestParam ("roomName") String roomName) {
+		return roomService.cateSmall(roomTypeCode, roomSize, roomName);
+	}
 }

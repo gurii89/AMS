@@ -1,12 +1,14 @@
 package com.cafe24.guribyn.cate;
 
+import java.sql.Date;
+
 public class Cate {
 	private int cateCode;
 	private String eId;
 	private String cateLarge;
 	private String cateSmall;
 	private String cateName;
-	private String cateDate;
+	private Date cateDate;
 	public int getCateCode() {
 		return cateCode;
 	}
@@ -37,10 +39,10 @@ public class Cate {
 	public void setCateName(String cateName) {
 		this.cateName = cateName;
 	}
-	public String getCateDate() {
+	public Date getCateDate() {
 		return cateDate;
 	}
-	public void setCateDate(String cateDate) {
+	public void setCateDate(Date cateDate) {
 		this.cateDate = cateDate;
 	}
 	@Override

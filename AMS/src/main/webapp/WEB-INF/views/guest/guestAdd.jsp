@@ -63,7 +63,7 @@
 								<input type="text" name="gEmail" id="gEmail" class="input-sm">
 							</div>
 							<div class="formb">
-								<input type="submit" value="등록" class="btn-default btn-sm">
+								<input type="submit" id="btn" value="등록" class="btn-default btn-sm">
 							</div>
 						</form>
 				 </div>

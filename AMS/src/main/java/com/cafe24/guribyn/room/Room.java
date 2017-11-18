@@ -6,6 +6,20 @@ public class Room {
 	private String roomName;
 	private String roomDate;
 	private String roomSize;
+	private String cateCode;
+	private int booCode;
+	public int getBooCode() {
+		return booCode;
+	}
+	public void setBooCode(int booCode) {
+		this.booCode = booCode;
+	}
+	public String getCateCode() {
+		return cateCode;
+	}
+	public void setCateCode(String cateCode) {
+		this.cateCode = cateCode;
+	}
 	public String getRoomCode() {
 		return roomCode;
 	}
@@ -45,6 +59,8 @@ public class Room {
 	@Override
 	public String toString() {
 		return "Room [roomCode=" + roomCode + ", roomTypeCode=" + roomTypeCode + ", eId=" + eId + ", roomName="
-				+ roomName + ", roomDate=" + roomDate + ", roomSize=" + roomSize + "]";
+				+ roomName + ", roomDate=" + roomDate + ", roomSize=" + roomSize + ", cateCode=" + cateCode
+				+ ", booCode=" + booCode + "]";
 	}
+
 }

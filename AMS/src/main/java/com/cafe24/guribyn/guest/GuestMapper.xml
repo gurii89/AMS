@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 			g_code
 			,g_gender
-			,g_country
+			,cate_name g_country 
 			,e_name e_id
 			,g_name
 			,g_birthdate
@@ -49,7 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM guest
 		LEFT JOIN employee
 		ON guest.e_id = employee.e_id
-		ORDER BY g_code
+		LEFT JOIN category
+		ON guest.g_country = category.cate_code
+		ORDER BY g_date DESC
 		LIMIT #{start}, #{pagePerRow}
 	</select>
 	

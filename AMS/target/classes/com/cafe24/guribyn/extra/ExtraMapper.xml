@@ -12,6 +12,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="extra_date" property="extraDate"></result>
 	</resultMap>
 	
+	<select id="extraName" resultMap="resultExtra">
+		SELECT
+			extra_code
+			, extra_name
+			, extra_rate
+		FROM extra
+		WHERE cate_code = #{cateCode} 
+	</select>
+	
 	<select id="extraList" resultMap="resultExtra">
 		SELECT 
 			extra_code

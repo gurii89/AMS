@@ -18,13 +18,13 @@
                <li><a href="employeeList" class="level">직원</a></li>
                <li><a href="./frontMain" class="level">프론트</a></li>
                <li><a href="./roomMain" class="level">객실</a></li>
-               <li><a href="#section3" class="level">예약</a></li>
+               <li><a href="bookingAdd" class="level">예약</a></li>
                <li><a href="extraList" class="level">서비스</a></li>
                <li><a href="guestList" class="level">고객</a></li>
                <li><a href="#section3" class="level">메뉴7</a></li>
                <li><a href="#section3" class="level">메뉴8</a></li>
                <li><a href="./keepList" class="level">보관품</a></li>
-               <li><a href="#section3" class="level">메뉴10</a></li>
+               <li><a href="eventList" class="level">행사</a></li>
                <li><a href="./noticeList" class="level">공지사항</a></li>
                <li><a href="cateList" class="level">카테고리</a></li>
             </ul>

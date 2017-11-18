@@ -13,9 +13,9 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
-
+	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<mvc:resources mapping="/**" location="/" />
+	<mvc:resources mapping="/**" location="/" />  
 		
 	<!-- @ResponseBody로 String 처리할때 한글처리 -->
 	<mvc:annotation-driven>
@@ -50,6 +50,8 @@
                 <value>classpath:com/cafe24/guribyn/guest/GuestMapper.xml</value>
 				<value>classpath:com/cafe24/guribyn/keep/KeepMapper.xml</value>
 				<value>classpath:com/cafe24/guribyn/extra/ExtraMapper.xml</value>
+				<value>classpath:com/cafe24/guribyn/event/EventMapper.xml</value>
+				<value>classpath:com/cafe24/guribyn/booking/BookingMapper.xml</value>
             </list>
         </property>
     </bean>
@@ -82,6 +84,7 @@
 			<mvc:exclude-mapping path="/"/>
 			<mvc:exclude-mapping path="/img/**"/>
 			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
 			<mvc:exclude-mapping path="/login"/>
 			<bean class="com.cafe24.guribyn.Interceptor"/>
 		</mvc:interceptor>

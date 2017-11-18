@@ -1,14 +1,19 @@
 package com.cafe24.guribyn.extra;
 
-import java.sql.Date;
-
 public class Extra {
 	private int extraCode;
 	private String cateCode;
 	private String eId;
 	private String extraName;
 	private int extraRate;
-	private Date extraDate;
+	private String extraDate;
+	private int booCode;	
+	public int getBooCode() {
+		return booCode;
+	}
+	public void setBooCode(int booCode) {
+		this.booCode = booCode;
+	}
 	public int getExtraCode() {
 		return extraCode;
 	}
@@ -39,15 +44,16 @@ public class Extra {
 	public void setExtraRate(int extraRate) {
 		this.extraRate = extraRate;
 	}
-	public Date getExtraDate() {
+	public String getExtraDate() {
 		return extraDate;
 	}
-	public void setExtraDate(Date extraDate) {
+	public void setExtraDate(String extraDate) {
 		this.extraDate = extraDate;
 	}
 	@Override
 	public String toString() {
-		return "extra [extraCode=" + extraCode + ", cateCode=" + cateCode + ", eId=" + eId + ", extraName=" + extraName
-				+ ", extraRate=" + extraRate + ", extraDate=" + extraDate + "]";
+		return "Extra [extraCode=" + extraCode + ", cateCode=" + cateCode + ", eId=" + eId + ", extraName=" + extraName
+				+ ", extraRate=" + extraRate + ", extraDate=" + extraDate + ", booCode=" + booCode + "]";
 	}
+
 }

@@ -39,6 +39,7 @@ public class LoginController{
 	//인덱스
 	@RequestMapping(value="/home")	
 	public String home() {
+		loginService.HomeSesseion();
 		return "home";
 	}
 }

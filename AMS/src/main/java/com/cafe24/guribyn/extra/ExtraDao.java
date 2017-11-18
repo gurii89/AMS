@@ -23,4 +23,9 @@ public class ExtraDao {
 	public List<Extra> extraList(){
 		return SST.selectList(NS+"extraList");
 	}
+	
+	// 서비스 분류에 맞는 서비스 목록
+	public List<Extra> extraName(String cateCode){
+		return SST.selectList(NS+"extraName", cateCode);
+	}
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.event.EventMapper">
+	<resultMap type="com.cafe24.guribyn.event.Event" id="resultEvent">
+		<result column="event_Code" property="eventCode" />
+		<result column="event_Fx" property="eventFx" />
+		<result column="event_Date" property="eventDate" />
+		<result column="e_Id" property="eId" />
+		<result column="event_Strat" property="eventStrat" />
+		<result column="event_End" property="eventEnd" />
+	</resultMap>
+	
+	<select id="eventCheck" parameterType="java.util.Map" resultMap="resultEvent">
+		SELECT
+			event_fx
+			, event_start
+			, event_end
+		FROM event
+		<if test="today != null">
+			WHERE event_start <![CDATA[>=]]> #{today} <![CDATA[>=]]> event_end
+		</if>
+		<if test="today == null">
+			WHERE event_start IS NULL
+		</if>
+	</select>
+	
+	<select id="eventList" resultMap="resultEvent">
+		SELECT 
+			event_code
+			, e_name e_id
+			, event_fx
+			, event_date
+			, event_start
+			, event_end
+		FROM event
+		LEFT JOIN employee
+		ON event.e_id = employee.e_id
+	</select>
+	
+	<insert id="eventAdd" parameterType="com.cafe24.guribyn.event.Event">
+		INSERT INTO event( 
+			event_fx
+			, event_date
+			, e_id
+			, event_start
+			, event_end
+		)VALUES(
+			#{eventFx}
+			, now()
+			, #{eId}
+			, #{eventStart}
+			, #{eventEnd}
+		)
+	</insert>	
+	
+</mapper>
