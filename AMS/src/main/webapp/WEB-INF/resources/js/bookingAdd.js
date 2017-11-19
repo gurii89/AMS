@@ -19,13 +19,12 @@ $('document').ready(function(){
 					$.ajax({
 						url:"bookingExtra"
 						, type:"GET"
-						, data:"cateCode="+$('#cateCode').val()+"&extraCode="+$('#extraCode').val()
-								+"&extraDate="+$('#extraDate').val()+"&extraRate="+$('#extraRate').val()
-								+"&extraName="+$('#extraCode option:selected').text()
+						, data:"extraCode="+$('#extraCode').val()+"&extraRate="+$('#extraRate').val()
+								+"&extraDate="+$('#extraDate').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#extraTable').append('<tr><td>'+result.extraName+'</td><td>'
-							+result.extraDate+'</td><td>'+result.extraRate+'</td></tr>')
+							$('#extraTable').append('<tr><td>'+$('#extraCode option:selected').text()
+							+'</td><td>'+result.extraDate+'</td><td>'+result.extraRate+'</td></tr>')
 							sum += Number(result.extraRate)
 							$('#sum').text(sum)
 							$('#extra').html('')
@@ -89,11 +88,10 @@ $('document').ready(function(){
 					$.ajax({
 						url:"bookingRoom"
 						, type:"GET"
-						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomName='+$('#roomTypeCode option:selected').text()
-											+'&roomSize='+$('#roomSize').val()
+						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomSize='+$('#roomSize').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#roomTable').append('<tr><td>'+result.roomName+'</td><td>'
+							$('#roomTable').append('<tr><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
 							+result.roomSize+'</td></tr>')
 							sum += Number(result.roomSize)
 							$('#sum').text(sum)

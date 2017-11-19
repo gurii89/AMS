@@ -94,7 +94,7 @@ public class RoomService {
 		return roomDao.roomDetail(roomCode);
 	}
 	// 예약 객실 임시 등록
-	public String cateSmall(String roomTypeCode, String roomSize, String roomName) {
+	public String cateSmall(String roomTypeCode, String roomSize) {
 		List<Room> list;
 		if(session.getAttribute("bookingRoom") == null) {
 			list = new ArrayList<Room>();			
@@ -105,7 +105,6 @@ public class RoomService {
 		Room room = new Room();
 		room.setRoomTypeCode(roomTypeCode);
 		room.setRoomSize(roomSize);
-		room.setRoomName(roomName);
 	
 		list.add(room);
 		session.setAttribute("bookingRoom", list);

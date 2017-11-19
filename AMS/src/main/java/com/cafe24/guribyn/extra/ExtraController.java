@@ -43,10 +43,10 @@ public class ExtraController {
 	// 이용 서비스 임시 등록(세션에 보관)
 	@ResponseBody
 	@RequestMapping(value = "bookingExtra")
-	public String bookingExtra(@RequestParam ("cateCode") String cateCode, @RequestParam ("extraCode") String extraCode,
-							@RequestParam ("extraDate") String extraDate, @RequestParam ("extraRate") String extraRate,
-							@RequestParam ("extraName") String extraName) {
-		return extraService.bookingExtra(cateCode, extraCode, extraDate, extraRate, extraName);
+	public String bookingExtra(@RequestParam ("extraCode") String extraCode
+							, @RequestParam ("extraRate") String extraRate
+							, @RequestParam ("extraDate") String extraDate) {
+		return extraService.bookingExtra(extraCode, extraRate, extraDate);
 	}
 	
 	// 서비스 분류에 맞는 서비스 목록

@@ -4,22 +4,21 @@
 	<div class="formb">
 		요금 변동폭 : 
 		<select id="FX" class="input-sm">
-			<c:if test="${eventList.size() == 0 }">
-				<option class="input-sm" value="1">기본가</option>
-			</c:if>
 			<c:if test="${eventList.size() == 1 }">
 				<option class="input-sm" value="${eventList[0].eventFx }">조정 불가</option>
-			</c:if>			
-			<c:forEach items="${eventList }" var="event">
-				<c:choose>
-					<c:when test="${event.eventFx eq '1'}">
-						<option selected class="input-sm" value="${event.eventFx }">기본가</option>
-					</c:when>
-					<c:otherwise>
-						<option class="input-sm" value="${event.eventFx }">${event.eventFx }</option>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
+			</c:if>
+			<c:if test="${eventList.size() != 1 }">
+				<c:forEach items="${eventList }" var="event">
+					<c:choose>
+						<c:when test="${event.eventFx != '1'}">
+							<option class="input-sm" value="${event.eventFx }">${event.eventFx }</option>
+						</c:when>
+						<c:otherwise>
+							<option selected class="input-sm" value="1">기본가</option>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</c:if>
 		</select>
 	</div>
 	<hr>

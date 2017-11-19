@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, event_end
 		FROM event
 		<if test="today != null">
-			WHERE event_start <![CDATA[>=]]> #{today} <![CDATA[>=]]> event_end
+			WHERE event_start <![CDATA[<= #{today} AND #{today} <=]]> event_end
 		</if>
 		<if test="today == null">
 			WHERE event_start IS NULL

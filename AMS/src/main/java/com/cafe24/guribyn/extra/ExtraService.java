@@ -35,7 +35,7 @@ public class ExtraService {
 	}
 	
 	// 예약 서비스 임시 등록
-	public String bookingExtra(String cateCode, String extraCode, String extraDate, String extraRate, String extraName) {
+	public String bookingExtra(String extraCode, String extraRate, String extraDate) {
 		List<Extra> list;
 		if(session.getAttribute("bookingExtra") == null) {
 			list = new ArrayList<Extra>();			
@@ -44,11 +44,9 @@ public class ExtraService {
 		}
 		
 		Extra extra = new Extra();
-		extra.setCateCode(cateCode);
-		extra.setExtraCode(Integer.parseInt(extraCode));
-		extra.setExtraDate(extraDate);
+		extra.setExtraName(extraCode);
 		extra.setExtraRate(Integer.parseInt(extraRate));
-		extra.setExtraName(extraName);
+		extra.setExtraDate(extraDate);
 		list.add(extra);
 		session.setAttribute("bookingExtra", list);
 		

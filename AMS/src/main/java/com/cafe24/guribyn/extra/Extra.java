@@ -1,23 +1,17 @@
 package com.cafe24.guribyn.extra;
 
 public class Extra {
-	private int extraCode;
+	private String extraCode;
 	private String cateCode;
 	private String eId;
 	private String extraName;
 	private int extraRate;
 	private String extraDate;
-	private int booCode;	
-	public int getBooCode() {
-		return booCode;
-	}
-	public void setBooCode(int booCode) {
-		this.booCode = booCode;
-	}
-	public int getExtraCode() {
+	private int booCode;
+	public String getExtraCode() {
 		return extraCode;
 	}
-	public void setExtraCode(int extraCode) {
+	public void setExtraCode(String extraCode) {
 		this.extraCode = extraCode;
 	}
 	public String getCateCode() {
@@ -50,10 +44,16 @@ public class Extra {
 	public void setExtraDate(String extraDate) {
 		this.extraDate = extraDate;
 	}
+	public int getBooCode() {
+		return booCode;
+	}
+	public void setBooCode(int booCode) {
+		this.booCode = booCode;
+	}
 	@Override
 	public String toString() {
 		return "Extra [extraCode=" + extraCode + ", cateCode=" + cateCode + ", eId=" + eId + ", extraName=" + extraName
 				+ ", extraRate=" + extraRate + ", extraDate=" + extraDate + ", booCode=" + booCode + "]";
 	}
-
+	
 }
