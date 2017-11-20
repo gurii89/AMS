@@ -12,15 +12,12 @@
 			<p>등록인 : </p>
 			<input type="text" value="${loginfor.eId}" name="eId"
 				readonly="readonly"><br>
-			<p>보관상태 : </p>
-			<select name="cateCode" required="required">
-				<option value="">선택하세요</option>
-				<c:forEach items = "${cateList}" var="small">
-					<option value = "${small.cateCode}">${small.cateName}</option>
-				</c:forEach>
-			</select>
 			<p>보관품명 : </p>
 			<textarea name="kName"></textarea><br>
+			<p>보관상태 : </p>
+			<select name="kCondition" id="kCondition" required class="input-sm">
+			<option value="보관등록" class="input-sm">보관등록</option>
+			</select>
 			<p>발견장소 : </p>
 			<textarea name="kSite"></textarea><br>
 			<p>메모 : </p>
