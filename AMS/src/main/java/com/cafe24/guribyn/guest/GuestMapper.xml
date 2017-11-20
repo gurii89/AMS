@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="g_code" property="gCode" />
 		<result column="e_id" property="eId" />
 		<result column="g_Name" property="gName" />
-		<result column="g_Country" property="gCountry" />
+		<result column="g_Nation" property="gNation" />
 		<result column="g_Gender" property="gGender" />
 		<result column="g_Phone" property="gPhone" />
 		<result column="g_Birthdate" property="gBirthdate" />
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 			g_code
 			,g_gender
-			,g_country
+			,g_nation
 			,e_name e_id
 			,g_name
 			,g_birthdate
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 			g_code
 			,g_gender
-			,cate_name g_country 
+			,cate_name g_nation 
 			,e_name e_id
 			,g_name
 			,g_birthdate
@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LEFT JOIN employee
 		ON guest.e_id = employee.e_id
 		LEFT JOIN category
-		ON guest.g_country = category.cate_code
+		ON guest.g_nation = category.cate_code
 		ORDER BY g_date DESC
 		LIMIT #{start}, #{pagePerRow}
 	</select>
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="guestAdd" parameterType="com.cafe24.guribyn.guest.Guest">
 		INSERT INTO guest(
 			g_gender
-			,g_country
+			,g_nation
 			,e_id
 			,g_name
 			,g_birthdate
@@ -72,11 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,g_date
 		)VALUES(
 			#{gGender}
-			<if test="gCountry == null ">
+			<if test="gNation == null ">
 				, (SELECT cate_code FROM category WHERE cate_name = 'korea')
 			</if>
-			<if test="gCountry != null">
-				, #{gCountry}
+			<if test="gNation != null">
+				, #{gNation}
 			</if>
 			,#{eId}
 			,#{gName}
@@ -92,7 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE guest
 		SET
 			g_gender = #{gGender}
-			, g_country = #{gCountry}
+			, g_Nation = #{gNation}
 			, g_name = #{gName}
 			, g_birthdate = #{gBirthdate}
 			, g_job = #{gJob}

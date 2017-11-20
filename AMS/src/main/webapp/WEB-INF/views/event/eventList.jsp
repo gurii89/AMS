@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<div class="topb">행사 목록</div> 
+		<div class="topb">행사 목록</div>
 		<table class="bs">
 			<tr>
 				<th>행사 번호</th>

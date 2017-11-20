@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class EventController {
@@ -31,4 +33,13 @@ public class EventController {
 		eventService.eventList(model);
 		return "event/eventList";
 	}
+	
+	// 행사 시작일, 종료일 중복검사
+	@ResponseBody
+	@RequestMapping(value = "eventCheck")
+	public String extraName(@RequestParam ("eventStart") String start
+							, @RequestParam ("eventEnd") String end) {
+		return eventService.eventStratEnd(start, end);
+	}
+	
 }

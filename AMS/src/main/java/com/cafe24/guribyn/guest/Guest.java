@@ -4,7 +4,7 @@ public class Guest {
 	private int gCode;
 	private String eId;
 	private String gName;
-	private String gCountry;
+	private String gNation;
 	private String gGender;
 	private String gPhone;
 	private String gBirthdate;
@@ -29,11 +29,11 @@ public class Guest {
 	public void setgName(String gName) {
 		this.gName = gName;
 	}
-	public String getgCountry() {
-		return gCountry;
+	public String getgNation() {
+		return gNation;
 	}
-	public void setgCountry(String gCountry) {
-		this.gCountry = gCountry;
+	public void setgNation(String gNation) {
+		this.gNation = gNation;
 	}
 	public String getgGender() {
 		return gGender;
@@ -73,7 +73,7 @@ public class Guest {
 	}
 	@Override
 	public String toString() {
-		return "Guest [gCode=" + gCode + ", eId=" + eId + ", gName=" + gName + ", gCountry=" + gCountry + ", gGender="
+		return "Guest [gCode=" + gCode + ", eId=" + eId + ", gName=" + gName + ", gCountry=" + gNation + ", gNation="
 				+ gGender + ", gPhone=" + gPhone + ", gBirthdate=" + gBirthdate + ", gJob=" + gJob + ", gEmail="
 				+ gEmail + ", gDate=" + gDate + "]";
 	}

@@ -37,8 +37,8 @@ public class GuestService {
 	
 	// 고객 등록 처리
 	public void guestAddPro(Guest guest) {
-		if(guest.getgCountry().equals("")) {
-			guest.setgCountry(null);
+		if(guest.getgNation().equals("")) {
+			guest.setgNation(null);
 		}
 		if(guest.getgBirthdate().equals("")) {
 			guest.setgBirthdate(null);

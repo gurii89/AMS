@@ -4,13 +4,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script src="<c:url value='/resources/js/eventAdd.js'/>"></script>
 	</head>
 	<body>	
 		<div class="topb">행사 등록</div> 
+		<p id="er" class="text-danger"></p>
 		<form action="eventAdd" method="post" id="frm" class="form-horizontal">
 			<div class="formb">
 				요금 증감폭 : 
-				<input type="text" name="eventFx" required class="input-sm">
+				<input type="text" name="eventFx" id="eventFx" class="input-sm" required>
+				<span id="erFx" class="text-danger"></span>
 			</div>
 			<div class="formb">
 				시작일 : 
@@ -21,7 +24,7 @@
 				<input type="date" name="eventEnd" id="eventEnd" class="input-sm">
 			</div>
 			<div class="formb">
-				<input type="submit" value="등록" class="btn-default btn-sm">
+				<input type="button" id="btn" value="등록" class="btn-default btn-sm">
 			</div>
 		</form>	
 	</body>

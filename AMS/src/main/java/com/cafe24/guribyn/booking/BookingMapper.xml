@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="com.cafe24.guribyn.extra.Extra" id="resultBookingExtra">
 		<result column="use_extra_code" property="extraCode" />
 		<result column="boo_code" property="booCode" />
-		<result column="cate_code" property="cateCode" />
+		<result column="use_extra_condition" property="cateCode" />
 		<result column="extra_code" property="extraName" />
 		<result column="e_id" property="eId" />
 		<result column="use_extra_date" property="extraDate" />
@@ -29,11 +29,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, room_type_code
 			, e_id
 			, use_room_rate
+			, use_room_condition
 		)VALUES(
 			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
 			, #{roomTypeCode}
 			, #{eId}
 			, #{roomSize}
+			, #{cateCode}
 		)
 	</insert>
 	
@@ -44,12 +46,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_id
 			, use_extra_date
 			, use_extra_rate
+			, use_extra_condition
 		)VALUES(
 			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
 			, #{extraName}
 			, #{eId}
 			, #{extraDate}
 			, #{extraRate}
+			, #{cateCode}
 		)
 	</insert>
 	

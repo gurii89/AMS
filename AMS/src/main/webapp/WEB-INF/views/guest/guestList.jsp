@@ -26,7 +26,7 @@
 					<td>${guest.gCode }</td>
 					<td>${guest.gName }</td>
 					<td>${guest.gGender }</td>
-					<td>${guest.gCountry }</td>
+					<td>${guest.gNation }</td>
 					<td>${guest.gPhone }</td>
 					<td>${guest.eId }</td>
 					<td>${guest.gBirthdate }</td>
@@ -36,6 +36,7 @@
 					<td><a class="btn-default btn-sm" href="guestMod?gCode=${guest.gCode }">수정</a></td>
 				</tr>
 			</c:forEach>
-		</table>						
+		</table>
+		<c:import url="/WEB-INF/views/division/paging.jsp" />						
 	</body>
 </html>

@@ -52,4 +52,18 @@ public class EventService {
 		}
 	}
 	
+	// 행사 시작일, 종료일 중복체크
+	public String eventStratEnd(String start, String end) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("today", start);
+		if(eventDao.eventCheck(map).size() != 0) {
+			return "no";
+		}
+		map.put("today", end);
+		if(eventDao.eventCheck(map).size() != 0) {
+			return "no";
+		}
+		return "ok";
+	}
+	
 }

@@ -15,10 +15,10 @@
 			</div>
 			<div>
 				고객 국적 :
-				<select name="gCountry" id="gCountry" class="input-sm">
+				<select name="gNation" id="gNation" class="input-sm">
 					<c:forEach items="${cateList }" var="cate">
 						<c:choose>
-							<c:when test="${cate.cateCode eq guest.gCountry }">
+							<c:when test="${cate.cateCode eq guest.gNation }">
 								<option selected value="${cate.cateCode }" class="input-sm">${cate.cateName }</option>
 							</c:when>
 							<c:otherwise>

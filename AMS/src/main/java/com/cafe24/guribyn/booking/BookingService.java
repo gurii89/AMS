@@ -61,6 +61,7 @@ public class BookingService {
 		if(session.getAttribute("bookingExtra") != null) {
 			for(Extra e : (List<Extra>)session.getAttribute("bookingExtra")) {
 				e.seteId(eId);
+				e.setCateCode("예약");
 				bookingDao.bookingExtraAdd(e);
 			}
 			session.setAttribute("bookingExtra", null);
@@ -70,6 +71,7 @@ public class BookingService {
 		if(session.getAttribute("bookingRoom") != null) {
 			for(Room r : (List<Room>)session.getAttribute("bookingRoom")) {
 				r.seteId(eId);
+				r.setCateCode("예약");
 				bookingDao.bookingRoomAdd(r);
 			}
 			session.setAttribute("bookingRoom", null);
