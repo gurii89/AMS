@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.employee.EmployeeMapper">
+	<resultMap type="com.cafe24.guribyn.delivery.Delivery" id="resultDelivery">
+	<result column= "k_code" property="kCode" />	
+	<result column= "g_code" property="gCode" />
+	<result column= "e_id" property="eId" />	
+	<result column= "d_coname" property="dConame" />	
+	<result column= "d_number" property="dNumber" />	
+	<result column= "d_date" property="dDate" />	
+	<result column= "d_day" property="dDay" />	
+	</resultMap>
+	
+	<insert id="deliveryAdd" parameterType="com.cafe24.guribyn.delivery.Delivery">
+	INSERT INTO
+	delivery(
+	k_code
+	, g_code
+	, e_id
+	, d_coname
+	, d_number
+	, d_date
+	, d_day
+	)
+	VALUES (
+	#{kCode}
+	,#{gCode}
+	,#{eId}
+	,#{dConame}
+	,#{dNumber}
+	,now()
+	,#{dDay}
+	)
+	</insert>
+	
+	</mapper>

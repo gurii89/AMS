@@ -6,13 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<script type="text/javascript"> 
-function test() { 
-	var td = document.getElementById("test"); 
-	var n = Number(td.innerHTML); 
-	td.innerHTML = n + 1; 
-} 
-</script> 
 
 
 <body>	
@@ -38,12 +31,7 @@ function test() {
 				<td>${keep.kSite}</td>
 				<td>${keep.kMemo}</td>
 				<td><a class= "btn-default btn-sm" href="./keepMod?kCode=${keep.kCode}">수정</a></td>
-				<td><input type = "button" value = "push" onclick="test()" />
-				<table boarder="1">
-				<tr>
-				<td id="test"></td>
 				</tr>
-				</table>
 		</c:forEach>
 	</table>			
 </body>
