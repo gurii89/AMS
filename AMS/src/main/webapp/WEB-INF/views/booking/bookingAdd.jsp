@@ -12,18 +12,19 @@
 			<c:import url="/WEB-INF/views/booking/bookingSub.jsp" />
 		</div>
 		<div class="col-sm-6 top">
+			<div class="formb">
+				<input type="button" id="roomBtn" class="btn-default btn-sm" value="객실">
+				<input type="button" id="extraBtn" class="btn-default btn-sm" value="서비스">
+				<hr>
+			</div>
+			<div id="room" class="formb">
+				<c:import url="/WEB-INF/views/booking/bookingRoom.jsp" />
+			</div>
+			<div id="extra" class="formb">
+				<c:import url="/WEB-INF/views/booking/bookingExtra.jsp" />
+			</div>
+			<p id="er" class="text-danger"> </p>
 			<form action="bookingAdd" method="post" id="frm" class="form-horizontal">
-				<div class="formb">
-					<input type="button" id="roomBtn" class="btn-default btn-sm" value="객실">
-					<input type="button" id="extraBtn" class="btn-default btn-sm" value="서비스">
-					<hr>
-				</div>
-				<div id="room" class="formb">
-					<c:import url="/WEB-INF/views/booking/bookingRoom.jsp" />
-				</div>
-				<div id="extra" class="formb">
-					<c:import url="/WEB-INF/views/booking/bookingExtra.jsp" />
-				</div>
 				<div class="formb">
 					체크인 예정일 :
 					<input type="date" name="booIn" id="booIn" class="input-sm" value="${today }" required>
@@ -46,7 +47,7 @@
 				</div>
 				
 				<div class="formb">
-					<input type="submit" value="등록" class="btn-default btn-sm">
+					<input type="button" id="btn" value="등록" class="btn-default btn-sm">
 				</div>
 			</form>
 		</div>

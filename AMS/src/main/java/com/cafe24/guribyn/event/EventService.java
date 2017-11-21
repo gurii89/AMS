@@ -48,7 +48,7 @@ public class EventService {
 		if(list.size() == 0) {
 			model.addAttribute("eventList", eventDao.eventCheck(null));
 		}else {
-			model.addAttribute("eventList", list);
+			model.addAttribute("event", list);
 		}
 	}
 	
@@ -61,6 +61,14 @@ public class EventService {
 		}
 		map.put("today", end);
 		if(eventDao.eventCheck(map).size() != 0) {
+			return "no";
+		}
+		return "ok";
+	}
+	
+	// 기본 행사 중복 검사
+	public String eventFx(int fx) {
+		if(eventDao.eventFx(fx) != 0) {
 			return "no";
 		}
 		return "ok";

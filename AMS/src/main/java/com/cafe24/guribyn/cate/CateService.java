@@ -58,7 +58,7 @@ public class CateService {
 	
 	// 전체 카테고리 select(+페이징)
 	public void cateList(Model model, int currentPage){
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 2, cateDao.cateCount());
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, cateDao.cateCount());
         session.setAttribute("top", "cate");
         model.addAttribute("page", "cateList");
 		model.addAttribute("cateList", cateDao.cateList(map));
@@ -73,8 +73,8 @@ public class CateService {
 	public void cateSearch(Model model, String cate, String input, int currentPage){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("cate", cate);
-		map.put("input", input);		
-		map = commonService.searchPaging(model, currentPage, 2, cateDao.cateSearchCount(map), map);
+		map.put("input", input);
+		map = commonService.searchPaging(model, currentPage, 10, cateDao.cateSearchCount(map), map);
         model.addAttribute("cateList", cateDao.cateSearch(map));
         model.addAttribute("page", "cateSearch");
 	}

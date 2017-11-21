@@ -1,5 +1,6 @@
 package com.cafe24.guribyn.booking;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -84,9 +85,19 @@ public class BookingService {
 	
 	// 예약 목록
 	public void bookingList(Model model, int currentPage) {
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, bookingDao.bookingCount(null));
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, bookingDao.bookingCount());
 		model.addAttribute("bookingList", bookingDao.bookingList(map));
 		session.setAttribute("top", "booking");
+	}
+	
+	// 예약 검색
+	public void bookingSearch(Model model, int currentPage, String cate, String input) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", cate);
+		map.put("input", input);
+		map = commonService.searchPaging(model, currentPage, 10, bookingDao.bookingSearchCount(map), map);
+		model.addAttribute("bookingList", bookingDao.bookingSearch(map));
+		model.addAttribute("page", "bookingSearch");
 	}
 	
 }

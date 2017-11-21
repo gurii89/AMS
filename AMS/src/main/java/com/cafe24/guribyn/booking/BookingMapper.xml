@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON booking.e_id = employee.e_id
 		
 		<if test="input != null">
-			WHERE category.${cate} = #{input}
+			WHERE booking.${cate} = #{input}
 		</if>
 		ORDER BY boo_code
 		<if test="start != null">

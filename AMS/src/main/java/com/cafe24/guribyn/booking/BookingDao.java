@@ -37,9 +37,19 @@ public class BookingDao {
 		return SST.selectList(NS+"bookingList", map);
 	}
 	
-	// 예약 건 개수 파악
-	public int bookingCount(Map<String, Integer> map) {
+	// 예약 건 목록 개수
+	public int bookingCount() {
+		return SST.selectOne(NS+"bookingCount");
+	}
+	
+	// 예약 건 검색 개수
+	public int bookingSearchCount(Map<String, String> map) {
 		return SST.selectOne(NS+"bookingCount", map);
+	}
+	
+	// 예약 검색
+	public List<Booking> bookingSearch(Map<String, String> map){
+		return SST.selectList(NS+"bookingList", map);
 	}
 	
 }

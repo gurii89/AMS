@@ -46,7 +46,7 @@ $('document').ready(function(){
 	})
 	$('#btn').click(function(){
 		// 모든 항목이 입력 되었는지 확인
-		if($('#cateLarge').val() != "" && $('#cateSmall').val() != "" && $('#cateName').val() != ""){					
+		if($('#cateLarge').val() != "" && $('#cateSmall').val() != "" && $('#cateName').val() != ""){
 			//카테고리명 중복 검사, 중복 없을 경우에만 전송
 			$.ajax({
 				url:"cateNameCheck",
@@ -54,9 +54,9 @@ $('document').ready(function(){
 				success:function(data){
 					if(data == "ok"){
 						$('#frm').submit()
-					}else{
-						alert('중복된 이름입니다')
-						$('#cateName').focus()								
+					}else{						
+						$('#er').html('카테고리명은 중복될 수 없습니다')
+						$('#cateName').focus()
 					}
 				},
 				error:function(request, status, error){

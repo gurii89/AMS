@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="event_End" property="eventEnd" />
 	</resultMap>
 	
+	<select id="eventFx" resultType="int">
+		SELECT COUNT(*) FROM event WHERE event_fx = #{fx}		
+	</select>
+	
 	<select id="eventCheck" parameterType="java.util.Map" resultMap="resultEvent">
 		SELECT
 			event_fx

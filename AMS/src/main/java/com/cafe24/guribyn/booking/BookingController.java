@@ -35,4 +35,13 @@ public class BookingController {
 		return "booking/bookingList";
 	}
 	
+	// 예약 검색
+	@RequestMapping(value = "bookingList", method = RequestMethod.POST)
+	public String bookingSearch(Model model
+			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
+			, @RequestParam("cate") String cate, @RequestParam("input") String input) {
+		bookingService.bookingSearch(model, currentPage, cate, input);
+		return "booking/bookingList";
+	}
+	
 }

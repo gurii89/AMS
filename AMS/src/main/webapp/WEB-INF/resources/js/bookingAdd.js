@@ -1,4 +1,15 @@
-$('document').ready(function(){				
+$('document').ready(function(){
+	// 서비스 혹은 객실 하나 이상 등록시에만 예약 가능
+	$('#btn').click(function(){
+		if($('#booIn').val() != '' && $('#booNight').val() != '' && $('#booCount').val() != ''){
+			if($('.boo').length < 1){
+				$('#er').html('객실 혹은 서비스 등록 없이 예약 할 수 없습니다')
+			}else{
+				$('#frm').submit()
+			}
+		}
+	})
+	
 	// 서비스 등록 폼 첨삭 처리
 	var extraRS = $('#extra').html()
 	$('#extra').html('')
@@ -23,7 +34,7 @@ $('document').ready(function(){
 								+"&extraDate="+$('#extraDate').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#extraTable').append('<tr><td>'+$('#extraCode option:selected').text()
+							$('#extraTable').append('<tr class="boo"><td>'+$('#extraCode option:selected').text()
 							+'</td><td>'+result.extraDate+'</td><td>'+result.extraRate+'</td></tr>')
 							sum += Number(result.extraRate)
 							$('#sum').text(sum)
@@ -91,7 +102,7 @@ $('document').ready(function(){
 						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomSize='+$('#roomSize').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#roomTable').append('<tr><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
+							$('#roomTable').append('<tr class="boo"><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
 							+result.roomSize+'</td></tr>')
 							sum += Number(result.roomSize)
 							$('#sum').text(sum)

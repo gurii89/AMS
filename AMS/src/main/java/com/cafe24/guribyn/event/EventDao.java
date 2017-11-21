@@ -29,4 +29,8 @@ public class EventDao {
 		return SST.selectList(NS+"eventCheck", map);
 	}
 	
+	public int eventFx(int fx) {
+		return SST.selectOne(NS+"eventFx", fx);
+	}
+	
 }

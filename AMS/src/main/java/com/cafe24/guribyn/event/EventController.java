@@ -42,4 +42,11 @@ public class EventController {
 		return eventService.eventStratEnd(start, end);
 	}
 	
+	// 기본 행사 fx 중복불가
+	@ResponseBody
+	@RequestMapping(value = "eventFx")
+	public String eventFx(@RequestParam ("eventFx") int fx) {
+		return eventService.eventFx(fx);
+	}
+	
 }

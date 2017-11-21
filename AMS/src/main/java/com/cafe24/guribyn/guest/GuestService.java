@@ -29,7 +29,7 @@ public class GuestService {
 	
 	// 고객 목록(+페이징)
 	public void guestList(Model model, int currentPage){
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 2, guestDao.guestCount());        
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, guestDao.guestCount());        
 		session.setAttribute("top", "guest");
 		model.addAttribute("guestList", guestDao.guestList(map));
 		model.addAttribute("page", "guestList");
