@@ -45,11 +45,10 @@ public class KeepController {
 	
 	//보관품 수정 폼
 	@RequestMapping(value="/keepMod", method = RequestMethod.GET)
-	public String keepModForm(Model model, @RequestParam("kCode") String kCode) {
-		System.out.println("KeepController 수정폼");
-		cateService.cateList(model, 0);
+	public String keepMod(Model model, @RequestParam("kCode") int kCode) {
 		model.addAttribute("keep", keepService.keepModForm(kCode));
 		return "keep/keepMod";
+		
 	}
 	//보관품 수정 처리
 	@RequestMapping(value="/keepMod", method = RequestMethod.POST)

@@ -38,6 +38,7 @@
 					<td>${cate.cateDate }</td>
 				</tr>
 			</c:forEach>
-		</table>	
+		</table>
+		<c:import url="/WEB-INF/views/division/paging.jsp" />
 	</body>
 </html>

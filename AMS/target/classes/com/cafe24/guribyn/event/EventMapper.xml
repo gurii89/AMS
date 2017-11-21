@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="event_Fx" property="eventFx" />
 		<result column="event_Date" property="eventDate" />
 		<result column="e_Id" property="eId" />
-		<result column="event_Strat" property="eventStrat" />
+		<result column="event_Start" property="eventStart" />
 		<result column="event_End" property="eventEnd" />
 	</resultMap>
 	

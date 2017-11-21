@@ -31,14 +31,12 @@ public class KeepDao {
 		return sst.selectList(NS+".keepList");
 	}
 	//보관품 수정폼 select
-	public Keep keepOneSelect(String kCode) {
-		System.out.println("KeepDao 보관품 수정폼");
-		return sst.selectOne(NS+".KeepOneSelect", kCode);
+	public Keep keepOne(int kCode) {
+		return sst.selectOne(NS+".keepOne", kCode);
 	}
 	
 	//보관품 수정처리
-	public int KeepMod(Keep keep) {
-		System.out.println("KeepDao 보관품 수정처리");
-		return sst.update(NS+".KeepMod", keep );
+	public void keepMod(Keep keep) {
+		 sst.update(NS+".keepMod", keep );
 	}
 }

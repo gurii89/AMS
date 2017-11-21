@@ -14,7 +14,7 @@
 			</div>
 			<div class="formb">
 				고객 국적 :
-				<select name="gCountry" id="gCountry" class="input-sm">
+				<select name="gNation" id="gNation" class="input-sm">
 					<option value="" class="input-sm">내국인</option>
 					<c:forEach items="${cateList }" var="cate">
 						<c:if test="${cate.cateName != 'korea' }">

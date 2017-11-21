@@ -8,15 +8,11 @@
 				<option class="input-sm" value="${eventList[0].eventFx }">조정 불가</option>
 			</c:if>
 			<c:if test="${eventList.size() != 1 }">
+				<option selected class="input-sm" value="1">기본가</option>
 				<c:forEach items="${eventList }" var="event">
-					<c:choose>
-						<c:when test="${event.eventFx != '1'}">
-							<option class="input-sm" value="${event.eventFx }">${event.eventFx }</option>
-						</c:when>
-						<c:otherwise>
-							<option selected class="input-sm" value="1">기본가</option>
-						</c:otherwise>
-					</c:choose>
+					<c:if test="${event.eventFx != '1'}">
+						<option class="input-sm" value="${event.eventFx }">${event.eventFx }</option>
+					</c:if>
 				</c:forEach>
 			</c:if>
 		</select>

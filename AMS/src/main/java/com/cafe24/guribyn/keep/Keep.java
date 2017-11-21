@@ -5,28 +5,23 @@ import java.sql.Date;
 public class Keep {
 
 	private int kCode;
-	private String cateCode;
-	private String eId;
+	private int	eId;
 	private String kName;
+	private String kCondition;
 	private Date kDatetime;
 	private String kSite;
 	private String kMemo;
+	
 	public int getkCode() {
 		return kCode;
 	}
 	public void setkCode(int kCode) {
 		this.kCode = kCode;
 	}
-	public String getCateCode() {
-		return cateCode;
-	}
-	public void setCateCode(String cateCode) {
-		this.cateCode = cateCode;
-	}
-	public String geteId() {
+	public int geteId() {
 		return eId;
 	}
-	public void seteId(String eId) {
+	public void seteId(int eId) {
 		this.eId = eId;
 	}
 	public String getkName() {
@@ -34,6 +29,12 @@ public class Keep {
 	}
 	public void setkName(String kName) {
 		this.kName = kName;
+	}
+	public String getkCondition() {
+		return kCondition;
+	}
+	public void setkCondition(String kCondition) {
+		this.kCondition = kCondition;
 	}
 	public Date getkDatetime() {
 		return kDatetime;
@@ -55,8 +56,7 @@ public class Keep {
 	}
 	@Override
 	public String toString() {
-		return "Keep [kCode=" + kCode + ", cateCode=" + cateCode + ", eId=" + eId + ", kName=" + kName + ", kDatetime="
-				+ kDatetime + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
+		return "Keep [kCode=" + kCode + ", eId=" + eId + ", kName=" + kName + ", kCondition=" + kCondition
+				+ ", kDatetime=" + kDatetime + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
 	}
-	
 }
