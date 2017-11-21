@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="keepOne" resultMap="resultKeep">
-		Select
+		SELECT
 		k_code
 		, e_id
 		, k_name

@@ -22,7 +22,7 @@
                <li><a href="extraList" class="level">서비스</a></li>
                <li><a href="guestList" class="level">고객</a></li>
                <li><a href="#section3" class="level">메뉴7</a></li>
-               <li><a href="./delivery" class="level">운송</a></li>
+               <li><a href="./deliveryAdd" class="level">운송</a></li>
                <li><a href="./keepList" class="level">보관품</a></li>
                <li><a href="eventList" class="level">행사</a></li>
                <li><a href="./noticeList" class="level">공지사항</a></li>

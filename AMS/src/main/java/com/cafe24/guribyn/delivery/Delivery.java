@@ -3,23 +3,23 @@ package com.cafe24.guribyn.delivery;
 import java.sql.Date;
 
 public class Delivery {
-	private String dCode;
 	private String kCode;
+	private String gCode;
 	private String eId;
 	private String dConame;
 	private int dNumber;
 	private Date dDate;
-	public String getdCode() {
-		return dCode;
-	}
-	public void setdCode(String dCode) {
-		this.dCode = dCode;
-	}
 	public String getkCode() {
 		return kCode;
 	}
 	public void setkCode(String kCode) {
 		this.kCode = kCode;
+	}
+	public String getgCode() {
+		return gCode;
+	}
+	public void setgCode(String gCode) {
+		this.gCode = gCode;
 	}
 	public String geteId() {
 		return eId;
@@ -47,9 +47,10 @@ public class Delivery {
 	}
 	@Override
 	public String toString() {
-		return "Delivery [dCode=" + dCode + ", kCode=" + kCode + ", eId=" + eId + ", dConame=" + dConame + ", dNumber="
+		return "Delivery [kCode=" + kCode + ", gCode=" + gCode + ", eId=" + eId + ", dConame=" + dConame + ", dNumber="
 				+ dNumber + ", dDate=" + dDate + "]";
 	}
+	
 	
 	
 }

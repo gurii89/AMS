@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cafe24.guribyn.employee.EmployeeMapper">
+<mapper namespace="com.cafe24.guribyn.delivery.DeliveryMapper">
 	<resultMap type="com.cafe24.guribyn.delivery.Delivery" id="resultDelivery">
 	<result column= "k_code" property="kCode" />	
 	<result column= "g_code" property="gCode" />
@@ -34,5 +34,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	,#{dDay}
 	)
 	</insert>
+	
+	<select id="deliveryList" resultMap="resultDelivery">
+	SELECT
+	k_code
+	, g_code
+	, e_id
+	, d_coname
+	, d_number
+	, d_date
+	, d_day
+	FROM delivery
+	</select>
+	
+	<select id="deliveryOne" resultMap="resultDelivery">
+	SELECT
+	k_code
+	, g_code
+	, e_id
+	, d_coname
+	, d_number
+	, d_date
+	, d_day
+	FROM delivery
+	WHERE k_code=#{kCode}
+	</select>
+	
+	<update id = "deliveryMod" parameterType="com.cafe24.guribyn.delivery.Delivery">
+	UPDATE delivery
+	SET
+	
+	
+	</update>
 	
 	</mapper>
