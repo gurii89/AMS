@@ -20,11 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="room_Size" property="roomSize"></result>
 </resultMap>
 <resultMap type="com.cafe24.guribyn.room.RoomOption" id="resultRoomOption">
-	<result column="room_Opt_Code" property="roomOptCode"></result>
 	<result column="room_Type_Code" property="roomTypeCode"></result>
 	<result column="cate_Code" property="cateCode"></result>
 	<result column="e_Id" property="eId"></result>
 	<result column="room_Opt_Date" property="roomOptDate"></result>
+	<result column="room_Type_Name" property="roomTypeName"></result>
+	<result column="cate_Code_Name" property="cateCodeName"></result>
 </resultMap>
 	<select id="selectOneRoom" resultMap="resultRoom">
 		SELECT 
@@ -108,10 +109,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectRoomOption" resultMap="resultRoomOption">
-		SELECT
-			ro.room_opt_code, 
-			ro.room_type_code AS rtc, 
-			ro.cate_code AS cc,
+		SELECT 
+			ro.room_type_code AS roomTypeName, 
+			ro.cate_code AS cateCodeName,
 			ro.e_id,
 			ro.room_opt_date,
 			ca.cate_name as cate_code,
@@ -129,6 +129,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<delete id="deleteRoomOption" parameterType="com.cafe24.guribyn.room.RoomOption">
 		DELETE FROM room_option
-		WHERE room_opt_code = #{rocode}
+		WHERE room_type_code = #{rort} AND cate_code = #{rocat}
 	</delete>
+	
+	<select id="selectRoomCode" resultMap="resultRoom">	
+		SELECT room_code
+		From room ORDER BY room_code DESC;
+	</select>
 </mapper>

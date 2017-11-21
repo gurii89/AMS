@@ -102,10 +102,9 @@ public class RoomController {
 	}
 	//객실 특징 삭제
 	@RequestMapping(value="/roomOptionDelete", method = RequestMethod.GET)
-	public String roomOptionDelete(@RequestParam ("rocode") String rocode) {
+	public String roomOptionDelete(@RequestParam ("rort") String rort, @RequestParam ("rocat") String rocat) {
 		System.out.println("---객실 특징 삭제---------from controller");
-		System.out.println(rocode);
-		roomService.roomOptionDelete(rocode);
+		roomService.roomOptionDelete(rort, rocat);
 		return "redirect:/roomTypeList";
 	}
 	// 이용 객실 임시 등록(세션에 보관)

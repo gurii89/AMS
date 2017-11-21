@@ -84,9 +84,12 @@ public class RoomService {
 		}
 	}
 	//객실 특징 삭제
-	public int roomOptionDelete(String rocode) {
+	public int roomOptionDelete(String rort, String rocat) {
 		System.out.println("---객실 특징 삭제---------from service");
-		return roomDao.RoomOptionDelete(rocode);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("rort", rort);
+		map.put("rocat", rocat);
+		return roomDao.RoomOptionDelete(map);
 	}
 	//객실 하나의 룸타입 불러오기
 	public Room roomDetail(String roomCode) {
@@ -111,6 +114,10 @@ public class RoomService {
 		
 		Gson gson = new Gson();
 		return gson.toJson(room);
-	
+	}
+	//객실 전체 호수 정렬한것
+	public List<Room> roomToFront(){
+		System.out.println("---전체 객실 호수 가져오기---------from service");
+		return roomDao.roomCode();
 	}
 }

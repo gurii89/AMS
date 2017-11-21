@@ -10,7 +10,7 @@
 	 <div class="topb">객실 타입 목록</div> 
 	 <table class="bs">
 	 	<tr>
-	 		<th>객실 타입 코드</th>
+	 		<th>객실 타입 명</th>
 	 		<th>객실 특징</th>
 	 		<th>등록인</th>
 	 		<th>등록일</th>
@@ -18,11 +18,11 @@
 	 	</tr>
 	 	<c:forEach items="${roomOptionList}" var="roomOptionList">
 	 		<tr>
-	 			<td>${roomOptionList.roomTypeCode}<div class="hidden">${roomOptionList.roomOptCode}</div></td>
+	 			<td>${roomOptionList.roomTypeCode}</td>
 	 			<td>${roomOptionList.cateCode}</td>
 	 			<td>${roomOptionList.eId}</td>
 	 			<td>${roomOptionList.roomOptDate}</td>
-	 			<td><a href="./roomOptionDelete?rocode=${roomOptionList.roomOptCode}">삭제</a></td>
+	 			<td><a href="./roomOptionDelete?rort=${roomOptionList.roomTypeName}&rocat=${roomOptionList.cateCodeName}">삭제</a></td>
 	 		</tr>
 	 	</c:forEach>
 	 </table>			

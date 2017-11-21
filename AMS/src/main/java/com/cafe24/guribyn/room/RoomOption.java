@@ -1,16 +1,11 @@
 package com.cafe24.guribyn.room;
 public class RoomOption {
-	private String roomOptCode;
 	private String roomTypeCode;
 	private String cateCode;
 	private String eId;
 	private String roomOptDate;
-	public String getRoomOptCode() {
-		return roomOptCode;
-	}
-	public void setRoomOptCode(String roomOptCode) {
-		this.roomOptCode = roomOptCode;
-	}
+	private String roomTypeName;
+	private String cateCodeName;
 	public String getRoomTypeCode() {
 		return roomTypeCode;
 	}
@@ -35,9 +30,21 @@ public class RoomOption {
 	public void setRoomOptDate(String roomOptDate) {
 		this.roomOptDate = roomOptDate;
 	}
+	public String getRoomTypeName() {
+		return roomTypeName;
+	}
+	public void setRoomTypeName(String roomTypeName) {
+		this.roomTypeName = roomTypeName;
+	}
+	public String getCateCodeName() {
+		return cateCodeName;
+	}
+	public void setCateCodeName(String cateCodeName) {
+		this.cateCodeName = cateCodeName;
+	}
 	@Override
 	public String toString() {
-		return "RoomOption [roomOptCode=" + roomOptCode + ", roomTypeCode=" + roomTypeCode + ", cateCode=" + cateCode
-				+ ", eId=" + eId + ", roomOptDate=" + roomOptDate + "]";
+		return "RoomOption [roomTypeCode=" + roomTypeCode + ", cateCode=" + cateCode + ", eId=" + eId + ", roomOptDate="
+				+ roomOptDate + ", roomTypeName=" + roomTypeName + ", cateCodeName=" + cateCodeName + "]";
 	}
 }

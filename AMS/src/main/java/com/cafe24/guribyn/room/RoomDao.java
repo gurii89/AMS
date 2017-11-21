@@ -50,13 +50,20 @@ public class RoomDao {
 		List<RoomOption> test = sqlSessionTemplate.selectList(NS+".optionCheck", map);
 		return test;
 	}
-	public int RoomOptionDelete(String rocode) {
+	//객실 특징 삭제
+	public int RoomOptionDelete(Map<String, String> map) {
 		System.out.println("---객실특징 삭제 --------from dao");
-		System.out.println(rocode);
-		return sqlSessionTemplate.delete(NS+".deleteRoomOption", rocode);
+		System.out.println(map);
+		return sqlSessionTemplate.delete(NS+".deleteRoomOption", map);
 	}
+	//해당 객실 룸타입 불러오기
 	public Room roomDetail(String roomCode) {
 		System.out.println("---해당객실 룸타입 불러오기---------from dao");
 		return sqlSessionTemplate.selectOne(NS+".selectOneRoom", roomCode);
+	}
+	//전체 객실 호수 셀렉트
+	public List<Room> roomCode() {
+		System.out.println("---전체 객실 호수 셀렉트---------from dao");
+		return sqlSessionTemplate.selectList(NS+".selectRoomCode");
 	}
 }
