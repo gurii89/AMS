@@ -23,6 +23,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="use_extra_rate" property="extraRate" />
 	</resultMap>
 	
+	<select id="bookingCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM booking
+		<if test="cate != null">
+			WHERE ${cate} = #{input}		
+		</if>
+	</select>
+	
+	<select id="bookingList" parameterType="java.util.Map" resultMap="resultBooking">
+		SELECT 
+			boo_code
+			, e_name e_id
+			, boo_date
+			, boo_in
+			, boo_night
+			, boo_count
+			, boo_path 
+		FROM booking
+		LEFT JOIN employee
+		ON booking.e_id = employee.e_id
+		
+		<if test="input != null">
+			WHERE category.${cate} = #{input}
+		</if>
+		ORDER BY boo_code
+		<if test="start != null">
+			LIMIT ${start}, ${pagePerRow}
+		</if>
+	</select>
+	
 	<insert id="bookingRoomAdd" parameterType="com.cafe24.guribyn.room.Room">
 		INSERT INTO use_room(
 			boo_code

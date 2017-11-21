@@ -7,18 +7,26 @@
 	</head>
 	<body>
 		<div class="topb">분류 목록</div>
-		<form action="cateSearch" method="post" class="form-horizontal">
-			<select name="cate" id="search" required class="input-sm">
-				<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
-				<option value="cate_code" class="input-sm">분류 번호</option>
-				<option value="e_id" class="input-sm">등록자</option>
-				<option value="cate_large" class="input-sm">대분류</option>
-				<option value="cate_small" class="input-sm">소분류</option>						
-				<option value="cate_name" class="input-sm">분류명</option>
-			</select>
-			<input type="text" name="input" id="input" value="${input }" required class="input-sm">
-			<input type="submit" value="검색" class="btn-default btn-sm">
-		</form>
+		<c:choose>
+			<c:when test="${cate != null }">
+				<input type="hidden" id="cate" value="${cate }">
+				<input type="hidden" id="input" value="${input }">
+			</c:when>
+			<c:otherwise>
+				<form action="cateSearch" method="post" class="form-horizontal">
+					<select name="cate" id="cate" required class="input-sm">
+						<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
+						<option value="cate_code" class="input-sm">분류 번호</option>
+						<option value="e_id" class="input-sm">등록자</option>
+						<option value="cate_large" class="input-sm">대분류</option>
+						<option value="cate_small" class="input-sm">소분류</option>						
+						<option value="cate_name" class="input-sm">분류명</option>
+					</select>
+					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					<input type="submit" value="검색" class="btn-default btn-sm">
+				</form>
+			</c:otherwise>
+		</c:choose>			
 		<table class="bs">
 			<tr>
 				<th>분류 번호</th>

@@ -1,14 +1,15 @@
 package com.cafe24.guribyn.booking;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.CommonService;
 import com.cafe24.guribyn.cate.CateService;
 import com.cafe24.guribyn.event.EventService;
 import com.cafe24.guribyn.extra.Extra;
@@ -33,6 +34,9 @@ public class BookingService {
 	
 	@Autowired
 	BookingDao bookingDao;
+	
+	@Autowired
+	CommonService commonService;
 	
 	// 예약 등록 폼
 	public void bookingAdd(Model model) {
@@ -76,6 +80,13 @@ public class BookingService {
 			}
 			session.setAttribute("bookingRoom", null);
 		}
+	}
+	
+	// 예약 목록
+	public void bookingList(Model model, int currentPage) {
+		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, bookingDao.bookingCount(null));
+		model.addAttribute("bookingList", bookingDao.bookingList(map));
+		session.setAttribute("top", "booking");
 	}
 	
 }

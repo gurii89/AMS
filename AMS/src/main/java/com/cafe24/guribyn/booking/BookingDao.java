@@ -1,5 +1,8 @@
 package com.cafe24.guribyn.booking;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +30,16 @@ public class BookingDao {
 	// 예약 객실 등록
 	public void bookingRoomAdd(Room room) {
 		SST.insert(NS+"bookingRoomAdd", room);
+	}
+	
+	// 예약 목록
+	public List<Booking> bookingList(Map<String, Integer> map){
+		return SST.selectList(NS+"bookingList", map);
+	}
+	
+	// 예약 건 개수 파악
+	public int bookingCount(Map<String, Integer> map) {
+		return SST.selectOne(NS+"bookingCount", map);
 	}
 	
 }
