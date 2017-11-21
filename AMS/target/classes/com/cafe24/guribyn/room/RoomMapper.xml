@@ -27,13 +27,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="room_Type_Name" property="roomTypeName"></result>
 	<result column="cate_Code_Name" property="cateCodeName"></result>
 </resultMap>
-	<select id="selectOneRoom" resultMap="resultRoom">
-		SELECT 
-			room_type_code
-		FROM room
-		WHERE room_code = #{roomCode}
-	</select>
-
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
 				e_id,
@@ -80,6 +73,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{roomSize}
 			)
 	</insert>
+	
+	<select id="selectFromFrontRT" resultMap="resultRoom">
+		SELECT 
+			r.room_code,
+			rt.room_type_name as room_type_code,
+			r.e_id,
+			r.room_name,
+			r.room_date,
+			r.room_size
+		FROM room_type as rt inner join room as r 
+		WHERE r.room_type_code = rt.room_type_code AND r.room_code = #{FrCode}
+	
+	</select>
 	
 	<select id="selectRoom" resultMap="resultRoom">
 		SELECT 

@@ -23,9 +23,9 @@ public class FrontController {
 	//한 객실 정보 가져오기
 	@ResponseBody
 	@RequestMapping(value="/frontDetail")
-	public String frontDetailRoomType(@RequestParam ("roomCode") String roomCode) {
+	public String frontDetailRoomType(@RequestParam ("FrCode") String FrCode) {
 		System.out.println("---해당객실 정보---------from controller");
-		System.out.println(roomCode);
-		return frontService.roomDetailType(roomCode); 
+		System.out.println(FrCode);
+		return frontService.roomDetailFromFront(FrCode); 
 	}
 }

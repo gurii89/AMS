@@ -56,14 +56,16 @@ public class RoomDao {
 		System.out.println(map);
 		return sqlSessionTemplate.delete(NS+".deleteRoomOption", map);
 	}
-	//해당 객실 룸타입 불러오기
-	public Room roomDetail(String roomCode) {
-		System.out.println("---해당객실 룸타입 불러오기---------from dao");
-		return sqlSessionTemplate.selectOne(NS+".selectOneRoom", roomCode);
-	}
+
 	//전체 객실 호수 셀렉트
 	public List<Room> roomCode() {
 		System.out.println("---전체 객실 호수 셀렉트---------from dao");
 		return sqlSessionTemplate.selectList(NS+".selectRoomCode");
+	}
+	public Room roomDetailFromFront(String FrCode) {
+		System.out.println("---한 객실 타입 셀렉트---------from dao");
+		Room ree = sqlSessionTemplate.selectOne(NS+".selectFromFrontRT", FrCode);
+		System.out.println(ree);
+		return ree;
 	}
 }

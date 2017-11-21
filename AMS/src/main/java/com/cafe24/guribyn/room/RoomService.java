@@ -91,11 +91,7 @@ public class RoomService {
 		map.put("rocat", rocat);
 		return roomDao.RoomOptionDelete(map);
 	}
-	//객실 하나의 룸타입 불러오기
-	public Room roomDetail(String roomCode) {
-		System.out.println("---해당객실 룸타입 불러오기---------from service");
-		return roomDao.roomDetail(roomCode);
-	}
+
 	// 예약 객실 임시 등록
 	public String cateSmall(String roomTypeCode, String roomSize) {
 		List<Room> list;
@@ -119,5 +115,10 @@ public class RoomService {
 	public List<Room> roomToFront(){
 		System.out.println("---전체 객실 호수 가져오기---------from service");
 		return roomDao.roomCode();
+	}
+	//한 객실 정보 가져오기
+	public Room roomDetailFromFront(String FrCode) {
+		System.out.println("---해당객실 룸타입 불러오기---------from service");
+		return roomDao.roomDetailFromFront(FrCode);
 	}
 }

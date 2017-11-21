@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.room.Room;
 import com.cafe24.guribyn.room.RoomService;
+import com.google.gson.Gson;
 
 @Service
 public class FrontService {
@@ -20,24 +21,13 @@ public class FrontService {
 	
 	@Autowired
 	private RoomService roomService;
-	
-	
-	
+
 	//프로트 세션 설정
 	public String FrontSesseion() {
 		session.setAttribute("top", "front");
 		return "";
 	}
-	//선택된 객실 정보 불러오기1
-	public String roomDetailType(String roomCode) {
-		System.out.println("---해당객실 정보---------from service");
-		Room room = roomService.roomDetail(roomCode);
-		String drt = room.getRoomTypeCode();
-		System.out.println(drt);
-		return drt;
-	}
 	//전체 객실 불러오기
-	@SuppressWarnings("null")
 	public Model allRoom(Model model){
 		System.out.println("---전체 객실 불러오기---------from service");
 		List<Room> list = roomService.roomToFront();
@@ -79,5 +69,11 @@ public class FrontService {
 		model.addAttribute("toproom", toproom);
 		
 		return model;
+	}
+	//한 객실 정보 불러오기 ******
+	public String roomDetailFromFront(String FrCode) {
+		System.out.println("---한 객실 정보 불러오기---------from service");
+		Gson gson = new Gson();
+		return gson.toJson(roomService.roomDetailFromFront(FrCode));
 	}
 }
