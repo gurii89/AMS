@@ -7,7 +7,6 @@ public class Extra {
 	private String extraName;
 	private int extraRate;
 	private String extraDate;
-	private int booCode;
 	public String getExtraCode() {
 		return extraCode;
 	}
@@ -44,16 +43,10 @@ public class Extra {
 	public void setExtraDate(String extraDate) {
 		this.extraDate = extraDate;
 	}
-	public int getBooCode() {
-		return booCode;
-	}
-	public void setBooCode(int booCode) {
-		this.booCode = booCode;
-	}
 	@Override
 	public String toString() {
 		return "Extra [extraCode=" + extraCode + ", cateCode=" + cateCode + ", eId=" + eId + ", extraName=" + extraName
-				+ ", extraRate=" + extraRate + ", extraDate=" + extraDate + ", booCode=" + booCode + "]";
+				+ ", extraRate=" + extraRate + ", extraDate=" + extraDate + "]";
 	}
 	
 }

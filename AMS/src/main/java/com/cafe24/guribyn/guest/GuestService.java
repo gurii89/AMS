@@ -1,5 +1,6 @@
 package com.cafe24.guribyn.guest;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import com.cafe24.guribyn.CommonService;
 import com.cafe24.guribyn.cate.CateService;
 import com.cafe24.guribyn.login.Login;
+import com.google.gson.Gson;
 
 @Service
 public class GuestService {
@@ -28,11 +30,18 @@ public class GuestService {
 	CommonService commonService;
 	
 	// 고객 목록(+페이징)
-	public void guestList(Model model, int currentPage){
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, guestDao.guestCount());        
+	public void guestList(Model model, int currentPage, String cate, String input){
+		Map<String, String> map;
+		if(cate != "") {
+			map = new HashMap<String, String>();
+			map.put("cate", cate);
+			map.put("input", input);
+		}else {
+			map = null;
+		}	
+		map = commonService.paging(model, currentPage, 2, guestDao.guestCount(map), map);        
 		session.setAttribute("top", "guest");
 		model.addAttribute("guestList", guestDao.guestList(map));
-		model.addAttribute("page", "guestList");
 	}
 	
 	// 고객 등록 처리
@@ -61,4 +70,20 @@ public class GuestService {
 		}
 		guestDao.guestMod(guest);
 	}
+	
+	// 고객수 확인
+	public String guestCount() {
+		Gson gson = new Gson();
+		return gson.toJson(guestDao.guestCount(null));
+	}
+	
+	// 예약 고객을 위한 예약 목록
+	public String bookingGuest(int currentPage, int pagePerRow) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("start", Integer.toString((currentPage-1)*pagePerRow));
+		map.put("pagePerRow", Integer.toString(pagePerRow));
+		Gson gson = new Gson();
+		return gson.toJson(guestDao.guestList(map));
+	}
+	
 }

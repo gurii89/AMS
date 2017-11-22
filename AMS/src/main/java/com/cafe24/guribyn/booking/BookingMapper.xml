@@ -13,15 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Path" property="booPath" />
 		<result column="boo_Memo" property="booMemo" />
 	</resultMap>
-	<resultMap type="com.cafe24.guribyn.extra.Extra" id="resultBookingExtra">
-		<result column="use_extra_code" property="extraCode" />
-		<result column="boo_code" property="booCode" />
-		<result column="use_extra_condition" property="cateCode" />
-		<result column="extra_code" property="extraName" />
-		<result column="e_id" property="eId" />
-		<result column="use_extra_date" property="extraDate" />
-		<result column="use_extra_rate" property="extraRate" />
-	</resultMap>
 	
 	<select id="bookingCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM booking
@@ -34,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 			boo_code
 			, e_name e_id
-			, boo_date
+			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
 			, boo_in
 			, boo_night
 			, boo_count
@@ -46,45 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="input != null">
 			WHERE booking.${cate} = #{input}
 		</if>
-		ORDER BY boo_code
+		ORDER BY boo_code DESC
 		<if test="start != null">
 			LIMIT ${start}, ${pagePerRow}
 		</if>
 	</select>
-	
-	<insert id="bookingRoomAdd" parameterType="com.cafe24.guribyn.room.Room">
-		INSERT INTO use_room(
-			boo_code
-			, room_type_code
-			, e_id
-			, use_room_rate
-			, use_room_condition
-		)VALUES(
-			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
-			, #{roomTypeCode}
-			, #{eId}
-			, #{roomSize}
-			, #{cateCode}
-		)
-	</insert>
-	
-	<insert id="bookingExtraAdd" parameterType="com.cafe24.guribyn.extra.Extra">
-		INSERT INTO use_extra(
-			boo_code
-			, extra_code
-			, e_id
-			, use_extra_date
-			, use_extra_rate
-			, use_extra_condition
-		)VALUES(
-			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
-			, #{extraName}
-			, #{eId}
-			, #{extraDate}
-			, #{extraRate}
-			, #{cateCode}
-		)
-	</insert>
 	
 	<insert id="bookingAdd" parameterType="com.cafe24.guribyn.booking.Booking">
 		INSERT INTO booking(

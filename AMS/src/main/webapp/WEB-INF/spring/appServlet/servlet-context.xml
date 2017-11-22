@@ -53,6 +53,9 @@
 				<value>classpath:com/cafe24/guribyn/event/EventMapper.xml</value>
 				<value>classpath:com/cafe24/guribyn/booking/BookingMapper.xml</value>
 				<value>classpath:com/cafe24/guribyn/delivery/DeliveryMapper.xml</value>
+				<value>classpath:com/cafe24/guribyn/booking/extra/BookingExtraMapper.xml</value>
+				<value>classpath:com/cafe24/guribyn/booking/room/BookingRoomMapper.xml</value>
+				<value>classpath:com/cafe24/guribyn/booking/guest/BookingGuestMapper.xml</value>
             </list>
         </property>
     </bean>

@@ -12,7 +12,7 @@
 	</div>
 	<div class="formb">
 		객실 이용 금액 :
-		<input type="text" name="roomSize" id="roomSize" class="input-sm" value="0" readonly>
+		<input type="text" name="roomRate" id="roomRate" class="input-sm" value="0" readonly>
 	</div>
 	<div class="formb">
 		<input type="button" id="submitRoom" class="btn-default btn-sm" value="객실 등록">

@@ -27,7 +27,7 @@
 			</c:when>
 			<c:otherwise>
 				<form action="bookingList" method="post" class="form-horizontal">
-					<select name="cate" id="search" required class="input-sm">
+					<select name="cate" id="cate" required class="input-sm">
 						<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
 						<option value="boo_code" class="input-sm">예약 번호</option>
 						<option value="e_id" class="input-sm">등록자</option>

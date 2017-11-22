@@ -97,6 +97,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="bookingList" class="level">예약 목록</a></li>
 			<li><a href="bookingAdd" class="level">예약 등록</a></li>
+			<li><a href="bookingGuestAdd" class="level">예약 고객 등록</a></li>
 		</ul>
 	</c:if>
 </div>

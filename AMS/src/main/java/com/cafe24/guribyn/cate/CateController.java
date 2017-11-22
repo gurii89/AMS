@@ -13,21 +13,14 @@ public class CateController {
 	@Autowired
 	CateService cateService;
 	
-	// 카테고리 검색
-	@RequestMapping(value = "/cateSearch")
-	public String cateSearch(Model model
-				, @RequestParam("cate") String cate
-				, @RequestParam("input") String input
-				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
-		cateService.cateSearch(model, cate, input, currentPage);
-		return "cate/cateList";
-	}
-	
 	// 카테고리 목록
 	@RequestMapping(value = "/cateList")
 	public String cateList(Model model
+				, @RequestParam(value = "cate", required=false) String cate 
+				, @RequestParam(value = "input", required=false) String input
 				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
-		cateService.cateList(model, currentPage);
+		System.out.println("받아온 값 : " + cate+input+currentPage);
+		cateService.cateList(model, currentPage, cate, input);
 		return "cate/cateList";
 	}
 	

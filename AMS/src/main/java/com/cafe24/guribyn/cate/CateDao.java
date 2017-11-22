@@ -12,29 +12,19 @@ public class CateDao {
 	private SqlSessionTemplate SST;
 	private String NS = "com.cafe24.guribyn.cate.CateMapper.";
 	
-	// 카테고리 검색
-	public List<Cate> cateSearch(Map<String, String> map){
+	// 카테고리 목록
+	public List<Cate> cateList(Map<String, String> map){
 		return SST.selectList(NS+"cateList", map);
 	}
 	
-	// 카테고리 검색 결과 카운트
-	public int cateSearchCount(Map<String, String> map) {
+	// 카테고리 목록 카운트
+	public int cateCount(Map<String, String> map) {
 		return SST.selectOne(NS+"cateCount", map);
 	}
 	
 	// 전체 select(폼 옵션 용 페이징x)
 	public List<Cate> cateOption(){
 		return SST.selectList(NS+"cateList");
-	}
-	
-	// 전체 select(카테고리 목록용, 페이징o)
-	public List<Cate> cateList(Map<String, Integer> map){
-		return SST.selectList(NS+"cateList", map);
-	}
-	
-	// 페이징을 위한 전체 카운트
-	public int cateCount() {
-		return SST.selectOne(NS+"cateCount");
 	}
 	
 	// 대분류 출력을 위한 select

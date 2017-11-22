@@ -6,7 +6,22 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<div class="topb">고객 목록</div> 
+		<div class="topb">고객 목록</div>
+		<c:choose>
+			<c:when test="${cate != null }">
+				<input type="hidden" id="cate" value="${cate }">
+				<input type="hidden" id="input" value="${input }">
+			</c:when>
+			<c:otherwise>
+				<form action="guestList" method="post" class="form-horizontal">
+					<select name="cate" id="cate" required class="input-sm">
+						<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>
+					</select>
+					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					<input type="submit" value="검색" class="btn-default btn-sm">
+				</form>
+			</c:otherwise>
+		</c:choose> 
 		<table class="bs">
 			<tr>
 				<th>고객 번호</th>
