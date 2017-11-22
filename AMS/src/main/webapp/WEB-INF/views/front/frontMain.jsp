@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
 	$('document').ready(function(){
+	
 		//상세정보 가져오기
 		$('.de').click(function(){
 			$('.visible').fadeIn();
@@ -22,6 +23,7 @@
 				}
 			})
 		})
+		
 	});
 </script>
 </head>
@@ -29,6 +31,7 @@
 <body>
 	<div class="clearfix col-sm-10 top">
 		<div class="topb">프론트 메인</div>
+		
 		<c:set target="${toproom}" var="toproo" value="${toproom}"></c:set>
 		<c:forEach items="${frontRoom}" var="FrontRoom" begin="0"
 			end="${allroomcode}">
@@ -63,6 +66,8 @@
 			</c:choose>
 		</c:forEach>
 	</div>
+	
+
 
 	<div class="col-sm-2 top">
 		<div class="visible">

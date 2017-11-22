@@ -142,4 +142,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT room_code
 		From room ORDER BY room_code DESC;
 	</select>
+
 </mapper>

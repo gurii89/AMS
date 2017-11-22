@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!DOCTYPE html>
+
 <div class="col-sm-11 top">
 	<c:if test="${top eq 'notice'}">
 		<br>
@@ -61,9 +66,24 @@
 	</c:if>
 	<c:if test="${top eq 'front' }">
 		<br>
-		<ul class="nav navbar-nav">
-			<li><a href="#" class="level">프론트메뉴</a></li>
-		</ul>
+		<div class="dropdown">
+			<button class="btn btn-sm btn-default drbtn dropdown-toggle" type="button" data-toggle="dropdown">층별보기
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			<c:forEach items="${floor}" var="Floor">
+				<li class="drbtn"><a href="frontfloor?ffloof=${Floor}">${Floor}층</a></li>
+			</c:forEach>
+			</ul>
+		</div>
+		<div class="dropdown">
+			<button class="btn btn-sm btn-default drbtn dropdown-toggle" type="button" data-toggle="dropdown">타입별보기
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			<c:forEach items="${frontdroprt}" var="frontdropRt">
+				<li class="drbtn"><a href="frontrt?ffrt=${frontdropRt.roomTypeName}">${frontdropRt.roomTypeName}</a></li>
+			</c:forEach>
+			</ul>
+		</div>
 	</c:if>
 	<c:if test="${top eq 'event' }">	
 		<br>

@@ -2,6 +2,7 @@ package com.cafe24.guribyn.front;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.room.Room;
+import com.cafe24.guribyn.room.RoomDao;
 import com.cafe24.guribyn.room.RoomService;
 import com.google.gson.Gson;
 
@@ -54,26 +56,50 @@ public class FrontService {
 			frontRoom.add(fr);
 		}
 		
-		System.out.println(Arrays.toString(roc));
-		Arrays.sort(roc); //정렬
-		bottomroom = roc[0];
-		toproom = roc[roc.length-1];
-		System.out.println("최저층="+bottomroom);
-		System.out.println("최고층="+toproom);
-		System.out.println("총객실수="+allroomcode);
-		System.out.println(frontRoom);
-		
-		model.addAttribute("frontRoom", frontRoom);
-		model.addAttribute("allroomcode", allroomcode);
-		model.addAttribute("bottomroom", bottomroom);
-		model.addAttribute("toproom", toproom);
-		
-		return model;
+			System.out.println("roc = "+Arrays.toString(roc));
+			Arrays.sort(roc); //정렬
+			bottomroom = roc[0];
+			toproom = roc[roc.length-1];
+			System.out.println("최저층="+bottomroom);
+			System.out.println("최고층="+toproom);
+			System.out.println("총객실수="+allroomcode);
+			System.out.println(frontRoom);
+			
+			model.addAttribute("frontRoom", frontRoom);
+			model.addAttribute("allroomcode", allroomcode);
+			model.addAttribute("bottomroom", bottomroom);
+			model.addAttribute("toproom", toproom);
+			
+			//중복제거 층수 구하기
+			List floor = new ArrayList();
+			
+			for(int k=0; k<roc.length-1; k++) {
+				if(roc[k] != roc[k+1]) {
+					floor.add(roc[k]);
+				}else if(k == roc.length-2) {
+					if(roc[k] == roc[k+1]) {
+						floor.add(roc[k]);
+					}
+				}
+			}
+			
+			Collections.reverse(floor);
+			System.out.println("floor = "+floor);
+			model.addAttribute("floor", floor);
+			
+			//룸타입 드롭다운을 위한가져오기
+			
+			
+			model.addAttribute("frontdroprt", roomService.roomTypeList());
+			
+			return model;
 	}
+
 	//한 객실 정보 불러오기 ******
 	public String roomDetailFromFront(String FrCode) {
 		System.out.println("---한 객실 정보 불러오기---------from service");
 		Gson gson = new Gson();
 		return gson.toJson(roomService.roomDetailFromFront(FrCode));
 	}
+
 }

@@ -121,4 +121,5 @@ public class RoomService {
 		System.out.println("---해당객실 룸타입 불러오기---------from service");
 		return roomDao.roomDetailFromFront(FrCode);
 	}
+
 }

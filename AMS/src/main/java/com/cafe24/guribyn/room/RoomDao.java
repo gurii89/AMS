@@ -56,7 +56,6 @@ public class RoomDao {
 		System.out.println(map);
 		return sqlSessionTemplate.delete(NS+".deleteRoomOption", map);
 	}
-
 	//전체 객실 호수 셀렉트
 	public List<Room> roomCode() {
 		System.out.println("---전체 객실 호수 셀렉트---------from dao");
@@ -68,4 +67,5 @@ public class RoomDao {
 		System.out.println(ree);
 		return ree;
 	}
+
 }
