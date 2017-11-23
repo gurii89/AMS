@@ -15,6 +15,7 @@
                </form>
                </li>
                <br>
+<<<<<<< Upstream, based on origin/master
                <li><a href="employeeList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 직원</a></li>
                <li><a href="./frontMain" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 프론트</a></li>
                <li><a href="./roomMain" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 객실</a></li>
@@ -27,6 +28,20 @@
                <li><a href="eventList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 행사</a></li>
                <li><a href="./noticeList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 공지사항</a></li>
                <li><a href="cateList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 카테고리</a></li>
+=======
+               <li><a href="employeeList" class="level">직원</a></li>
+               <li><a href="./frontMain" class="level">프론트</a></li>
+               <li><a href="./roomMain" class="level">객실</a></li>
+               <li><a href="bookingList" class="level">예약</a></li>
+               <li><a href="extraList" class="level">서비스</a></li>
+               <li><a href="guestList" class="level">고객</a></li>
+               <li><a href="itemList" class="level">물품</a></li>
+               <li><a href="./deliveryList" class="level">운송</a></li>
+               <li><a href="./keepList" class="level">보관품</a></li>
+               <li><a href="eventList" class="level">행사</a></li>
+               <li><a href="./noticeList" class="level">공지사항</a></li>
+               <li><a href="cateList" class="level">카테고리</a></li>
+>>>>>>> 6e79ea9 item 안녕
             </ul>
             <br>
          </div>

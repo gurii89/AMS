@@ -8,7 +8,8 @@ public class Delivery {
 	private String eId;
 	private String dConame;
 	private int dNumber;
-	private Date dDate;
+	private String dDate;
+	private String dDay;
 	public String getkCode() {
 		return kCode;
 	}
@@ -39,18 +40,21 @@ public class Delivery {
 	public void setdNumber(int dNumber) {
 		this.dNumber = dNumber;
 	}
-	public Date getdDate() {
+	public String getdDate() {
 		return dDate;
 	}
-	public void setdDate(Date dDate) {
+	public void setdDate(String dDate) {
 		this.dDate = dDate;
+	}
+	public String getdDay() {
+		return dDay;
+	}
+	public void setdDay(String dDay) {
+		this.dDay = dDay;
 	}
 	@Override
 	public String toString() {
 		return "Delivery [kCode=" + kCode + ", gCode=" + gCode + ", eId=" + eId + ", dConame=" + dConame + ", dNumber="
-				+ dNumber + ", dDate=" + dDate + "]";
+				+ dNumber + ", dDate=" + dDate + ", dDay=" + dDay + "]";
 	}
-	
-	
-	
 }

@@ -2,6 +2,8 @@ package com.cafe24.guribyn.delivery;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,9 +15,18 @@ public class DeliveryDao {
 	@Autowired
 	SqlSessionTemplate sst;
 	
+	@Autowired
+	HttpSession HS;
+	
+	
 	//운송 등록 처리
 	public int deliveryAddPro(Delivery delivery) {
 		return sst.insert(NS+".deliveryAdd", delivery);
+	}
+	//운송 세션 설정
+	public String DeliverySession() {
+		HS.setAttribute("top", "delivery");
+		return "";
 	}
 	
 	//운송 전체 리스트

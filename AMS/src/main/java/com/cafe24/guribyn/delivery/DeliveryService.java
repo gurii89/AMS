@@ -1,10 +1,11 @@
 package com.cafe24.guribyn.delivery;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 @Service
 public class DeliveryService {
@@ -22,9 +23,8 @@ public class DeliveryService {
 	
 	}
 	//운송 전체 리스트
-	public void deliveryList(Model model) {
-		model.addAttribute("deliveryList", deliveryDao.deliveryList());
-		session.setAttribute("top", "delivery");
+	public List<Delivery> deliveryList() {
+	return deliveryDao.deliveryList();	
 	}
 	
 	//운송 세션 설정

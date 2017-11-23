@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.item.ItemMapper">
+	<resultMap type="com.cafe24.guribyn.item.Item" id="resultItem">
+		<result column="item_code" property="itemCode" />
+		<result column="cate_code" property="cateCode" />
+		<result column="e_id" property="eId" />
+		<result column="item_name" property="itemName" />
+		<result column="item_count" property="itemCount" />
+		<result column="item_date" property="itemDate" />
+	</resultMap>
+
+	<select id = "itemCount" resultType="int">
+	SELECT COUNT(*) FROM item
+	</select>
+
+	<insert id="itemAdd" parameterType="com.cafe24.guribyn.item.Item">
+		INSERT INTO item(
+		item_code
+		, cate_code
+		, e_id
+		, item_name
+		, item_count
+		, item_date
+		)
+		Values(
+		#{itemCode}
+		, #{cateCode}
+		, #{eId}
+		, #{itemName}
+		, #{itemCount}
+		, #{itemDate}
+		)
+	</insert>
+
+	<select id="itemList" resultMap="resultItem">
+		SELECT
+		item_code
+		, cate_code
+		, e_id
+		, item_name
+		, item_count
+		, item_date
+		FROM item
+		LEFT JOIN category
+			ON category.cate_code = item.cate_code
+		LEFT JOIN employee
+			ON category.e_id = employee.e_id
+	</select>
+
+	<select id="itemOne" resultMap="resultItem">
+		SELECT
+		item_code
+		, cate_code
+		, e_id
+		, item_name
+		, item_count
+		, item_date
+		FROM item
+		WHERE item_code=#{itemCode}
+	</select>
+	
+	<update id = "itemMod" parameterType="com.cafe24.guribyn.item.Item">
+	Update item
+	SET
+	 cate_code = #{cateCode}
+		, item_name = #{itemName}
+		, item_count = #{itemCount}
+		, item_date = #{itemDate}
+	WHERE
+		item_code = #{itemCode}
+	</update>
+
+</mapper>
