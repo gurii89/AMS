@@ -16,13 +16,13 @@ public class GuestDao {
 	private String NS = "com.cafe24.guribyn.guest.GuestMapper.";
 	
 	// 전체 고객(+페이징)
-	public List<Guest> guestList(Map<String, Integer> map){
+	public List<Guest> guestList(Map<String, String> map){
 		return SST.selectList(NS+"guestList", map);
 	}
 	
 	// 고객 수
-	public int guestCount() {
-		return SST.selectOne(NS+"guestCount");
+	public int guestCount(Map<String, String> map) {
+		return SST.selectOne(NS+"guestCount", map);
 	}
 	
 	// 고객 등록

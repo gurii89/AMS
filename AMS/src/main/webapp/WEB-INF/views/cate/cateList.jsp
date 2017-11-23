@@ -13,7 +13,7 @@
 				<input type="hidden" id="input" value="${input }">
 			</c:when>
 			<c:otherwise>
-				<form action="cateSearch" method="post" class="form-horizontal">
+				<form action="cateList" method="post" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
 						<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
 						<option value="cate_code" class="input-sm">분류 번호</option>

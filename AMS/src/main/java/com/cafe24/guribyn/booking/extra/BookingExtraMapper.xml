@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.booking.extra.BookingExtraMapper">
+	<resultMap type="com.cafe24.guribyn.extra.Extra" id="resultBookingExtra">
+		<result column="boo_Extra_Code" property="booExtraCode" />
+		<result column="boo_Code" property="booCode" />
+		<result column="extra_Code" property="extraCode" />
+		<result column="e_Id" property="eId" />
+		<result column="boo_Extra_Condition" property="booExtraCondition" />
+		<result column="boo_Extra_Date" property="booExtraDate" />
+		<result column="boo_Extra_Rate" property="booExtraRate" />
+	</resultMap>
+	
+	<insert id="bookingExtraAdd" parameterType="com.cafe24.guribyn.booking.extra.BookingExtra">
+		INSERT INTO booking_extra(
+			boo_code
+			, extra_code
+			, e_id
+			, boo_extra_date
+			, boo_extra_rate
+			, boo_extra_condition
+		)VALUES(
+			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
+			, #{extraCode}
+			, #{eId}
+			, #{booExtraDate}
+			, #{booExtraRate}
+			, '예약'
+		)
+	</insert>
+	
+</mapper>

@@ -4,6 +4,19 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			$('documnet').ready(function(){
+				$('#gNation').on('change', function(){
+					if($('#gNation option:selected').val() != ''){
+						$('#gBirthdate').attr('required', true)
+						$('#gJob').attr('required', true)
+					}else{
+						$('#gBirthdate').attr('required', false)
+						$('#gJob').attr('required', false)
+					}
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<div class="topb">고객 등록</div> 
@@ -33,7 +46,7 @@
 			</div>
 			<div class="formb">
 				고객 연락처 : 
-				<input type="text" name="gPhone" id="gPhone" required class="input-sm">
+				<input type="text" name="gPhone" id="gPhone" class="input-sm" required>
 			</div>
 			<div class="formb">
 				고객 생년월일 : 

@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE g_code = #{gCode}
 	</select>
 	
-	<select id="guestList" resultMap="resultGuest">
+	<select id="guestList" parameterType="java.util.Map" resultMap="resultGuest">
 		SELECT 
 			g_code
 			,g_gender
@@ -51,12 +51,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON guest.e_id = employee.e_id
 		LEFT JOIN category
 		ON guest.g_nation = category.cate_code
-		ORDER BY g_date DESC
-		LIMIT #{start}, #{pagePerRow}
+		<if test="input != null">
+			WHERE guest.${cate} = #{input}
+		</if>
+		ORDER BY g_code DESC
+		LIMIT ${start}, ${pagePerRow}
 	</select>
 	
-	<select id="guestCount" resultType="int">
+	<select id="guestCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM guest
+		<if test="cate != null">
+			WHERE ${cate} = #{input}
+		</if>
 	</select>
 	
 	<insert id="guestAdd" parameterType="com.cafe24.guribyn.guest.Guest">

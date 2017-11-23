@@ -11,12 +11,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.CommonService;
+import com.cafe24.guribyn.booking.extra.BookingExtra;
+import com.cafe24.guribyn.booking.extra.BookingExtraDao;
+import com.cafe24.guribyn.booking.room.BookingRoom;
+import com.cafe24.guribyn.booking.room.BookingRoomDao;
 import com.cafe24.guribyn.cate.CateService;
 import com.cafe24.guribyn.event.EventService;
-import com.cafe24.guribyn.extra.Extra;
 import com.cafe24.guribyn.login.Login;
-import com.cafe24.guribyn.room.Room;
 import com.cafe24.guribyn.room.RoomService;
+import com.google.gson.Gson;
 
 @Service
 public class BookingService {
@@ -38,6 +41,12 @@ public class BookingService {
 	
 	@Autowired
 	CommonService commonService;
+	
+	@Autowired
+	BookingExtraDao bookingExtraDao;
+	
+	@Autowired
+	BookingRoomDao bookingRoomDao; 
 	
 	// 예약 등록 폼
 	public void bookingAdd(Model model) {
@@ -64,40 +73,51 @@ public class BookingService {
 		
 		// 예약 서비스 등록
 		if(session.getAttribute("bookingExtra") != null) {
-			for(Extra e : (List<Extra>)session.getAttribute("bookingExtra")) {
+			for(BookingExtra e : (List<BookingExtra>)session.getAttribute("bookingExtra")) {
 				e.seteId(eId);
-				e.setCateCode("예약");
-				bookingDao.bookingExtraAdd(e);
+				bookingExtraDao.bookingExtraAdd(e);
 			}
 			session.setAttribute("bookingExtra", null);
 		}
 		
 		// 예약 객실 등록
 		if(session.getAttribute("bookingRoom") != null) {
-			for(Room r : (List<Room>)session.getAttribute("bookingRoom")) {
+			for(BookingRoom r : (List<BookingRoom>)session.getAttribute("bookingRoom")) {
 				r.seteId(eId);
-				r.setCateCode("예약");
-				bookingDao.bookingRoomAdd(r);
+				bookingRoomDao.bookingRoomAdd(r);
 			}
 			session.setAttribute("bookingRoom", null);
 		}
 	}
 	
 	// 예약 목록
-	public void bookingList(Model model, int currentPage) {
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, bookingDao.bookingCount());
+	public void bookingList(Model model, int currentPage, String cate, String input) {
+		Map<String, String> map;
+		if(cate != "") {
+			map = new HashMap<String, String>();
+			map.put("cate", cate);
+			map.put("input", input);
+		}else {
+			map = null;
+		}
+		map = commonService.paging(model, currentPage, 2, bookingDao.bookingCount(map), map);
 		model.addAttribute("bookingList", bookingDao.bookingList(map));
 		session.setAttribute("top", "booking");
 	}
 	
-	// 예약 검색
-	public void bookingSearch(Model model, int currentPage, String cate, String input) {
+	// 예약 개수
+	public String bookingCount() {
+		Gson gson = new Gson();
+		return gson.toJson(bookingDao.bookingCount(null));
+	}
+	
+	// 예약 고객을 위한 예약 목록
+	public String bookingGuestBooking(int currentPage, int pagePerRow) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("cate", cate);
-		map.put("input", input);
-		map = commonService.searchPaging(model, currentPage, 10, bookingDao.bookingSearchCount(map), map);
-		model.addAttribute("bookingList", bookingDao.bookingSearch(map));
-		model.addAttribute("page", "bookingSearch");
+		map.put("start", Integer.toString((currentPage-1)*pagePerRow));
+		map.put("pagePerRow", Integer.toString(pagePerRow));
+		Gson gson = new Gson();
+		return gson.toJson(bookingDao.bookingList(map));
 	}
 	
 }

@@ -56,11 +56,18 @@ public class CateService {
 		cateDao.cateAddPro(cate);
 	}
 	
-	// 전체 카테고리 select(+페이징)
-	public void cateList(Model model, int currentPage){
-		Map<String, Integer> map = commonService.listPaging(model, currentPage, 10, cateDao.cateCount());
+	// 카테고리 목록(+페이징)
+	public void cateList(Model model, int currentPage, String cate, String input){
+		Map<String, String> map;
+		if(cate != "") {
+			map = new HashMap<String, String>();
+			map.put("cate", cate);
+			map.put("input", input);
+		}else {
+			map = null;
+		}		
+		map = commonService.paging(model, currentPage, 2, cateDao.cateCount(map), map);
         session.setAttribute("top", "cate");
-        model.addAttribute("page", "cateList");
 		model.addAttribute("cateList", cateDao.cateList(map));
 	}
 	
@@ -69,22 +76,12 @@ public class CateService {
 		model.addAttribute("cateList", cateDao.cateOption());
 	}
 	
-	// 카테고리 검색(+페이징)
-	public void cateSearch(Model model, String cate, String input, int currentPage){
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("cate", cate);
-		map.put("input", input);
-		map = commonService.searchPaging(model, currentPage, 10, cateDao.cateSearchCount(map), map);
-        model.addAttribute("cateList", cateDao.cateSearch(map));
-        model.addAttribute("page", "cateSearch");
-	}
-	
 	// 카테고리 검색(폼 옵션용, 페이징x) / cate 컬럼명, input 검색어 
 	public void cateOptionSearch(Model model, String cate, String input) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("cate", cate);
 		map.put("input", input);
-		model.addAttribute("cateList", cateDao.cateSearch(map));
+		model.addAttribute("cateList", cateDao.cateList(map));
 	}
 	
 	// RoomOption에서 이용 시작-----------------------------------------------------

@@ -35,8 +35,8 @@ $('document').ready(function(){
 						, success:function(data){
 							var result = JSON.parse(data)
 							$('#extraTable').append('<tr class="boo"><td>'+$('#extraCode option:selected').text()
-							+'</td><td>'+result.extraDate+'</td><td>'+result.extraRate+'</td></tr>')
-							sum += Number(result.extraRate)
+							+'</td><td>'+result.booExtraDate+'</td><td>'+result.booExtraRate+'</td></tr>')
+							sum += Number(result.booExtraRate)
 							$('#sum').text(sum)
 							$('#extra').html('')
 							extra = false										
@@ -99,12 +99,12 @@ $('document').ready(function(){
 					$.ajax({
 						url:"bookingRoom"
 						, type:"GET"
-						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomSize='+$('#roomSize').val()
+						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomRate='+$('#roomRate').val()
 						, success:function(data){
 							var result = JSON.parse(data)
 							$('#roomTable').append('<tr class="boo"><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
-							+result.roomSize+'</td></tr>')
-							sum += Number(result.roomSize)
+							+result.booRoomRate+'</td></tr>')
+							sum += Number(result.booRoomRate)
 							$('#sum').text(sum)
 							$('#room').html('')
 							room = false
@@ -121,7 +121,7 @@ $('document').ready(function(){
 			$('#roomTypeCode').on('change', function(){
 				if($('#roomTypeCode').val() != ''){
 					var roomSum = Number($('#FX').val())*Number($('#roomTypeCode option:selected').attr('id'))
-					$('#roomSize').val(roomSum)
+					$('#roomRate').val(roomSum)
 				}
 			})						
 		}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.booking.room.BookingRoomMapper">
+		
+	<insert id="bookingRoomAdd" parameterType="com.cafe24.guribyn.booking.room.BookingRoom">
+		INSERT INTO booking_room(
+			boo_code
+			, room_type_code
+			, e_id
+			, boo_room_rate
+			, boo_room_condition
+		)VALUES(
+			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
+			, #{roomTypeCode}
+			, #{eId}
+			, #{booRoomRate}
+			, '예약'
+		)
+	</insert>
+	
+</mapper>

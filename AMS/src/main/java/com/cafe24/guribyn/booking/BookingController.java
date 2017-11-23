@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BookingController {
@@ -30,18 +31,26 @@ public class BookingController {
 	// 예약 목록
 	@RequestMapping("bookingList")
 	public String bookingList(Model model
+			, @RequestParam(value = "cate", required=false) String cate 
+			, @RequestParam(value = "input", required=false) String input
 			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
-		bookingService.bookingList(model, currentPage);
+		bookingService.bookingList(model, currentPage, cate, input);
 		return "booking/bookingList";
 	}
 	
-	// 예약 검색
-	@RequestMapping(value = "bookingList", method = RequestMethod.POST)
-	public String bookingSearch(Model model
-			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
-			, @RequestParam("cate") String cate, @RequestParam("input") String input) {
-		bookingService.bookingSearch(model, currentPage, cate, input);
-		return "booking/bookingList";
+	// 예약 개수 확인
+	@ResponseBody
+	@RequestMapping(value = "bookingCount")
+	public String bookingCount() {
+		return bookingService.bookingCount();
+	}
+	
+	// 예약 고객 등록을 위한 예약 목록
+	@ResponseBody
+	@RequestMapping(value = "bookingGuestBooking")
+	public String bookingGuestBooking(@RequestParam("currentPage") int currentPage
+									, @RequestParam("pagePerRow") int pagePerRow) {
+		return bookingService.bookingGuestBooking(currentPage, pagePerRow);
 	}
 	
 }

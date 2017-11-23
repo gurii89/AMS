@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe24.guribyn.cate.CateService;
 
@@ -35,8 +36,10 @@ public class GuestController {
 	// 고객 목록
 	@RequestMapping(value = "/guestList")
 	public String guestList(Model model
+			, @RequestParam(value = "cate", required=false) String cate 
+			, @RequestParam(value = "input", required=false) String input
 			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
-			guestService.guestList(model, currentPage);
+			guestService.guestList(model, currentPage, cate, input);
 		return "guest/guestList";
 	}
 	
@@ -53,4 +56,19 @@ public class GuestController {
 		guestService.guestMod(guest);
 		return "redirect:/guestList";
 	}
+	
+	// 고객수 확인
+	@ResponseBody
+	@RequestMapping(value = "guestCount")
+	public String guestCount() {
+		return guestService.guestCount();
+	}
+	
+	// 예약 고객 등록을 위한 고객 목록
+	@ResponseBody
+	@RequestMapping(value = "bookingGuest")
+	public String bookingGuest(@RequestParam("currentPage") int currentPage, @RequestParam("pagePerRow") int pagePerRow) {
+		return guestService.bookingGuest(currentPage, pagePerRow);
+	}
+	
 }

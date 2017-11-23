@@ -107,13 +107,6 @@ public class RoomController {
 		roomService.roomOptionDelete(rort, rocat);
 		return "redirect:/roomTypeList";
 	}
-	// 이용 객실 임시 등록(세션에 보관)
-	@ResponseBody
-	@RequestMapping(value = "bookingRoom")
-	public String bookingRoom(@RequestParam ("roomTypeCode") String roomTypeCode
-							, @RequestParam ("roomSize") String roomSize) {
-		return roomService.cateSmall(roomTypeCode, roomSize);
-	}
 	//객실 상태 입력
 	@RequestMapping(value="/roomConAdd", method = RequestMethod.POST)
 	public String roomConAdd(RoomCondition roomCondition) {
@@ -121,5 +114,5 @@ public class RoomController {
 		roomService.RoomConditionAdd(roomCondition);
 		return "redirect:/frontMain";	
 	} 
-	
+
 }
