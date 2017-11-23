@@ -146,8 +146,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="selectRoomCode" resultMap="resultRoom">	
-		SELECT room_code
-		From room ORDER BY room_code DESC;
+		SELECT 
+			r.room_code, 
+			rt.room_type_name AS room_type_code
+		FROM room AS r INNER JOIN room_type AS rt
+		WHERE r.room_type_code = rt.room_type_code ORDER BY r.room_code DESC;
 	</select>
 
 	<select id="selectRoomCon" resultType="String">

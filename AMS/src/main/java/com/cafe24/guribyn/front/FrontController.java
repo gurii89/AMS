@@ -36,6 +36,7 @@ public class FrontController {
 	public String frontfloor(Model model, @RequestParam ("ffloof") String ffloof) {
 		System.out.println("---선택된 층수---------from controller");
 		frontService.allRoom(model);
+		int k = Integer.parseInt(ffloof);
 		model.addAttribute("selfrontfloor", ffloof);
 		return "front/frontFloor";
 	}

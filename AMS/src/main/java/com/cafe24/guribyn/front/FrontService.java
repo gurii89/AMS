@@ -33,7 +33,7 @@ public class FrontService {
 	public Model allRoom(Model model){
 		System.out.println("---전체 객실 불러오기---------from service");
 		List<Room> list = roomService.roomToFront();
-		//System.out.println("호수 가져오기"+list);
+		System.out.println("호수 가져오기"+list);
 		int allroomcode = list.size(); //총 객실 수 
 		int toproom = 0; //최고층 변수
 		int bottomroom = 0; //최저층 변수
@@ -52,7 +52,7 @@ public class FrontService {
 			roc[i] = Integer.parseInt((list.get(i).getRoomCode()).substring(0, a-2));
 			fr.setRoomCodeMarkF(roc[i]);
 			fr.setRoomCodeF(rocv[i]);
-			
+			fr.setRoomTypeCodeNameF(list.get(i).getRoomTypeCode());
 			frontRoom.add(fr);
 		}
 		
