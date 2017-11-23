@@ -32,7 +32,7 @@
 	<!-- 커넥션풀 생성 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost/guribyn?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="url" value="jdbc:mysql://192.168.123.115:3306/guribyn?useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="username" value="guribyn"/>
         <property name="password" value="pizza8282"/>
     </bean>   

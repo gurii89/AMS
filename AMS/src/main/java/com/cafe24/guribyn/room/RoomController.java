@@ -114,4 +114,12 @@ public class RoomController {
 							, @RequestParam ("roomSize") String roomSize) {
 		return roomService.cateSmall(roomTypeCode, roomSize);
 	}
+	//객실 상태 입력
+	@RequestMapping(value="/roomConAdd", method = RequestMethod.POST)
+	public String roomConAdd(RoomCondition roomCondition) {
+		System.out.println("---객실상태록처리---------from controller");
+		roomService.RoomConditionAdd(roomCondition);
+		return "redirect:/frontMain";	
+	} 
+	
 }

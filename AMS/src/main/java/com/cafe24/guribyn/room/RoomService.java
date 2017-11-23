@@ -121,5 +121,13 @@ public class RoomService {
 		System.out.println("---해당객실 룸타입 불러오기---------from service");
 		return roomDao.roomDetailFromFront(FrCode);
 	}
-
+	//객실 상태 등록처리!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	public int RoomConditionAdd(RoomCondition roomCondition){
+		System.out.println("---객실상태 등록처리---------from service");
+		return roomDao.RoomConditionAdd(roomCondition);
+	}
+	public String RoomConditionview(String FrCode) {
+		System.out.println("---객실상태 불러오기---------from service");
+		return roomDao.RoomConditionshow(FrCode);
+	}
 }

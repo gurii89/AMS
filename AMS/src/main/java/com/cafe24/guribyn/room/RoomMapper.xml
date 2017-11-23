@@ -27,6 +27,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="room_Type_Name" property="roomTypeName"></result>
 	<result column="cate_Code_Name" property="cateCodeName"></result>
 </resultMap>
+<resultMap type="com.cafe24.guribyn.room.RoomCondition" id="resultRoomCondition">
+	<result column="room_Con_Code" property="roomConCode"></result>
+	<result column="e_Id" property="eId"></result>
+	<result column="room_Code" property="roomCode"></result>
+	<result column="room_Con_Condition" property="roomConCondition"></result>
+	<result column="room_Con_Date" property="roomConDate"></result>
+</resultMap>
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
 				e_id,
@@ -143,4 +150,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		From room ORDER BY room_code DESC;
 	</select>
 
+	<select id="selectRoomCon" resultType="String">
+		SELECT 
+			room_con_condition 
+		FROM room_condition
+		WHERE room_code = #{roomCode} ORDER BY room_con_date DESC LIMIT 1
+	</select>
+
+	<insert id="insertRoomCon" parameterType="com.cafe24.guribyn.room.RoomCondition">
+		INSERT INTO room_condition(
+				e_id,
+				room_code,
+				room_con_condition,
+				room_con_date
+			)
+				VALUES(
+				#{eId},
+				#{roomCode},
+				#{roomConCondition},
+				now()
+			)
+	</insert>
 </mapper>

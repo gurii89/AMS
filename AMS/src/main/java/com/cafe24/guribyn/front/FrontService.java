@@ -96,10 +96,12 @@ public class FrontService {
 	}
 
 	//한 객실 정보 불러오기 ******
-	public String roomDetailFromFront(String FrCode) {
+	public String roomDetailFromFront(Model model, String FrCode) {
 		System.out.println("---한 객실 정보 불러오기---------from service");
+		model.addAttribute("FrCode", roomService.roomDetailFromFront(FrCode));
+		model.addAttribute("FrRCon", roomService.RoomConditionview(FrCode));
 		Gson gson = new Gson();
-		return gson.toJson(roomService.roomDetailFromFront(FrCode));
+		return gson.toJson(model);
 	}
 
 }

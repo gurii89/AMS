@@ -67,5 +67,15 @@ public class RoomDao {
 		System.out.println(ree);
 		return ree;
 	}
+	//객실 상태 등록
+	public int RoomConditionAdd(RoomCondition roomCondition) {
+		System.out.println("---객실상태등록처리---------from dao");
+		return sqlSessionTemplate.insert(NS+".insertRoomCon", roomCondition);
+	}
+	//객실 상태 불러오기
+	public String RoomConditionshow(String roomCode) {
+		System.out.println("---객실상태 불러오기---------from dao");
+		return sqlSessionTemplate.selectOne(NS+".selectRoomCon", roomCode);
+	}
 
 }

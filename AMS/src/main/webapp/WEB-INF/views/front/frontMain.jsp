@@ -10,20 +10,25 @@
 		//상세정보 가져오기
 		$('.de').click(function(){
 			$('.visible').fadeIn();
+			$('.minirtcode').html('<input class="hidden "name="roomCode" value="'+$(this).val()+'">'+$(this).val()+'호')
 			$.ajax({
 				url:"frontDetail",
 				type:"GET",
 				data:"FrCode="+$(this).val(),
 				success: function(data) {
 					var rtname = JSON.parse(data)
-					console.log(rtname);
-					$('.dert').val(rtname.roomTypeCode);
+					console.log(rtname.FrRCon);
+					$('.dert').val(rtname.FrCode.roomTypeCode);
+					$('.derc').val(rtname.FrRCon);
 				},
 				fail: function(request, status, error){
 				}
 			})
+				$('.rdbtn').click(function(){
+					$('.hidevdv').html('')
+					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>예약</option><option>공실</option><option>청소요청</option><option>점검요청</option><option>입실</option></select>')
+			})
 		})
-		
 	});
 </script>
 </head>
@@ -73,32 +78,37 @@
 		<div class="visible">
 		<div class="rdtop">객실 상세정보</div>
 			<div class="well rdcon">
-				<table class="frontdetal">
-					<tr>
-						<td>객실타입</td>
-						<td><input type="text" class="dert" value="" readonly="readonly"></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>객실상태</td>
-						<td>상태뽑기</td>
-						<td><input type="button" value="수정" class="rdbtn"></td>
-					</tr>
-					<tr>
-						<td>고객정보</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>체크인</td>
-						<td></td>
-						<td></td>
-					</tr>
-				</table><br>
-				<textarea rows="4" cols="15"></textarea><br>
-				
-				<button type="button" class="btn btn-info">저장</button>
-				<button type="button" class="btn btn-primary">뭐넣지</button>
+				<form action="roomConAdd" method="post">
+					<table class="frontdetal">
+						<tr>
+							<td class="minirtcode"></td>
+						</tr>
+						<tr>
+							<td>객실타입</td>
+							<td><input type="text" class="dert" value="" readonly="readonly"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>객실상태</td>
+							<td class="vdv"><input type="text" class="derc" value="" readonly="readonly"></td>
+							<td class="hidevdv"><input type="button" value="수정" class="rdbtn"></td>
+						</tr>
+						<tr>
+							<td>고객정보</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>체크인</td>
+							<td></td>
+							<td><input type="text" value="${loginfor.eId}" name="eId" class="hidden"></td>
+						</tr>
+					</table><br>
+					<textarea rows="4" cols="15"></textarea><br>
+					
+					<input type="submit" class="btn btn-info" value="저장">
+					<button type="button" class="btn btn-primary">뭐넣지</button>	
+				</form>
 			</div>
 		</div>
 	</div>

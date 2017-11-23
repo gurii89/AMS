@@ -1,21 +1,15 @@
 package com.cafe24.guribyn.room;
 public class RoomCondition {
-	private String rConCode;
-	private String cateCode;
+	private String roomConCode;
 	private String eId;
 	private String roomCode;
-	private String rConDate;
-	public String getrConCode() {
-		return rConCode;
+	private String roomConCondition;
+	private String roomConDate;
+	public String getRoomConCode() {
+		return roomConCode;
 	}
-	public void setrConCode(String rConCode) {
-		this.rConCode = rConCode;
-	}
-	public String getCateCode() {
-		return cateCode;
-	}
-	public void setCateCode(String cateCode) {
-		this.cateCode = cateCode;
+	public void setRoomConCode(String roomConCode) {
+		this.roomConCode = roomConCode;
 	}
 	public String geteId() {
 		return eId;
@@ -29,15 +23,21 @@ public class RoomCondition {
 	public void setRoomCode(String roomCode) {
 		this.roomCode = roomCode;
 	}
-	public String getrConDate() {
-		return rConDate;
+	public String getRoomConCondition() {
+		return roomConCondition;
 	}
-	public void setrConDate(String rConDate) {
-		this.rConDate = rConDate;
+	public void setRoomConCondition(String roomConCondition) {
+		this.roomConCondition = roomConCondition;
+	}
+	public String getRoomConDate() {
+		return roomConDate;
+	}
+	public void setRoomConDate(String roomConDate) {
+		this.roomConDate = roomConDate;
 	}
 	@Override
 	public String toString() {
-		return "RoomCondition [rConCode=" + rConCode + ", cateCode=" + cateCode + ", eId=" + eId + ", roomCode="
-				+ roomCode + ", rConDate=" + rConDate + "]";
+		return "RoomCondition [roomConCode=" + roomConCode + ", eId=" + eId + ", roomCode=" + roomCode
+				+ ", roomConCondition=" + roomConCondition + ", roomConDate=" + roomConDate + "]";
 	}
 }

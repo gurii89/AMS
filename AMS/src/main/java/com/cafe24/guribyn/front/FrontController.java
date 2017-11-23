@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.guribyn.room.RoomType;
+
 @Controller
 public class FrontController {
 	@Autowired
@@ -24,10 +26,10 @@ public class FrontController {
 	//한 객실 정보 가져오기
 	@ResponseBody
 	@RequestMapping(value="/frontDetail")
-	public String frontDetailRoomType(@RequestParam ("FrCode") String FrCode) {
+	public String frontDetailRoomType(Model model, @RequestParam ("FrCode") String FrCode) {
 		System.out.println("---해당객실 정보---------from controller");
 		System.out.println(FrCode);
-		return frontService.roomDetailFromFront(FrCode); 
+		return frontService.roomDetailFromFront(model, FrCode); 
 	}
 	//층수 받아오기
 	@RequestMapping(value="/frontfloor", method = RequestMethod.GET)
@@ -46,5 +48,5 @@ public class FrontController {
 		model.addAttribute("selfrontrt", ffrt);
 		return "front/frontRoomType";
 	}
-	
+
 }
