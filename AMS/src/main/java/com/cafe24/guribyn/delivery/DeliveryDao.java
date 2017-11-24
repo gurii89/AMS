@@ -2,43 +2,38 @@ package com.cafe24.guribyn.delivery;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class DeliveryDao {
-	
-	private final String NS="com.cafe24.guribyn.delivery.DeliveryMapper";
+
 	@Autowired
-	SqlSessionTemplate sst;
+	private SqlSessionTemplate SST;
 	
-	@Autowired
-	HttpSession HS;
+	private String NS = "com.cafe24.guribyn.delivery.DeliveryMapper.";
 	
-	
-	//운송 등록 처리
-	public int deliveryAddPro(Delivery delivery) {
-		return sst.insert(NS+".deliveryAdd", delivery);
-	}
-	//운송 세션 설정
-	public String DeliverySession() {
-		HS.setAttribute("top", "delivery");
-		return "";
+	//운송 등록
+	public void deliveryAdd(Delivery delivery) {
+		SST.insert(NS+"deliveryAdd", delivery);
 	}
 	
-	//운송 전체 리스트
+	//운송 목록
 	public List<Delivery> deliveryList() {
-		return sst.selectList(NS+".deliveryList");
+		return SST.selectList(NS+"deliveryList");
 	}
-	//운송 수정 폼 select
-	public Delivery deliveryOne(int kCode) {
-		return sst.selectOne(NS+".deliveryOne", kCode);
+	
+	//운송 수정 폼
+	public Delivery deliveryOne(String kCode) {
+		return SST.selectOne(NS+"deliveryOne", kCode);
 	}
 	//운송 수정 처리
 	public void deliveryMod(Delivery delivery) {
-		sst.update(NS+"deliveryMod", delivery);
+		SST.update(NS+"deliveryMod", delivery);
+	}
+	//분류에 맞는 k_code
+	public List<Delivery> kName(String kCode) {
+		return SST.selectList(NS+"kName", kCode);
 	}
 }

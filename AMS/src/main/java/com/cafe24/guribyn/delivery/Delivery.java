@@ -1,7 +1,5 @@
 package com.cafe24.guribyn.delivery;
 
-import java.sql.Date;
-
 public class Delivery {
 	private String kCode;
 	private String gCode;
@@ -10,6 +8,7 @@ public class Delivery {
 	private int dNumber;
 	private String dDate;
 	private String dDay;
+	
 	public String getkCode() {
 		return kCode;
 	}

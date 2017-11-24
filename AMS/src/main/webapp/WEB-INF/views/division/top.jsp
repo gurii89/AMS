@@ -103,12 +103,5 @@
 			<li><a href="deliveryAdd" class="level">운송 등록</a></li>
 		</ul>
 	</c:if>
-	<c:if test="${top eq 'item' }">	
-		<br>
-		<ul class="nav navbar-nav">
-			<li><a href="itemList" class="level">물품 목록</a></li>
-			<li><a href="itemAdd" class="level">물품 등록</a></li>
-		</ul>
-	</c:if>
 </div>
 
