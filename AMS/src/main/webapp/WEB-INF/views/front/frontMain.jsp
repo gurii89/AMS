@@ -22,6 +22,22 @@
 				}
 			})	
 		});
+		
+		$('.floorselect').change(function(){
+			var floorValue = $(this).val();
+			
+			$('.dm').each(function(j){				
+				var dmValue = $(this).val();				
+				if(dmValue == floorValue){
+					$(this).parent().fadeIn();
+				}else if(floorValue == '층별 보기'){
+					$(this).parent().fadeIn();
+				}
+				else{
+					$(this).parent().hide();
+				}
+			})	
+		});
 				
 		//상세정보 가져오기
 		$('.de').click(function(){
@@ -58,7 +74,7 @@
 			end="${allroomcode}">
 			<c:choose>
 				<c:when test="${FrontRoom.roomCodeMarkF eq toproo}">
-					<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"></span>
+					<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
 				</c:when>
 				<c:otherwise>
 					<c:set var="toproo" value="${toproo-1}"></c:set>
@@ -76,11 +92,11 @@
 								</c:choose>
 							</c:forEach>
 							<span class="wcon"><br></span>
-							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"></span></span>
+							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
 						</c:when>
 						<c:otherwise>
 							<span><br class="wcon"></span>
-							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"></span></span>
+							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>

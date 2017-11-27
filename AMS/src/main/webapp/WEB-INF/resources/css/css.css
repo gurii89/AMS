@@ -50,6 +50,12 @@
 
 /* --------------------------------------top.jsp */
 
+.noticetag1{
+	font-size: 11px;
+}
+.noticetag2{
+	font-size: 11px;
+}
 .dropdown {
 	float:left;
 	margin : 0px 2px;
@@ -136,7 +142,10 @@ table.main {
   	margin : 20px 10px;
   	font-size: 12px;
 }
-
+.floorside{
+	float: left;
+	
+}
 table.main td {
     width: 120px;
     word-break:break-all;
@@ -224,6 +233,18 @@ table.frontdetal td{
 	font-weight: bold;
 }
 
+.maina {
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	color:#666;
+	margin : 10px 30px;
+}
+#clock{
+	font-size: 16px;
+	color:#666;
+	margin : 10px 0px;
+}
 
 .toshow
 {

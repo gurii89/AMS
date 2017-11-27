@@ -43,9 +43,8 @@
 	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
-		<ul class="nav navbar-nav">
-			<li><a href="">메인입니당</a></li>
-		</ul>
+			<div class="noticetag1">공지사항 확인하세요.</div>
+			<div class="noticetag2">공지사항 입니다. </div>
 	</c:if>
 	<c:if test="${top eq 'keep'}">
 		<br>
@@ -63,15 +62,14 @@
 	</c:if>
 	<c:if test="${top eq 'front' }">
 		<br>
-		<div class="dropdown">
-			<button class="btn btn-sm btn-default drbtn dropdown-toggle" type="button" data-toggle="dropdown">층별보기
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			<c:forEach items="${floor}" var="Floor">
-				<li class="drbtn"><a href="frontfloor?ffloof=${Floor}">${Floor}층</a></li>
-			</c:forEach>
-			</ul>
-		</div>
+		<div class="floorside">
+			<select class="input-sm floorselect">
+				<option>층별 보기</option>	
+				<c:forEach items="${floor}" var="Floor">
+					<option>${Floor}</option>
+				</c:forEach>
+			</select>
+		</div> 
 		<div class="">
 			<select class="input-sm typeselect">
 			<option>타입별 보기</option>	
