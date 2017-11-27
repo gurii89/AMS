@@ -39,4 +39,10 @@ public class GuestDao {
 	public void guestMod(Guest guest) {
 		SST.update(NS+"guestMod", guest);
 	}
+	
+	// 예약 상세를 위한 고객 목록
+	public List<Guest> bookingGusetList(int booCode){
+		return SST.selectList(NS+"bookingGusetList", booCode);
+	}
+	
 }

@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.booking.extra.BookingExtraMapper">
-	<resultMap type="com.cafe24.guribyn.extra.Extra" id="resultBookingExtra">
+	<resultMap type="com.cafe24.guribyn.booking.extra.BookingExtra" id="resultBookingExtra">
 		<result column="boo_Extra_Code" property="booExtraCode" />
 		<result column="boo_Code" property="booCode" />
 		<result column="extra_Code" property="extraCode" />
@@ -12,6 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Extra_Date" property="booExtraDate" />
 		<result column="boo_Extra_Rate" property="booExtraRate" />
 	</resultMap>
+	
+	<select id="bookingExtraList" resultMap="resultBookingExtra">
+		SELECT 
+			extra_name extra_code
+			, boo_extra_rate
+			, DATE_FORMAT(boo_extra_date, '%Y-%m-%d %H:%i') boo_extra_date
+			, boo_extra_condition
+		FROM booking_extra
+		LEFT JOIN extra 
+			ON booking_extra.extra_code = extra.extra_code
+		WHERE boo_code = #{booCode}
+	</select>
 	
 	<insert id="bookingExtraAdd" parameterType="com.cafe24.guribyn.booking.extra.BookingExtra">
 		INSERT INTO booking_extra(

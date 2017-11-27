@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.payment.PaymentMapper">
+	<resultMap type="com.cafe24.guribyn.payment.Payment" id="paymentResult">
+		<id column="p_code" property="pCode" />
+		<result column="boo_code" property="booCode" />
+		<result column="e_id" property="eId" />
+		<result column="p_condition" property="pCondition" />
+		<result column="p_method" property="pMethod" />
+		<result column="p_date" property="pDate" />
+		<result column="p_rate" property="pRate" />
+		<result column="p_memo" property="pMemo" />
+	</resultMap>
+	
+	<select id="paymentCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM payment
+		<if test="cate != null">
+			<if test="cate != 'p_date'">
+				WHERE payment.${cate} = #{input}
+			</if>
+			<if test="cate == 'p_date'">
+				WHERE DATE_FORMAT(p_date, '%Y-%m-%d') = #{input}
+			</if>	
+		</if>
+	</select>
+
+	<select id="paymentList" parameterType="java.util.Map" resultMap="paymentResult">
+		SELECT 
+			p_code
+			, boo_code
+			, e_name e_id
+			, p_condition
+			, p_method
+			, DATE_FORMAT(p_date, '%Y-%m-%d %H:%i') p_date
+			, p_rate
+			, p_memo
+		FROM payment
+		LEFT JOIN employee
+		ON employee.e_id = payment.e_id
+		<if test="input != null">
+			<if test="cate != 'p_date'">
+				WHERE payment.${cate} = #{input}
+			</if>
+			<if test="cate == 'p_date'">
+				WHERE DATE_FORMAT(p_date, '%Y-%m-%d') = #{input}
+			</if>			
+		</if>
+		ORDER BY p_code DESC
+		LIMIT ${start}, ${pagePerRow}
+	</select>
+	
+	<select id="bookingPayment" resultType="int">
+		SELECT SUM(p_rate) FROM payment WHERE boo_code = #{booCode} AND p_condition='결제'
+	</select>
+	
+	<insert id="paymentAdd" parameterType="com.cafe24.guribyn.payment.Payment">
+		INSERT INTO payment(
+			boo_code
+			, e_id
+			, p_condition
+			, p_method
+			, p_date
+			, p_rate
+			, p_memo
+		)VALUES(
+			#{booCode}
+			, #{eId}
+			, "결제"
+			, #{pMethod}
+			, NOW()
+			, #{pRate}
+			, #{pMemo}
+		)
+	</insert>
+	
+	<update id="paymentCancel">
+		UPDATE payment
+		SET p_condition='취소'
+		WHERE p_code = #{pCode}
+	</update>
+	
+</mapper>

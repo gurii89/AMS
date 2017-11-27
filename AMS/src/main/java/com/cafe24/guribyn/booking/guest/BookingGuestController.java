@@ -21,8 +21,8 @@ public class BookingGuestController {
 	// 예약 고객 등록 처리
 	@ResponseBody
 	@RequestMapping("bookingGuestAddPro")
-	public String bookingGuestAddPro(@RequestParam ("booCode") String booCode
-									, @RequestParam ("gCode") String gCode) {
+	public String bookingGuestAddPro(@RequestParam ("booCode") int booCode
+									, @RequestParam ("gCode") int gCode) {
 		return bookingGuestService.bookingGuestAddPro(booCode, gCode);
 	}
 	

@@ -3,6 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.booking.guest.BookingGuestMapper">
+	<resultMap type="com.cafe24.guribyn.booking.guest.BookingGuest" id="resultBookingGuest">
+		<id column="g_code" property="gCode" />
+		<id column="boo_code" property="booCode" />
+	</resultMap>
+		
+	<select id="bookingGuestCheck" resultType="int">
+		SELECT COUNT(*) FROM booking_guest WHERE g_code = #{gCode} AND boo_code = #{booCode} 
+	</select>	
 		
 	<insert id="bookingGuestAdd" parameterType="com.cafe24.guribyn.booking.guest.BookingGuest">
 		INSERT INTO booking_guest(boo_code, g_code)VALUE(#{booCode}, #{gCode})

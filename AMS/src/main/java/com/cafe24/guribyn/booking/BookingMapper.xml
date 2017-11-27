@@ -14,10 +14,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Memo" property="booMemo" />
 	</resultMap>
 	
+	<select id="bookingOne" resultMap="resultBooking">
+		SELECT 
+			boo_code
+			, e_name e_id
+			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
+			, boo_in
+			, boo_night
+			, boo_count
+			, boo_path 
+		FROM booking
+		LEFT JOIN employee
+		ON booking.e_id = employee.e_id
+		WHERE boo_code = #{booCode}
+	</select>
+	
 	<select id="bookingCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM booking
 		<if test="cate != null">
-			WHERE ${cate} = #{input}		
+			<if test="cate != 'boo_date'">
+				WHERE booking.${cate} = #{input}
+			</if>
+			<if test="cate == 'boo_date'">
+				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
+			</if>		
 		</if>
 	</select>
 	
@@ -32,10 +52,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, boo_path 
 		FROM booking
 		LEFT JOIN employee
-		ON booking.e_id = employee.e_id
-		
+		ON booking.e_id = employee.e_id		
 		<if test="input != null">
-			WHERE booking.${cate} = #{input}
+			<if test="cate != 'boo_date'">
+				WHERE booking.${cate} = #{input}
+			</if>
+			<if test="cate == 'boo_date'">
+				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
+			</if>			
 		</if>
 		ORDER BY boo_code DESC
 		<if test="start != null">

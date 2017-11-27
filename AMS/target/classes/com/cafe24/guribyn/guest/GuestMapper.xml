@@ -16,6 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="g_Date" property="gDate" />
 	</resultMap>
 	
+	<select id="bookingGusetList" resultMap="resultGuest">
+		SELECT guest.g_code, cate_name g_nation, g_gender, g_name, g_phone FROM guest
+		LEFT JOIN booking_guest
+			ON guest.g_code = booking_guest.g_code
+		LEFT JOIN category
+			ON guest.g_nation = category.cate_code
+		WHERE boo_code = #{booCode}
+	</select>
+	
 	<select id="guestOne" resultMap="resultGuest">
 		SELECT 
 			g_code

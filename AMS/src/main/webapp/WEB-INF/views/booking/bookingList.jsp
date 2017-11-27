@@ -6,14 +6,20 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script>
 			$('documemt').ready(function(){
-				$('#search').on('change', function(){
-					var val = $('#search option:selected').val()
+				// 날짜 관련 검색 조건 선택시 검색창 input tpye date로 변경
+				$('#cate').on('change', function(){
+					var val = $('#cate option:selected').val()
 					if(val == 'boo_date' || val == 'boo_in'){
 						$('#input').attr('type', 'date');
 					}else{
 						$('#input').attr('type', 'text');
 						$('#input').val('')
 					}
+				})
+				
+				$('.boo').click(function(){
+					var booCode = $(this).children().first().text()
+					$(location).attr('href', 'bookingDetail?booCode='+Number(booCode));
 				})
 			})
 		</script>
@@ -53,7 +59,7 @@
 				<th>등록자</th>
 			</tr>
 			<c:forEach items="${bookingList }" var="boo">
-				<tr>
+				<tr class="boo">
 					<td>${boo.booCode }</td>
 					<td>${boo.booDate }</td>
 					<td>${boo.booIn }</td>

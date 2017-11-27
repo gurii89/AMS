@@ -12,6 +12,7 @@ public class EventDao {
 	
 	@Autowired
 	private SqlSessionTemplate SST;
+	
 	private String NS = "com.cafe24.guribyn.event.EventMapper.";
 	
 	// 행사 등록

@@ -53,4 +53,11 @@ public class BookingController {
 		return bookingService.bookingGuestBooking(currentPage, pagePerRow);
 	}
 	
+	// 예약 상세
+	@RequestMapping(value = "bookingDetail")
+	public String bookingDetail(Model model, @RequestParam("booCode") int booCode) {
+		bookingService.bookingOne(model, booCode);
+		return "booking/bookingDetail";
+	}
+	
 }

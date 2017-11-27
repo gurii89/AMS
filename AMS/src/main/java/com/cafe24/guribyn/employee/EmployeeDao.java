@@ -11,6 +11,7 @@ public class EmployeeDao {
 	
 	@Autowired
 	private SqlSessionTemplate SST;
+	
 	private String NS = "com.cafe24.guribyn.employee.EmployeeMapper.";
 	
 	// 직원 등록 처리

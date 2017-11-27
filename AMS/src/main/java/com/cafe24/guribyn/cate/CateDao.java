@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 public class CateDao {
 	@Autowired
 	private SqlSessionTemplate SST;
+	
 	private String NS = "com.cafe24.guribyn.cate.CateMapper.";
 	
 	// 카테고리 목록

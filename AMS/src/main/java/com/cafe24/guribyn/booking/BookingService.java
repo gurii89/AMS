@@ -17,7 +17,9 @@ import com.cafe24.guribyn.booking.room.BookingRoom;
 import com.cafe24.guribyn.booking.room.BookingRoomDao;
 import com.cafe24.guribyn.cate.CateService;
 import com.cafe24.guribyn.event.EventService;
+import com.cafe24.guribyn.guest.GuestDao;
 import com.cafe24.guribyn.login.Login;
+import com.cafe24.guribyn.payment.PaymentDao;
 import com.cafe24.guribyn.room.RoomService;
 import com.google.gson.Gson;
 
@@ -47,6 +49,12 @@ public class BookingService {
 	
 	@Autowired
 	BookingRoomDao bookingRoomDao; 
+	
+	@Autowired
+	GuestDao guestDao;
+	
+	@Autowired
+	PaymentDao paymentDao;
 	
 	// 예약 등록 폼
 	public void bookingAdd(Model model) {
@@ -93,7 +101,7 @@ public class BookingService {
 	// 예약 목록
 	public void bookingList(Model model, int currentPage, String cate, String input) {
 		Map<String, String> map;
-		if(cate != "") {
+		if(cate != "") { 
 			map = new HashMap<String, String>();
 			map.put("cate", cate);
 			map.put("input", input);
@@ -118,6 +126,15 @@ public class BookingService {
 		map.put("pagePerRow", Integer.toString(pagePerRow));
 		Gson gson = new Gson();
 		return gson.toJson(bookingDao.bookingList(map));
+	}
+	
+	// 예약 상세
+	public void bookingOne(Model model, int booCode) {
+		model.addAttribute("booking", bookingDao.bookingOne(booCode));
+		model.addAttribute("bookingExtraList", bookingExtraDao.bookingExtraList(booCode));
+		model.addAttribute("bookingRoomList", bookingRoomDao.bookingRoomList(booCode));
+		model.addAttribute("bookingGuestList", guestDao.bookingGusetList(booCode));
+		model.addAttribute("bookingPayment", paymentDao.bookingPayment(booCode));
 	}
 	
 }

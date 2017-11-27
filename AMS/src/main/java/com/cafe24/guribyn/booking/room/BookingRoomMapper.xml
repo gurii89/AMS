@@ -3,6 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.booking.room.BookingRoomMapper">
+	
+	<resultMap type="com.cafe24.guribyn.booking.room.BookingRoom" id="resultBookingRoom">
+		<id column="boo_Room_Code" property="booRoomCode"/>
+		<result column="boo_Code" property="booCode"/>
+		<result column="room_Type_Code" property="roomTypeCode"/>
+		<result column="e_Id" property="eId"/>
+		<result column="boo_Room_Condition" property="booRoomCondition"/>
+		<result column="boo_Room_Rate" property="booRoomRate"/>
+	</resultMap>
+	
+	<select id="bookingRoomList" resultMap="resultBookingRoom">
+		SELECT room_type_name room_type_code, boo_room_rate, boo_room_condition 
+		FROM booking_room
+		LEFT JOIN room_type
+			ON booking_room.room_type_code = room_type.room_type_code
+		WHERE boo_code = #{booCode} 
+	</select>
 		
 	<insert id="bookingRoomAdd" parameterType="com.cafe24.guribyn.booking.room.BookingRoom">
 		INSERT INTO booking_room(

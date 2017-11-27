@@ -10,18 +10,15 @@ public class BookingGuestService {
 	BookingGuestDao bookingGuestDao;
 		
 	// 예약 고객 등록 처리
-	public String bookingGuestAddPro(String booCode, String gCode) {
-		int boo = Integer.parseInt(booCode);
-		int g = Integer.parseInt(gCode);
+	public String bookingGuestAddPro(int booCode, int gCode) {
 		BookingGuest bookingGuest = new BookingGuest();
-		bookingGuest.setBooCode(boo);
-		bookingGuest.setgCode(g);
-		try {
-			bookingGuestDao.bookingGuestAdd(bookingGuest);
-			return "ok";
-		} catch (Exception e) {
+		bookingGuest.setBooCode(booCode);
+		bookingGuest.setgCode(gCode);
+		if(bookingGuestDao.bookingGuestCheck(bookingGuest) != 0) {
 			return "no";
 		}
+		bookingGuestDao.bookingGuestAdd(bookingGuest);
+		return "ok";
 	}
 	
 }

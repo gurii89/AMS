@@ -12,6 +12,7 @@ public class BookingDao {
 
 	@Autowired
 	private SqlSessionTemplate SST;
+	
 	private String NS = "com.cafe24.guribyn.booking.BookingMapper.";
 	
 	// 예약 등록
@@ -27,6 +28,11 @@ public class BookingDao {
 	// 예약 건 개수
 	public int bookingCount(Map<String, String> map) {
 		return SST.selectOne(NS+"bookingCount", map);
+	}
+	
+	// 단일 예약 확인
+	public Booking bookingOne(int booCode) {
+		return SST.selectOne(NS+"bookingOne", booCode);
 	}
 	
 }
