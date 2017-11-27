@@ -124,7 +124,7 @@ $('document').ready(function(){
 		
 		// 고객 번호 입력
 		$('.guestBtn').click(function(){
-			$('#resultGuest').text($(this).text().substring(0, 1))
+			$('#resultGuest').text($(this).children().first().text())
 		})
 	}
 	
@@ -154,7 +154,7 @@ $('document').ready(function(){
 	
 	// 예약 고객 등록 처리
 	$('#resultBtn').click(function(){
-		if($('#resultBooking').text() != 0 && $('#resultGuest').text() != 0){
+		if($('#resultBooking').text() && $('#resultGuest').text()){
 			$.ajax({
 				url:"bookingGuestAddPro"
 				, type:"GET"

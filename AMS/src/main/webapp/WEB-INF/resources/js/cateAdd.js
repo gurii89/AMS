@@ -15,7 +15,7 @@ $('document').ready(function(){
 	})
 	// 대분류 선택시 소분류 출력
 	$('#cateLarge').click(function(){
-		if(largeCheck && $('#cateLarge').val() != ""){
+		if(largeCheck && $('#cateLarge').val()){
 			// 유효한 대분류 선택시 초기값
 			$('#btnLarge').html('')
 			$('#btnSmall').html('직접 입력')
@@ -46,7 +46,7 @@ $('document').ready(function(){
 	})
 	$('#btn').click(function(){
 		// 모든 항목이 입력 되었는지 확인
-		if($('#cateLarge').val() != "" && $('#cateSmall').val() != "" && $('#cateName').val() != ""){
+		if($('#cateLarge').val() && $('#cateSmall').val() && $('#cateName').val()){
 			//카테고리명 중복 검사, 중복 없을 경우에만 전송
 			$.ajax({
 				url:"cateNameCheck",

@@ -52,7 +52,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="bookingPayment" resultType="int">
-		SELECT SUM(p_rate) FROM payment WHERE boo_code = #{booCode} AND p_condition='결제'
+		SELECT IFNULL(SUM(p_rate), 0) FROM payment 
+		WHERE boo_code = #{booCode} AND p_condition='결제'
 	</select>
 	
 	<insert id="paymentAdd" parameterType="com.cafe24.guribyn.payment.Payment">

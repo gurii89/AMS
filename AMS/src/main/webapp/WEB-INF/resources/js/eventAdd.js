@@ -1,9 +1,9 @@
 $('document').ready(function(){	
 	$('#btn').click(function(){
-		if($('#eventFx').val() != ''){
+		if($('#eventFx').val()){
 			var eventStart =  $('#eventStart').val()
 			var eventEnd = $('#eventEnd').val()
-			if(eventStart != '' && eventEnd != ''){
+			if(eventStart && eventEnd){
 				$.ajax({
 					url:"eventCheck"
 					, type:"GET"

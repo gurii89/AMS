@@ -1,7 +1,7 @@
 $('document').ready(function(){
 	// 서비스 혹은 객실 하나 이상 등록시에만 예약 가능
 	$('#btn').click(function(){
-		if($('#booIn').val() != '' && $('#booNight').val() != '' && $('#booCount').val() != ''){
+		if($('#booIn').val() && $('#booNight').val() && $('#booCount').val()){
 			if($('.boo').length < 1){
 				$('#er').html('객실 혹은 서비스 등록 없이 예약 할 수 없습니다')
 			}else{
@@ -26,7 +26,7 @@ $('document').ready(function(){
 			room = false
 			// 서비스 임시 등록
 			$('#submitExtra').click(function(){
-				if($('#cateCode').val() != '' && $('#extraCode').val() != '' && $('#extraDate').val() != ''){
+				if($('#cateCode').val() && $('#extraCode').val() && $('#extraDate').val()){
 					$.ajax({
 						url:"bookingExtra"
 						, type:"GET"
@@ -51,7 +51,7 @@ $('document').ready(function(){
 			
 			// 분류에 따른 서비스 출력
 			$('#cateCode').on('change', function(){
-				if($('#cateCode').val() != null){
+				if($('#cateCode').val()){
 					$.ajax({
 						url:"extraName"
 						, type:"GET"
@@ -72,7 +72,7 @@ $('document').ready(function(){
 			
 			// 서비스 이용 금액 출력	
 			$('#extraCode').on('change', function(){
-				if($('#extraCode').val() != ''){
+				if($('#extraCode').val()){
 					var extraSum = $('#extraCode option:selected').attr('id')
 					$('#extraRate').val(extraSum)
 				}
@@ -95,7 +95,7 @@ $('document').ready(function(){
 			extra = false
 			// 객실 임시 등록
 			$('#submitRoom').click(function(){
-				if($('#roomTypeCode').val() != ''){
+				if($('#roomTypeCode').val()){
 					$.ajax({
 						url:"bookingRoom"
 						, type:"GET"
@@ -119,7 +119,7 @@ $('document').ready(function(){
 			
 			// 객실 이용 금액 출력	
 			$('#roomTypeCode').on('change', function(){
-				if($('#roomTypeCode').val() != ''){
+				if($('#roomTypeCode').val()){
 					var roomSum = Number($('#FX').val())*Number($('#roomTypeCode option:selected').attr('id'))
 					$('#roomRate').val(roomSum)
 				}
