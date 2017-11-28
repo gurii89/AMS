@@ -43,7 +43,14 @@ public class RoomService {
 	//객실 등록처리
 	public int RoomAdd(Room room){
 		System.out.println("---객실타입등록처리---------from service");
-		return roomDao.RoomAdd(room);
+		roomDao.RoomAdd(room);
+		
+		RoomCondition roomcon = new RoomCondition();
+		roomcon.seteId(room.geteId());
+		roomcon.setRoomCode(room.getRoomCode());
+		roomcon.setRoomConCondition("공실");
+		
+		return roomDao.RoomConditionAdd(roomcon);
 	}
 	//객실 전체 리스트
 	public List<Room> roomList(){
