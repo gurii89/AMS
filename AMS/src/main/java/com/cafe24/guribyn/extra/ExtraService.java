@@ -1,5 +1,7 @@
 package com.cafe24.guribyn.extra;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +39,9 @@ public class ExtraService {
 		return gson.toJson(extraDao.extraName(cateCode));
 	}
 	
+	//프론트에서 가져가는 서비스목록
+	public List<Extra> frontExtraName(String cateCode) {
+		System.out.println(extraDao.extraName(cateCode));
+		return extraDao.extraName(cateCode);	
+	}
 }

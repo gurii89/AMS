@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
@@ -18,7 +19,7 @@
 			<li><a href="cateAdd">분류 등록</a></li>
 		</ul>
 	</c:if>
-		<c:if test="${top eq 'room' }">
+	<c:if test="${top eq 'room' }">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="roomTypeList" class="level">객실 타입 목록</a></li>
@@ -43,8 +44,8 @@
 	</c:if>
 	<c:if test="${top eq 'home'}">
 		<br>
-			<div class="noticetag1">공지사항 확인하세요.</div>
-			<div class="noticetag2">공지사항 입니다. </div>
+		<div class="noticetag1">공지사항 확인하세요.</div>
+		<div class="noticetag2">공지사항 입니다.</div>
 	</c:if>
 	<c:if test="${top eq 'keep'}">
 		<br>
@@ -62,31 +63,19 @@
 	</c:if>
 	<c:if test="${top eq 'front' }">
 		<br>
-		<div class="floorside">
-			<select class="input-sm floorselect">
-				<option>층별 보기</option>	
-				<c:forEach items="${floor}" var="Floor">
-					<option>${Floor}</option>
-				</c:forEach>
-			</select>
-		</div> 
-		<div class="">
-			<select class="input-sm typeselect">
-			<option>타입별 보기</option>	
-			<c:forEach items="${frontdroprt}" var="frontdropRt">
-				<option>${frontdropRt.roomTypeName}</option>
-			</c:forEach>
-			</select>
-		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="frontMain" class="level">객실 프론트</a></li>
+			<li><a href="frontService" class="level">서비스 프론트</a></li>
+		</ul>
 	</c:if>
-	<c:if test="${top eq 'event' }">	
+	<c:if test="${top eq 'event' }">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="eventList" class="level">행사 목록</a></li>
 			<li><a href="eventAdd" class="level">행사 등록</a></li>
 		</ul>
 	</c:if>
-	<c:if test="${top eq 'booking' }">	
+	<c:if test="${top eq 'booking' }">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="bookingList" class="level">예약 목록</a></li>
@@ -95,7 +84,7 @@
 			<li><a href="paymentList" class="level">결제 목록</a></li>
 		</ul>
 	</c:if>
-	<c:if test="${top eq 'delivery' }">	
+	<c:if test="${top eq 'delivery' }">
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="deliveryList" class="level">운송 목록</a></li>

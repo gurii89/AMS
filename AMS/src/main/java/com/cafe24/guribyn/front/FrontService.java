@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.extra.ExtraService;
 import com.cafe24.guribyn.room.Room;
 import com.cafe24.guribyn.room.RoomDao;
 import com.cafe24.guribyn.room.RoomService;
@@ -23,6 +24,9 @@ public class FrontService {
 	
 	@Autowired
 	private RoomService roomService;
+	
+	@Autowired
+	private ExtraService extraService;
 
 	//프로트 세션 설정
 	public String FrontSesseion() {
@@ -103,5 +107,12 @@ public class FrontService {
 		Gson gson = new Gson();
 		return gson.toJson(model);
 	}
-
+	
+	//서비스 프론트
+	public Model extraFront(Model model) {
+		//카테고리안의 extra > room의 카테코드가 19.
+		model.addAttribute("extralist", extraService.frontExtraName("19"));
+		return model;
+		
+	}
 }

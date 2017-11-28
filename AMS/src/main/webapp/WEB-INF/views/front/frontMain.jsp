@@ -67,8 +67,23 @@
 
 <body>
 	<div class="clearfix col-sm-10 top">
-		<div class="topb">프론트 메인</div>
-		
+		<div class="topb">객실 프론트</div>
+		<div class="floorside">
+			<select class="input-sm floorselect">
+				<option>층별 보기</option>
+				<c:forEach items="${floor}" var="Floor">
+					<option>${Floor}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div class="">
+			<select class="input-sm typeselect">
+				<option>타입별 보기</option>
+				<c:forEach items="${frontdroprt}" var="frontdropRt">
+					<option>${frontdropRt.roomTypeName}</option>
+				</c:forEach>
+			</select><p></p>
+		</div>
 		<c:set target="${toproom}" var="toproo" value="${toproom}"></c:set>
 		<c:forEach items="${frontRoom}" var="FrontRoom" begin="0"
 			end="${allroomcode}">

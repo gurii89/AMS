@@ -49,5 +49,11 @@ public class FrontController {
 		model.addAttribute("selfrontrt", ffrt);
 		return "front/frontRoomType";
 	}
-
+	//프론트 서비스 페이지
+	@RequestMapping(value="/frontService", method = RequestMethod.GET)
+	public String frontService(Model model) {
+		System.out.println("---프론트 서비스 메인---------from controller");
+		frontService.extraFront(model);
+		return "front/frontService";
+	}
 }
