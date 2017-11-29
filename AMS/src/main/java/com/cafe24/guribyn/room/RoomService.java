@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe24.guribyn.room.RoomDao;
+import com.google.gson.Gson;
 import com.cafe24.guribyn.cate.Cate;
 import com.cafe24.guribyn.cate.CateService;
 
@@ -116,8 +117,23 @@ public class RoomService {
 		System.out.println("---객실상태 불러오기---------from service");
 		return roomDao.RoomConditionshow(FrCode);
 	}
+
 	public List<RoomCondition> RoomRcCon() {
 		System.out.println("---전체 객실코드, 상태 불러오기---------from service");
 		return roomDao.RoomRcCon();
+	}
+	// 객실 종류 번호로 객실 호수 찾아오기
+	public String bookingRoomCode(int roomTypeCode) {
+		Gson gson = new Gson();
+		return gson.toJson(roomDao.bookingRoomCode(roomTypeCode));
+	}
+	// 예약된 객실 호수 찾아오기
+	public String bookingSearchRoom(int booRoomCode) {
+		try {
+			return Integer.toString(roomDao.bookingSearchRoom(booRoomCode));
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 }

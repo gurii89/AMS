@@ -21,7 +21,7 @@
                <li><a href="bookingList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 예약</a></li>
                <li><a href="extraList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 서비스</a></li>
                <li><a href="guestList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 고객</a></li>
-               <li><a href="itemList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 물품 올릴듯</a></li>
+               <li><a href="itemList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 물품</a></li>
                <li><a href="deliveryList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 운송</a></li>
                <li><a href="./keepList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 보관품</a></li>
                <li><a href="eventList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 행사</a></li>

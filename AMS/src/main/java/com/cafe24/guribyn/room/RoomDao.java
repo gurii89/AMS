@@ -77,9 +77,20 @@ public class RoomDao {
 		System.out.println("---객실상태 불러오기---------from dao");
 		return sqlSessionTemplate.selectOne(NS+".selectRoomCon", roomCode);
 	}
+
 	//전체 객실 코드와 상태 불러오기
 	public List<RoomCondition> RoomRcCon () {
 		System.out.println("---전체 객실코드, 상태 불러오기---------from dao");
 		return sqlSessionTemplate.selectList(NS+".selectRcCon");
 	}
+
+	//객실 종류 이름으로 객실 호수 찾아오기
+	public List<Room> bookingRoomCode(int roomTypeCode) {
+		return sqlSessionTemplate.selectList(NS+".bookingRoomCode", roomTypeCode);
+	}
+	//예약된 객실 호수 찾기
+	public int bookingSearchRoom(int booRoomCode) {
+		return sqlSessionTemplate.selectOne(NS+".bookingSearchRoom", booRoomCode);
+	}
+
 }

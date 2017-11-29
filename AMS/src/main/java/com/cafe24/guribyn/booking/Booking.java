@@ -1,10 +1,5 @@
 package com.cafe24.guribyn.booking;
 
-import java.util.Arrays;
-
-import com.cafe24.guribyn.extra.Extra;
-import com.cafe24.guribyn.room.Room;
-
 public class Booking {
  
     private int booCode;
@@ -15,8 +10,7 @@ public class Booking {
     private int booCount;
     private String booPath;
     private String booMemo;
-    private Extra[] useExtra;
-    private Room[] useRoom;
+    private String booCondition;
 	public int getBooCode() {
 		return booCode;
 	}
@@ -65,23 +59,17 @@ public class Booking {
 	public void setBooMemo(String booMemo) {
 		this.booMemo = booMemo;
 	}
-	public Extra[] getUseExtra() {
-		return useExtra;
+	public String getBooCondition() {
+		return booCondition;
 	}
-	public void setUseExtra(Extra[] useExtra) {
-		this.useExtra = useExtra;
-	}
-	public Room[] getUseRoom() {
-		return useRoom;
-	}
-	public void setUseRoom(Room[] useRoom) {
-		this.useRoom = useRoom;
+	public void setBooCondition(String booCondition) {
+		this.booCondition = booCondition;
 	}
 	@Override
 	public String toString() {
 		return "Booking [booCode=" + booCode + ", eId=" + eId + ", booDate=" + booDate + ", booIn=" + booIn
 				+ ", booNight=" + booNight + ", booCount=" + booCount + ", booPath=" + booPath + ", booMemo=" + booMemo
-				+ ", useExtra=" + Arrays.toString(useExtra) + ", useRoom=" + Arrays.toString(useRoom) + "]";
+				+ ", booCondition=" + booCondition + "]";
 	}
 	
 }

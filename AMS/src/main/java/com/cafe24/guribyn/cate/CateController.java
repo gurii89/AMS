@@ -19,7 +19,6 @@ public class CateController {
 				, @RequestParam(value = "cate", required=false) String cate 
 				, @RequestParam(value = "input", required=false) String input
 				, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
-		System.out.println("받아온 값 : " + cate+input+currentPage);
 		cateService.cateList(model, currentPage, cate, input);
 		return "cate/cateList";
 	}

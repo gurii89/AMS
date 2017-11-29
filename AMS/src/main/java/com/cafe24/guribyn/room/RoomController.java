@@ -114,5 +114,17 @@ public class RoomController {
 		roomService.RoomConditionAdd(roomCondition);
 		return "redirect:/frontMain";	
 	} 
-
+	//객실 종류 번호로 객실 호수 찾아오기
+	@ResponseBody
+	@RequestMapping(value = "bookingRoomCode")
+	public String bookingRoomCode(@RequestParam("roomTypeCode") int roomTypeCode) {
+		return roomService.bookingRoomCode(roomTypeCode);
+	}
+	//예약된 객실 호수 찾기
+	@ResponseBody
+	@RequestMapping(value = "bookingSearchRoom")
+	public String bookingSearchRoom(@RequestParam("booRoomCode") int booRoomCode) {
+		return roomService.bookingSearchRoom(booRoomCode);
+	}
+	
 }

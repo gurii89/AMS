@@ -9,7 +9,7 @@
 	<body>	
 		<div class="clearfix topb col-sm-12 top">예약 등록</div>
 		<div class="col-sm-6 top">
-			<c:import url="/WEB-INF/views/booking/bookingSub.jsp" />
+			<c:import url="/WEB-INF/views/booking/bookingAddSub.jsp" />
 		</div>
 		<div class="col-sm-6 top">
 			<div class="formb">
