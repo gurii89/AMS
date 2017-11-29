@@ -46,15 +46,24 @@
 				
 				// 체크인 처리
 				$('#inBtn').click(function(){
+					var checkTest = 0;
 					if($('.inCode').length > 0){
 						$.each($('.inCode'), function(index, item){
 							if($(item).val()){
-								$.get("checkInAdd?roomCode="+$(item).val()
-									+"&booRoomCode="+$(item).parent().attr('id'), function(){
-									$(location).attr('href', 'bookingDetail?booCode='+booCode)
-								})
+								checkTest++
 							}
 						})
+						// 예약 객실수와 체크인 하려는 객실 수가 같을 때에만 체크인 처리 됨
+						if($('.inCode').length == checkTest){
+							$.each($('.inCode'), function(index, item){
+								if($(item).val()){
+									$.get("checkInAdd?roomCode="+$(item).val()
+										+"&booRoomCode="+$(item).parent().attr('id'), function(){
+										$(location).attr('href', 'bookingDetail?booCode='+booCode)
+									})
+								}
+							})	
+						}
 					}
 				})
 			})
