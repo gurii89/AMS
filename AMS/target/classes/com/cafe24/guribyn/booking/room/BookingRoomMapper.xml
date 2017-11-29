@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="bookingCheckIn" parameterType="com.cafe24.guribyn.check.in.CheckIn">
 		UPDATE booking_room
-		SET	boo_room_condition = '체크인'
+		SET	boo_room_condition = '입실'
 		WHERE boo_room_code = #{booRoomCode}
 	</update>
 	

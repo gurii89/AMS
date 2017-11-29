@@ -50,8 +50,9 @@
 						$.each($('.inCode'), function(index, item){
 							if($(item).val()){
 								$.get("checkInAdd?roomCode="+$(item).val()
-									+"&booRoomCode="+$(item).parent().attr('id'), function(){})
-								$(location).attr('href', 'bookingDetail?booCode='+booCode)
+									+"&booRoomCode="+$(item).parent().attr('id'), function(){
+									$(location).attr('href', 'bookingDetail?booCode='+booCode)
+								})
 							}
 						})
 					}
@@ -61,7 +62,7 @@
 	</head>
 	<body>	
 		<div class="topb">예약 상세</div>
-		<div class="col-sm-12">
+		<div class="clearfix col-sm-12">
 			<div class="text-right">
 				<button id="payBtn" class="btn-default btn-sm">결제</button>
 				<button id="inBtn" class="btn-default btn-sm">체크인</button>
@@ -93,75 +94,79 @@
 				</tr>
 			</table>
 		</div>
-		<div class="col-sm-6">
-		<table class="bs">
-			<tr>
-				<th>객실 종류</th>
-				<th>객실 예약 상태</th>
-				<th>객실 이용금액</th>
-				<th>호수</th>
-			</tr>
-			<c:forEach items="${bookingRoomList }" var="br">
-				<tr class="bookingRoom">
-					<td id="${br.booCode }">${br.roomTypeCode }</td>
-					<td>${br.booRoomCondition }</td>
-					<td class="rate">${br.booRoomRate }</td>
-					<td id="${br.booRoomCode }" class="roomCode"></td>
-				</tr>
-			</c:forEach>
-		</table>
-		</div>
-		<div class="col-sm-6">
+		<div class="clearfix col-sm-12">
+			<div class="col-sm-6">
 			<table class="bs">
 				<tr>
-					<th>서비스명</th>
-					<th>예약일</th>
-					<th>서비스 예약 상태</th>
-					<th>서비스 이용금액</th>
+					<th>객실 종류</th>
+					<th>객실 예약 상태</th>
+					<th>객실 이용금액</th>
+					<th>호수</th>
 				</tr>
-				<c:forEach items="${bookingExtraList }" var="be">
-					<tr>
-						<td>${be.extraCode }</td>
-						<td>${be.booExtraDate }</td>
-						<td>${be.booExtraCondition }</td>
-						<td class="rate">${be.booExtraRate }</td>
+				<c:forEach items="${bookingRoomList }" var="br">
+					<tr class="bookingRoom">
+						<td id="${br.booCode }">${br.roomTypeCode }</td>
+						<td>${br.booRoomCondition }</td>
+						<td class="rate">${br.booRoomRate }</td>
+						<td id="${br.booRoomCode }" class="roomCode"></td>
 					</tr>
 				</c:forEach>
 			</table>
-		</div>
-		<div class="col-sm-6">
-			<table class="bs">
-				<tr>
-					<th>총 금액</th>
-					<th>결제 금액</th>
-					<th>잔금</th>
-				</tr>
-				<tr>
-					<td id="sumRate">0</td>
-					<td id="sumPay">${bookingPayment }</td>
-					<td id="RMP"></td>
-				</tr>
-			</table>
-		</div>
-		<div class="col-sm-6">
-			<table class="bs">
-				<tr>
-					<th>고객 번호</th>
-					<th>고객명</th>
-					<th>고객 성별</th>
-					<th>국적</th>
-					<th>연락처</th>
-				</tr>
-				<c:forEach items="${bookingGuestList }" var="bg">
+			</div>
+			<div class="col-sm-6">
+				<table class="bs">
 					<tr>
-						<td>${bg.gCode }</td>
-						<td>${bg.gName }</td>
-						<td>${bg.gGender }</td>
-						<td>${bg.gNation }</td>
-						<td>${bg.gPhone }</td>
+						<th>서비스명</th>
+						<th>예약일</th>
+						<th>서비스 상태</th>
+						<th>서비스 이용금액</th>
 					</tr>
-				</c:forEach>
-			</table>
+					<c:forEach items="${bookingExtraList }" var="be">
+						<tr>
+							<td>${be.extraCode }</td>
+							<td>${be.booExtraDate }</td>
+							<td>${be.booExtraCondition }</td>
+							<td class="rate">${be.booExtraRate }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
+		<div class="clearfix col-sm-12">
+			<div class="col-sm-6">
+				<table class="bs">
+					<tr>
+						<th>총 금액</th>
+						<th>결제 금액</th>
+						<th>잔금</th>
+					</tr>
+					<tr>
+						<td id="sumRate">0</td>
+						<td id="sumPay">${bookingPayment }</td>
+						<td id="RMP"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-sm-6">
+				<table class="bs">
+					<tr>
+						<th>고객 번호</th>
+						<th>고객명</th>
+						<th>고객 성별</th>
+						<th>국적</th>
+						<th>연락처</th>
+					</tr>
+					<c:forEach items="${bookingGuestList }" var="bg">
+						<tr>
+							<td>${bg.gCode }</td>
+							<td>${bg.gName }</td>
+							<td>${bg.gGender }</td>
+							<td>${bg.gNation }</td>
+							<td>${bg.gPhone }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>

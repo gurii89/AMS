@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cafe24.guribyn.booking.BookingDao;
 import com.cafe24.guribyn.booking.room.BookingRoomDao;
 import com.cafe24.guribyn.login.Login;
 import com.cafe24.guribyn.room.RoomCondition;
@@ -25,6 +26,9 @@ public class CheckInService {
 	@Autowired
 	RoomDao roomDao;
 	
+	@Autowired
+	BookingDao bookingDao;
+	
 	// 체크인 등록 처리
 	public void checkInAdd(CheckIn checkIn) {
 		Login result = (Login)session.getAttribute("loginfor");		
@@ -34,8 +38,9 @@ public class CheckInService {
 		RoomCondition roomCondition = new RoomCondition();
 		roomCondition.seteId(result.geteId());
 		roomCondition.setRoomCode(Integer.toString(checkIn.getRoomCode()));
-		roomCondition.setRoomConCondition("체크인");
+		roomCondition.setRoomConCondition("입실");
 		roomDao.RoomConditionAdd(roomCondition);
+		bookingDao.bookingCheckIn(checkIn);
 	}
 	
 }

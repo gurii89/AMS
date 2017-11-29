@@ -94,4 +94,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, '예약'
 		)
 	</insert>
+	
+	<update id="bookingCheckIn" parameterType="com.cafe24.guribyn.check.in.CheckIn">
+		UPDATE booking
+		LEFT JOIN booking_room ON booking.boo_code = booking_room.boo_code
+		SET boo_condition='입실'
+		WHERE boo_room_code = #{booRoomCode} 
+	</update>
 </mapper>

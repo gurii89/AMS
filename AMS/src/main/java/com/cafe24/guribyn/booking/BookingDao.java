@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.guribyn.check.in.CheckIn;
+
 @Repository
 public class BookingDao {
 
@@ -33,6 +35,11 @@ public class BookingDao {
 	// 단일 예약 확인
 	public Booking bookingOne(int booCode) {
 		return SST.selectOne(NS+"bookingOne", booCode);
+	}
+	
+	// 체크인시 예약 건 예약상태 변경
+	public void bookingCheckIn(CheckIn checkIn) {
+		SST.update(NS+"bookingCheckIn", checkIn);
 	}
 	
 }
