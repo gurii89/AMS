@@ -42,6 +42,7 @@
 						<option value="boo_night" class="input-sm">숙박일</option>						
 						<option value="boo_count" class="input-sm">인원</option>
 						<option value="boo_path" class="input-sm">유입경로</option>
+						<option value="boo_condition" class="input-sm">예약상태</option>
 					</select>
 					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
 					<input type="submit" value="검색" class="btn-default btn-sm">
@@ -51,6 +52,7 @@
 		<table class="bs">
 			<tr>
 				<th>예약 번호</th>
+				<th>예약 상태</th>
 				<th>예약일</th>
 				<th>체크인 예정일</th>
 				<th>숙박일</th>
@@ -61,6 +63,7 @@
 			<c:forEach items="${bookingList }" var="boo">
 				<tr class="boo">
 					<td>${boo.booCode }</td>
+					<td>${boo.booCondition }</td>
 					<td>${boo.booDate }</td>
 					<td>${boo.booIn }</td>
 					<td>${boo.booNight }</td>

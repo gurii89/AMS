@@ -14,7 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="bookingRoomList" resultMap="resultBookingRoom">
-		SELECT room_type_name room_type_code, boo_room_rate, boo_room_condition 
+		SELECT 
+			room_type_name room_type_code
+			, boo_room_rate
+			, boo_room_condition
+			, boo_room_code
+			, booking_room.room_type_code boo_code
 		FROM booking_room
 		LEFT JOIN room_type
 			ON booking_room.room_type_code = room_type.room_type_code
@@ -36,5 +41,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, '예약'
 		)
 	</insert>
+	
+	<update id="bookingCheckIn" parameterType="com.cafe24.guribyn.check.in.CheckIn">
+		UPDATE booking_room
+		SET	boo_room_condition = '체크인'
+		WHERE boo_room_code = #{booRoomCode}
+	</update>
 	
 </mapper>

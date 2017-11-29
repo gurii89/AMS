@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Count" property="booCount" />
 		<result column="boo_Path" property="booPath" />
 		<result column="boo_Memo" property="booMemo" />
+		<result column="boo_Condition" property="booCondition" />
 	</resultMap>
 	
 	<select id="bookingOne" resultMap="resultBooking">
@@ -23,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, boo_night
 			, boo_count
 			, boo_path 
+			, boo_condition
 		FROM booking
 		LEFT JOIN employee
 		ON booking.e_id = employee.e_id
@@ -43,13 +45,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="bookingList" parameterType="java.util.Map" resultMap="resultBooking">
 		SELECT 
-			boo_code
+			booking.boo_code
 			, e_name e_id
 			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
 			, boo_in
 			, boo_night
 			, boo_count
-			, boo_path 
+			, boo_path
+			, boo_condition
 		FROM booking
 		LEFT JOIN employee
 		ON booking.e_id = employee.e_id		
@@ -59,9 +62,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="cate == 'boo_date'">
 				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
-			</if>			
+			</if>
+			<if test="cate == 'condition'">
+				WHERE boo_condition = '예약'
+			</if>
 		</if>
-		ORDER BY boo_code DESC
+		ORDER BY booking.boo_code DESC
 		<if test="start != null">
 			LIMIT ${start}, ${pagePerRow}
 		</if>
@@ -76,6 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, boo_count
 			, boo_path
 			, boo_memo
+			, boo_condition
 		)VALUES(
 			#{eId}
 			, now()
@@ -84,6 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{booCount}
 			, #{booPath}
 			, #{booMemo}
+			, '예약'
 		)
 	</insert>
 </mapper>

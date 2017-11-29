@@ -124,6 +124,7 @@ public class BookingService {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("start", Integer.toString((currentPage-1)*pagePerRow));
 		map.put("pagePerRow", Integer.toString(pagePerRow));
+		map.put("cate", "condition");
 		Gson gson = new Gson();
 		return gson.toJson(bookingDao.bookingList(map));
 	}

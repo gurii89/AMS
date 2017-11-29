@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT 
 			extra_name extra_code
 			, boo_extra_rate
-			, DATE_FORMAT(boo_extra_date, '%Y-%m-%d %H:%i') boo_extra_date
+			, boo_extra_date
 			, boo_extra_condition
 		FROM booking_extra
 		LEFT JOIN extra 

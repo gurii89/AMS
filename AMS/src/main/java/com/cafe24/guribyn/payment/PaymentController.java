@@ -15,8 +15,10 @@ public class PaymentController {
 		
 	// 결제 등록 폼
 	@RequestMapping(value="paymentAdd")
-	public String paymentAdd(@RequestParam("booCode") int booCode, Model model) {
+	public String paymentAdd(Model model, @RequestParam("booCode") int booCode
+							, @RequestParam("payTotal") int payTotal) {
 		model.addAttribute("booCode", booCode);
+		model.addAttribute("payTotal", payTotal);
 		return "payment/paymentAdd";
 	}
 	
