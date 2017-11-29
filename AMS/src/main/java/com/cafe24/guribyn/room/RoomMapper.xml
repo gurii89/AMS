@@ -174,4 +174,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				now()
 			)
 	</insert>
+	
+	<select id="selectRcCon" resultMap="resultRoomCondition">
+		SELECT
+			room_code, room_con_condition, room_con_date 
+		FROM room_condition AS c
+		WHERE room_con_date=(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code) AND room_con_condition LIKE '%청소%'
+		GROUP BY room_code
+	</select>
 </mapper>

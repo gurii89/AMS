@@ -91,5 +91,11 @@
 			<li><a href="deliveryAdd" class="level">운송 등록</a></li>
 		</ul>
 	</c:if>
+	<c:if test="${top eq 'clean' }">
+		<br>
+		<ul class="nav navbar-nav">
+			<li><a href="#" class="level">청소탑</a></li>
+		</ul>
+	</c:if>
 </div>
 

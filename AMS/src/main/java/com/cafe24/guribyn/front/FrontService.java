@@ -28,7 +28,7 @@ public class FrontService {
 	@Autowired
 	private ExtraService extraService;
 
-	//프로트 세션 설정
+	//프론트 세션 설정
 	public String FrontSesseion() {
 		session.setAttribute("top", "front");
 		return "";

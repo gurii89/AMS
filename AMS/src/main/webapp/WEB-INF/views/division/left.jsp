@@ -27,6 +27,7 @@
                <li><a href="eventList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 행사</a></li>
                <li><a href="./noticeList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 공지사항</a></li>
                <li><a href="cateList" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 카테고리</a></li>
+               <li><a href="cleanMain" class="level"><span class="glyphicon glyphicon-chevron-right"></span> 청소</a></li>
             </ul>
             <br>
          </div>

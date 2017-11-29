@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.clean.CleanMapper">
+	<resultMap type="com.cafe24.guribyn.clean.Clean" id="resultClean">
+		<result column="clean_Code" property="cleanCode"></result>
+		<result column="room_Code" property="roomCode"></result>
+		<result column="e_id" property="eId"></result>
+		<result column="clean_Start" property="cleanStart"></result>
+		<result column="clean_End" property="cleanEnd"></result>
+	</resultMap>
+	
+	<insert id="insertCleanStart" parameterType="com.cafe24.guribyn.clean.Clean">
+		INSERT INTO clean(
+			room_code,
+			e_id,
+			clean_start
+		)
+		VALUES (
+			#{roomCode},
+			#{eId},
+			now()
+		)
+	</insert>
+	
+	<select id="selectCleanStart" resultMap="resultClean">
+		SELECT 
+			clean_start, 
+			clean_code, 
+			e_id 
+		FROM clean
+		WHERE room_code = #{roomCode} and clean_end is null
+	</select>
+	
+	<select id="selectAllClean" resultMap="resultClean">
+		SELECT 
+			clean_start,
+			room_code,
+			clean_code, 
+			e_id 
+		FROM clean
+		WHERE clean_end IS NULL
+	</select>
+</mapper>
