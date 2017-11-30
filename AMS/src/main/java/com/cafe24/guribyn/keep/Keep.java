@@ -8,7 +8,7 @@ public class Keep {
 	private int	eId;
 	private String kName;
 	private String kCondition;
-	private Date kDatetime;
+	private Date kDate;
 	private String kSite;
 	private String kMemo;
 	
@@ -36,11 +36,11 @@ public class Keep {
 	public void setkCondition(String kCondition) {
 		this.kCondition = kCondition;
 	}
-	public Date getkDatetime() {
-		return kDatetime;
+	public Date getkDate() {
+		return kDate;
 	}
-	public void setkDatetime(Date kDatetime) {
-		this.kDatetime = kDatetime;
+	public void setkDatetime(Date kDate) {
+		this.kDate = kDate;
 	}
 	public String getkSite() {
 		return kSite;
@@ -57,6 +57,6 @@ public class Keep {
 	@Override
 	public String toString() {
 		return "Keep [kCode=" + kCode + ", eId=" + eId + ", kName=" + kName + ", kCondition=" + kCondition
-				+ ", kDatetime=" + kDatetime + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
+				+ ", kDatetime=" + kDate + ", kSite=" + kSite + ", kMemo=" + kMemo + "]";
 	}
 }
