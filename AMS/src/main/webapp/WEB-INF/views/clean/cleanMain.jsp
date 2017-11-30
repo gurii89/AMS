@@ -17,6 +17,7 @@
 				var cleanList = JSON.parse(data)
 				var cleaningList = new Array();
 				var cleaningListStart = new Array();
+				var cleaningListeID = new Array();
 				
 				console.log(cleanList);
 					//청소중인 목록 가져와서 룸코드만 새배열에 추가
@@ -24,6 +25,7 @@
 						console.log(cleanList[i].roomCode);
 						cleaningList.push(cleanList[i].roomCode);
 						cleaningListStart.push(cleanList[i].cleanStart);
+						cleaningListeID.push(cleanList[i].eId);
 					}
 					console.log(cleaningList);
 					
@@ -35,7 +37,12 @@
 								var ctr = $(this).parent().parent();
 								var ctd = ctr.children();
 								$(ctd.eq(1)).html('청소중');
+								$(ctd.eq(2)).html(cleaningListeID[q]);
 								$(ctd.eq(3)).html(cleaningListStart[q]);
+								if(cleaningListeID[q] == eId) {
+									var btnn = $(ctd.eq(4)).children();
+									btnn.attr("disabled", false); 
+								}
 							}
 						}
 					
@@ -70,6 +77,11 @@
 								var startTime = JSON.parse(data)
 								console.log(startTime.cleanStart);
 								$(td.eq(3)).html(startTime.cleanStart);
+								$(td.eq(2)).html(eId);
+								if($(td.eq(2) == eId)){
+									var btnn = $(td.eq(4)).children();
+									btnn.attr("disabled", false); 
+								}
 							},
 							fail: function(request, status, error){
 							}
@@ -80,7 +92,27 @@
 				});
 
 				$(td.eq(1)).html("청소중");
-		})
+		});
+		
+		$('.clickce').click(function(){
+			var clickce = $(this);
+			var tr = clickce.parent().parent();
+			var td = tr.children();
+	        //해당 객실코드
+	        var Crc = td.eq(0).text();
+	        
+	        $.ajax({
+	        	url: "cleanEnd",
+	        	type: "GET",
+	        	data:"Crc="+Crc+"&eId="+eId,
+	        	success: function(data) {
+	        			$(tr).fadeOut();
+	        		},
+	        	fail: function(request, status, error){
+	        	}
+	        })
+		});
+		
 	});
 </script>
 </head>
@@ -103,7 +135,7 @@
 			<td>${cleanrtcon.roomConCondition}</td>
 			<td>청소 직원아이디</td>
 			<td><input type="button" value="청소시작" class="clickc"></td>
-			<td><input type="button" value="청소종료"></td>
+			<td><input type="button" value="청소종료" class="clickce" disabled="disabled"></td>
 		</tr>
 			</c:forEach>
 		</table>

@@ -49,4 +49,12 @@ public class CleanController {
 		Gson gson = new Gson();
 		return gson.toJson(cleanService.cleanList());
 	}
+	//청소종료
+	@ResponseBody
+	@RequestMapping(value="/cleanEnd")
+	public String cleanEnd(@RequestParam("Crc") String roomCode, @RequestParam("eId") String eId) {
+		System.out.println("---청소종료---------from controller");
+		cleanService.cleanEnd(roomCode, eId);
+		return "redirect:/cleanMain";
+	}
 }

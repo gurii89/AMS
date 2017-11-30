@@ -42,4 +42,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM clean
 		WHERE clean_end IS NULL
 	</select>
+	
+	<update id="UpdateCleanEnd" parameterType="String">
+		UPDATE clean
+		SET
+			clean_end = now()
+		WHERE room_code = #{roomCode} AND clean_end is null
+	</update>
 </mapper>

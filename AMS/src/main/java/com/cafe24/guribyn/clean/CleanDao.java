@@ -29,4 +29,9 @@ public class CleanDao {
 		System.out.println("---청소중인목록 불러오기---------from dao");
 		return sqlSessionTemplate.selectList(NS+".selectAllClean");
 	}
+	//청소완료
+	public int cleanEnd(String roomCode) {
+		System.out.println("---청소완료---------from dao");
+		return sqlSessionTemplate.update(NS+".UpdateCleanEnd", roomCode);
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.room.RoomCondition;
 import com.cafe24.guribyn.room.RoomService;
 
 @Service
@@ -49,9 +50,20 @@ public class CleanService {
 		clean.setRoomCode(roomCode);
 		return cleanDao.cleanStartTime(clean);
 	}
+	//청소중인 리스트
 	public List<Clean> cleanList() {
 		System.out.println("---청소 중인 리스트---------from service");
 		System.out.println("룸코드만 뽑기");	
 		return cleanDao.cleanList();
+	}
+	//청소완료 등록
+	public int cleanEnd(String roomCode, String eId) {
+		System.out.println("---청소 완료---------from service");
+		RoomCondition roomCondition = new RoomCondition();
+		roomCondition.setRoomCode(roomCode);
+		roomCondition.seteId(eId);
+		roomCondition.setRoomConCondition("청소완료");
+		roomService.RoomConditionAdd(roomCondition);
+		return cleanDao.cleanEnd(roomCode);
 	}
 }
