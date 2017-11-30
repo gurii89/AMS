@@ -1,12 +1,11 @@
 package com.cafe24.guribyn.booking.room;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.cafe24.guribyn.check.in.CheckIn;
 
 @Repository
 public class BookingRoomDao {
@@ -26,9 +25,9 @@ public class BookingRoomDao {
 		return SST.selectList(NS+"bookingRoomList", booCode);
 	}
 	
-	// 예약된 객실 체크인 처리
-	public void bookingCheckIn(CheckIn checkIn) {
-		SST.insert(NS+"bookingCheckIn", checkIn);
+	// 예약된 객실 상태 변경
+	public void bookingRoomCondition(Map<String, String> map) {
+		SST.insert(NS+"bookingRoomCondition", map);
 	}
 	
 }

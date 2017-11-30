@@ -66,6 +66,13 @@
 						}
 					}
 				})
+				
+				//예약 취소
+				$('#canBtn').click(function(){
+					if($('#booCondition').text() == '예약'){
+						$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
+					}
+				})
 			})
 		</script>
 	</head>
@@ -76,7 +83,7 @@
 				<button id="payBtn" class="btn-default btn-sm">결제</button>
 				<button id="inBtn" class="btn-default btn-sm">체크인</button>
 				<button class="btn-default btn-sm">체크아웃</button>
-				<button class="btn-default btn-sm">예약 취소</button>
+				<button id="canBtn" class="btn-default btn-sm">예약 취소</button>
 			</div>
 			<table class="bs">
 				<tr>
@@ -92,7 +99,7 @@
 				</tr>
 				<tr>
 					<td id="booCode">${booking.booCode }</td>
-					<td>${booking.booCondition }</td>
+					<td id="booCondition">${booking.booCondition }</td>
 					<td>${booking.booDate }</td>
 					<td>${booking.booIn }</td>
 					<td>${booking.booNight }</td>
@@ -127,14 +134,12 @@
 					<tr>
 						<th>서비스명</th>
 						<th>예약일</th>
-						<th>서비스 상태</th>
 						<th>서비스 이용금액</th>
 					</tr>
 					<c:forEach items="${bookingExtraList }" var="be">
 						<tr>
 							<td>${be.extraCode }</td>
 							<td>${be.booExtraDate }</td>
-							<td>${be.booExtraCondition }</td>
 							<td class="rate">${be.booExtraRate }</td>
 						</tr>
 					</c:forEach>

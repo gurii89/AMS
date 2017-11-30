@@ -138,4 +138,14 @@ public class BookingService {
 		model.addAttribute("bookingPayment", paymentDao.bookingPayment(booCode));
 	}
 	
+	// 예약 취소
+	public void bookingCancel(Model model, String booCode) {
+		model.addAttribute("booCode", booCode);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("booCode", booCode);
+		map.put("condition", "취소");
+		bookingDao.bookingCondition(map);
+		bookingRoomDao.bookingRoomCondition(map);
+	}
+	
 }

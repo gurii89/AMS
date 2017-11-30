@@ -6,7 +6,6 @@ public class BookingExtra {
 	private int booCode;
 	private String extraCode;
 	private String eId;
-	private String booExtraCondition;
 	private String booExtraDate;
 	private int booExtraRate;
 	public int getBooExtraCode() {
@@ -33,12 +32,6 @@ public class BookingExtra {
 	public void seteId(String eId) {
 		this.eId = eId;
 	}
-	public String getBooExtraCondition() {
-		return booExtraCondition;
-	}
-	public void setBooExtraCondition(String booExtraCondition) {
-		this.booExtraCondition = booExtraCondition;
-	}
 	public String getBooExtraDate() {
 		return booExtraDate;
 	}
@@ -54,7 +47,7 @@ public class BookingExtra {
 	@Override
 	public String toString() {
 		return "BookingExtra [booExtraCode=" + booExtraCode + ", booCode=" + booCode + ", extraCode=" + extraCode
-				+ ", eId=" + eId + ", booExtraCondition=" + booExtraCondition + ", booExtraDate=" + booExtraDate
+				+ ", eId=" + eId + ", booExtraDate=" + booExtraDate
 				+ ", booExtraRate=" + booExtraRate + "]";
 	}	
 }

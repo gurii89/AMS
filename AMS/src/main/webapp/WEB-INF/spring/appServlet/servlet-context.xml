@@ -30,12 +30,21 @@
 		</mvc:message-converters> 
 	</mvc:annotation-driven>
 	<!-- 커넥션풀 생성 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://192.168.123.117/guribyn?useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="username" value="guribyn"/>
         <property name="password" value="pizza8282"/>
-    </bean>   
+    </bean>
+    <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	     <constructor-arg ref="dataSourceSpied" />
+	     <property name="logFormatter">
+	         <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+	               <property name="loggingType" value="MULTI_LINE" />
+	               <property name="sqlPrefix" value="SQL             :" />
+	         </bean>
+	     </property>
+	</bean>
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- mybatis 세션생성시 사용할 dataSource주입 -->
         <property name="dataSource" ref="dataSource" />

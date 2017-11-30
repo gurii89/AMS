@@ -1,5 +1,8 @@
 package com.cafe24.guribyn.check.in;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +37,16 @@ public class CheckInService {
 		Login result = (Login)session.getAttribute("loginfor");		
 		checkIn.seteId(result.geteId());
 		checkInDao.checkIn(checkIn);
-		bookingRoomDao.bookingCheckIn(checkIn);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("booRoomCode", Integer.toString(checkIn.getBooRoomCode()));
+		map.put("condition", "입실");
+		bookingRoomDao.bookingRoomCondition(map);
 		RoomCondition roomCondition = new RoomCondition();
 		roomCondition.seteId(result.geteId());
 		roomCondition.setRoomCode(Integer.toString(checkIn.getRoomCode()));
 		roomCondition.setRoomConCondition("입실");
 		roomDao.RoomConditionAdd(roomCondition);
-		bookingDao.bookingCheckIn(checkIn);
+		bookingDao.bookingCondition(map);
 	}
 	
 }
