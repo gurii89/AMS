@@ -6,8 +6,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
 	$(document).ready(function(){
-		var eId = ${loginfor.eId};
 
+		var eId = ${loginfor.eId};
+		
+		$.ajax({
+        	url:"cleanList",
+			type:"GET",
+			data:"",
+			success: function(data) {
+				var cleanList = JSON.parse(data)
+				var cleaningList = new Array();
+				var cleaningListStart = new Array();
+				
+				console.log(cleanList);
+					//청소중인 목록 가져와서 룸코드만 새배열에 추가
+					for(i=0; i<cleanList.length; i++){
+						console.log(cleanList[i].roomCode);
+						cleaningList.push(cleanList[i].roomCode);
+						cleaningListStart.push(cleanList[i].cleanStart);
+					}
+					console.log(cleaningList);
+					
+					//청소요청인 목록중 새배열에 있으면 tr 숨기기
+					$('.rc').each(function(k){
+						var clrt = $(this).val();
+						for(q=0; q<cleaningList.length; q++){
+							if(clrt == cleaningList[q]){
+								var ctr = $(this).parent().parent();
+								var ctd = ctr.children();
+								$(ctd.eq(1)).html('청소중');
+								$(ctd.eq(3)).html(cleaningListStart[q]);
+							}
+						}
+					
+					})
+			},
+			fail: function(request, status, error){
+			}
+		});
+		
 		$('.clickc').click(function(){
 
 	            var clickc = $(this);

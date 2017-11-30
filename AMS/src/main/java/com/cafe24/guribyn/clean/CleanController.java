@@ -41,4 +41,12 @@ public class CleanController {
 		Gson gson = new Gson();
 		return gson.toJson(cleanService.cleanStartTime(roomCode, eId));
 	}
+	//청소중인 리스트 불러오기
+	@ResponseBody
+	@RequestMapping(value="/cleanList")
+	public String cleanList() {
+		System.out.println("---청소중인 리스트 불러오기---------from controller");
+		Gson gson = new Gson();
+		return gson.toJson(cleanService.cleanList());
+	}
 }

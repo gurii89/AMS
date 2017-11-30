@@ -119,7 +119,7 @@ public class RoomService {
 	}
 
 	public List<RoomCondition> RoomRcCon() {
-		System.out.println("---전체 객실코드, 상태 불러오기---------from service");
+		System.out.println("---룸서비스임전체 객실코드, 상태 불러오기---------from service");
 		return roomDao.RoomRcCon();
 	}
 	// 객실 종류 번호로 객실 호수 찾아오기

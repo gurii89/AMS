@@ -27,7 +27,6 @@ public class CleanDao {
 	//청소중인 목록
 	public List<Clean> cleanList(){
 		System.out.println("---청소중인목록 불러오기---------from dao");
-		System.out.println(sqlSessionTemplate.selectList(NS+".selectAllClean"));
 		return sqlSessionTemplate.selectList(NS+".selectAllClean");
 	}
 }
