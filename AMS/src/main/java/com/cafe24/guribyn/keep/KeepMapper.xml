@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_id" property="eId" />
 		<result column="k_name" property="kName" />
 		<result column="k_condition" property="kCondition" />
-		<result column="k_datetime" property="kDatetime" />
+		<result column="k_date" property="kDate" />
 		<result column="k_site" property="kSite" />
 		<result column="k_memo" property="kMemo" />
 	</resultMap>
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, e_id
 		, k_name
 		, k_condition
-		, k_datetime
+		, k_date
 		, k_site
 		, k_memo
 		)
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, e_id
 		, k_name
 		, k_condition
-		, k_datetime
+		, k_date
 		, k_site
 		, k_memo
 		FROM keep
@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		, e_id
 		, k_name
 		, k_condition
-		, k_datetime
+		, k_date
 		, k_site
 		, k_memo
 		FROM keep

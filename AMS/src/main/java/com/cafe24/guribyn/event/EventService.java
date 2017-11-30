@@ -46,8 +46,10 @@ public class EventService {
 		map.put("today", (String)session.getAttribute("today"));
 		List<Event> list = eventDao.eventCheck(map);		
 		if(list.size() == 0) {
+			System.out.println("행사 기간 없음");
 			model.addAttribute("eventList", eventDao.eventCheck(null));
 		}else {
+			System.out.println("행사 기간 있음"+list);
 			model.addAttribute("event", list);
 		}
 	}

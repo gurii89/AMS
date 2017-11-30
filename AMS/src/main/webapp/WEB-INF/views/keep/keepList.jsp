@@ -27,7 +27,7 @@
 				<td>${keep.eId}</td>
 				<td>${keep.kName}</td>
 				<td>${keep.kCondition}</td>
-				<td>${keep.kDatetime}</td>
+				<td>${keep.kDate}</td>
 				<td>${keep.kSite}</td>
 				<td>${keep.kMemo}</td>
 				<td><a class= "btn-default btn-sm" href="./keepMod?kCode=${keep.kCode}">수정</a></td>
