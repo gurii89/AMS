@@ -34,4 +34,10 @@ public class CleanDao {
 		System.out.println("---청소완료---------from dao");
 		return sqlSessionTemplate.update(NS+".UpdateCleanEnd", roomCode);
 	}
+	//청소완료 리스트
+	public List<Clean> cleanEndList(){
+		System.out.println("---청소완료리스트---------from dao");
+		System.out.println ("테스트"+sqlSessionTemplate.selectList(NS+".selectCleanList"));
+		return sqlSessionTemplate.selectList(NS+".selectCleanList");
+	}
 }

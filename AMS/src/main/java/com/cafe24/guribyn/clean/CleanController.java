@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -56,5 +57,12 @@ public class CleanController {
 		System.out.println("---청소종료---------from controller");
 		cleanService.cleanEnd(roomCode, eId);
 		return "redirect:/cleanMain";
+	}
+	//청소완료페이지
+	@RequestMapping(value="/cleanEndList",  method = RequestMethod.GET)
+	public String cleanEndList(Model model) {
+		System.out.println("---청소완료페이지---------from controller");
+		model.addAttribute("cleanEndList", cleanService.cleanEndList());
+		return "clean/cleanEndList";
 	}
 }

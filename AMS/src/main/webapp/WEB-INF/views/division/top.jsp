@@ -95,7 +95,7 @@
 		<br>
 		<ul class="nav navbar-nav">
 			<li><a href="cleanMain" class="level">청소메인</a></li>
-			<li><a href="#" class="level">청소완료목록</a></li>
+			<li><a href="cleanEndList" class="level">청소완료목록</a></li>
 		</ul>
 	</c:if>
 </div>

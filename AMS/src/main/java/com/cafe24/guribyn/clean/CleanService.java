@@ -66,4 +66,9 @@ public class CleanService {
 		roomService.RoomConditionAdd(roomCondition);
 		return cleanDao.cleanEnd(roomCode);
 	}
+	//청소완료 리스트
+	public List<Clean> cleanEndList(){
+		System.out.println("---청소완료 리스트    ---------from service");
+		return cleanDao.cleanEndList();
+	}
 }

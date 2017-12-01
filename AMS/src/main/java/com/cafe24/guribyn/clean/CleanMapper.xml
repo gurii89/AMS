@@ -49,4 +49,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			clean_end = now()
 		WHERE room_code = #{roomCode} AND clean_end is null
 	</update>
+	
+	<select id="selectCleanList" resultMap="resultClean">
+		SELECT 
+			clean_code,
+			room_code,
+			e_id,
+			clean_start,
+			clean_end
+		FROM clean
+	</select>
 </mapper>
