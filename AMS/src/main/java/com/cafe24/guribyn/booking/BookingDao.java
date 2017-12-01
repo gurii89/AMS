@@ -38,8 +38,8 @@ public class BookingDao {
 	}
 	
 	// 체크인시 예약 건 예약상태 변경
-	public void bookingCheckIn(CheckIn checkIn) {
-		SST.update(NS+"bookingCheckIn", checkIn);
+	public void bookingCondition(Map<String, String> map) {
+		SST.update(NS+"bookingCondition", map);
 	}
 	
 }

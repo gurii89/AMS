@@ -60,4 +60,11 @@ public class BookingController {
 		return "booking/bookingDetail";
 	}
 	
+	// 예약 취소
+	@RequestMapping(value = "bookingCancel")
+	public String bookingCancel(Model model, @RequestParam("booCode") String booCode) {
+		bookingService.bookingCancel(model, booCode);
+		return "redirect:/bookingDetail";
+	}
+	
 }

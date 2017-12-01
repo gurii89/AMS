@@ -8,7 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Code" property="booCode" />
 		<result column="extra_Code" property="extraCode" />
 		<result column="e_Id" property="eId" />
-		<result column="boo_Extra_Condition" property="booExtraCondition" />
 		<result column="boo_Extra_Date" property="booExtraDate" />
 		<result column="boo_Extra_Rate" property="booExtraRate" />
 	</resultMap>
@@ -18,7 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			extra_name extra_code
 			, boo_extra_rate
 			, boo_extra_date
-			, boo_extra_condition
 		FROM booking_extra
 		LEFT JOIN extra 
 			ON booking_extra.extra_code = extra.extra_code
@@ -32,14 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_id
 			, boo_extra_date
 			, boo_extra_rate
-			, boo_extra_condition
 		)VALUES(
 			(SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1)
 			, #{extraCode}
 			, #{eId}
 			, #{booExtraDate}
 			, #{booExtraRate}
-			, '예약'
 		)
 	</insert>
 	

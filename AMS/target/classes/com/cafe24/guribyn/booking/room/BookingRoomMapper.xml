@@ -42,10 +42,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	<update id="bookingCheckIn" parameterType="com.cafe24.guribyn.check.in.CheckIn">
+	<update id="bookingRoomCondition" parameterType="java.util.Map">
 		UPDATE booking_room
-		SET	boo_room_condition = '입실'
-		WHERE boo_room_code = #{booRoomCode}
+		SET	boo_room_condition = #{condition}
+		<if test="booRoomCode != null">
+			WHERE boo_room_code = #{booRoomCode}
+		</if>
+		<if test="booCode != null">
+			WHERE boo_code = #{booCode}
+		</if>
 	</update>
 	
 </mapper>

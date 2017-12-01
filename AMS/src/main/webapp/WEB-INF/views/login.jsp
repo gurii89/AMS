@@ -25,9 +25,9 @@
 				<div class="col-xs-3">
 					<form method="post" action="./login">
 						<label for="inputsm">ID</label>
-						<input class="form-control input-sm" name="eId" type="text">
+						<input class="form-control input-sm" name="eId" type="text" value="1">
 						<label for="inputsm">PW</label>
-						<input class="form-control input-sm" name="ePw" type="password">
+						<input class="form-control input-sm" name="ePw" type="password" value="1">
 						<br>
 						<input type="submit" value="LOGIN" class="btn-default btn-sm">
 					</form>
