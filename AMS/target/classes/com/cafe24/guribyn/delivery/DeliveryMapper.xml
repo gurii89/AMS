@@ -13,9 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column= "d_day" property="dDay" />	
 	</resultMap>
 	
+	<select id="deliveryCount" resultType="int">
+	SELECT COUNT(*) FROM delivery
+	</select>
+	
 	<insert id="deliveryAdd" parameterType="com.cafe24.guribyn.delivery.Delivery">
-	INSERT INTO
-	delivery(
+	INSERT INTO delivery(
 	k_code
 	, g_code
 	, e_id
@@ -63,8 +66,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id = "deliveryMod" parameterType="com.cafe24.guribyn.delivery.Delivery">
 	UPDATE delivery
 	SET
-	
-	
+	g_code = #{gCode}
+	,d_coname=#{dConame}
+	, d_number = #{dNumber}
+	, d_day = #{dDay}
+	Where
+	k_code = #{kCode}
 	</update>
 	
 	</mapper>

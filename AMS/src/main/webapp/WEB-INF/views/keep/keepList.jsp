@@ -20,6 +20,7 @@
 			<th>발견장소</th>
 			<th>기타</th>
 			<th>수정</th>
+			<th>발송</th>
 		</tr>
 		<c:forEach items="${keepList}" var="keep">
 			<tr>
@@ -31,6 +32,7 @@
 				<td>${keep.kSite}</td>
 				<td>${keep.kMemo}</td>
 				<td><a class= "btn-default btn-sm" href="./keepMod?kCode=${keep.kCode}">수정</a></td>
+				<td><a class= "btn-default btn-sm" href="./deliveryAdd">택배발송</a></td>
 				</tr>
 		</c:forEach>
 	</table>			
