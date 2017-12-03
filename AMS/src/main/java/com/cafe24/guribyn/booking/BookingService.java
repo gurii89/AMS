@@ -66,7 +66,7 @@ public class BookingService {
 	}
 	
 	// 예약 등록 처리
-	public void bookingAddPro(Booking booking) {
+	public int bookingAddPro(Booking booking) {
 		Login result = (Login)session.getAttribute("loginfor");
 		booking.seteId(result.geteId());
 		if(booking.getBooPath().equals("")) {
@@ -96,6 +96,8 @@ public class BookingService {
 			}
 			session.setAttribute("bookingRoom", null);
 		}
+		
+		return bookingDao.searchBooCode();
 	}
 	
 	// 예약 목록
@@ -108,7 +110,7 @@ public class BookingService {
 		}else {
 			map = null;
 		}
-		map = commonService.paging(model, currentPage, 2, bookingDao.bookingCount(map), map);
+		map = commonService.paging(model, currentPage, 10, bookingDao.bookingCount(map), map);
 		model.addAttribute("bookingList", bookingDao.bookingList(map));
 		session.setAttribute("top", "booking");
 	}
@@ -139,8 +141,7 @@ public class BookingService {
 	}
 	
 	// 예약 취소
-	public void bookingCancel(Model model, String booCode) {
-		model.addAttribute("booCode", booCode);
+	public void bookingCancel(String booCode) {		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("booCode", booCode);
 		map.put("condition", "취소");

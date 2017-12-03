@@ -33,7 +33,7 @@ public class CheckInService {
 	BookingDao bookingDao;
 	
 	// 체크인 등록 처리
-	public void checkInAdd(CheckIn checkIn) {
+	public void checkInAddPro(CheckIn checkIn) {
 		Login result = (Login)session.getAttribute("loginfor");		
 		checkIn.seteId(result.geteId());
 		checkInDao.checkIn(checkIn);
@@ -41,6 +41,7 @@ public class CheckInService {
 		map.put("booRoomCode", Integer.toString(checkIn.getBooRoomCode()));
 		map.put("condition", "입실");
 		bookingRoomDao.bookingRoomCondition(map);
+		
 		RoomCondition roomCondition = new RoomCondition();
 		roomCondition.seteId(result.geteId());
 		roomCondition.setRoomCode(Integer.toString(checkIn.getRoomCode()));

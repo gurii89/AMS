@@ -10,6 +10,9 @@
 				var sum = 0;
 				var result;
 				var booCode = $('#booCode').text();
+				var roomCon = $('#booCondition').text()
+				
+				// 가격 및 결제 금액 셋팅
 				$('.rate').each(function(i, t){
 					sum += Number($(this).text())
 				})				
@@ -18,7 +21,9 @@
 				
 				// 결제창으로 이동
 				$('#payBtn').click(function(){
-					$(location).attr('href', 'paymentAdd?booCode='+booCode+"&payTotal="+sum)
+					if(roomCon == '예약' || roomCon == '입실'){
+						$(location).attr('href', 'paymentAdd?booCode='+booCode+"&payTotal="+sum)	
+					}
 				})
 				
 				// 호수 출력
@@ -47,7 +52,7 @@
 				// 체크인 처리
 				$('#inBtn').click(function(){
 					var checkTest = 0;
-					if($('.inCode').length > 0){
+					if($('.inCode').length > 0 && $('.bookingRoom').length > 0 && $('.bookingGuest').length > 0){
 						$.each($('.inCode'), function(index, item){
 							if($(item).val()){
 								checkTest++
@@ -69,9 +74,18 @@
 				
 				//예약 취소
 				$('#canBtn').click(function(){
-					if($('#booCondition').text() == '예약'){
+					if(roomCon == '예약'){
 						$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
 					}
+				})
+				
+				//체크아웃 처리
+				$('#outBtn').click(function(){
+					if($('#RMP').text() == 0){
+						if(roomCon == '입실' || !($('.bookingRoom').length) && roomCon == '예약'){
+							$(location).attr('href', 'checkOutAdd?booCode='+$('#booCode').text())
+						}
+					}					
 				})
 			})
 		</script>
@@ -82,7 +96,7 @@
 			<div class="text-right">
 				<button id="payBtn" class="btn-default btn-sm">결제</button>
 				<button id="inBtn" class="btn-default btn-sm">체크인</button>
-				<button class="btn-default btn-sm">체크아웃</button>
+				<button id="outBtn" class="btn-default btn-sm">체크아웃</button>
 				<button id="canBtn" class="btn-default btn-sm">예약 취소</button>
 			</div>
 			<table class="bs">
@@ -90,7 +104,7 @@
 					<th>예약 번호</th>
 					<th>예약 상태</th>
 					<th>예약일</th>
-					<th>체크인 예정일</th>
+					<th>체크인 예정</th>
 					<th>숙박일</th>
 					<th>인원</th>
 					<th>유입경로</th>
@@ -115,8 +129,8 @@
 			<table class="bs">
 				<tr>
 					<th>객실 종류</th>
-					<th>객실 예약 상태</th>
-					<th>객실 이용금액</th>
+					<th>예약 상태</th>
+					<th>이용금액</th>
 					<th>호수</th>
 				</tr>
 				<c:forEach items="${bookingRoomList }" var="br">
@@ -134,7 +148,7 @@
 					<tr>
 						<th>서비스명</th>
 						<th>예약일</th>
-						<th>서비스 이용금액</th>
+						<th>이용금액</th>
 					</tr>
 					<c:forEach items="${bookingExtraList }" var="be">
 						<tr>
@@ -171,7 +185,7 @@
 						<th>연락처</th>
 					</tr>
 					<c:forEach items="${bookingGuestList }" var="bg">
-						<tr>
+						<tr class="bookingGuest">
 							<td>${bg.gCode }</td>
 							<td>${bg.gName }</td>
 							<td>${bg.gGender }</td>

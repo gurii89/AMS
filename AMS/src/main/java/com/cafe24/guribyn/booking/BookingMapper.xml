@@ -15,6 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Condition" property="booCondition" />
 	</resultMap>
 	
+	<select id="searchBooCode" resultType="int">
+		SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1	
+	</select>
+	
 	<select id="bookingOne" resultMap="resultBooking">
 		SELECT 
 			boo_code
@@ -63,9 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="cate == 'boo_date'">
 				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
 			</if>
-			<if test="cate == 'condition'">
-				WHERE boo_condition = '예약'
-			</if>
+		</if>
+		<if test="cate == 'condition'">
+			WHERE boo_condition = '예약'
 		</if>
 		ORDER BY booking.boo_code DESC
 		<if test="start != null">

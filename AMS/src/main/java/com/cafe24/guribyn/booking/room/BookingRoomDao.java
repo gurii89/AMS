@@ -27,7 +27,7 @@ public class BookingRoomDao {
 	
 	// 예약된 객실 상태 변경
 	public void bookingRoomCondition(Map<String, String> map) {
-		SST.insert(NS+"bookingRoomCondition", map);
+		SST.update(NS+"bookingRoomCondition", map);
 	}
 	
 }
