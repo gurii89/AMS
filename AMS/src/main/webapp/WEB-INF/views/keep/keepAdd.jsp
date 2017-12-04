@@ -11,17 +11,17 @@
 	<form action="keepAdd" method="post">
 			<p>등록인 : </p>
 			<input type="text" value="${loginfor.eId}" name="eId"
-				readonly="readonly"><br>
+				readonly="readonly"><br><br>
 			<p>보관품명 : </p>
-			<textarea name="kName"></textarea><br>
+			<input type="text" name="kName" required="required"><br><br>
 			<p>보관상태 : </p>
 			<select name="kCondition" id="kCondition" required class="input-sm">
 			<option value="보관등록" class="input-sm">보관등록</option>
-			</select>
+			</select><br><br>
 			<p>발견장소 : </p>
-			<textarea name="kSite"></textarea><br>
+			<input type ="text" name="kSite" required="required"><br>
 			<p>메모 : </p>
-			<textarea name="kMemo"></textarea>
+			<input type = "text" name="kMemo"><br><br>
 			<input type="submit" value="등록">
 	</form>			
 </body>

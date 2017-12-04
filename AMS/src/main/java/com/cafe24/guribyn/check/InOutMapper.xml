@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.guribyn.check.InOutMapper">
+	<resultMap type="com.cafe24.guribyn.check.InOut" id="resultInOut">
+		<result column="boo_Code" property="booCode"/>
+		<result column="boo_Condition" property="booCondition"/>
+		<result column="boo_Date" property="booDate"/>
+		<result column="room_Code" property="roomCode"/>
+		<result column="in_Date" property="inDate"/>
+		<result column="out_Date" property="outDate"/>
+		<result column="in_Id" property="inId"/>
+		<result column="out_Id" property="outId"/>
+	</resultMap>
+	
+	<select id="inOutList" parameterType="java.util.Map" resultMap="resultInOut">
+		SELECT 
+			booking.boo_code
+			, boo_condition
+			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
+			, room_code
+			, DATE_FORMAT(in_date, '%Y-%m-%d %H:%i') in_date
+			, chin.e_name in_id
+			, DATE_FORMAT(out_date, '%Y-%m-%d %H:%i') out_date
+			, chout.e_name out_id
+		FROM booking
+		LEFT JOIN booking_room
+			ON booking.boo_code = booking_room.boo_code
+		LEFT JOIN check_in
+			ON booking_room.boo_room_code = check_in.boo_room_code
+		LEFT JOIN check_out
+			ON booking.boo_code = check_out.boo_code
+		LEFT JOIN employee chin
+			ON check_in.e_id = chin.e_id
+		LEFT JOIN employee chout
+			ON check_out.e_id = chout.e_id
+		WHERE LENGTH(in_date) > 0 OR LENGTH(out_date) > 0
+		<if test="input != null">
+			AND ${cate} = #{input}
+		</if>
+		ORDER BY boo_code DESC
+		LIMIT ${start}, ${pagePerRow}
+	</select>
+	
+	<select id="inOutCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM booking
+		LEFT JOIN booking_room
+			ON booking.boo_code = booking_room.boo_code
+		LEFT JOIN check_in
+			ON booking_room.boo_room_code = check_in.boo_room_code
+		LEFT JOIN check_out
+			ON booking.boo_code = check_out.boo_code
+		WHERE LENGTH(in_date) > 0 OR LENGTH(out_date) > 0
+		<if test="cate != null">
+			AND ${cate} = #{input}
+		</if>
+	</select>
+	
+</mapper>

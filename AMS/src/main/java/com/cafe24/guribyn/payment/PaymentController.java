@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PaymentController {
@@ -17,16 +18,17 @@ public class PaymentController {
 	@RequestMapping(value="paymentAdd")
 	public String paymentAdd(Model model, @RequestParam("booCode") int booCode
 							, @RequestParam("payTotal") int payTotal) {
+		paymentService.paymentAdd(model, booCode);
 		model.addAttribute("booCode", booCode);
 		model.addAttribute("payTotal", payTotal);
 		return "payment/paymentAdd";
 	}
 	
 	// 결제 등록 처리
+	@ResponseBody
 	@RequestMapping(value="paymentAdd", method = RequestMethod.POST)
-	public String paymentAddPro(Payment payment, Model model) {
-		paymentService.paymentAddPro(payment, model);
-		return "redirect:/bookingDetail";
+	public void paymentAddPro(Payment payment) {
+		paymentService.paymentAddPro(payment);
 	}
 	
 	// 결제 목록
@@ -44,6 +46,13 @@ public class PaymentController {
 	public String paymentCancel(@RequestParam(value = "pCode") int pCode) {
 		paymentService.paymentCancel(pCode);
 		return "redirect:/paymentList";
+	}
+	
+	// 결제 취소
+	@ResponseBody
+	@RequestMapping("paymentCancelNon")
+	public void paymentCancelNon(@RequestParam(value = "pCode") int pCode) {
+		paymentService.paymentCancel(pCode);
 	}
 	
 }

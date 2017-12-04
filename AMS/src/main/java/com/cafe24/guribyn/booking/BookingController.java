@@ -23,9 +23,9 @@ public class BookingController {
 	
 	// 예약 등록 처리
 	@RequestMapping(value = "bookingAdd", method = RequestMethod.POST)
-	public String bookingAddPro(Booking booking) {
-		bookingService.bookingAddPro(booking);
-		return "redirect:/bookingList";
+	public String bookingAddPro(Model model, Booking booking) {
+		model.addAttribute("booCode", bookingService.bookingAddPro(booking));
+		return "redirect:/bookingDetail";
 	}
 	
 	// 예약 목록
@@ -63,7 +63,8 @@ public class BookingController {
 	// 예약 취소
 	@RequestMapping(value = "bookingCancel")
 	public String bookingCancel(Model model, @RequestParam("booCode") String booCode) {
-		bookingService.bookingCancel(model, booCode);
+		bookingService.bookingCancel(booCode);
+		model.addAttribute("booCode", booCode);
 		return "redirect:/bookingDetail";
 	}
 	

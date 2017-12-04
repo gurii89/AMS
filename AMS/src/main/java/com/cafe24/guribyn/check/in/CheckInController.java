@@ -15,7 +15,7 @@ public class CheckInController {
 	@ResponseBody
 	@RequestMapping(value = "checkInAdd")
 	public void checkInAddPro(CheckIn checkIn) {
-		checkInService.checkInAdd(checkIn);
+		checkInService.checkInAddPro(checkIn);
 	}
 	
 }

@@ -12,28 +12,25 @@ public class DeliveryDao {
 	@Autowired
 	private SqlSessionTemplate SST;
 	
-	private String NS = "com.cafe24.guribyn.delivery.DeliveryMapper.";
+	private String NS = "com.cafe24.guribyn.delivery.DeliveryMapper";
 	
 	//운송 등록
 	public void deliveryAdd(Delivery delivery) {
-		SST.insert(NS+"deliveryAdd", delivery);
+		SST.insert(NS+".deliveryAdd", delivery);
 	}
 	
 	//운송 목록
 	public List<Delivery> deliveryList() {
-		return SST.selectList(NS+"deliveryList");
+		return SST.selectList(NS+".deliveryList");
 	}
 	
 	//운송 수정 폼
-	public Delivery deliveryOne(String kCode) {
-		return SST.selectOne(NS+"deliveryOne", kCode);
+	public Delivery deliveryOne(int kCode) {
+		return SST.selectOne(NS+".deliveryOne", kCode);
 	}
 	//운송 수정 처리
 	public void deliveryMod(Delivery delivery) {
-		SST.update(NS+"deliveryMod", delivery);
+		SST.update(NS+".deliveryMod", delivery);
 	}
-	//분류에 맞는 k_code
-	public List<Delivery> kName(String kCode) {
-		return SST.selectList(NS+"kName", kCode);
-	}
+	
 }

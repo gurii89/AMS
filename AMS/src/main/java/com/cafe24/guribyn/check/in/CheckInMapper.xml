@@ -3,6 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.guribyn.check.in.CheckInMapper">
+
+	<select id="inSearchRoom" resultType="int">
+		SELECT room_code FROM check_in
+		WHERE boo_room_code = 
+			ANY(SELECT boo_room_code FROM booking_room WHERE boo_code = #{booCode})
+	</select>
 		
 	<insert id="checkInAdd" parameterType="com.cafe24.guribyn.check.in.CheckIn">
 		INSERT INTO check_in(

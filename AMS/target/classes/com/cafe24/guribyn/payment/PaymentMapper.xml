@@ -48,7 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>			
 		</if>
 		ORDER BY p_code DESC
-		LIMIT ${start}, ${pagePerRow}
+		<if test="start != null">
+			LIMIT ${start}, ${pagePerRow}
+		</if>
 	</select>
 	
 	<select id="bookingPayment" resultType="int">

@@ -66,7 +66,7 @@ public class CateService {
 		}else {
 			map = null;
 		}		
-		map = commonService.paging(model, currentPage, 2, cateDao.cateCount(map), map);
+		map = commonService.paging(model, currentPage, 10, cateDao.cateCount(map), map);
         session.setAttribute("top", "cate");
 		model.addAttribute("cateList", cateDao.cateList(map));
 	}

@@ -10,10 +10,10 @@
 <body>
 	<div class="topb">운송 수정</div>
 	<form action="deliveryMod" method="post" id="frm" class="form-horizontal">
-		<input type="hidden" value="${keep.kCode}" name="kCode">
+		<input type="hidden" value="${delivery.kCode}" name="kCode">
 		<div>
 			고객아이디 : <input type="text" name="gCode" id="gCode"
-				value="${keep.gCode }" required class="input-sm">
+				value="${delivery.gCode }" required class="input-sm">
 		</div>
 		<div>
 			운송회사명 : <select name="dConame" id="dConame" class="input-sm">

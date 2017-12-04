@@ -24,9 +24,16 @@ public class PaymentService {
 	@Autowired
 	CommonService commonService;
 
+	// 결제 등록 폼
+	public void paymentAdd(Model model, int booCode) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", "boo_code");
+		map.put("input", Integer.toString(booCode));
+		model.addAttribute("paymentList", paymentDao.paymentList(map));		
+	}
+	
 	// 결제 등록 처리
-	public void paymentAddPro(Payment payment, Model model) {
-		model.addAttribute("booCode", payment.getBooCode());
+	public void paymentAddPro(Payment payment) {
 		if(payment.getpMemo() == "") {
 			payment.setpMemo(null);			
 		}
@@ -45,7 +52,7 @@ public class PaymentService {
 		}else {
 			map = null;
 		}
-		map = commonService.paging(model, currentPage, 2, paymentDao.paymentCount(map), map);
+		map = commonService.paging(model, currentPage, 10, paymentDao.paymentCount(map), map);
 		model.addAttribute("paymentList", paymentDao.paymentList(map));
 	}
 	

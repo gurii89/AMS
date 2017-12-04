@@ -42,4 +42,9 @@ public class BookingDao {
 		SST.update(NS+"bookingCondition", map);
 	}
 	
+	// 가장 최근 예약 건 코드 확인
+	public int searchBooCode() {
+		return SST.selectOne(NS+"searchBooCode");
+	}
+	
 }
