@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -87,11 +90,13 @@ public class RoomController {
 		return "redirect:/roomTypeList";
 	}
 	//객실 특징 목록
+	@ResponseBody
 	@RequestMapping(value="/roomOptionList", method = RequestMethod.GET)
-	public String roomOptionList(Model model, @RequestParam("roomTypeCode") String roomTypeCode) {
+	public String roomOptionList(Model model, @RequestParam("rcc") String roomTypeCode) {
 		System.out.println("---객실 특징 리스트---------from controller");
-		model.addAttribute("roomOptionList", roomService.RoomOptionList(roomTypeCode));
-		return "/room/roomOptionList";
+		roomService.RoomOptionList(roomTypeCode);
+		Gson gson = new Gson();
+		return gson.toJson(roomService.RoomOptionList(roomTypeCode));
 	}
 	//객실 특징 중복검사
 	@ResponseBody
