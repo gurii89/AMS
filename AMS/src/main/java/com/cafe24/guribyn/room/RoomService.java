@@ -117,10 +117,15 @@ public class RoomService {
 		System.out.println("---객실상태 불러오기---------from service");
 		return roomDao.RoomConditionshow(FrCode);
 	}
-
+	//전체 객실 코드와 상태 불러오기(청소)
 	public List<RoomCondition> RoomRcCon() {
 		System.out.println("---룸서비스임전체 객실코드, 상태 불러오기---------from service");
 		return roomDao.RoomRcCon();
+	}
+	//전체 객실 코드와 상태 불러오기(프론트)
+	public List<RoomCondition> RoomRcAllCon() {
+		System.out.println("---룸서비스임전체 객실코드, 상태 불러오기 프론트---------from service");
+		return roomDao.RoomRcAllCon();
 	}
 	// 객실 종류 번호로 객실 호수 찾아오기
 	public String bookingRoomCode(int roomTypeCode) {

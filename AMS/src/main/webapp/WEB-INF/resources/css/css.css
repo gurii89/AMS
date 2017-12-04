@@ -128,8 +128,73 @@ table.bs td {
 	margin : 2px;
 	
 	
-	border-radius: 10px;
+	border-radius: 10px;	
+}
+
+.frontR2 {
+	display:block;
+	font-weight: bold;
+	color: #486AAE;
+	font-size: 11px;
 	
+	background-image:linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+	width: 60px;
+	height:60px;
+	float:left;
+	padding: 2px;
+	margin : 2px;
+	
+	
+	border-radius: 10px;	
+}
+
+.frontR3 {
+	display:block;
+	font-weight: bold;
+	color: #486AAE;
+	font-size: 11px;
+	
+	background-image:linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+	width: 60px;
+	height:60px;
+	float:left;
+	padding: 2px;
+	margin : 2px;
+	
+	
+	border-radius: 10px;	
+}
+.frontR4 {
+	display:block;
+	font-weight: bold;
+	color: #486AAE;
+	font-size: 11px;
+	
+	background-image:linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
+	width: 60px;
+	height:60px;
+	float:left;
+	padding: 2px;
+	margin : 2px;
+	
+	
+	border-radius: 10px;	
+}
+.frontR5 {
+	display:block;
+	font-weight: bold;
+	color: #486AAE;
+	font-size: 11px;
+	
+	background-image:linear-gradient(-225deg, #B6CEE8 0%, #F578DC 100%);
+	width: 60px;
+	height:60px;
+	float:left;
+	padding: 2px;
+	margin : 2px;
+	
+	
+	border-radius: 10px;	
 }
 
 .frontE {
@@ -163,7 +228,12 @@ table.main {
 .floorside{
 	float: left;
 	margin :0px 10px;
-	
+}
+
+.floorside2{
+	float: left;
+	margin :0px 10px;
+	padding-right: 10px;
 }
 table.main td {
     width: 120px;
@@ -186,6 +256,14 @@ table.main td {
         float: none;
         background-color: transparent;
 }
+.drccheck{
+		clear: none;
+        border: 0px none;
+        float: none;
+        background-color: transparent;
+        text-align: center;        
+}
+
 .exName {
 	clear: none;
         border: 0px none;

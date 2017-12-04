@@ -194,4 +194,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE room_con_date=(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code) AND room_con_condition = "청소요청"
 		GROUP BY room_code
 	</select>
+	
+	<select id="selectAllRcCon" resultMap="resultRoomCondition">
+		SELECT
+			room_code, room_con_condition, room_con_date 
+		FROM room_condition AS c
+		WHERE room_con_date=(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code)
+		GROUP BY room_code DESC;
+	</select>
 </mapper>

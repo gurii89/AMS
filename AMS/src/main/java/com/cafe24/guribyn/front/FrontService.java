@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.extra.ExtraService;
 import com.cafe24.guribyn.room.Room;
+import com.cafe24.guribyn.room.RoomCondition;
 import com.cafe24.guribyn.room.RoomDao;
 import com.cafe24.guribyn.room.RoomService;
 import com.google.gson.Gson;
@@ -37,13 +38,16 @@ public class FrontService {
 	public Model allRoom(Model model){
 		System.out.println("---전체 객실 불러오기---------from service");
 		List<Room> list = roomService.roomToFront();
+		List<RoomCondition> conlist = roomService.RoomRcAllCon();
 		System.out.println("호수 가져오기"+list);
+		System.out.println("상태 가져오기"+conlist);
 		int allroomcode = list.size(); //총 객실 수 
 		int toproom = 0; //최고층 변수
 		int bottomroom = 0; //최저층 변수
 		
 		int [] roc = new int[list.size()]; //최저최고층 뽑는 int 리스트
 		int [] rocv = new int[list.size()]; //온전한 호수 int 리스트
+		String [] rcon = new String[list.size()];
 		
 		//호수랑, 층수 넣을 타입
 		ArrayList<FrontRoom> frontRoom = new ArrayList<FrontRoom>();
@@ -51,9 +55,12 @@ public class FrontService {
 		//1.최고,최저층 뽑기
 		for(int i=0; i<list.size(); i++) {
 			FrontRoom fr = new FrontRoom();
+			String rconf = conlist.get(i).getRoomConCondition();
 			int a = (list.get(i).getRoomCode()).length();
 			rocv[i] =  Integer.parseInt(list.get(i).getRoomCode());
 			roc[i] = Integer.parseInt((list.get(i).getRoomCode()).substring(0, a-2));
+			rcon[i] = rconf;
+			fr.setRoomConF(rcon[i]);
 			fr.setRoomCodeMarkF(roc[i]);
 			fr.setRoomCodeF(rocv[i]);
 			fr.setRoomTypeCodeNameF(list.get(i).getRoomTypeCode());
@@ -89,10 +96,7 @@ public class FrontService {
 			
 			Collections.reverse(floor);
 			System.out.println("floor = "+floor);
-			model.addAttribute("floor", floor);
-			
-			//룸타입 드롭다운을 위한가져오기
-			
+			model.addAttribute("floor", floor);			
 			
 			model.addAttribute("frontdroprt", roomService.roomTypeList());
 			

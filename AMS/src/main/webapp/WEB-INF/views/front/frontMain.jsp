@@ -7,6 +7,35 @@
 <script>
 	$(document).ready(function(){
 		
+		$('.drc').each(function(q){
+			var drcolor = $(this).val();
+			if(drcolor == '입실'){
+				var checkcon = $(this).parent();
+				$(checkcon).removeClass('frontR');
+				$(checkcon).addClass('frontR2');
+				var checkCon = checkcon.children();
+				$(checkCon.eq(4)).html('<p><div class="drccheck">입실</div>');
+			}else if(drcolor == '청소요청'){
+				var checkcon = $(this).parent();
+				$(checkcon).removeClass('frontR');
+				$(checkcon).addClass('frontR3');
+				var checkCon = checkcon.children();
+				$(checkCon.eq(4)).html('<p><div class="drccheck">청소요청</div>');
+			}else if(drcolor == '청소완료'){
+				var checkcon = $(this).parent();
+				$(checkcon).removeClass('frontR');
+				$(checkcon).addClass('frontR4');
+				var checkCon = checkcon.children();
+				$(checkCon.eq(4)).html('<p><div class="drccheck">청소완료</div>');
+			}else if(drcolor == '예약'){
+				var checkcon = $(this).parent();
+				$(checkcon).removeClass('frontR');
+				$(checkcon).addClass('frontR5');
+				var checkCon = checkcon.children();
+				$(checkCon.eq(4)).html('<p><div class="drccheck">예약</div>');
+			}
+		});
+		
 		$('.typeselect').change(function(){
 			var typeValue = $(this).val();
 			
@@ -31,6 +60,23 @@
 				if(dmValue == floorValue){
 					$(this).parent().fadeIn();
 				}else if(floorValue == '층별 보기'){
+					$(this).parent().fadeIn();
+				}
+				else{
+					$(this).parent().hide();
+				}
+			})	
+		});
+		
+		$('.conselect').change(function(){
+			var conValue = $(this).val();
+			console.log(conValue);
+			
+			$('.drc').each(function(k){				
+				var drcValue = $(this).val();				
+				if(drcValue == conValue){
+					$(this).parent().fadeIn();
+				}else if(conValue == '객실 상태별 보기'){
 					$(this).parent().fadeIn();
 				}
 				else{
@@ -76,7 +122,7 @@
 				</c:forEach>
 			</select>
 		</div>
-		<div class="">
+		<div class="floorside2">
 			<select class="input-sm typeselect">
 				<option>타입별 보기</option>
 				<c:forEach items="${frontdroprt}" var="frontdropRt">
@@ -84,12 +130,23 @@
 				</c:forEach>
 			</select><p></p>
 		</div>
+		<div class="">
+			<select class="input-sm conselect">
+					<option>객실 상태별 보기</option>
+					<option>공실</option>
+					<option>예약</option>
+					<option>입실</option>
+					<option>점검요청</option>
+					<option>청소요청</option>
+					<option>청소완료</option>
+			</select><p></p>
+		</div>
 		<c:set target="${toproom}" var="toproo" value="${toproom}"></c:set>
 		<c:forEach items="${frontRoom}" var="FrontRoom" begin="0"
 			end="${allroomcode}">
 			<c:choose>
 				<c:when test="${FrontRoom.roomCodeMarkF eq toproo}">
-					<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
+					<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"><input class="drc hidden" value="${FrontRoom.roomConF}"><div class="drccheck"></div></span>
 				</c:when>
 				<c:otherwise>
 					<c:set var="toproo" value="${toproo-1}"></c:set>
@@ -107,11 +164,11 @@
 								</c:choose>
 							</c:forEach>
 							<span class="wcon"><br></span>
-							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
+							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"><input class="drc hidden" value="${FrontRoom.roomConF}"><div class="drccheck"></div></span>
 						</c:when>
 						<c:otherwise>
 							<span><br class="wcon"></span>
-							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"></span>
+							<span class="frontR"><input class="de" type="button" value="${FrontRoom.roomCodeF}"><input class="dn hidden" value="${FrontRoom.roomTypeCodeNameF}"><input class="dm hidden" value="${FrontRoom.roomCodeMarkF}"><input class="drc hidden" value="${FrontRoom.roomConF}"><div class="drccheck"></div></span>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>

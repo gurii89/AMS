@@ -3,6 +3,7 @@ public class FrontRoom {
 	private int roomCodeF;
 	private int roomCodeMarkF;
 	private String roomTypeCodeNameF;
+	private String roomConF;
 	public int getRoomCodeF() {
 		return roomCodeF;
 	}
@@ -21,9 +22,16 @@ public class FrontRoom {
 	public void setRoomTypeCodeNameF(String roomTypeCodeNameF) {
 		this.roomTypeCodeNameF = roomTypeCodeNameF;
 	}
+	public String getRoomConF() {
+		return roomConF;
+	}
+	public void setRoomConF(String roomConF) {
+		this.roomConF = roomConF;
+	}
 	@Override
 	public String toString() {
 		return "FrontRoom [roomCodeF=" + roomCodeF + ", roomCodeMarkF=" + roomCodeMarkF + ", roomTypeCodeNameF="
-				+ roomTypeCodeNameF + "]";
+				+ roomTypeCodeNameF + ", roomConF=" + roomConF + "]";
 	}
+	
 }

@@ -120,7 +120,14 @@
 <body>
 	<div class="clearfix col-sm-10 top">
 		<div class="topb">청소 메인</div>
-	
+	<form>
+		<select class="input-sm">
+			<option class="input-sm">검색 조건 선택</option>
+			<option class="input-sm">객실 코드</option>
+			<option class="input-sm">담당자</option>
+			<option class="input-sm">상태</option>
+		</select>
+	</form>
 	<table class="bs">
 		<tr>
 			<th>객실코드</th>
