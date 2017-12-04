@@ -51,6 +51,11 @@
 						})
 					}
 				})
+				
+				// 예약 상세로 돌아가기
+				$('#back').click(function(){
+					$(location).attr('href', 'bookingDetail?booCode='+$('#booCode').val())
+				})
 			})
 		</script>
 	</head>
@@ -109,6 +114,7 @@
 			</div>
 			<div>
 				<input type="submit" id="btn" class="btn-default btn-sm" value="등록">
+				<button id="back" class="btn-default btn-sm">돌아가기</button>
 			</div>
 		</form>
 	</body>

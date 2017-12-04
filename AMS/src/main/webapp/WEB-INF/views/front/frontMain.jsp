@@ -104,7 +104,7 @@
 			})
 				$('.rdbtn').click(function(){
 					$('.hidevdv').html('')
-					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>예약</option><option>공실</option><option>청소요청</option><option>점검요청</option><option>입실</option></select>')
+					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>공실</option><option>예약</option><option>청소요청</option><option>점검요청</option><option>입실</option></select>')
 			})
 		})
 	});
