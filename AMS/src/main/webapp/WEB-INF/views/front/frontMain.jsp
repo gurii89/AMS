@@ -87,6 +87,8 @@
 				
 		//상세정보 가져오기
 		$('.de').click(function(){
+			$('.hidevdv').html('<input type="button" value="수정" class="rdbtn">');
+			$('.vdv').html('<input type="text" class="derc" value="" readonly="readonly">');
 			$('.visible').fadeIn();
 			$('.minirtcode').html('<input class="hidden "name="roomCode" value="'+$(this).val()+'">'+$(this).val()+'호')
 			$.ajax({

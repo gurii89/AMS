@@ -75,7 +75,7 @@
 	 		</c:forEach>
 	 		
 	 	</table>	
-	 		 <table class="bs sectable">
+	 		 <table class="bs sectable table-hover">
 	 	<tr>
 	 		<th>객실 타입 명</th>
 	 		<th>객실 특징</th>
