@@ -118,7 +118,9 @@ public class BookingService {
 	// 예약 개수
 	public String bookingCount() {
 		Gson gson = new Gson();
-		return gson.toJson(bookingDao.bookingCount(null));
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", "condition");
+		return gson.toJson(bookingDao.bookingCount(map));
 	}
 	
 	// 예약 고객을 위한 예약 목록

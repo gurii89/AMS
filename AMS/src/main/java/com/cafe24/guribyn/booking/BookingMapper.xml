@@ -37,13 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="bookingCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM booking
-		<if test="cate != null">
+		<if test="input != null">
 			<if test="cate != 'boo_date'">
 				WHERE booking.${cate} = #{input}
 			</if>
 			<if test="cate == 'boo_date'">
 				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
-			</if>		
+			</if>
+		</if>
+		<if test="cate == 'condition'">
+			WHERE boo_condition = '예약'
 		</if>
 	</select>
 	
