@@ -6,10 +6,29 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script>
 			$(function(){
-				// 결제일 선택시 검색창 날짜 입력으로 변경
+				var condi = $('#condi').html()
+								
 				$('#cate').on('change', function(){
-					if($('#cate option:selected').val() == 'p_date'){
+					var val = $('#cate option:selected').val()
+					$('#condi').html(condi)
+					// 검색조건 결제일 선택시 input type date로
+					if(val == 'p_date'){
 						$('#input').attr('type', 'date')
+					//
+					}else if(val == 'p_condition'){
+						var pCon = ['결제', '취소']
+						var result = '';
+						for(i=0; i<pCon.length; i++){
+							result += '<option class="input-sm">'+pCon[i]+'</option>'
+						}
+						$('#condi').html('<select name="input" class="input-sm">'+result+'<select>')
+					}else if(val == 'p_method'){
+						var pMet = ['cash', 'card', 'etc']
+						var result = '';
+						for(i=0; i<pMet.length; i++){
+							result += '<option class="input-sm">'+pMet[i]+'</option>'
+						}
+						$('#condi').html('<select name="input" class="input-sm">'+result+'<select>')
 					}else{
 						$('#input').attr('type', 'text')
 						$('#input').val('')
@@ -40,12 +59,14 @@
 					<select name="cate" id="cate" required class="input-sm">
 						<option id="opt" class="input-sm" value="">검색 조건 선택</option>
 						<option id="opt" class="input-sm" value="boo_code">예약번호</option>
-						<option id="opt" class="input-sm" value="e_id">등록자</option>
+						<option id="opt" class="input-sm" value="e_name">등록자</option>
 						<option id="opt" class="input-sm" value="p_date">결제일</option>
 						<option id="opt" class="input-sm" value="p_condition">결제상태</option>
 						<option id="opt" class="input-sm" value="p_method">결제방법</option>
 					</select>
-					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					<span id="condi">
+						<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					</span>
 					<input type="submit" value="검색" class="btn-default btn-sm">
 				</form>
 			</c:otherwise>

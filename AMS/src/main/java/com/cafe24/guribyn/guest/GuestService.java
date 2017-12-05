@@ -40,7 +40,6 @@ public class GuestService {
 			map = null;
 		}	
 		map = commonService.paging(model, currentPage, 10, guestDao.guestCount(map), map);        
-		session.setAttribute("top", "guest");
 		model.addAttribute("guestList", guestDao.guestList(map));
 	}
 	

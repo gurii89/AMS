@@ -122,7 +122,7 @@ $('document').ready(function(){
 			// 객실 이용 금액 출력	
 			$('#roomTypeCode').on('change', function(){
 				if($('#roomTypeCode').val()){
-					var roomSum = Number($('#FX').val())*Number($('#roomTypeCode option:selected').attr('id'))
+					var roomSum = $('#FX').val()*$('#roomTypeCode option:selected').attr('id')
 					$('#roomRate').val(roomSum)
 				}
 			})						
@@ -158,21 +158,28 @@ $('document').ready(function(){
 	})
 	
 	// 행사 적용폭 변경시 가격 변경 함수
-	function eventChange(){
+	function eventChange(){		
 		// 이용금액 초기화(2배 했을 경우 0.5배 하도록)
 		if(FX != 1){
 			FX = 1/FX
 		}
 		
+		// 총합 이용금 초기화
 		$('#sum').html(0)
+		// 객실 이용금액 더하기
 		$.each($('.booRoom'), function(index, item){
 			var result = $(item).children().last().html()*$('#FX').val()*FX
 			$(item).children().last().html(result)
 			$('#sum').html(Number($('#sum').html())+Number($(item).children().last().html()))
 		})
+		// 서비스 이용금액 더하기
 		$.each($('.booExtra'), function(index, item){
 			$('#sum').html(Number($('#sum').html())+Number($(item).children().last().html()))
 		})
+		// 임시 객실 등록 폼 가격 변수 연동
+		if($('#roomRate').val()){
+			$('#roomRate').val($('#roomRate').val()*$('#FX').val()*FX)
+		}
 		FX = $('#FX').val()
 	}	
 	

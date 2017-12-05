@@ -16,13 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="paymentCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM payment
+		LEFT JOIN employee
+		ON employee.e_id = payment.e_id
 		<if test="cate != null">
 			<if test="cate != 'p_date'">
-				WHERE payment.${cate} = #{input}
+				WHERE ${cate} = #{input}
 			</if>
 			<if test="cate == 'p_date'">
-				WHERE DATE_FORMAT(p_date, '%Y-%m-%d') = #{input}
-			</if>	
+				WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
+			</if>		
 		</if>
 	</select>
 
@@ -41,10 +43,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON employee.e_id = payment.e_id
 		<if test="input != null">
 			<if test="cate != 'p_date'">
-				WHERE payment.${cate} = #{input}
+				WHERE ${cate} = #{input}
 			</if>
 			<if test="cate == 'p_date'">
-				WHERE DATE_FORMAT(p_date, '%Y-%m-%d') = #{input}
+				WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
 			</if>			
 		</if>
 		ORDER BY p_code DESC

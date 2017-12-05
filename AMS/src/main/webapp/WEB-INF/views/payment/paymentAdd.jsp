@@ -48,7 +48,7 @@
 					<option class="input-sm" value="">방식 선택</option>
 					<option class="input-sm" value="card">카드</option>
 					<option class="input-sm" value="cash">현금</option>
-					<option class="input-sm" value="outside">외부</option>
+					<option class="input-sm" value="etc">외부</option>
 				</select>
 			</div>
 			<div class="formb">
