@@ -119,8 +119,8 @@
 		<div class="clearfix col-sm-12">
 			<div class="text-right">
 				<button id="payBtn" class="btn-default btn-sm">결제</button>
-				<span id="in"><button id="inBtn" class="btn-default btn-sm">체크인</button></span>
-				<span id="out"><button id="outBtn" class="btn-default btn-sm">체크아웃</button></span>
+				<span id="in"><button id="inBtn" class="btn-default btn-sm">입실</button></span>
+				<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>
 				<span id="can"><button id="canBtn" class="btn-default btn-sm">예약 취소</button></span>
 			</div>
 			<table class="bs">

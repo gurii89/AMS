@@ -30,6 +30,7 @@ public class EventDao {
 		return SST.selectList(NS+"eventCheck", map);
 	}
 	
+	// 기본 행사 fx 중복 검사
 	public int eventFx(int fx) {
 		return SST.selectOne(NS+"eventFx", fx);
 	}

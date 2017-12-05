@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.cafe24.guribyn.login.Login;
+import com.google.gson.Gson;
 
 @Service
 public class EventService {
@@ -40,32 +41,16 @@ public class EventService {
 		session.setAttribute("top", "event");
 	}
 	
-	// 비수기 성수기 검사
-	public void eventCheck(Model model) {
+	// 행사 시작일 종료일 체크
+	public String eventCheck(String someday) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("today", (String)session.getAttribute("today"));
-		List<Event> list = eventDao.eventCheck(map);		
+		map.put("someday", someday);
+		List<Event> list = eventDao.eventCheck(map);
 		if(list.size() == 0) {
-			System.out.println("행사 기간 없음");
-			model.addAttribute("eventList", eventDao.eventCheck(null));
-		}else {
-			System.out.println("행사 기간 있음"+list);
-			model.addAttribute("event", list);
+			return null;
 		}
-	}
-	
-	// 행사 시작일, 종료일 중복체크
-	public String eventStratEnd(String start, String end) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("today", start);
-		if(eventDao.eventCheck(map).size() != 0) {
-			return "no";
-		}
-		map.put("today", end);
-		if(eventDao.eventCheck(map).size() != 0) {
-			return "no";
-		}
-		return "ok";
+		Gson gson = new Gson();
+		return gson.toJson(list.get(0));		
 	}
 	
 	// 기본 행사 중복 검사

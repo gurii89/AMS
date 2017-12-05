@@ -34,12 +34,11 @@ public class EventController {
 		return "event/eventList";
 	}
 	
-	// 행사 시작일, 종료일 중복검사
+	// 행사 시작일, 종료일 체크
 	@ResponseBody
 	@RequestMapping(value = "eventCheck")
-	public String extraName(@RequestParam ("eventStart") String start
-							, @RequestParam ("eventEnd") String end) {
-		return eventService.eventStratEnd(start, end);
+	public String extraName(@RequestParam ("someday") String someday) {
+		return eventService.eventCheck(someday);
 	}
 	
 	// 기본 행사 fx 중복불가

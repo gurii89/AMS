@@ -16,6 +16,7 @@ import com.cafe24.guribyn.booking.extra.BookingExtraDao;
 import com.cafe24.guribyn.booking.room.BookingRoom;
 import com.cafe24.guribyn.booking.room.BookingRoomDao;
 import com.cafe24.guribyn.cate.CateService;
+import com.cafe24.guribyn.event.EventDao;
 import com.cafe24.guribyn.event.EventService;
 import com.cafe24.guribyn.guest.GuestDao;
 import com.cafe24.guribyn.login.Login;
@@ -56,10 +57,13 @@ public class BookingService {
 	@Autowired
 	PaymentDao paymentDao;
 	
+	@Autowired
+	EventDao eventDao;
+	
 	// 예약 등록 폼
 	public void bookingAdd(Model model) {
 		cateService.cateOptionSearch(model, "cate_small", "extra");
-		eventService.eventCheck(model);
+		model.addAttribute("eventList", eventDao.eventCheck(null));
 		model.addAttribute("roomTypeList", roomService.roomTypeList());
 		session.setAttribute("bookingExtra", null);
 		session.setAttribute("bookingRoom", null);

@@ -1,9 +1,12 @@
 $('document').ready(function(){
+	var eventPrev = $('#event').html()
+	var FX = 1
+	
 	// 서비스 혹은 객실 하나 이상 등록시에만 예약 가능
 	$('#btn').click(function(){
 		if($('#booIn').val() && $('#booNight').val() && $('#booCount').val()){
-			if($('.boo').length < 1){
-				$('#er').html('객실 혹은 서비스 등록 없이 예약 할 수 없습니다')
+			if($('.booRoom').length < 1 && $('.booExtra').length < 1){
+				$('#er').html('객실 혹은 서비스 없이 예약 할 수 없음')
 			}else{
 				$('#frm').submit()
 			}
@@ -34,7 +37,7 @@ $('document').ready(function(){
 								+"&extraDate="+$('#extraDate').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#extraTable').append('<tr class="boo"><td>'+$('#extraCode option:selected').text()
+							$('#extraTable').append('<tr class="booExtra"><td>'+$('#extraCode option:selected').text()
 							+'</td><td>'+result.booExtraDate+'</td><td>'+result.booExtraRate+'</td></tr>')
 							sum += Number(result.booExtraRate)
 							$('#sum').text(sum)
@@ -73,8 +76,7 @@ $('document').ready(function(){
 			// 서비스 이용 금액 출력	
 			$('#extraCode').on('change', function(){
 				if($('#extraCode').val()){
-					var extraSum = $('#extraCode option:selected').attr('id')
-					$('#extraRate').val(extraSum)
+					$('#extraRate').val($('#extraCode option:selected').attr('id'))
 				}
 			})
 		}
@@ -102,7 +104,7 @@ $('document').ready(function(){
 						, data:'roomTypeCode='+$('#roomTypeCode').val()+'&roomRate='+$('#roomRate').val()
 						, success:function(data){
 							var result = JSON.parse(data)
-							$('#roomTable').append('<tr class="boo"><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
+							$('#roomTable').append('<tr class="booRoom"><td>'+$('#roomTypeCode option:selected').text()+'</td><td>'
 							+result.booRoomRate+'</td></tr>')
 							sum += Number(result.booRoomRate)
 							$('#sum').text(sum)
@@ -126,4 +128,52 @@ $('document').ready(function(){
 			})						
 		}
 	})
+	
+	// 행사가 확인 함수
+	function eventCheck(){
+		$.get("eventCheck?someday="+$('#booIn').val(), function(data){
+			// 행사 있을 경우 행사가만 출력
+			if(data){
+				var result = JSON.parse(data)
+				$('#event').html('<input type="hidden" id="FX" value="'+result.eventFx+'">조정불가')
+				eventChange()
+			// 행사 없을 경우 기본 행사 출력
+			}else{
+				$('#event').html(eventPrev)
+				eventChange()
+				$('#FX').on('change', function(){
+					eventChange()
+				})
+				
+			}
+		})
+	}
+	
+	// 오늘 날짜 행사 확인
+	eventCheck()
+	
+	// 체크인 예정일 변경시 행사가 확인
+	$('#booIn').on('change', function(){
+		eventCheck()
+	})
+	
+	// 행사 적용폭 변경시 가격 변경 함수
+	function eventChange(){
+		// 이용금액 초기화(2배 했을 경우 0.5배 하도록)
+		if(FX != 1){
+			FX = 1/FX
+		}
+		
+		$('#sum').html(0)
+		$.each($('.booRoom'), function(index, item){
+			var result = $(item).children().last().html()*$('#FX').val()*FX
+			$(item).children().last().html(result)
+			$('#sum').html(Number($('#sum').html())+Number($(item).children().last().html()))
+		})
+		$.each($('.booExtra'), function(index, item){
+			$('#sum').html(Number($('#sum').html())+Number($(item).children().last().html()))
+		})
+		FX = $('#FX').val()
+	}	
+	
 })
