@@ -28,11 +28,6 @@ public class DeliveryService {
 	public void deliveryAddPro(Delivery delivery) {
 		deliveryDao.deliveryAdd(delivery);
 	}
-	// 운송 세션 설정
-	public String deliverySession() {
-		session.setAttribute("top", "delivery");
-		return "";
-	}
 	// 운송 전체리스트
 	public List<Delivery> deliveryList() {
 		return deliveryDao.deliveryList();

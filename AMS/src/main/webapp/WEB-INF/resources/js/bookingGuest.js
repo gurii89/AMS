@@ -161,8 +161,7 @@ $('document').ready(function(){
 				, data:"booCode="+$('#resultBooking').text()+"&gCode="+$('#resultGuest').text()
 				, success:function(data){
 					if(data == "ok"){
-						$('#er').attr('class', 'text-primary')
-						$('#er').text('정상 등록')
+						$(location).attr('href', 'bookingDetail?booCode='+$('#resultBooking').text())
 					}else{
 						$('#er').attr('class', 'text-danger')
 						$('#er').text('고객 중복')

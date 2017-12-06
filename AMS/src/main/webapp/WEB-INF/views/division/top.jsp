@@ -28,13 +28,6 @@
 			<li><a href="roomAdd" class="level">객실 등록</a></li>
 		</ul>
 	</c:if>
-	<c:if test="${top eq 'guest' }">
-		<br>
-		<ul class="nav navbar-nav">
-			<li><a href="guestList" class="level">고객 목록</a></li>
-			<li><a href="guestAdd" class="level">고객 등록</a></li>
-		</ul>
-	</c:if>
 	<c:if test="${top eq 'extra' }">
 		<br>
 		<ul class="nav navbar-nav">
@@ -52,6 +45,8 @@
 		<ul class="nav navbar-nav">
 			<li><a href="keepList" class="level">보관품 목록</a></li>
 			<li><a href="keepAdd" class="level">보관품 등록</a></li>
+			<li><a href="deliveryList" class="level">운송 목록</a></li>
+			<li><a href="deliveryAdd" class="level">운송 등록</a></li>
 		</ul>
 	</c:if>
 	<c:if test="${top eq 'employee' }">
@@ -78,18 +73,13 @@
 	<c:if test="${top eq 'booking' }">
 		<br>
 		<ul class="nav navbar-nav">
-			<li><a href="bookingList" class="level">예약 목록</a></li>
 			<li><a href="bookingAdd" class="level">예약 등록</a></li>
+			<li><a href="guestAdd" class="level">고객 등록</a></li>
 			<li><a href="bookingGuestAdd" class="level">예약 고객 등록</a></li>
+			<li><a href="bookingList" class="level">예약 목록</a></li>
 			<li><a href="paymentList" class="level">결제 목록</a></li>
+			<li><a href="guestList" class="level">고객 목록</a></li>
 			<li><a href="inOutList" class="level">입퇴실 목록</a></li>
-		</ul>
-	</c:if>
-	<c:if test="${top eq 'delivery' }">
-		<br>
-		<ul class="nav navbar-nav">
-			<li><a href="deliveryList" class="level">운송 목록</a></li>
-			<li><a href="deliveryAdd" class="level">운송 등록</a></li>
 		</ul>
 	</c:if>
 	<c:if test="${top eq 'clean' }">

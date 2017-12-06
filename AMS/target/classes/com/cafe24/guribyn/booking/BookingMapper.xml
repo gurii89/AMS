@@ -37,13 +37,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="bookingCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM booking
+		LEFT JOIN employee
+		ON booking.e_id = employee.e_id
 		<if test="input != null">
-			<if test="cate != 'boo_date'">
-				WHERE booking.${cate} = #{input}
-			</if>
-			<if test="cate == 'boo_date'">
-				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
-			</if>
+			<choose>
+				<when test="cate == 'boo_date'">
+					WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
+				</when>				
+				<when test="cate == 'boo_night'">
+					WHERE ${cate} <![CDATA[>]]> 1
+				</when>				
+				<otherwise>
+					WHERE ${cate} = #{input}
+				</otherwise>
+			</choose>
 		</if>
 		<if test="cate == 'condition'">
 			WHERE boo_condition = '예약'
@@ -52,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="bookingList" parameterType="java.util.Map" resultMap="resultBooking">
 		SELECT 
-			booking.boo_code
+			boo_code
 			, e_name e_id
 			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
 			, boo_in
@@ -64,17 +71,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LEFT JOIN employee
 		ON booking.e_id = employee.e_id		
 		<if test="input != null">
-			<if test="cate != 'boo_date'">
-				WHERE booking.${cate} = #{input}
-			</if>
-			<if test="cate == 'boo_date'">
-				WHERE DATE_FORMAT(boo_date, '%Y-%m-%d') = #{input}
-			</if>
+			<choose>
+				<when test="cate == 'boo_date'">
+					WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
+				</when>				
+				<when test="cate == 'boo_night'">
+					WHERE ${cate} <![CDATA[>]]> 1
+				</when>				
+				<otherwise>
+					WHERE ${cate} = #{input}
+				</otherwise>
+			</choose>
 		</if>
 		<if test="cate == 'condition'">
 			WHERE boo_condition = '예약'
 		</if>
-		ORDER BY booking.boo_code DESC
+		ORDER BY boo_code DESC
 		<if test="start != null">
 			LIMIT ${start}, ${pagePerRow}
 		</if>

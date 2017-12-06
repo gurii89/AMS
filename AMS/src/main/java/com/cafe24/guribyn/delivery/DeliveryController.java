@@ -35,7 +35,6 @@ public class DeliveryController {
 	//운송 리스트
 	@RequestMapping(value="/deliveryList", method = RequestMethod.GET)
 	public String deliveryList(Model model) {
-		deliveryService.deliverySession();
 		model.addAttribute("deliveryList", deliveryService.deliveryList());
 		return "/delivery/deliveryList";
 	}
