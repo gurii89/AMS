@@ -107,6 +107,11 @@ public class RoomService {
 		System.out.println("---해당객실 룸타입 불러오기---------from service");
 		return roomDao.roomDetailFromFront(FrCode);
 	}
+	//한 객실상태 시간 가져오기
+	public RoomCondition RoomConTime(String FrCode) {
+		System.out.println("---해당객실 룸타입 불러오기---------from service");
+		return roomDao.RoomConTime(FrCode);
+	}
 	//객실 상태 등록처리!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public int RoomConditionAdd(RoomCondition roomCondition){
 		System.out.println("---객실상태 등록처리---------from service");

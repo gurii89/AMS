@@ -67,6 +67,7 @@
 	background-color: #ffffff;
 	height: 10%;
 }
+
 .topb {
 	font-size: 18px;
 	font-weight: bold;
@@ -196,6 +197,22 @@ table.bs td {
 	
 	border-radius: 10px;	
 }
+.frontR6 {
+	display:block;
+	font-weight: bold;
+	color: #486AAE;
+	font-size: 11px;
+	
+	background-image:linear-gradient(-225deg, #B6CEE8 0%, #F578DC 100%);
+	width: 60px;
+	height:60px;
+	float:left;
+	padding: 2px;
+	margin : 2px;
+	
+	
+	border-radius: 10px;	
+}
 
 .frontE {
 	display:block;
@@ -256,6 +273,12 @@ table.main td {
         float: none;
         background-color: transparent;
 }
+.data {
+		clear: none;
+        border: 0px none;
+        float: none;
+        background-color: transparent;
+}
 .drccheck{
 		clear: none;
         border: 0px none;
@@ -284,7 +307,7 @@ table.main td {
     float: none;
     color: #4641D9;
     background-color: transparent;
-    width: 40px;
+    width: 50px;
 }
 .rdtop {
 	font-size: 15px;

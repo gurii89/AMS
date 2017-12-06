@@ -1,6 +1,9 @@
 package com.cafe24.guribyn.front;
 
 import org.springframework.ui.Model;
+
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,7 @@ public class FrontController {
 	
 	//프론트 세션 설정 & 전체 객실 불러오기
 	@RequestMapping(value="/frontMain")
-	public String frontMain(Model model) {
+	public String frontMain(Model model) throws ParseException {
 		System.out.println("---프론트 메인---------from controller");
 		frontService.FrontSesseion();
 		frontService.allRoom(model);
@@ -33,7 +36,7 @@ public class FrontController {
 	}
 	//층수 받아오기
 	@RequestMapping(value="/frontfloor", method = RequestMethod.GET)
-	public String frontfloor(Model model, @RequestParam ("ffloof") String ffloof) {
+	public String frontfloor(Model model, @RequestParam ("ffloof") String ffloof) throws ParseException {
 		System.out.println("---선택된 층수---------from controller");
 		frontService.allRoom(model);
 		int k = Integer.parseInt(ffloof);
@@ -42,7 +45,7 @@ public class FrontController {
 	}
 	//타입 받아오기
 	@RequestMapping(value="/frontrt", method = RequestMethod.GET)
-	public String frontrt(Model model, @RequestParam ("ffrt") String ffrt) {
+	public String frontrt(Model model, @RequestParam ("ffrt") String ffrt) throws ParseException {
 		System.out.println("---선택된 타입---------from controller");
 		System.out.println(ffrt);
 		frontService.allRoom(model);

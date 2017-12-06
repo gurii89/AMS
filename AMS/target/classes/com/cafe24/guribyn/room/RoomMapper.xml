@@ -197,9 +197,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectAllRcCon" resultMap="resultRoomCondition">
 		SELECT
-			room_code, room_con_condition, room_con_date 
+			room_code, room_con_condition, SUBSTRING(room_con_date, 1, 16) AS room_con_date
 		FROM room_condition AS c
 		WHERE room_con_date=(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code)
 		GROUP BY room_code DESC;
+	</select>
+	
+	<select id="selectOneRcConTime" resultMap="resultRoomCondition">
+		SELECT
+			room_code, room_con_date
+		FROM room_condition AS c
+		WHERE room_con_date=(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code)
+		AND room_code = 302
 	</select>
 </mapper>

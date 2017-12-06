@@ -4,6 +4,7 @@ public class FrontRoom {
 	private int roomCodeMarkF;
 	private String roomTypeCodeNameF;
 	private String roomConF;
+	private String roomConTimeF;
 	public int getRoomCodeF() {
 		return roomCodeF;
 	}
@@ -28,10 +29,16 @@ public class FrontRoom {
 	public void setRoomConF(String roomConF) {
 		this.roomConF = roomConF;
 	}
+	public String getRoomConTimeF() {
+		return roomConTimeF;
+	}
+	public void setRoomConTimeF(String roomConTimeF) {
+		this.roomConTimeF = roomConTimeF;
+	}
 	@Override
 	public String toString() {
 		return "FrontRoom [roomCodeF=" + roomCodeF + ", roomCodeMarkF=" + roomCodeMarkF + ", roomTypeCodeNameF="
-				+ roomTypeCodeNameF + ", roomConF=" + roomConF + "]";
+				+ roomTypeCodeNameF + ", roomConF=" + roomConF + ", roomConTimeF=" + roomConTimeF + "]";
 	}
-	
+
 }

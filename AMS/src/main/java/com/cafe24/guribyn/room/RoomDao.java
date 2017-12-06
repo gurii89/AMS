@@ -77,6 +77,11 @@ public class RoomDao {
 		System.out.println("---객실상태 불러오기---------from dao");
 		return sqlSessionTemplate.selectOne(NS+".selectRoomCon", roomCode);
 	}
+	//한 객실의 상태 시간 불러오기
+	public RoomCondition RoomConTime(String roomCode) {
+		System.out.println("---한 객실상태 시간 불러오기---------from dao");
+		return sqlSessionTemplate.selectOne(NS+".selectOneRcConTime", roomCode);
+	}
 
 	//전체 객실 코드와 상태 불러오기(청소)
 	public List<RoomCondition> RoomRcCon () {
