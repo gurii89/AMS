@@ -29,7 +29,7 @@ public class FrontController {
 	//한 객실 정보 가져오기
 	@ResponseBody
 	@RequestMapping(value="/frontDetail")
-	public String frontDetailRoomType(Model model, @RequestParam ("FrCode") String FrCode) {
+	public String frontDetailRoomType(Model model, @RequestParam ("FrCode") String FrCode) throws ParseException {
 		System.out.println("---해당객실 정보---------from controller");
 		System.out.println(FrCode);
 		return frontService.roomDetailFromFront(model, FrCode); 

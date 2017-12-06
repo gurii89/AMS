@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="<c:url value='/resources/js/homeclock.js'/>"></script>
 <script>
+	
+	var interval;
+	
 	$(document).ready(function(){
 		
 		//상태에 따라서 css 변경
@@ -147,9 +151,11 @@
 				}
 			})	
 		});
-				
+		
+		
 		//상세정보 가져오기
 		$('.de').click(function(){
+			
 			$('.hidevdv').html('<input type="button" value="수정" class="rdbtn">');
 			$('.vdv').html('<input type="text" class="derc" value="" readonly="readonly">');
 			$('.visible').fadeIn();
@@ -160,12 +166,33 @@
 				data:"FrCode="+$(this).val(),
 				success: function(data) {
 					var rtname = JSON.parse(data)
-					console.log(rtname.FrRCon);
-					console.log(rtname.FrRConTime);
+					var timetest = rtname.FrRConTime;
+					console.log("getTime :"+rtname.FrRConTime);
+					
+					var tttest = timetest;
+					var year = tttest.substring(0, 4);
+					var month = tttest.substring(5, 7);
+					var day = tttest.substring(8, 10);
+					var timeh = tttest.substring(11, 13);
+					var timem = tttest.substring(14, 16);
+					//console.log("확인 :"+year+"/"+month+"/"+day+"/"+timeh+"/"+timem);
+					
+					var getimett = new Date(year, month-1, day, timeh, timem);
+					console.log("시계를 위한 시간 입니당:"+getimett);
+					//시작시간 구하기
+					var gap = Noww.getTime() - getimett.getTime();
+					console.log("밀리갭"+new Date(gap));
+					var lasttime = new Date(gap);
+					if(interval != undefined) clearInterval(interval);
+					
+					interval = setInterval(function() {
+						mainClock(lasttime)
+					},1000);
+					
+					
 					$('.dert').val(rtname.FrCode.roomTypeCode);
 					$('.derc').val(rtname.FrRCon);
-					//경과시간 시계 만들기
-					$('.timecheck')
+					
 				},
 				fail: function(request, status, error){
 				}
@@ -176,7 +203,9 @@
 			})
 		})
 	});
+
 </script>
+<script src="<c:url value='/resources/js/homeclock.js'/>"></script>
 </head>
 
 <body>
@@ -274,8 +303,8 @@
 						</tr>
 						<tr>
 							<td>경과시간</td>
-							<td></td>
-							<td><input type="text" value="${loginfor.eId}" name="eId" class="hidden timecheck"></td>
+							<td><div id="timecheck"></div></td>
+							<td><input type="text" value="${loginfor.eId}" name="eId" class="hidden"></td>
 						</tr>
 					</table><br>
 					<textarea rows="4" cols="15"></textarea><br>

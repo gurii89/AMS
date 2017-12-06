@@ -134,11 +134,21 @@ public class FrontService {
 		return null;
 	}
 	//한 객실 정보 불러오기 ******
-	public String roomDetailFromFront(Model model, String FrCode) {
+	public String roomDetailFromFront(Model model, String FrCode) throws ParseException {
 		System.out.println("---한 객실 정보 불러오기---------from service");
 		model.addAttribute("FrCode", roomService.roomDetailFromFront(FrCode));
 		model.addAttribute("FrRCon", roomService.RoomConditionview(FrCode));
-		model.addAttribute("FrRConTime", roomService.RoomConTime(FrCode));
+		
+		String getConTime = roomService.RoomConTime(FrCode).getRoomConDate();
+		SimpleDateFormat transFormatt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date tto = transFormatt.parse(getConTime);
+		System.out.println("한 객실 시간 data로 :"+tto);
+		Calendar calt = Calendar.getInstance();
+		calt.setTime(tto);
+		Date getfortime = calt.getTime();
+		String getfortimes = transFormatt.format(getfortime);
+		
+		model.addAttribute("FrRConTime", getfortimes);
 		Gson gson = new Gson();
 		return gson.toJson(model);
 	}
