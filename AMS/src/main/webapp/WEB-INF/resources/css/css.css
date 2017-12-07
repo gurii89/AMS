@@ -187,7 +187,7 @@ table.bs td {
 	color: #486AAE;
 	font-size: 11px;
 	
-	background-image:linear-gradient(-225deg, #B6CEE8 0%, #F578DC 100%);
+	background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
 	width: 60px;
 	height:60px;
 	float:left;
@@ -203,7 +203,7 @@ table.bs td {
 	color: #486AAE;
 	font-size: 11px;
 	
-	background-image:linear-gradient(-225deg, #B6CEE8 0%, #F578DC 100%);
+	background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
 	width: 60px;
 	height:60px;
 	float:left;
@@ -299,7 +299,7 @@ table.main td {
     float: none;
     color: #4641D9;
     background-color: transparent;
-    width: 40px;
+    width: 50px;
 }
 .derc{
 	clear: none;
@@ -307,7 +307,7 @@ table.main td {
     float: none;
     color: #4641D9;
     background-color: transparent;
-    width: 50px;
+    width: 70px;
 }
 .rdtop {
 	font-size: 15px;

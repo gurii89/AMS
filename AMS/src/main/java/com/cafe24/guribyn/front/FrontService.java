@@ -140,7 +140,7 @@ public class FrontService {
 		model.addAttribute("FrRCon", roomService.RoomConditionview(FrCode));
 		
 		String getConTime = roomService.RoomConTime(FrCode).getRoomConDate();
-		SimpleDateFormat transFormatt = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat transFormatt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date tto = transFormatt.parse(getConTime);
 		System.out.println("한 객실 시간 data로 :"+tto);
 		Calendar calt = Calendar.getInstance();

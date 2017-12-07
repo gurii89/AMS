@@ -56,7 +56,7 @@
 		
 		//1. 현재시간
 		var Noww = new Date;
-		//console.log(Noww);
+		console.log("현재시간 : "+Noww);
 		var oneDay = 60 * 60 * 24 * 1000;
 		//console.log(Noww.getTime());
 		var noww = Noww.getTime() + oneDay;
@@ -175,13 +175,14 @@
 					var day = tttest.substring(8, 10);
 					var timeh = tttest.substring(11, 13);
 					var timem = tttest.substring(14, 16);
+					var times = tttest.substring(17, 19);
 					//console.log("확인 :"+year+"/"+month+"/"+day+"/"+timeh+"/"+timem);
 					
-					var getimett = new Date(year, month-1, day, timeh, timem);
-					console.log("시계를 위한 시간 입니당:"+getimett);
+					var getimett = new Date(year, month-1, day, timeh, timem, times);
+					console.log("기록된 시간:"+getimett);
 					//시작시간 구하기
-					var gap = Noww.getTime() - getimett.getTime();
-					console.log("밀리갭"+new Date(gap));
+					var gap = (Noww.getTime() - getimett.getTime()) -32400000;
+					console.log("밀리갭:"+new Date(gap));
 					var lasttime = new Date(gap);
 					if(interval != undefined) clearInterval(interval);
 					
