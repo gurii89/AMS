@@ -21,7 +21,7 @@
 	<body>
 		<div class="clearfix col-sm-6">
 			<div class="topb">고객 등록</div>
-			<form action="guestAdd" method="post" id="frm" class="form-horizontal">
+			<form action="guestAddPro" method="post" id="frm" class="form-horizontal">
 				<input type="hidden" name="booCode" id="booCode" value="${booCode }">
 				<div class="formb">
 					고객명 :

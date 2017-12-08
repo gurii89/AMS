@@ -7,21 +7,40 @@
 		<script>
 			$(function(){
 				$('#addBox').hide()
+				
+				// 예약 고객 등록시 간소화 메뉴 및 고객 등록 버튼 활성화
 				if($('#booCode').val()){
 					$('.addForm').hide()
 					$('#addBox').show()
+					// 고객 선택시 번호 체크
 					$('.guest').click(function(){
 						$('#addNum').html($(this).children().first().html())
+						// 고객 등록
 						$('#addBtn').click(function(){
 							$(location).attr('href', 'bookingGuestAddPro?gCode='+$(this).prev().html()
 											+'&booCode='+$('#booCode').val())
 						})
-					})
+					})				
+				// 예약 목록 때 고객 선택시 수정 폼으로 이동
 				}else{
 					$('.guest').click(function(){
 						$(location).attr('href', 'guestMod?gCode='+$(this).children().first().html())
 					})
 				}
+				
+				// 검색 조건 따라 검색창 변경
+				$('#cate').on('change', function(){
+					var val = $('#cate option:selected').val()
+					// 검색조건 등록일, 생년월일 선택시 날짜검색창
+					if(val == 'g_date' || val == 'g_birthdate'){
+						$('#input').attr('type', 'date')
+					// 검색창 기본값
+					}else{
+						$('#input').attr('type', 'text')
+						$('#input').val('')
+					}
+				})
+				
 			})
 		</script>
 	</head>
@@ -33,11 +52,16 @@
 				<input type="hidden" id="input" value="${input }">
 			</c:when>
 			<c:otherwise>
-				<form action="guestList" method="post" class="form-horizontal">
+				<form action="" method="post" id="guestFrm" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
-						<option id="opt" value="" class="input-sm">검색 조건 선택</option>
+						<option id="opt" class="input-sm" value="">검색 조건 선택</option>
+						<option class="input-sm" value="g_name">고객 이름</option>
+						<option class="input-sm" value="g_birthdate">생년월일</option>
+						<option class="input-sm" value="g_date">등록일</option>
 					</select>
-					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					<span id="condi">
+						<input type="text" name="input" id="input" value="${input }" required class="input-sm">
+					</span>
 					<input type="submit" value="검색" class="btn-default btn-sm">
 				</form>
 			</c:otherwise>

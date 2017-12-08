@@ -43,6 +43,18 @@ public class GuestService {
 		model.addAttribute("guestList", guestDao.guestList(map));
 	}
 	
+	// 예약 고객 목록
+	public void guestBookingList(Model model, int currentPage, String cate, String input, String booCode) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("booCode", booCode);
+		if(cate != "") {
+			map.put("cate", cate);
+			map.put("input", input);
+		}
+		map = commonService.paging(model, currentPage, 5, guestDao.guestCount(map), map);        
+		model.addAttribute("guestList", guestDao.guestList(map));
+	}
+	
 	// 고객 등록 처리
 	public void guestAddPro(Guest guest) {
 		if(guest.getgNation().equals("")) {

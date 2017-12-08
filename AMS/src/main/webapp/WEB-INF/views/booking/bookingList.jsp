@@ -16,15 +16,12 @@
 			<c:otherwise>
 				<form action="bookingList" method="post" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
-						<option id="opt" value="" class="input-sm">검색 조건 선택</option>							
-						<option value="boo_code" class="input-sm">예약 번호</option>
-						<option value="e_name" class="input-sm">등록자</option>
-						<option value="boo_date" class="input-sm">예약일</option>
+						<option id="opt" value="" class="input-sm">검색 조건 선택</option>						<option value="boo_date" class="input-sm">예약일</option>
 						<option value="boo_in" class="input-sm">체크인 예정일</option>
-						<option value="boo_night" class="input-sm">숙박일</option>						
-						<option value="boo_count" class="input-sm">인원</option>
 						<option value="boo_path" class="input-sm">유입경로</option>
 						<option value="boo_condition" class="input-sm">예약상태</option>
+						<option value="boo_night" class="input-sm">숙박일</option>
+						<option value="e_name" class="input-sm">등록자</option>
 					</select>
 					<span id="condi">
 						<input type="text" name="input" id="input" value="${input }" required class="input-sm">

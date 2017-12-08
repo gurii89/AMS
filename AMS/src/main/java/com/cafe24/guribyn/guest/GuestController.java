@@ -30,13 +30,13 @@ public class GuestController {
 					, @RequestParam(value = "input", required=false) String input
 					, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		cateService.cateOptionSearch(model, "cate_small", "nation");
-		guestService.guestList(model, currentPage, "booking", booCode);
+		guestService.guestBookingList(model, currentPage, cate, input, booCode);
 		model.addAttribute("booCode",booCode);		
 		return "guest/guestAdd";
 	}
 	
 	// 고객 등록 처리
-	@RequestMapping(value = "/guestAdd", method = RequestMethod.POST)
+	@RequestMapping(value = "/guestAddPro", method = RequestMethod.POST)
 	public String guestAddPro(Model model, Guest guest, @RequestParam("booCode") int booCode) {
 		guestService.guestAddPro(guest);
 		bookingGuestService.bookingGuestAddPro(booCode, 0);
