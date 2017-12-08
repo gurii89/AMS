@@ -4,6 +4,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script>
+			$(function(){
+				$('.employee').click(function(){
+					$(location).attr('href', 'employeeMod?eId='+$(this).children().first().html())
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<div class="topb">직원 목록</div> 
@@ -23,10 +30,9 @@
 				<th>등록일</th>
 				<th>등록자</th>
 				<th>메모</th>
-				<th>수정</th>
 			</tr>
 			<c:forEach items="${employeeList }" var="employee">
-				<tr>
+				<tr class="employee">
 					<td>${employee.eId }</td>
 					<td>${employee.eName }</td>
 					<td>${employee.eDepartment }</td>
@@ -41,7 +47,6 @@
 					<td>${employee.eDate }</td>
 					<td>${employee.mId }</td>
 					<td>${employee.eMemo }</td>
-					<td><a class="btn-default btn-sm" href="employeeMod?eId=${employee.eId }">수정</a></td>
 				</tr>
 			</c:forEach>
 		</table>						

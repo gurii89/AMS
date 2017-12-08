@@ -19,8 +19,9 @@
 		</script>
 	</head>
 	<body>
-		<div class="topb">고객 등록</div> 
+		<div class="topb">고객 등록</div>
 		<form action="guestAdd" method="post" id="frm" class="form-horizontal">
+			<input type="hidden" name="booCode" value="${booCode }">
 			<div class="formb">
 				고객명 :
 				<input type="text" name="gName" id="gName" required class="input-sm">

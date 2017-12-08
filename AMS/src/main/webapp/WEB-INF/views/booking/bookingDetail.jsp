@@ -90,14 +90,18 @@
 				
 				// 예약 취소
 				$('#canBtn').click(function(){
-					if(booCon == '예약'){
-						$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
-					}
+					$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
+				})
+				
+				// 고객 등록
+				$('#guestBtn').click(function(){
+					$(location).attr('href', 'guestAdd?booCode='+$('#booCode').text())
 				})
 				
 				// 예약상태 아닐 경우 예약 버튼 삭제
 				if(booCon != '예약'){
 					$('#can').html('')
+					$('#guest').html('')
 				}
 				
 				// 조건 부합시 체크아웃 버튼 노출
@@ -119,6 +123,7 @@
 		<div class="clearfix col-sm-12">
 			<div class="text-right">
 				<button id="payBtn" class="btn-default btn-sm">결제</button>
+				<span id="guest"><button id="guestBtn" class="btn-default btn-sm">고객 등록</button></span>
 				<span id="in"><button id="inBtn" class="btn-default btn-sm">입실</button></span>
 				<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>
 				<span id="can"><button id="canBtn" class="btn-default btn-sm">예약 취소</button></span>

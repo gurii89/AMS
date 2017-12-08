@@ -23,8 +23,7 @@
 				<t:insertAttribute name="top" />			
 				<div class="col-sm-10 top">
 					<t:insertAttribute name="content" />	 
-				</div>				 
-				<t:insertAttribute name="right" />	         
+				</div>         
 			</div>
 		</div>
 	</body>
