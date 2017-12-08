@@ -21,7 +21,7 @@ public class Interceptor extends HandlerInterceptorAdapter {
 			session.setAttribute("today", dateFormat.format(calendar.getTime()));
 			return true;
 		}else {
-			response.sendRedirect("./");
+			response.sendRedirect("/login");
 			return false;
 		}		
 	}	

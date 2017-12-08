@@ -65,7 +65,7 @@ public class LoginService {
 			session.setAttribute("loginfor", loginfor);
 			session.setAttribute("top", "home");
 		}
-		return "redirect:/";
+		return "redirect:/home";
 	}
 	//로그아웃
 	@Transactional
@@ -81,7 +81,7 @@ public class LoginService {
 	
 		System.out.println("---로그아웃이력 저장");
 	
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	
 	//home 세션 설정
