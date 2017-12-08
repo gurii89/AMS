@@ -139,8 +139,16 @@
 			<td class="cleanInsert"><input type="text" class="hidden rc" value="${cleanrtcon.roomCode}">${cleanrtcon.roomCode}</td>
 			<td>${cleanrtcon.roomConCondition}</td>
 			<td>청소 직원아이디</td>
-			<td><input type="button" value="청소시작" class="clickc"></td>
-			<td><input type="button" value="청소종료" class="clickce" disabled="disabled"></td>
+			<td>
+				<c:if test="${loginfor.eDepartment eq 'clean' }">
+					<input type="button" value="청소시작" class="clickc">
+				</c:if>
+			</td>
+			<td>
+				<c:if test="${loginfor.eDepartment eq 'clean' }">
+					<input type="button" value="청소종료" class="clickce" disabled="disabled">
+				</c:if>
+			</td>
 		</tr>
 			</c:forEach>
 		</table>

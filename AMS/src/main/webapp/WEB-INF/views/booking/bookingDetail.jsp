@@ -35,7 +35,7 @@
 					<td id="booCondition">${booking.booCondition }</td>
 					<td>${booking.booDate }</td>
 					<td>${booking.booIn }</td>
-					<td>${booking.booNight }</td>
+					<td>${booking.booOut }</td>
 					<td>${booking.booCount }</td>
 					<td>${booking.booPath }</td>
 					<td>${booking.eId }</td>

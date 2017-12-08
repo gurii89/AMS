@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_Id" property="eId" />
 		<result column="boo_Date" property="booDate" />
 		<result column="boo_In" property="booIn" />
-		<result column="boo_Night" property="booNight" />
+		<result column="boo_Out" property="booOut" />
 		<result column="boo_Count" property="booCount" />
 		<result column="boo_Path" property="booPath" />
 		<result column="boo_Memo" property="booMemo" />
@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_name e_id
 			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
 			, boo_in
-			, boo_night
+			, boo_out
 			, boo_count
 			, boo_path 
 			, boo_condition
@@ -44,8 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="cate == 'boo_date'">
 					WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
 				</when>				
-				<when test="cate == 'boo_night'">
-					WHERE ${cate} <![CDATA[>]]> 1
+				<when test="cate == 'boo_out'">
+					WHERE ${cate} <![CDATA[>]]> boo_in + INTERVAL 1 DAY
 				</when>				
 				<otherwise>
 					WHERE ${cate} = #{input}
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, e_name e_id
 			, DATE_FORMAT(boo_date, '%Y-%m-%d %H:%i') boo_date
 			, boo_in
-			, boo_night
+			, boo_out
 			, boo_count
 			, boo_path
 			, boo_condition
@@ -75,8 +75,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="cate == 'boo_date'">
 					WHERE ${cate} <![CDATA[> #{input} AND ${cate} <]]> #{input}+ INTERVAL 1 DAY
 				</when>				
-				<when test="cate == 'boo_night'">
-					WHERE ${cate} <![CDATA[>]]> 1
+				<when test="cate == 'boo_out'">
+					WHERE ${cate} <![CDATA[>]]> boo_in + INTERVAL 1 DAY
 				</when>				
 				<otherwise>
 					WHERE ${cate} = #{input}
@@ -97,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			e_id
 			, boo_date
 			, boo_in
-			, boo_night
+			, boo_out
 			, boo_count
 			, boo_path
 			, boo_memo
@@ -106,7 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{eId}
 			, now()
 			, #{booIn}
-			, #{booNight}
+			, #{booIn} + INTERVAL #{booOut} DAY
 			, #{booCount}
 			, #{booPath}
 			, #{booMemo}

@@ -6,7 +6,7 @@ public class Booking {
     private String eId;
     private String booDate; 
     private String booIn;
-    private int booNight;
+    private String booOut;
     private int booCount;
     private String booPath;
     private String booMemo;
@@ -35,11 +35,11 @@ public class Booking {
 	public void setBooIn(String booIn) {
 		this.booIn = booIn;
 	}
-	public int getBooNight() {
-		return booNight;
+	public String getBooOut() {
+		return booOut;
 	}
-	public void setBooNight(int booNight) {
-		this.booNight = booNight;
+	public void setBooOut(String booOut) {
+		this.booOut = booOut;
 	}
 	public int getBooCount() {
 		return booCount;
@@ -68,7 +68,7 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [booCode=" + booCode + ", eId=" + eId + ", booDate=" + booDate + ", booIn=" + booIn
-				+ ", booNight=" + booNight + ", booCount=" + booCount + ", booPath=" + booPath + ", booMemo=" + booMemo
+				+ ", booOut=" + booOut + ", booCount=" + booCount + ", booPath=" + booPath + ", booMemo=" + booMemo
 				+ ", booCondition=" + booCondition + "]";
 	}
 	

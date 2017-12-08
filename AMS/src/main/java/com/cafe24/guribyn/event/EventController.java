@@ -44,7 +44,7 @@ public class EventController {
 	// 기본 행사 fx 중복불가
 	@ResponseBody
 	@RequestMapping(value = "eventFx")
-	public String eventFx(@RequestParam ("eventFx") int fx) {
+	public String eventFx(@RequestParam ("eventFx") double fx) {
 		return eventService.eventFx(fx);
 	}
 	

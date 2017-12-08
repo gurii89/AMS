@@ -54,7 +54,7 @@ public class EventService {
 	}
 	
 	// 기본 행사 중복 검사
-	public String eventFx(int fx) {
+	public String eventFx(double fx) {
 		if(eventDao.eventFx(fx) != 0) {
 			return "no";
 		}

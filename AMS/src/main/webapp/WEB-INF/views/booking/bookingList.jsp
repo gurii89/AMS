@@ -47,7 +47,7 @@
 					<td>${boo.booCondition }</td>
 					<td>${boo.booDate }</td>
 					<td>${boo.booIn }</td>
-					<td>${boo.booNight }</td>
+					<td>${boo.booOut }</td>
 					<td>${boo.booCount }</td>
 					<td>${boo.booPath }</td>
 					<td>${boo.eId }</td>
