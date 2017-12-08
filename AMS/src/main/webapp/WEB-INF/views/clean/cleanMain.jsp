@@ -27,7 +27,6 @@
 						cleaningListStart.push(cleanList[i].cleanStart);
 						cleaningListeID.push(cleanList[i].eId);
 					}
-					console.log(cleaningList);
 					
 					//청소요청인 목록중 새배열에 있으면 tr 숨기기
 					$('.rc').each(function(k){
@@ -90,7 +89,6 @@
 					fail: function(request, status, error){
 					}
 				});
-
 				$(td.eq(1)).html("청소중");
 		});
 		

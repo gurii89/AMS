@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="<c:url value='/resources/js/frontMini.js'/>"></script>
 <script src="<c:url value='/resources/js/homeclock.js'/>"></script>
 <script>
-	
 	var interval;
 	
 	$(document).ready(function(){
-		
-		//상태에 따라서 css 변경
+		//객실 상태에 따라서 span 태그 css 변경
 		$('.drc').each(function(q){
 			var drcolor = $(this).val();
 			if(drcolor == '입실'){
@@ -52,15 +51,12 @@
 			}
 		});
 		
-		//등록시간의 12시간 후와 현재시간 비교
+		//객실 상태 변경이 등록된 시간의 12시간 후와 현재시간 비교 후 css 변경.
 		
 		//1. 현재시간
 		var Noww = new Date;
-		console.log("현재시간 : "+Noww);
 		var oneDay = 60 * 60 * 24 * 1000;
-		//console.log(Noww.getTime());
 		var noww = Noww.getTime() + oneDay;
-		//console.log("현재시간의 getTime+oneDay ="+noww);
 		
 		//2. 12시간후 리스트
 		var after12List = new Array();
@@ -68,9 +64,8 @@
 			after12List.push($(this).val());
 		});
 		
-		//3. String to date 반복문
+		//3. String to date
 		for(s=0; s<after12List.length; s++){
-			//console.log(after12List[s]);
 			
 			var first = after12List[s];
 			var year = first.substring(0, 4);
@@ -81,12 +76,9 @@
 			//console.log("확인 :"+year+"/"+month+"/"+day+"/"+timeh+"/"+timem);
 			
 			var ddate = new Date(year, month-1, day, timeh, timem);
-			//console.log(ddate);
-			//console.log(ddate.getTime());
-			//console.log("12시간후 getTime+oneDay ="+Math.abs(ddate.getTime() + oneDay));
 			after12List[s] = Math.abs(ddate.getTime() + oneDay);
 			var checktime = noww - after12List[s];
-			//.log("현재시간 - 12시간후 = "+checktime);
+			
 			if(checktime >= 0){
 				after12List[s] = "over";
 			}else{
@@ -94,7 +86,7 @@
 			}
 		}
 		
-		// 4. 등록시간 이후 12시간이 지나면 텍스트를 붉은색으로 바꾸기.
+		// 4. 텍스트를 붉은색으로 바꾸기.
 		$('.data').each(function(w){
 			var prdate = $(this);
 			if(after12List[w] == "over"){
@@ -103,6 +95,7 @@
 				}
 		});
 		
+		//상단 select
 		$('.typeselect').change(function(){
 			var typeValue = $(this).val();
 			
@@ -138,7 +131,6 @@
 		$('.conselect').change(function(){
 			var conValue = $(this).val();
 			
-			
 			$('.drc').each(function(k){				
 				var drcValue = $(this).val();				
 				if(drcValue == conValue){
@@ -151,19 +143,17 @@
 				}
 			})	
 		});
-		
-		
-		//상세정보 가져오기
-		$('.de').click(function(){
+			//미니메뉴 
+			function miniMenu(rCode){
 			
 			$('.hidevdv').html('<input type="button" value="수정" class="rdbtn">');
 			$('.vdv').html('<input type="text" class="derc" value="" readonly="readonly">');
 			$('.visible').fadeIn();
-			$('.minirtcode').html('<input class="hidden "name="roomCode" value="'+$(this).val()+'">'+$(this).val()+'호')
+			$('.minirtcode').html('<input class="hidden "name="roomCode" value="'+rCode+'">'+rCode+'호')
 			$.ajax({
 				url:"frontDetail",
 				type:"GET",
-				data:"FrCode="+$(this).val(),
+				data:"FrCode="+rCode,
 				success: function(data) {
 					var rtname = JSON.parse(data)
 					var timetest = rtname.FrRConTime;
@@ -176,13 +166,11 @@
 					var timeh = tttest.substring(11, 13);
 					var timem = tttest.substring(14, 16);
 					var times = tttest.substring(17, 19);
-					//console.log("확인 :"+year+"/"+month+"/"+day+"/"+timeh+"/"+timem);
 					
 					var getimett = new Date(year, month-1, day, timeh, timem, times);
-					console.log("기록된 시간:"+getimett);
+					
 					//시작시간 구하기
 					var gap = (Noww.getTime() - getimett.getTime()) -32400000;
-					console.log("밀리갭:"+new Date(gap));
 					var lasttime = new Date(gap);
 					if(interval != undefined) clearInterval(interval);
 					
@@ -190,10 +178,8 @@
 						mainClock(lasttime)
 					},1000);
 					
-					
 					$('.dert').val(rtname.FrCode.roomTypeCode);
 					$('.derc').val(rtname.FrRCon);
-					
 				},
 				fail: function(request, status, error){
 				}
@@ -202,7 +188,44 @@
 					$('.hidevdv').html('')
 					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>공실</option><option>예약</option><option>청소요청</option><option>점검요청</option><option>입실</option></select>')
 			})
-		})
+		};
+		//span 클릭시 미니메뉴 함수 실행하기
+		$('.frontR').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR1').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR2').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR3').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR4').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR5').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		$('.frontR6').click(function(){
+			var rCode = $(this).children().val();
+			console.log(rCode);
+			miniMenu(rCode);
+		});
+		
 	});
 
 </script>
@@ -310,8 +333,7 @@
 					</table><br>
 					<textarea rows="4" cols="15"></textarea><br>
 					
-					<input type="submit" class="btn btn-info" value="저장">
-					<button type="button" class="btn btn-primary">뭐넣지</button>	
+					<input type="submit" class="btn btn-defalt" value="저장">	
 				</form>
 			</div>
 		</div>

@@ -4,21 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="<c:url value='/resources/js/homeclock.js'/>"></script>
-<script>
 
-	setInterval(function() {
-		mainClock(new Date())
-	    },1000);
-	
-	$(document).ready(function(){
-		var clock = $('#clock')[0];
-	});
-	
-</script>
 </head>
 <body>
 	<div class="maina">${today}</div>
-	<div id="clock"></div>
+	폰트테스트
 </body>
 </html>

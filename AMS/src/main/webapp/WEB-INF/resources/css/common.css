@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/*	공통 css 
+	font : 서울 남산체
+*/
+
+@font-face {
+	font-family: 'NanumSquareR';
+	font-style: normal;
+	src: url("../font/seoulnamsan.eot");
+	src: local(※), url("/guribyn/resources/font/NanumSquareR.woff") format("woff"),
+		 url("/guribyn/resources/font/seoulnamsan.ttf") format("truetype");
+	}
+	
+body {
+	font-family:'NanumSquareR';
+	color:#161C1D;
+	line-height:160%;
+	font-size: 12px;
+	font-weight: 100;
+}

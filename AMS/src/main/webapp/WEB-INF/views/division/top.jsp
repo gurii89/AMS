@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 
-<div class="col-sm-11 top">
+<div class="col-sm-10 top">
 	<c:if test="${top eq 'notice'}">
 		<br>
 		<ul class="nav navbar-nav">
