@@ -60,8 +60,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON guest.e_id = employee.e_id
 		LEFT JOIN category
 		ON guest.g_nation = category.cate_code
-		<if test="input != null">
-			WHERE guest.${cate} = #{input}
+		<if test="booCode != null">
+			WHERE g_code NOT IN(SELECT g_code FROM booking_guest WHERE boo_code = #{booCode})
+			<if test="input != null">
+				AND ${cate} = #{input}
+			</if>
+		</if>
+		<if test="booCode == null">
+			<if test="input != null">
+				WHERE ${cate} = #{input}
+			</if>
 		</if>
 		ORDER BY g_code DESC
 		LIMIT ${start}, ${pagePerRow}
@@ -69,8 +77,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="guestCount" parameterType="java.util.Map" resultType="int">
 		SELECT COUNT(*) FROM guest
-		<if test="cate != null">
-			WHERE ${cate} = #{input}
+		<if test="booCode != null">
+			WHERE g_code NOT IN(SELECT g_code FROM booking_guest WHERE boo_code = #{booCode})
+			<if test="input != null">
+				AND ${cate} = #{input}
+			</if>
+		</if>
+		<if test="booCode == null">
+			<if test="input != null">
+				WHERE ${cate} = #{input}
+			</if>
 		</if>
 	</select>
 	

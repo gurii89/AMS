@@ -13,7 +13,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 		
 	<insert id="bookingGuestAdd" parameterType="com.cafe24.guribyn.booking.guest.BookingGuest">
-		INSERT INTO booking_guest(boo_code, g_code)VALUE(#{booCode}, #{gCode})
+		INSERT INTO booking_guest(boo_code, g_code)VALUE(#{booCode}, 
+		<if test="gCode != 0">
+			#{gCode})
+		</if>
+		<if test="gCode == 0">
+			(SELECT g_code FROM guest ORDER BY g_code DESC LIMIT 1))
+		</if>
+		
 	</insert>
 	
 </mapper>

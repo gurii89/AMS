@@ -18,14 +18,14 @@
 		</script>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row content">	           
-				<t:insertAttribute name="left" />
-				<t:insertAttribute name="top" />			
-				<div class="col-sm-10 top">
-					<t:insertAttribute name="content" />	 
-				</div>				         
+	<div class="container-fluid">
+		<div class="row content">
+			<t:insertAttribute name="left" />
+			<t:insertAttribute name="top" />
+			<div class="col-sm-10 top">
+				<t:insertAttribute name="content" />
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

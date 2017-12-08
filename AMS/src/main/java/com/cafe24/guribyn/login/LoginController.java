@@ -20,7 +20,7 @@ public class LoginController{
 	private LoginService loginService;
 	
 	//로그인 폼 요청
-	@RequestMapping(value="/", method = RequestMethod.GET)
+	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String loginform(HttpSession session) {
 		logger.info("---로그인요청---------from controller");
 		if(session.getAttribute("loginfor") == null) {
@@ -38,11 +38,5 @@ public class LoginController{
 	@RequestMapping(value="/logout", method = RequestMethod.POST)	
 	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
-	}
-	//인덱스
-	@RequestMapping(value="/home")	
-	public String home() {
-		loginService.HomeSesseion();
-		return "home";
 	}
 }

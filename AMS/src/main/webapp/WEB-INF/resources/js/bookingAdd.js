@@ -1,6 +1,7 @@
 $('document').ready(function(){
 	var eventPrev = $('#event').html()
 	var FX = 1
+	var booNight = 1
 	
 	// 서비스 혹은 객실 하나 이상 등록시에만 예약 가능
 	$('#btn').click(function(){
@@ -122,7 +123,11 @@ $('document').ready(function(){
 			// 객실 이용 금액 출력	
 			$('#roomTypeCode').on('change', function(){
 				if($('#roomTypeCode').val()){
-					var roomSum = $('#FX').val()*$('#roomTypeCode option:selected').attr('id')
+					var night = $('#booNight').val()
+					if(!$.isNumeric(night)){
+						night = 1
+					}
+					var roomSum = $('#FX').val()*$('#roomTypeCode option:selected').attr('id')*night
 					$('#roomRate').val(roomSum)
 				}
 			})						
@@ -136,13 +141,15 @@ $('document').ready(function(){
 			if(data){
 				var result = JSON.parse(data)
 				$('#event').html('<input type="hidden" id="FX" value="'+result.eventFx+'">조정불가')
-				eventChange()
+				nightCheck()
+				eventChange()				
 			// 행사 없을 경우 기본 행사 출력
 			}else{
 				$('#event').html(eventPrev)
 				eventChange()
 				$('#FX').on('change', function(){
-					eventChange()
+					nightCheck()
+					eventChange()					
 				})
 				
 			}
@@ -163,12 +170,11 @@ $('document').ready(function(){
 		if(FX != 1){
 			FX = 1/FX
 		}
-		
 		// 총합 이용금 초기화
 		$('#sum').html(0)
 		// 객실 이용금액 더하기
 		$.each($('.booRoom'), function(index, item){
-			var result = $(item).children().last().html()*$('#FX').val()*FX
+			var result = $(item).children().last().html()*$('#FX').val()*FX*booNight
 			$(item).children().last().html(result)
 			$('#sum').html(Number($('#sum').html())+Number($(item).children().last().html()))
 		})
@@ -178,9 +184,43 @@ $('document').ready(function(){
 		})
 		// 임시 객실 등록 폼 가격 변수 연동
 		if($('#roomRate').val()){
-			$('#roomRate').val($('#roomRate').val()*$('#FX').val()*FX)
+			$('#roomRate').val($('#roomRate').val()*$('#FX').val()*FX*booNight)
 		}
 		FX = $('#FX').val()
-	}	
+		booNight = $('#booNight').val()
+	}
+	
+	// 숙박일 변경시 가격 변경
+	$('#booNight').on('change', function(){
+		nightCheck()
+		eventChange()
+	})
+	
+	// 숙박일 체크 함수
+	function nightCheck(){
+		if(!$('#booNight').val()){
+			if(booNight > 0){
+				booNight = 1 / booNight
+			}else{
+				booNight = 1
+			}
+		}else if(!$.isNumeric($('#booNight').val())){
+			if(booNight > 0){
+				booNight = 1 / booNight
+			}else{
+				booNight = 1
+			}
+			$('#er').html('숙박일은 숫자로 입력')
+			$('#booNight').val('')
+			$('#booNight').focus()
+		}else if($.isNumeric($('#booNight').val())){
+			if(booNight > 0){
+				booNight = $('#booNight').val() / booNight
+				
+			}else{
+				booNight = $('#booNight').val()
+			}
+		}
+	}
 	
 })

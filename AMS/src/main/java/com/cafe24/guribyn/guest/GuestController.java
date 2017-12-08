@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.guribyn.booking.guest.BookingGuestService;
 import com.cafe24.guribyn.cate.CateService;
 
 @Controller
@@ -19,33 +20,43 @@ public class GuestController {
 	@Autowired
 	GuestService guestService;
 	
+	@Autowired
+	BookingGuestService bookingGuestService;
+	
 	// 고객 등록 폼
 	@RequestMapping(value = "/guestAdd")
-	public String guestAdd(Model model) {
+	public String guestAdd(Model model, @RequestParam("booCode") String booCode
+					, @RequestParam(value = "cate", required=false) String cate 
+					, @RequestParam(value = "input", required=false) String input
+					, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		cateService.cateOptionSearch(model, "cate_small", "nation");
+		guestService.guestBookingList(model, currentPage, cate, input, booCode);
+		model.addAttribute("booCode",booCode);		
 		return "guest/guestAdd";
 	}
 	
 	// 고객 등록 처리
-	@RequestMapping(value = "/guestAdd", method = RequestMethod.POST)
-	public String guestAddPro(Guest guest) {
+	@RequestMapping(value = "/guestAddPro", method = RequestMethod.POST)
+	public String guestAddPro(Model model, Guest guest, @RequestParam("booCode") int booCode) {
 		guestService.guestAddPro(guest);
-		return "redirect:/guestList";
+		bookingGuestService.bookingGuestAddPro(booCode, 0);
+		model.addAttribute("booCode", booCode);
+		return "redirect:/bookingDetail";
 	}
 	
 	// 고객 목록
 	@RequestMapping(value = "/guestList")
 	public String guestList(Model model
-			, @RequestParam(value = "cate", required=false) String cate 
-			, @RequestParam(value = "input", required=false) String input
-			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+					, @RequestParam(value = "cate", required=false) String cate 
+					, @RequestParam(value = "input", required=false) String input
+					, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 			guestService.guestList(model, currentPage, cate, input);
 		return "guest/guestList";
 	}
 	
 	// 고객 수정 폼
 	@RequestMapping(value = "/guestMod")
-	public String guestMod(Model model, @RequestParam(value = "gCode", required = true) int gCode) {
+	public String guestMod(Model model, @RequestParam("gCode") int gCode) {
 		guestService.guestOne(model, gCode);
 		return "guest/guestMod";
 	}
