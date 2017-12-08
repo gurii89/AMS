@@ -25,9 +25,13 @@ public class GuestController {
 	
 	// 고객 등록 폼
 	@RequestMapping(value = "/guestAdd")
-	public String guestAdd(Model model, @RequestParam("booCode") int booCode) {
+	public String guestAdd(Model model, @RequestParam("booCode") String booCode
+					, @RequestParam(value = "cate", required=false) String cate 
+					, @RequestParam(value = "input", required=false) String input
+					, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 		cateService.cateOptionSearch(model, "cate_small", "nation");
-		model.addAttribute("booCode",booCode);
+		guestService.guestList(model, currentPage, "booking", booCode);
+		model.addAttribute("booCode",booCode);		
 		return "guest/guestAdd";
 	}
 	
@@ -43,16 +47,16 @@ public class GuestController {
 	// 고객 목록
 	@RequestMapping(value = "/guestList")
 	public String guestList(Model model
-			, @RequestParam(value = "cate", required=false) String cate 
-			, @RequestParam(value = "input", required=false) String input
-			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+					, @RequestParam(value = "cate", required=false) String cate 
+					, @RequestParam(value = "input", required=false) String input
+					, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
 			guestService.guestList(model, currentPage, cate, input);
 		return "guest/guestList";
 	}
 	
 	// 고객 수정 폼
 	@RequestMapping(value = "/guestMod")
-	public String guestMod(Model model, @RequestParam(value = "gCode", required = true) int gCode) {
+	public String guestMod(Model model, @RequestParam("gCode") int gCode) {
 		guestService.guestOne(model, gCode);
 		return "guest/guestMod";
 	}

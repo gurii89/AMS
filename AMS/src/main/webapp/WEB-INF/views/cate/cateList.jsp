@@ -15,7 +15,7 @@
 			<c:otherwise>
 				<form action="cateList" method="post" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
-						<option id="opt" value="${cate }" class="input-sm">검색 조건 선택</option>							
+						<option id="opt" value="" class="input-sm">검색 조건 선택</option>							
 						<option value="cate_code" class="input-sm">분류 번호</option>
 						<option value="e_id" class="input-sm">등록자</option>
 						<option value="cate_large" class="input-sm">대분류</option>

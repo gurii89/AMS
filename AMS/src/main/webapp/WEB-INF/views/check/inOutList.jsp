@@ -22,7 +22,7 @@
 			<c:otherwise>
 				<form action="guestList" method="post" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
-						<option value="${cate }" class="input-sm">검색 조건 선택</option>
+						<option value="" class="input-sm">검색 조건 선택</option>
 					</select>
 					<input type="text" name="input" id="input" value="${input }" required class="input-sm">
 					<input type="submit" value="검색" class="btn-default btn-sm">
