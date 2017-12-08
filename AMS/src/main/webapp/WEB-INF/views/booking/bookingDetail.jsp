@@ -9,13 +9,15 @@
 	<body>	
 		<div class="topb">예약 상세</div>
 		<div class="clearfix col-sm-12">
-			<div class="text-right">
-				<button id="payBtn" class="btn-default btn-sm">결제</button>
-				<span id="guest"><button id="guestBtn" class="btn-default btn-sm">고객 등록</button></span>
-				<span id="in"><button id="inBtn" class="btn-default btn-sm">입실</button></span>
-				<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>
-				<span id="can"><button id="canBtn" class="btn-default btn-sm">예약 취소</button></span>
-			</div>
+			<c:if test="${loginfor.eDepartment eq 'front'}">
+				<div class="text-right">
+					<button id="payBtn" class="btn-default btn-sm">결제</button>
+					<span id="guest"><button id="guestBtn" class="btn-default btn-sm">고객 등록</button></span>
+					<span id="in"><button id="inBtn" class="btn-default btn-sm">입실</button></span>
+					<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>
+					<span id="can"><button id="canBtn" class="btn-default btn-sm">예약 취소</button></span>
+				</div>
+			</c:if>
 			<table class="bs">
 				<tr>
 					<th>예약 번호</th>

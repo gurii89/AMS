@@ -83,9 +83,4 @@ public class LoginService {
 	
 		return "redirect:/login";
 	}
-	
-	//home 세션 설정
-	public void HomeSesseion() {
-		session.setAttribute("top", "home");
-	}
 }

@@ -83,7 +83,11 @@ $(function(){
 	
 	// 예약 취소
 	$('#canBtn').click(function(){
-		$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
+		if($('#sumPay').html() == '0'){
+			$(location).attr('href', 'bookingCancel?booCode='+$('#booCode').text())
+		}else{
+			$(location).attr('href', 'paymentAdd?booCode='+booCode+"&payTotal="+sum)
+		}
 	})
 	
 	// 고객 등록

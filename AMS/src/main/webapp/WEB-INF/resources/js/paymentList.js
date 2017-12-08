@@ -28,14 +28,4 @@ $(function(){
 			$('#input').val('')
 		}
 	})
-	
-	// 클릭시 결제 취소 팝업 생성 확인시 취소
-	$('tr').click(function(){
-		if($(this).children().eq(1).text() == '결제'){
-			var test = confirm('결제를 취소하시겠습니까?')
-			if(test){
-				$(location).attr('href', 'paymentCancel?pCode='+$(this).children().first().text())
-			}	
-		}
-	})
 })

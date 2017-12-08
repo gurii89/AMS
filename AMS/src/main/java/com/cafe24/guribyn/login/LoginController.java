@@ -39,10 +39,4 @@ public class LoginController{
 	public String logoutPro(HttpSession session) {
 		return loginService.logout(session);
 	}
-	//인덱스
-	@RequestMapping(value="/home")	
-	public String home() {
-		loginService.HomeSesseion();
-		return "home";
-	}
 }

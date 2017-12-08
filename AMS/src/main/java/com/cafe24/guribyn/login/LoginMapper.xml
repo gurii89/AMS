@@ -16,9 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="login" resultMap="resultLogin" parameterType="com.cafe24.guribyn.login.Login"> 
-		SELECT e_id, e_name, e_department
+		SELECT employee.e_id, e_name, cate_name e_department
 		FROM employee
-		WHERE e_id=#{eId} AND e_pw=#{ePw}
+		LEFT JOIN category ON employee.e_department = category.cate_code
+		WHERE employee.e_id=#{eId} AND e_pw=#{ePw}
 	</select>
 	
 	<!-- 로그인 이력 저장 -->
