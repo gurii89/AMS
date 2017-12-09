@@ -108,8 +108,23 @@ $(function(){
 		}
 	}
 	
-	//체크아웃 처리
+	// 체크아웃 처리
 	$('#outBtn').click(function(){
 		$(location).attr('href', 'checkOutAdd?booCode='+$('#booCode').text())				
 	})
+	
+	// 예약 고객 없을 경우 테이블 삭제
+	if($('.bookingGuest').length == 0){
+		$('#guestTable').html('')		
+	}
+	
+	// 예약 서비스 없을 경우 테이블 삭제
+	if($('.bookingRoom').length == 0){
+		$('#roomTable').html('')		
+	}
+	
+	// 예약 객실 없을 경우 테이블 삭제
+	if($('.bookingExtra').length == 0){
+		$('#extraTable').html('')		
+	}
 })

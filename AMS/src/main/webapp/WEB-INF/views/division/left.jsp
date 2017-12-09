@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 	<script>
 		$(function(){
+			// 드롭다운 메뉴
 			$('.drop').hide()
 			$('.drop-top').click(function(){
 				$('.drop').hide()
@@ -23,7 +24,7 @@
 					<div class="loginfo">&nbsp;&nbsp;<div class="glyphicon glyphicon-user"></div></div>
 					<span class="loginfo">권한:${loginfor.eDepartment}</span>
 					<div class="loginfo">
-						<a href="#" class="myinfor">${loginfor.eName}(${loginfor.eId})님</a>
+						<a href="employeeDetail?eId=${loginfor.eId}" class="myinfor">${loginfor.eName}님</a>
 						<span class="loginfo">안녕하세요!</span>
 					</div>
 					<form method="post" action="./logout">
@@ -34,9 +35,11 @@
 			<li>&nbsp;</li>
 			<c:if test="${loginfor.eDepartment eq 'manager' }">
 				<li><a class="loginfo drop-top"><span
-						class="glyphicon glyphicon-chevron-right"></span> 직원</a></li>
-				<li class="employee drop"><a href="employeeList" class="loginfo">직원 목록</a></li>
-				<li class="employee drop"><a href="employeeAdd" class="loginfo">직원 등록</a></li>
+						class="glyphicon glyphicon-chevron-right"></span> 직원/분류</a></li>
+				<li class="empEvent drop"><a href="employeeList" class="loginfo">직원 목록</a></li>
+				<li class="empEvent drop"><a href="employeeAdd" class="loginfo">직원 등록</a></li>
+				<li class="empEvent drop"><a href="cateList" class="loginfo">분류 목록</a></li>
+				<li class="empEvent drop"><a href="cateAdd" class="loginfo">분류 등록</a></li>
 			</c:if>
 			
 			<c:if test="${loginfor.eDepartment != 'clean' }">
@@ -47,14 +50,16 @@
 			</c:if>
 			
 			<li><a class="loginfo drop-top"><span
-					class="glyphicon glyphicon-chevron-right"></span> 객실</a></li>
+					class="glyphicon glyphicon-chevron-right"></span> 객실/서비스</a></li>
 			<c:if test="${loginfor.eDepartment != 'clean' }">
 				<li class="room drop"><a href="roomTypeList" class="loginfo">객실 타입 목록</a></li>
 			</c:if>
-			<li class="room drop"><a href="roomList" class="loginfo">객실 목록</a></li>				
+			<li class="room drop"><a href="roomList" class="loginfo">객실 목록</a></li>
+			<li class="room drop"><a href="extraList" class="loginfo">서비스 목록</a></li>				
 			<c:if test="${loginfor.eDepartment eq 'manager' }">
 				<li class="room drop"><a href="roomTypeAdd" class="loginfo">객실 타입 등록</a></li>
 				<li class="room drop"><a href="roomAdd" class="loginfo">객실 등록</a></li>
+				<li class="room drop"><a href="extraAdd" class="loginfo">서비스 등록</a></li>
 			</c:if>
 			
 			<c:if test="${loginfor.eDepartment != 'clean' }">
@@ -67,13 +72,6 @@
 				<li class="booking drop"><a href="paymentList" class="loginfo">결제 목록</a></li>
 				<li class="booking drop"><a href="guestList" class="loginfo">고객 목록</a></li>
 				<li class="booking drop"><a href="inOutList" class="loginfo">입퇴실 목록</a></li>
-			</c:if>
-					
-			<li><a class="loginfo drop-top"><span
-					class="glyphicon glyphicon-chevron-right"></span> 서비스</a></li>
-			<li class="extra drop"><a href="extraList" class="loginfo">서비스 목록</a></li>
-			<c:if test="${loginfor.eDepartment eq 'manager' }">
-				<li class="extra drop"><a href="extraAdd" class="loginfo">서비스 등록</a></li>
 			</c:if>
 			
 			<li><a class="loginfo drop-top"><span
@@ -99,13 +97,6 @@
 			<li class="notice drop"><a href="./noticeList" class="loginfo">공지사항 리스트</a></li>
 			<c:if test="${loginfor.eDepartment eq 'manager' }">
 				<li class="notice drop"><a href="./noticeAdd" class="loginfo">공지사항 등록</a></li>
-			</c:if>
-			
-			<c:if test="${loginfor.eDepartment eq 'manager' }">		
-			<li><a class="loginfo drop-top"><span
-					class="glyphicon glyphicon-chevron-right"></span> 분류</a></li>
-				<li class="category drop"><a href="cateList" class="loginfo">분류 목록</a></li>
-				<li class="category drop"><a href="cateAdd" class="loginfo">분류 등록</a></li>
 			</c:if>
 					
 			<li><a class="loginfo drop-top"><span

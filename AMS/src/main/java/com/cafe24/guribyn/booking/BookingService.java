@@ -116,7 +116,6 @@ public class BookingService {
 		}
 		map = commonService.paging(model, currentPage, 10, bookingDao.bookingCount(map), map);
 		model.addAttribute("bookingList", bookingDao.bookingList(map));
-		session.setAttribute("top", "booking");
 	}
 	
 	// 예약 개수
