@@ -7,8 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.cafe24.guribyn.check.in.CheckIn;
-
 @Repository
 public class BookingDao {
 

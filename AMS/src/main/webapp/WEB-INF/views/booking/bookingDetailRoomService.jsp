@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <div class="col-sm-6">
-	<table class="bs">
+	<table id="roomTable" class="bs">
 		<tr>
 			<th>객실 종류</th>
 			<th>예약 상태</th>
@@ -20,14 +20,14 @@
 	</table>
 </div>
 <div class="col-sm-6">
-	<table class="bs">
+	<table id="extraTable" class="bs">
 		<tr>
 			<th>서비스명</th>
 			<th>예약일</th>
 			<th>이용금액</th>
 		</tr>
 		<c:forEach items="${bookingExtraList }" var="be">
-			<tr>
+			<tr class="bookingExtra">
 				<td>${be.extraCode }</td>
 				<td>${be.booExtraDate }</td>
 				<td class="rate">${be.booExtraRate }</td>

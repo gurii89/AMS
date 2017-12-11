@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>	
 <div class="formb">
-	요금 변동폭 : 
+	행사 적용 : 
 	<span id="event">
 		<select id="FX" class="input-sm">
 				<option class="input-sm" value="1">기본가</option>

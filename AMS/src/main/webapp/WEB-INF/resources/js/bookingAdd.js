@@ -89,6 +89,11 @@ $('document').ready(function(){
 	var room = false
 	
 	$('#roomBtn').click(function(){	
+		// 체크인 예정일과 숙박일 먼저 선택하도록
+		if(!($('#booIn').val()) || !($('#booNight').val())){
+			$('#er').html('체크인 예정일과 숙박일 먼저 입력')
+			return
+		}
 		if(room){
 			$('#room').html('')
 			room = false
@@ -111,6 +116,11 @@ $('document').ready(function(){
 							$('#sum').text(sum)
 							$('#room').html('')
 							room = false
+							// 객실 임시 등록 후 숙박일 체크인 예정일 변경 불가
+							$('#booIn').attr('readonly', 'readonly')
+							$('#booNight').attr('readonly', 'readonly')
+							// 객실 임시 등록 후 행사가 변경 불가
+							$('#event').html('<input type="hidden" id="FX" value="'+$('#FX').val()+'">조정불가')
 						}
 						, error:function(request, status, error){
 							alert('실패');

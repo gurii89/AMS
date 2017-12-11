@@ -16,7 +16,7 @@
 	</table>
 </div>
 <div class="col-sm-6">
-	<table class="bs">
+	<table id="guestTable" class="bs">
 		<tr>
 			<th>고객 번호</th>
 			<th>고객명</th>

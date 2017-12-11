@@ -21,11 +21,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="e_date" property="eDate" />
 	</resultMap>
 	
-	<select id="employeeList" resultMap="resultEmployee">
+	<select id="employeeList" parameterType="java.util.Map" resultMap="resultEmployee">
 		SELECT 
 			employee.e_id
 			,nat.cate_name e_nation
-			,dep.cate_name e_department
+			,employee.e_department
 			,pos.cate_name e_position
 			,lang.cate_name e_language
 			,emp.e_name m_id
@@ -43,12 +43,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ON employee.e_nation = nat.cate_code
 		LEFT JOIN employee emp
 			ON employee.m_id = emp.e_id
-		LEFT JOIN category dep
-			ON employee.e_department = dep.cate_code
 		LEFT JOIN category pos
 			ON employee.e_position = pos.cate_code
 		LEFT JOIN category lang
 			ON employee.e_language = lang.cate_code
+		<if test="input != null">
+			<choose>
+				<when test="input == 'language'">
+					WHERE ${cate} IS NOT NULL
+				</when>
+				<when test="input == 'nation'">
+					WHERE ${cate} != (SELECT cate_code FROM category WHERE cate_name = 'korea')
+				</when>
+				<otherwise>
+					WHERE ${cate} = #{input}
+				</otherwise>
+			</choose>			
+		</if>
+		ORDER BY employee.e_id DESC
+		<if test="start != null">
+			LIMIT ${start}, ${pagePerRow}
+		</if>
+	</select>
+	
+	<select id="employeeCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM employee
+		LEFT JOIN category nat
+			ON employee.e_nation = nat.cate_code
+		LEFT JOIN employee emp
+			ON employee.m_id = emp.e_id
+		LEFT JOIN category pos
+			ON employee.e_position = pos.cate_code
+		LEFT JOIN category lang
+			ON employee.e_language = lang.cate_code
+		<if test="input != null">
+			<choose>
+				<when test="input == 'language'">
+					WHERE ${cate} IS NOT NULL
+				</when>
+				<when test="input == 'nation'">
+					WHERE ${cate} != (SELECT cate_code FROM category WHERE cate_name = 'korea')
+				</when>
+				<otherwise>
+					WHERE ${cate} = #{input}
+				</otherwise>
+			</choose>			
+		</if>
 	</select>
 	
 	<select id="employeeOne" resultMap="resultEmployee">
@@ -118,12 +158,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				,e_department = #{eDepartment}
 				,e_language = #{eLanguage}
 				,e_name = #{eName}
-				,e_pw = #{ePw}
 				,e_birthdate = #{eBirthdate}
 				,e_email = #{eEmail}
 				,e_address = #{eAddress}
 				,e_phone = #{ePhone}
 				,e_memo = #{eMemo}
+				<if test="ePw != ''">
+					,e_pw = #{ePw}
+				</if>				
 		WHERE e_id = #{eId}
 	</update>
+	
+	<update id="employeePw" parameterType="java.util.Map">
+		UPDATE employee SET e_pw = #{after} WHERE e_id = #{eId} AND e_pw = #{now}
+	</update>
+	
 </mapper>

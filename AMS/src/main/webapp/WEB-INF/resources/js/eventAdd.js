@@ -34,19 +34,11 @@ $('document').ready(function(){
 
 			// 기본 행사 fx 중복체크
 			}else{
-				$.ajax({
-					url:"eventFx"
-					, type:"GET"
-					, data:"eventFx="+$('#eventFx').val()
-					, success:function(data){
-						if(data == 'ok'){
-							$('#frm').submit()
-						}else{
-							$('#er').html('기본 행사 증감폭 중복불가')
-						}			
-					}
-					, error:function(request, status, error){
-						alert('실패');
+				$.get("eventFx?eventFx="+$('#eventFx').val(), function(data){
+					if(data == 'ok'){
+						$('#frm').submit()
+					}else{
+						$('#er').html('기본 행사 증감폭 중복불가')
 					}
 				})
 			}

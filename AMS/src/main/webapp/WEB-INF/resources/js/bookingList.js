@@ -7,7 +7,7 @@ $(function(){
 		if(val == 'boo_date' || val == 'boo_in'){
 			$('#input').attr('type', 'date');
 		// 숙박일 선택시 1박 초과된 건만 되도록
-		}else if(val == 'boo_night'){
+		}else if(val == 'boo_out'){
 			$('#input').attr('type', 'hidden')
 			$('#input').val('night')
 		// 예약 상태 선택시 셀렉트 중 선택

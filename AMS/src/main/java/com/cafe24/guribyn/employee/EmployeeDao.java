@@ -1,6 +1,7 @@
 package com.cafe24.guribyn.employee;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,18 @@ public class EmployeeDao {
 	}
 	
 	// 직원 목록
-	public List<Employee> employeeList(){
-		return SST.selectList(NS+"employeeList");
+	public List<Employee> employeeList(Map<String, String> map){
+		return SST.selectList(NS+"employeeList", map);
+	}
+	
+	// 비밀번호 변경
+	public int employeePw(Map<String, String> map) {
+		return SST.update(NS+"employeePw", map);
+	}
+	
+	// 직원 수
+	public int employeeCount(Map<String, String> map) {
+		return SST.selectOne(NS+"employeeCount", map);
 	}
 	
 }

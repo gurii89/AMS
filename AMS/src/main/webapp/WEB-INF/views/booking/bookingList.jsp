@@ -16,11 +16,12 @@
 			<c:otherwise>
 				<form action="bookingList" method="post" class="form-horizontal">
 					<select name="cate" id="cate" required class="input-sm">
-						<option id="opt" value="" class="input-sm">검색 조건 선택</option>						<option value="boo_date" class="input-sm">예약일</option>
+						<option id="opt" value="" class="input-sm">검색 조건 선택</option>
+						<option value="boo_date" class="input-sm">예약일</option>
 						<option value="boo_in" class="input-sm">체크인 예정일</option>
 						<option value="boo_path" class="input-sm">유입경로</option>
 						<option value="boo_condition" class="input-sm">예약상태</option>
-						<option value="boo_night" class="input-sm">숙박일</option>
+						<option value="boo_out" class="input-sm">숙박일</option>
 						<option value="e_name" class="input-sm">등록자</option>
 					</select>
 					<span id="condi">
@@ -29,7 +30,7 @@
 					<input type="submit" value="검색" class="btn-default btn-sm">
 				</form>
 			</c:otherwise>
-		</c:choose>	
+		</c:choose>
 		<table class="bs">
 			<tr>
 				<th>예약 번호</th>
@@ -47,7 +48,7 @@
 					<td>${boo.booCondition }</td>
 					<td>${boo.booDate }</td>
 					<td>${boo.booIn }</td>
-					<td>${boo.booNight }</td>
+					<td>${boo.booOut }</td>
 					<td>${boo.booCount }</td>
 					<td>${boo.booPath }</td>
 					<td>${boo.eId }</td>

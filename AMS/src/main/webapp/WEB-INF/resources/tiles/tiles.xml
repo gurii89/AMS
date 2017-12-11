@@ -8,7 +8,6 @@
 
 	<!-- Doc index page description -->
 	<definition name="layout" template="/WEB-INF/views/division/layout.jsp">
-		<put-attribute name="top" value="/WEB-INF/views/division/top.jsp" />
 		<put-attribute name="left" value="/WEB-INF/views/division/left.jsp" />
 		<put-attribute name="content" value="" />
 	</definition>

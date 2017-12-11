@@ -27,11 +27,11 @@
 			<form action="bookingAdd" method="post" id="frm" class="form-horizontal">
 				<div class="formb">
 					체크인 예정일 :
-					<input type="date" name="booIn" id="booIn" class="input-sm" value="${today }" required>
+					<input type="date" name="booIn" id="booIn" class="input-sm" required>
 				</div>
 				<div class="formb">
 					숙박일 :
-					<input type="text" name="booNight" id="booNight" class="input-sm" required>
+					<input type="text" name="booOut" id="booNight" class="input-sm" required>
 				</div>
 				<div class="formb">
 					예약인원 :

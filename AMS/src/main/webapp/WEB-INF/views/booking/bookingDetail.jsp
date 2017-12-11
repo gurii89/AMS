@@ -12,10 +12,10 @@
 			<c:if test="${loginfor.eDepartment eq 'front'}">
 				<div class="text-right">
 					<button id="payBtn" class="btn-default btn-sm">결제</button>
-					<span id="guest"><button id="guestBtn" class="btn-default btn-sm">고객 등록</button></span>
 					<span id="in"><button id="inBtn" class="btn-default btn-sm">입실</button></span>
-					<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>
 					<span id="can"><button id="canBtn" class="btn-default btn-sm">예약 취소</button></span>
+					<span id="guest"><button id="guestBtn" class="btn-default btn-sm">고객 등록</button></span>					
+					<span id="out"><button id="outBtn" class="btn-default btn-sm">퇴실</button></span>					
 				</div>
 			</c:if>
 			<table class="bs">
@@ -35,7 +35,7 @@
 					<td id="booCondition">${booking.booCondition }</td>
 					<td>${booking.booDate }</td>
 					<td>${booking.booIn }</td>
-					<td>${booking.booNight }</td>
+					<td>${booking.booOut }</td>
 					<td>${booking.booCount }</td>
 					<td>${booking.booPath }</td>
 					<td>${booking.eId }</td>
@@ -43,10 +43,10 @@
 				</tr>
 			</table>
 		</div>
-		<div class="clearfix col-sm-12">
+		<div class="clearfix">
 			<c:import url="/WEB-INF/views/booking/bookingDetailRoomService.jsp" />
 		</div>
-		<div class="clearfix col-sm-12">
+		<div class="clearfix">
 			<c:import url="/WEB-INF/views/booking/bookingDetailRateGuest.jsp" />
 		</div>
 	</body>
