@@ -1,5 +1,7 @@
 package com.cafe24.guribyn.clean;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,9 +62,12 @@ public class CleanController {
 	}
 	//청소완료페이지
 	@RequestMapping(value="/cleanEndList",  method = RequestMethod.GET)
-	public String cleanEndList(Model model) {
+	public String cleanEndList(Model model
+			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
+			, Map<String, String> map) {
 		System.out.println("---청소완료페이지---------from controller");
 		model.addAttribute("cleanEndList", cleanService.cleanEndList());
+		model.addAttribute("cleanAllCount", cleanService.cleanAllCount(model, currentPage, map));
 		return "clean/cleanEndList";
 	}
 }

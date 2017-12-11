@@ -8,6 +8,5 @@
 </head>
 <body>
 	<div class="maina">${today}</div>
-	폰트테스트
 </body>
 </html>

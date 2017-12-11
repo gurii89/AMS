@@ -1,6 +1,7 @@
 package com.cafe24.guribyn.clean;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,17 @@ public class CleanDao {
 	}
 	//청소완료 리스트
 	public List<Clean> cleanEndList(){
-		System.out.println("---청소완료리스트---------from dao");
-		System.out.println ("테스트"+sqlSessionTemplate.selectList(NS+".selectCleanList"));
+		System.out.println("---청소완료리스트---------from dao");		
 		return sqlSessionTemplate.selectList(NS+".selectCleanList");
+	}
+	//청소 총카운트
+	public int cleanAllCount() {
+		System.out.println("---청소 총 카운트---------from dao");
+		return sqlSessionTemplate.selectOne(NS+".selectCleanCount");
+	}
+	//청소 페이징
+	public List<Clean> cleanPageing(Map<String, String> map){
+		System.out.println("---청소 페이징---------from dao");
+		return sqlSessionTemplate.selectList(NS+".selectCleanLimit", map);
 	}
 }

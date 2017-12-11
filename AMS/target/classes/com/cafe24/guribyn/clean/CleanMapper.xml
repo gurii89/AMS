@@ -59,4 +59,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			clean_end
 		FROM clean
 	</select>
+	<select id="selectCleanCount" resultType="int">
+		SELECT 	
+			COUNT(*)
+		FROM clean
+	</select>
+	
+	<select id="selectCleanLimit" resultMap="resultClean">
+		SELECT 
+			clean_code,
+			room_code,
+			e_id,
+			clean_start,
+			clean_end
+		FROM clean ORDER BY clean_code DESC
+		LIMIT ${start}, ${PAGEPERROW}
+	</select>
 </mapper>

@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
+	$(document).ready(function(){
+	})
 </script>
 </head>
 <body>
@@ -16,14 +18,27 @@
 		<th>청소시작</th>
 		<th>객실종료</th>
 	</tr>
-	<c:forEach items="${cleanEndList}" var="cleanEndList">
+	<c:forEach items="${cleanListR}" var="cleanListR">
 	<tr>
-		<td>${cleanEndList.roomCode}</td>	
-		<td>${cleanEndList.eId}</td>
-		<td>${cleanEndList.cleanStart}</td>
-		<td>${cleanEndList.cleanEnd}</td>
+		<td>${cleanListR.roomCode}</td>	
+		<td>${cleanListR.eId}</td>
+		<td>${cleanListR.cleanStart}</td>
+		<td>${cleanListR.cleanEnd}</td>
 	</tr>
 	</c:forEach>
 </table>
+	<div class="pagebtn">&nbsp;
+		<c:if test="${currentPage > 1}">
+			<a class="btn btn-default btn-sm" href="?currentPage=${currentPage-1}">이전</a>
+		</c:if>
+	</div>
+	<div class="pagebtnNumber">
+		<c:forEach var="perPage" begin="${startPage}" end="${lastPage}">
+			<span><a href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		</c:forEach>
+	</div>
+	<c:if test="${currentPage < lastPage}">
+		<div class="pagebtn"><a class="btn btn-default btn-sm" href="?currentPage=${currentPage+1}">다음</a></div>
+	</c:if>
 </body>
 </html>

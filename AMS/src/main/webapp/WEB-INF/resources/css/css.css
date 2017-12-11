@@ -352,7 +352,16 @@ table.main td {
 	display: none;
 }
 
-
+.pagebtn {
+	width: 100px;
+	float: left;
+}
+.pagebtnNumber {
+	float: left;
+	width: 150px;
+	font-size: 14px;
+	font-weight: bold;
+}
 
 /*--- -----------------------------------------------*/
 
