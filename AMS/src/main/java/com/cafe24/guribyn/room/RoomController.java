@@ -52,12 +52,29 @@ public class RoomController {
 		model.addAttribute("roomTypeSelect", roomService.roomTypeList());
 		return "/room/roomAdd";
 	}
+	//룸코드 중복검사
+	@ResponseBody
+	@RequestMapping(value = "/rtDupTest")
+	public String rtDuptest(@RequestParam ("insertRt") String insertRt) {
+		System.out.println("---룸코드 중복검사---------from controller");
+		System.out.println("insertRt"+insertRt);
+		Gson gson = new Gson();
+		return gson.toJson(roomService.RoomCodeDup(insertRt));
+	}
 	//객실등록처리
 	@RequestMapping(value="/roomAdd", method = RequestMethod.POST)
-	public String roomAdd(Room room) {
+	public String roomAdd(Room room, Model model) {
 		System.out.println("---객실등록처리---------from controller");
-		roomService.RoomAdd(room);
-		return "redirect:/roomTypeList";	
+		int resulT = roomService.RoomAdd(room);
+			//중복검사 후 정상 등록
+			if(resulT == 1) {
+				return "redirect:/roomTypeList";
+			}
+			//중복검사 후 재등록 요청
+			else {
+				model.addAttribute("insertRequest", "insertRequest");
+				return "/room/roomAdd";
+			}
 	}
 	//객실 리스트
 	@RequestMapping(value="/roomList", method = RequestMethod.GET)

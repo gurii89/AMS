@@ -49,8 +49,9 @@ public class RoomService {
 		RoomCondition roomcon = new RoomCondition();
 		roomcon.seteId(room.geteId());
 		roomcon.setRoomCode(room.getRoomCode());
+			
+		//최초 등록시 상태를 공실로 INSERT
 		roomcon.setRoomConCondition("공실");
-		
 		return roomDao.RoomConditionAdd(roomcon);
 	}
 	//객실 전체 리스트
@@ -116,6 +117,18 @@ public class RoomService {
 	public int RoomConditionAdd(RoomCondition roomCondition){
 		System.out.println("---객실상태 등록처리---------from service");
 		return roomDao.RoomConditionAdd(roomCondition);
+	}
+	//룸코드 중복검사
+	public String RoomCodeDup(String insertRt) {
+		System.out.println("---룸코드 중복검사---------from service");
+		Room roomResult = roomDao.RoomCodeDup(insertRt);
+		String dupResult = "";
+		if(roomResult == null) {
+			dupResult ="ok";
+		}else {
+			dupResult ="no";
+		}
+		return dupResult;
 	}
 	//한 객실 상태 불러오기
 	public String RoomConditionview(String FrCode) {

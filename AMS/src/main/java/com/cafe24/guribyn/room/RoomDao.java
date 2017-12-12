@@ -29,6 +29,12 @@ public class RoomDao {
 		System.out.println("---객실등록처리---------from dao");
 		return sqlSessionTemplate.insert(NS+".insertRoom", room);
 	}
+	//룸코드 중복검사
+	public Room RoomCodeDup(String insertrt) {
+		System.out.println("---룸코드 중복검사---------from dao");
+		System.out.println(sqlSessionTemplate.selectOne(NS+".selectRoomDupTest", insertrt));
+		return sqlSessionTemplate.selectOne(NS+".selectRoomDupTest", insertrt);
+	}
 	//객실 전체 리스트
 	public List<Room> RoomList(){
 		System.out.println("---객실 전체리스트---------from dao");
@@ -101,5 +107,8 @@ public class RoomDao {
 	public int bookingSearchRoom(int booRoomCode) {
 		return sqlSessionTemplate.selectOne(NS+".bookingSearchRoom", booRoomCode);
 	}
-
+	//총 객실 수
+	public int roomCount() {
+		return sqlSessionTemplate.selectOne(NS+".selectRoomCount");
+	}
 }

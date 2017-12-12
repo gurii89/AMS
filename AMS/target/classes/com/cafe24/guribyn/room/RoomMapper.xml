@@ -74,22 +74,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM room_type
 	</select>
 	
-	<insert id="insertRoom" parameterType="com.cafe24.guribyn.room.Room">
+	<select id="selectRoomDupTest" parameterType="String" resultMap="resultRoom">
+		SELECT
+			*
+		FROM room
+		WHERE room_code = #{value}
+	</select>
+	
+	<insert id="insertRoom" parameterType="com.cafe24.guribyn.room.Room">			
 		INSERT INTO room(
-				room_code,
-				room_type_code,
-				e_id,
-				room_name,
-				room_date,
-				room_size
-			)
-				VALUES(
-				#{roomCode},
-				#{roomTypeCode},
-				#{eId},
-				#{roomName},
-				now(),
-				#{roomSize}
+			room_code,
+			room_type_code,
+			e_id,
+			room_name,
+			room_date,
+			room_size
+		)
+		VALUES( 
+			#{roomCode},
+			#{roomTypeCode},
+			#{eId}, 
+			#{roomName},
+			 now(),
+			#{roomSize}
 			)
 	</insert>
 	
