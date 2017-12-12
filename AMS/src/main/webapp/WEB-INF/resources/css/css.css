@@ -362,6 +362,16 @@ table.main td {
 	font-size: 14px;
 	font-weight: bold;
 }
+.nowPage:link, .nowPage:visited, .nowPage:hover{
+	text-decoration: none;
+	pointer-events: none;
+	cursor: default;
+	color: #31C3DD;
+}
+.otherPage:link, .otherPage:visited, .otherPage:hover{
+	text-decoration: none;
+	color: #272A2F;
+}
 
 /*--- -----------------------------------------------*/
 

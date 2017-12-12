@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
-	$(document).ready(function(){
-	})
+
 </script>
 </head>
 <body>
@@ -28,17 +27,24 @@
 	</c:forEach>
 </table>
 	<div class="pagebtn">&nbsp;
-		<c:if test="${currentPage > 1}">
-			<a class="btn btn-default btn-sm" href="?currentPage=${currentPage-1}">이전</a>
+		<c:if test="${startPage != 1 }">
+			<a class="btn btn-default btn-sm" href="?currentPage=${startPage-1}">${startPage-1} 페이지로</a>
 		</c:if>
 	</div>
 	<div class="pagebtnNumber">
+	
 		<c:forEach var="perPage" begin="${startPage}" end="${lastPage}">
-			<span><a href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		<c:if test="${perPage == currentPage}">
+			<span><a class="nowPage" href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		</c:if>
+		<c:if test="${perPage != currentPage}">
+			<span><a class="otherPage" href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		</c:if>
 		</c:forEach>
+	
 	</div>
-	<c:if test="${currentPage < lastPage}">
-		<div class="pagebtn"><a class="btn btn-default btn-sm" href="?currentPage=${currentPage+1}">다음</a></div>
+	<c:if test="${lastPage*PAGEPERROW < totalCount}">
+		<div class="pagebtn"><a class="btn btn-default btn-sm" href="?currentPage=${lastPage+1}">${lastPage+1} 페이지로</a></div>
 	</c:if>
 </body>
 </html>

@@ -66,8 +66,7 @@ public class CleanController {
 			, @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage
 			, Map<String, String> map) {
 		System.out.println("---청소완료페이지---------from controller");
-		model.addAttribute("cleanEndList", cleanService.cleanEndList());
-		model.addAttribute("cleanAllCount", cleanService.cleanAllCount(model, currentPage, map));
+		model.addAttribute("cleanAllCount", cleanService.cleanEndList(model, currentPage, map));
 		return "clean/cleanEndList";
 	}
 }
