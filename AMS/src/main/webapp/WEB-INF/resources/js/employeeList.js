@@ -6,7 +6,15 @@ $(function(){
 		$(location).attr('href', 'employeeDetail?eId='+$(this).children().first().html())
 	})
 	
+	// 페이지 진입시 검색조건과 검색창 연동
+	input()
+	
 	$('#cate').on('change', function(){
+		input()
+	})
+	
+	// 검색 조건과 검색창 연동
+	function input(){
 		var val = $('#cate').val()
 		
 		// 검색 조건 외국어 선택시 외국어 있는 직원만 나오게
@@ -31,5 +39,6 @@ $(function(){
 			$('#condi').html(condi)
 			$('#input').val('')
 		}
-	})
+	}
+	
 })

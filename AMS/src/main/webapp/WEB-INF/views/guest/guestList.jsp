@@ -30,6 +30,14 @@
 				
 				// 검색 조건 따라 검색창 변경
 				$('#cate').on('change', function(){
+					input()
+				})
+				
+				// 초기 검색조건 검색창 연동
+				input()
+				
+				// 검색조건 검색창 연동 함수
+				function input(){
 					var val = $('#cate option:selected').val()
 					// 검색조건 등록일, 생년월일 선택시 날짜검색창
 					if(val == 'g_date' || val == 'g_birthdate'){
@@ -39,7 +47,7 @@
 						$('#input').attr('type', 'text')
 						$('#input').val('')
 					}
-				})
+				}
 				
 			})
 		</script>

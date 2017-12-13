@@ -21,6 +21,7 @@ import com.cafe24.guribyn.event.EventService;
 import com.cafe24.guribyn.guest.GuestDao;
 import com.cafe24.guribyn.login.Login;
 import com.cafe24.guribyn.payment.PaymentDao;
+import com.cafe24.guribyn.room.RoomDao;
 import com.cafe24.guribyn.room.RoomService;
 import com.google.gson.Gson;
 
@@ -59,6 +60,9 @@ public class BookingService {
 	
 	@Autowired
 	EventDao eventDao;
+	
+	@Autowired
+	RoomDao roomDao;
 	
 	// 예약 등록 폼
 	public void bookingAdd(Model model) {
@@ -160,4 +164,34 @@ public class BookingService {
 		System.out.println(trrr);
 		return trrr;
 	}
+	
+	// 일주일 예약 통계
+	public String bookingWeek() {		
+		Gson gson = new Gson();
+		return gson.toJson(bookingDao.bookingWeek());
+	}
+	
+	// 예약율 + 메인 통계 데이터
+	public String bookingPercent() {
+		int normal = bookingDao.bookingCount(null);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cate", "boo_condition");
+		map.put("input", "취소");
+		int cancel = bookingDao.bookingCount(map);
+		
+		Booking booking = bookingDao.bookingRate();
+		
+		int rate = Integer.parseInt(booking.getBooIn())+Integer.parseInt(booking.getBooOut());
+		int percent = 100 - (roomDao.roomEmptyCount() * 100 / roomDao.roomCount());
+		
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		result.put("normal", normal-cancel);
+		result.put("cancel", cancel);		
+		result.put("rate", rate);
+		result.put("percent", percent);
+		
+		Gson gson = new Gson();
+		return gson.toJson(result);
+	}
+	
 }

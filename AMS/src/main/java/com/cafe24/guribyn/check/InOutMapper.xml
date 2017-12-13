@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ON check_in.e_id = chin.e_id
 		LEFT JOIN employee chout
 			ON check_out.e_id = chout.e_id
-		WHERE LENGTH(in_date) > 0 OR LENGTH(out_date) > 0
+		WHERE (LENGTH(in_date) > 0 OR LENGTH(out_date) > 0)
 		<if test="input != null">
 			AND ${cate} = #{input}
 		</if>
@@ -51,7 +51,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ON booking_room.boo_room_code = check_in.boo_room_code
 		LEFT JOIN check_out
 			ON booking.boo_code = check_out.boo_code
-		WHERE LENGTH(in_date) > 0 OR LENGTH(out_date) > 0
+		LEFT JOIN employee chin
+			ON check_in.e_id = chin.e_id
+		LEFT JOIN employee chout
+			ON check_out.e_id = chout.e_id
+		WHERE (LENGTH(in_date) > 0 OR LENGTH(out_date) > 0)
 		<if test="cate != null">
 			AND ${cate} = #{input}
 		</if>

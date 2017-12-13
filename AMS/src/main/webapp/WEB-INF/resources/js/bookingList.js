@@ -1,6 +1,16 @@
 $(function(){
 	var condi = $('#condi').html()
+	
+	// 검색조건 변경시 검색창 연동
 	$('#cate').on('change', function(){
+		input()
+	})
+	
+	// 초기 검색창 연동
+	input()
+	
+	// 검색창 검색조건 연동 함수
+	function input(){
 		$('#condi').html(condi)
 		var val = $('#cate option:selected').val()
 		// 날짜 검색 선택시 input tpye date로 변경
@@ -22,7 +32,7 @@ $(function(){
 			$('#input').attr('type', 'text');
 			$('#input').val('')
 		}
-	})
+	}
 	
 	// 예약 줄 선택시 상세보기로 이동
 	$('.boo').click(function(){

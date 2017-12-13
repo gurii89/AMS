@@ -45,4 +45,14 @@ public class BookingDao {
 		return SST.selectOne(NS+"searchBooCode");
 	}
 	
+	// 최근 일주일 예약 통계(차트를 위한 데이터)
+	public List<Booking> bookingWeek(){
+		return SST.selectList(NS+"bookingWeek");
+	}
+	
+	// 총 매출
+	public Booking bookingRate() {
+		return SST.selectOne(NS+"bookingRate");
+	}
+	
 }

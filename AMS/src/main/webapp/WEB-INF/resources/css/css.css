@@ -37,6 +37,9 @@
   	box-sizing: border-box;
 }
 
+.drop {
+	padding-left: 10px;
+}
 
 /* --------------------- front.fontMain.css--- */
 

@@ -1,7 +1,16 @@
 $(function(){
 	var condi = $('#condi').html()
-					
+			
+	// 검색조건 변경시 검색창 연동
 	$('#cate').on('change', function(){
+		input()
+	})
+	
+	// 초기 검색창 연동
+	input()
+	
+	// 검색조건 검색창 연동 함수
+	function input(){
 		var val = $('#cate option:selected').val()
 		$('#condi').html(condi)
 		// 검색조건 결제일 선택시 input type date로
@@ -27,5 +36,6 @@ $(function(){
 			$('#input').attr('type', 'text')
 			$('#input').val('')
 		}
-	})
+	}
+	
 })

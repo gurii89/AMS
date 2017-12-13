@@ -19,8 +19,10 @@
 			<th>등록날짜</th>
 			<th>발견장소</th>
 			<th>기타</th>
-			<th>수정</th>
-			<th>발송</th>
+			<c:if test="${loginfor.eDepartment eq 'front' }">
+				<th>수정</th>
+				<th>발송</th>
+			</c:if>
 		</tr>
 		<c:forEach items="${keepList}" var="keep">
 			<tr>
@@ -31,8 +33,10 @@
 				<td>${keep.kDate}</td>
 				<td>${keep.kSite}</td>
 				<td>${keep.kMemo}</td>
-				<td><a class= "btn-default btn-sm" href="./keepMod?kCode=${keep.kCode}">수정</a></td>
-				<td><a class= "btn-default btn-sm" href="./deliveryAdd">택배발송</a></td>
+				<c:if test="${loginfor.eDepartment eq 'front' }">
+					<td><a class= "btn-default btn-sm" href="./keepMod?kCode=${keep.kCode}">수정</a></td>
+					<td><a class= "btn-default btn-sm" href="./deliveryAdd">택배발송</a></td>
+				</c:if>
 				</tr>
 		</c:forEach>
 	</table>			

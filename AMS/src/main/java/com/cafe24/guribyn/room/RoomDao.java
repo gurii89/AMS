@@ -109,6 +109,10 @@ public class RoomDao {
 	}
 	//총 객실 수
 	public int roomCount() {
-		return sqlSessionTemplate.selectOne(NS+".selectRoomCount");
+		return sqlSessionTemplate.selectOne(NS+".roomCount");
+	}
+	//현재 공실 개수
+	public int roomEmptyCount() {
+		return sqlSessionTemplate.selectOne(NS+".roomEmptyCount");
 	}
 }

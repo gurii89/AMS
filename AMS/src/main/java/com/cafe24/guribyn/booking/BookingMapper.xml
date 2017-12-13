@@ -15,6 +15,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="boo_Condition" property="booCondition" />
 	</resultMap>
 	
+	<select id="bookingRate" resultMap="resultBooking">
+		SELECT
+			SUM(boo_room_rate) boo_in
+			, SUM(boo_extra_rate) boo_out
+		FROM booking
+		LEFT JOIN booking_extra be ON be.boo_code = booking.boo_code
+		LEFT JOIN booking_room br ON br.boo_code = booking.boo_code
+	</select>
+	
+	<select id="bookingWeek" resultMap="resultBooking">
+		SELECT
+			COUNT(booking.boo_code) boo_count
+			, DATE_FORMAT(boo_in, '%Y-%m-%d') boo_date
+			, SUM(boo_room_rate) boo_in
+			, SUM(boo_extra_rate) boo_out
+		FROM booking
+		LEFT JOIN booking_extra be ON be.boo_code = booking.boo_code
+		LEFT JOIN booking_room br ON br.boo_code = booking.boo_code
+		WHERE DATE_FORMAT(boo_in, '%Y-%m-%d') <![CDATA[< DATE_FORMAT(now(), '%Y-%m-%d') + INTERVAL 1 DAY
+			AND DATE_FORMAT(boo_in, '%Y-%m-%d') > ]]> DATE_FORMAT(now(), '%Y-%m-%d') - INTERVAL 7*1 DAY
+			AND boo_out IS NOT NULL
+		GROUP BY DATE_FORMAT(boo_in, '%Y-%m-%d')
+	</select>
+	
 	<select id="searchBooCode" resultType="int">
 		SELECT boo_code FROM booking ORDER BY boo_code DESC LIMIT 1	
 	</select>

@@ -68,4 +68,18 @@ public class BookingController {
 		return "redirect:/bookingDetail";
 	}
 	
+	// 일주일 예약 통계
+	@ResponseBody
+	@RequestMapping(value = "bookingWeek")
+	public String bookingWeek() {
+		return bookingService.bookingWeek();
+	}
+	
+	// 예약율
+	@ResponseBody
+	@RequestMapping(value = "bookingPercent")
+	public String bookingPercent() {
+		return bookingService.bookingPercent();
+	}
+	
 }

@@ -34,15 +34,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="room_Con_Condition" property="roomConCondition"></result>
 	<result column="room_Con_Date" property="roomConDate"></result>
 </resultMap>
+	<select id="roomCount" resultType="int">
+		SELECT COUNT(*) FROM room
+	</select>	
+	<select id="roomEmptyCount" resultType="int">
+		SELECT COUNT(*) FROM room_condition c
+			LEFT JOIN room ON c.room_code = room.room_code
+			WHERE room_con_date =
+				(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code) 
+				AND room_con_condition = '공실'
+	</select>
 	<select id="bookingSearchRoom" resultType="int">
 		SELECT room_code FROM check_in WHERE boo_room_code = #{booRoomCode}
 	</select>
 	<select id="bookingRoomCode" resultMap="resultRoom">
 		SELECT c.room_code FROM room_condition c
 		LEFT JOIN room ON c.room_code = room.room_code
-		WHERE 
-			room_con_date = 
-				(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code) 
+		WHERE room_con_date = 
+			(SELECT MAX(room_con_date) FROM room_condition WHERE room_code = c.room_code) 
 			AND room_con_condition = '공실'
 			AND room_type_code = #{roomTypeCode}
 	</select>

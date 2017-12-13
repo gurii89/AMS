@@ -17,7 +17,9 @@
 			<th>운송장번호</th>
 			<th>등록일</th>
 			<th>운송예정일</th>
-			<th>수정</th>
+			<c:if test="${loginfor.eDepartment eq 'front' }">
+				<th>수정</th>
+			</c:if>			
 		</tr>
 		<c:forEach items="${deliveryList}" var="delivery">
 			<tr>
@@ -28,8 +30,10 @@
 				<td>${delivery.dNumber}</td>
 				<td>${delivery.dDate}</td>
 				<td>${delivery.dDay}</td>
-				<td><a class="btn-default btn-sm"
-					href="./deliveryMod?kCode=${delivery.kCode}">수정</a></td>
+				<c:if test="${loginfor.eDepartment eq 'front' }">
+					<td><a class="btn-default btn-sm"
+						href="./deliveryMod?kCode=${delivery.kCode}">수정</a></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>

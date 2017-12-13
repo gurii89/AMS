@@ -102,7 +102,7 @@ $(function(){
 	}
 	
 	// 조건 부합시 체크아웃 버튼 노출
-	if($('#RMP').text() == 0){
+	if($('#RMP').text() == 0 && $('.bookingGuest').length > 0){
 		if(booCon == '입실' || !($('.bookingRoom').length) && booCon == '예약'){
 			$('#out').show()
 		}
