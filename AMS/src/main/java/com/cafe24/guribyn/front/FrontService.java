@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.cafe24.guribyn.booking.BookingService;
 import com.cafe24.guribyn.extra.ExtraService;
 import com.cafe24.guribyn.room.Room;
 import com.cafe24.guribyn.room.RoomCondition;
@@ -32,6 +33,9 @@ public class FrontService {
 	
 	@Autowired
 	private ExtraService extraService;
+	
+	@Autowired
+	private BookingService bookingService;
 
 	//프론트 세션 설정
 	public String FrontSesseion() {
@@ -157,7 +161,13 @@ public class FrontService {
 	public Model extraFront(Model model) {
 		//카테고리안의 extra > room의 카테코드가 19.
 		model.addAttribute("extralist", extraService.frontExtraName("19"));
-		return model;
-		
+		return model;	
+	}
+	//예약상세 페이지로 보내기
+	public String goBooPage(String rTCode, Model model) {
+		int getBooCode = Integer.parseInt(bookingService.getBooCode(rTCode));
+		bookingService.bookingOne(model, getBooCode);
+		System.out.println("getBooCode : "+getBooCode);
+		return "booking/bookingDetail";
 	}
 }

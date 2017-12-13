@@ -29,5 +29,9 @@ public class BookingRoomDao {
 	public void bookingRoomCondition(Map<String, String> map) {
 		SST.update(NS+"bookingRoomCondition", map);
 	}
+	// 프론트에서 호수 받아서 예약코드 뽑기
+	public String getBooCode(String rTCode) {
+		return SST.selectOne(NS+"goBoo", rTCode);
+	}
 	
 }

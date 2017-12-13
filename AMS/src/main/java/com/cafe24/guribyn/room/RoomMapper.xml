@@ -48,19 +48,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<insert id="insertRoomType" parameterType="com.cafe24.guribyn.room.RoomType">
 		INSERT INTO room_type(
-				e_id,
-				room_type_name,
-				room_type_rate,
-				room_type_date,
-				room_type_count
-			)
-				VALUES(
-				#{eId},
-				#{roomTypeName},
-				#{roomTypeRate},
-				now(),
-				#{roomTypeCount}	
-			)
+			e_id,
+			room_type_name,
+			room_type_rate,
+			room_type_date,
+			room_type_count
+		)
+		SELECT 
+			#{eId},
+			#{roomTypeName},
+			#{roomTypeRate},
+			now(),
+			#{roomTypeCount} FROM DUAL
+		WHERE NOT EXISTS (
+			SELECT room_type_name FROM room_type WHERE room_type_name = #{roomTypeName})
 	</insert>
 	
 	<select id="selectRoomType" resultMap="resultRoomType">
@@ -70,8 +71,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			room_type_name,
 			room_type_rate,
 			room_type_date,
-			room_type_count
-		FROM room_type
+			room_type_count,
+			substring(room_type_name, 1, 1) AS hidden
+		FROM room_type ORDER BY
+			(CASE hidden
+				WHEN '싱' then 1
+				WHEN '더' then 2
+				WHEN '트' then 3
+				ELSE 4
+			END), room_type_name
+
 	</select>
 	
 	<select id="selectRoomDupTest" parameterType="String" resultMap="resultRoom">

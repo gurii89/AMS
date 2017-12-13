@@ -59,4 +59,11 @@ public class FrontController {
 		frontService.extraFront(model);
 		return "front/frontService";
 	}
+	//예약상세 페이지로 보내기
+	@RequestMapping(value="/goBooPage", method = RequestMethod.GET)
+	public String goBooPage(@RequestParam ("rtCode") String rtCode, Model model) {
+		System.out.println("---프론트 서비스 메인---------from controller");
+		System.out.println("부코드 가져올랭"+rtCode);
+		return frontService.goBooPage(rtCode, model);
+	}
 }

@@ -10,6 +10,7 @@
 	var interval;
 	
 	$(document).ready(function(){
+		$('.CheckA').hide();
 		//객실 상태에 따라서 span 태그 css 변경
 		$('.drc').each(function(q){
 			var drcolor = $(this).val();
@@ -180,13 +181,21 @@
 					
 					$('.dert').val(rtname.FrCode.roomTypeCode);
 					$('.derc').val(rtname.FrRCon);
+
+					var goCheckOut = rtname.FrRCon;
+					if(goCheckOut == "입실"){
+						$('.CheckA').html('<a href="goBooPage?rtCode='+rCode+'" class="CheckA btn btn-default">체크아웃</a>')
+						$('.CheckA').show();
+					}else{
+						$('.CheckA').hide();
+					}
 				},
 				fail: function(request, status, error){
 				}
 			})
 				$('.rdbtn').click(function(){
 					$('.hidevdv').html('')
-					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>공실</option><option>예약</option><option>청소요청</option><option>점검요청</option><option>입실</option></select>')
+					$('.vdv').html('<select class="roomCon" name="roomConCondition"><option>공실</option><option>예약</option><option>청소요청</option><option>점검요청</option></select>')
 			})
 		};
 		//span 클릭시 미니메뉴 함수 실행하기
@@ -332,8 +341,8 @@
 						</tr>
 					</table><br>
 					<textarea rows="4" cols="15"></textarea><br>
-					
-					<input type="submit" class="btn btn-defalt" value="저장">	
+					<input type="submit" class="btn btn-defalt" value="저장">
+					<span class="CheckA"></span>	
 				</form>
 			</div>
 		</div>

@@ -26,16 +26,24 @@ public class RoomController {
 	}
 	//객실타입등록폼
 	@RequestMapping(value="/roomTypeAdd", method = RequestMethod.GET)
-	public String noticeAddForm() {
+	public String noticeAddForm(Model model) {
 		System.out.println("---객실타입등록폼---------from controller");
+		model.addAttribute("dupT", "a");
 		return "/room/roomTypeAdd";
 	}
 	//객실타입등록 처리
 	@RequestMapping(value="/roomTypeAdd", method = RequestMethod.POST)
-	public String roomTypeAdd(RoomType roomType) {
+	public String roomTypeAdd(RoomType roomType, Model model) {
 		System.out.println("---객실타입등록처리---------from controller");
-		roomService.RoomTypeAdd(roomType);
-		return "redirect:/roomTypeList";	
+		int duptest = roomService.RoomTypeAdd(roomType);
+		//중복검사 후 등록 x
+		if(duptest == 0) {
+			model.addAttribute("dupT", "b");
+			return "/room/roomTypeAdd";
+		}//중복검사 후 등록 O
+		else {
+			return "redirect:/roomTypeList";
+		}
 	}
 	//객실타입 리스트
 	@RequestMapping(value="/roomTypeList", method = RequestMethod.GET)

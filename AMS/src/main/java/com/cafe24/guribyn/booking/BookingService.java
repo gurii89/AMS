@@ -154,4 +154,10 @@ public class BookingService {
 		bookingRoomDao.bookingRoomCondition(map);
 	}
 	
+	// 호수 받아서 예약코드 가져오기
+	public String getBooCode(String rTCode) {
+		String trrr = bookingRoomDao.getBooCode(rTCode);
+		System.out.println(trrr);
+		return trrr;
+	}
 }

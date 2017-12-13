@@ -39,11 +39,14 @@ public class RoomService {
 	//객실타입 등록처리
 	public int RoomTypeAdd(RoomType roomType){
 		System.out.println("---객실타입등록처리---------from service");
-		return roomDao.RoomTypeAdd(roomType);
+		//리턴값에 따라 중복검사 하기
+		int insertResult = roomDao.RoomTypeAdd(roomType);
+		System.out.println(insertResult);
+		return insertResult;
 	}
 	//객실 등록처리
 	public int RoomAdd(Room room){
-		System.out.println("---객실타입등록처리---------from service");
+		System.out.println("---객실등록처리---------from service");
 		roomDao.RoomAdd(room);
 		
 		RoomCondition roomcon = new RoomCondition();

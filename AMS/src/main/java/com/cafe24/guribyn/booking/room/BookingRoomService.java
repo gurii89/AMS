@@ -35,5 +35,5 @@ public class BookingRoomService {
 		Gson gson = new Gson();
 		return gson.toJson(bookingRoom);
 	}
-	
+
 }

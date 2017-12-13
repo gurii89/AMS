@@ -52,5 +52,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE boo_code = #{booCode}
 		</if>
 	</update>
-	
+	<select id="goBoo" parameterType="String" resultType="String">
+		SELECT boo_code 
+		FROM booking_room 
+		WHERE boo_room_code =( 
+			SELECT boo_room_code FROM check_in WHERE room_code = #{value} 
+				AND in_date =( 
+					SELECT MAX(in_date) FROM check_in WHERE room_code= #{value}))
+	</select>
 </mapper>
