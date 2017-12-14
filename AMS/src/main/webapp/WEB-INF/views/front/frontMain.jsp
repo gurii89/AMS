@@ -340,7 +340,6 @@
 							<td><input type="text" value="${loginfor.eId}" name="eId" class="hidden"></td>
 						</tr>
 					</table><br>
-					<textarea rows="4" cols="15"></textarea><br>
 					<input type="submit" class="btn btn-defalt" value="저장">
 					<span class="CheckA"></span>	
 				</form>

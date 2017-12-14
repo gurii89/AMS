@@ -7,6 +7,7 @@
 		<script>
 			$(function(){
 				$('#addBox').hide()
+				$('#level').hide()
 				
 				// 예약 고객 등록시 간소화 메뉴 및 고객 등록 버튼 활성화
 				if($('#booCode').val()){
@@ -21,11 +22,13 @@
 											+'&booCode='+$('#booCode').val())
 						})
 					})				
-				// 예약 목록 때 고객 선택시 수정 폼으로 이동
+				// 예약 목록 때 고객 선택시 수정 폼으로 이동(프론트일 때만)
 				}else{
-					$('.guest').click(function(){
-						$(location).attr('href', 'guestMod?gCode='+$(this).children().first().html())
-					})
+					if($('#level').html() == 'front'){
+						$('.guest').click(function(){
+							$(location).attr('href', 'guestMod?gCode='+$(this).children().first().html())
+						})	
+					}
 				}
 				
 				// 검색 조건 따라 검색창 변경
@@ -111,6 +114,7 @@
 					<td id="addBtn">등록</td>					
 				</tr>
 			</table>
-		</div>					
+		</div>
+		<div id="level">${loginfor.eDepartment }</div>				
 	</body>
 </html>
