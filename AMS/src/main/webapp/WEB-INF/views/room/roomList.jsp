@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	 <div class="topb">객실 타입 목록</div> 
+	 <div class="topb">객실 목록</div> 
 	 <table class="bs">
 	 	<tr>
 	 		<th>객실 코드</th>
