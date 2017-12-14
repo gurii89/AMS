@@ -9,6 +9,45 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  	$(function(){
+  		// 지배인 로그인
+  		$('#managerBtn').click(function(){
+  			$.ajax({
+				url:"login",
+				type:"POST",
+				data:"eId=1&ePw=1",
+				success:function(data){
+					$(location).attr('href', 'login')
+				}
+			})
+  		})
+  		
+  		// 프론트 로그인
+  		$('#frontBtn').click(function(){
+  			$.ajax({
+				url:"login",
+				type:"POST",
+				data:"eId=2&ePw=2",
+				success:function(data){
+					$(location).attr('href', 'login')
+				}
+			})
+  		})
+  		
+  		// 청소팀 로그인
+  		$('#cleanBtn').click(function(){
+  			$.ajax({
+				url:"login",
+				type:"POST",
+				data:"eId=3&ePw=3",
+				success:function(data){
+					$(location).attr('href', 'login')
+				}
+			})
+  		})
+  	})
+  </script>
 <style>
   body {
       font: 400 15px/1.8 Lato, sans-serif;
@@ -157,11 +196,6 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar">ㄷㄷ</span>
-        <span class="icon-bar">ㄱㄱ</span>
-        <span class="icon-bar">ㅈㅈ</span>                        
-      </button>
       <a class="navbar-brand" href="#myPage">포트폴리오</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -169,8 +203,6 @@
         <li><a href="#myPage">팀프로젝트 소개</a></li>
         <li><a href="#band">팀원소개</a></li>
         <li><a href="#tour">개발환경 및 프로젝트 들어가기</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a href="login">AMS프로젝트 바로가기</a>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">다운로드
           <span class="caret"></span></a>
@@ -186,14 +218,7 @@
   </div>
 </nav>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    
+<div id="myCarousel" class="carousel slide" data-ride="carousel">    
    <!--  
     Left and right controls
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -215,35 +240,139 @@
   <div class="row">
     <div class="col-sm-4">
       <p class="text-center"><strong>변지민</strong></p><br>
+      <div>
+      	<p>객실/프론트</p>
+      	<p>청소</p>
+      	<p>공지사항</p>
+      	<br>
+      </div>
       <a href="#demo" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+        <button>상세보기</button>
       </a>
       <div id="demo" class="collapse">
-        <p>Guitarist and Lead Vocalist</p>
-        <p>Loves long walks on the beach</p>
-        <p>Member since 1988</p>
+      	<br>
+      	<b>객실</b><br>
+		객실 타입 조회<br>
+		객실 타입 등록<br>
+		객실 타입 특징 등록<br>
+		객실 타입 특징 삭제<br>
+		객실 타입 특징 조회<br>
+		객실 조회<br>
+		객실 등록<br><br>
+		<b>프론트</b><br>	
+		층별 객실 조회<br>
+		타입별 객실 조회<br>
+		상태별 객실 조회<br>
+		객실 상세 보기 조회<br>
+		객실 상태 전환<br>
+		객실 상태 전환 시간 조회<br>
+		객실 상태 경과 시간 조회<br><br>
+		<b>청소</b><br>
+		청소요청 객실 조회<br>
+		청소 시작<br>
+		청소 종료<br>
+		청소 완료 조회<br><br>
+		<b>공지</b><br>
+		공지사항 등록<br>
+		공지사항 조회<br>
+		공지사항 수정<br>
       </div>
     </div>
     <div class="col-sm-4">
       <p class="text-center"><strong>빈그리</strong></p><br>
+      <div>
+      	<p>팀장/호스팅</p>
+      	<p>직원</p>
+      	<p>보관품/운송</p>
+      	<br>
+      </div>
       <a href="#demo2" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+        <button>상세보기</button>
       </a>
       <div id="demo2" class="collapse">
-        <p>Drummer</p>
-        <p>Loves drummin'</p>
-        <p>Member since 1988</p>
+        <br>
+      	<b>팀장</b><br>
+		회의 진행<br>
+		일정 관리<br>
+		업무 조율<br><br>
+		<b>호스팅</b><br>	
+		호스팅 계정관리<br>
+		URL 연결 작업<br>
+		프로젝트 배포 업무<br><br>
+		<b>직원</b><br>
+		직원 가입<br><br>
+		<b>보관품/운송</b><br>		
+		보관품 등록<br>
+		보관품 수정<br>
+		보관품 조회<br>
+		운송 등록<br>
+		운송 조회<br>
+		운송 수정<br>
+		보관품 발송 등록<br>
       </div>
     </div>
     <div class="col-sm-4">
       <p class="text-center"><strong>황형진</strong></p><br>
+      <div>
+      	<p>직원/분류</p>
+      	<p>서비스</p>
+      	<p>예약/행사</p>
+      	<br>
+      </div>
       <a href="#demo3" data-toggle="collapse">
-        <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+        <button>상세보기</button>
       </a>
       <div id="demo3" class="collapse">
-        <p>Bass player</p>
-        <p>Loves math</p>
-        <p>Member since 2005</p>
+        <br>
+        <b>직원</b><br>
+		직원 가입<br>
+		직원 조회<br>
+		직원 검색<br>
+		직원 상세보기<br>
+		직원 정보수정<br>
+		직원 비밀번호 변경<br>
+		직원 로그인<br>
+		직원 로그아웃<br><br>
+		<b>분류</b><br>		
+		분류 등록<br>
+		분류 중복검사<br>
+		분류 조회<br>
+		분류 검색<br><br>
+		<b>서비스</b><br>		
+		서비스 등록<br>
+		서비스 조회<br><br>
+		<b>예약</b><br>		
+		예약 조회<br>
+		예약 검색<br>
+		예약 상세보기<br>
+		객실 예약 등록<br>
+		객실 예약 취소<br>
+		서비스 예약 등록<br>
+		서비스 예약 취소<br>
+		예약 고객 등록<br>
+		행사가 적용<br>
+		고객 등록<br>
+		고객 수정<br>
+		고객 조회<br>
+		고객 검색<br>
+		입퇴실 조회<br>
+		결제 등록<br>
+		결제 취소<br>
+		결제 조회<br>
+		결제 검색<br>
+		체크인<br>
+		체크아웃<br>
+		인아웃리스트<br><br>
+		<b>행사</b><br>	
+		요금증감폭 등록<br>
+		요금증감 기간 등록<br>
+		요금증감 행사 조회<br>
+		요금증감 중복검사<br><br>
+		<b>ETC</b><br>
+		Intercept 구현<br>
+		Tiles 적용<br>
+		권한별 메뉴<br>
+		지배인 통계<br>
       </div>
     </div>
   </div>
@@ -253,161 +382,51 @@
 <div id="tour" class="bg-1">
   <div class="container">
     <h3 class="text-center">개발환경</h3>
-    <p class="text-center">Lorem ipsum we'll play you some music.<br> Remember to book your tickets!</p>
     <ul class="list-group">
-      <li class="list-group-item">Windows 7 <span class="label label-danger">OS</span></li>
-      <li class="list-group-item">Crome<span class="label label-danger">Web Browser</span></li> 
-      <li class="list-group-item">apache-tomcat-8.0.38<span class="label label-danger">WAS</span></li> 
-      <li class="list-group-item">Mysql<span class="label label-danger">DB</span></li> 
-      <li class="list-group-item">HeidiSQL9.4.0<span class="label label-danger">DB관리툴</span></li> 
-      <li class="list-group-item">GitHub<span class="label label-danger">협업툴</span></li> 
-      <li class="list-group-item">java1.8<span class="label label-danger">java</span></li> 
-      <li class="list-group-item">spring-tool-suite-3.8.4, springframework 4.3.9, spring-webmvc 4.3.9, Maven, myatis 3.3.1, mybatis-spring 1.2.2. bootstrap<span class="label label-danger">Framework</span></li> 
-      <li class="list-group-item">jackson.core 2.8.8, commons-dbcp 1.4, spring-jdbc 4.3.8, mysql-connector-java5.1.39, jstl 1.2, maven-compiler-plugin 3.1 maven-eclipse-plugin 2.9, javax.inject 1, log4j 1.2.15, commons-io 2.0.1, commons-fileupload 1.2.2<span class="label label-danger">API</span></li> 
-      <li class="list-group-item">권한 수 <span class="badge">3</span></li> 
+      <li class="list-group-item"><span class="label label-danger">OS</span> Windows7</li>
+      <li class="list-group-item"><span class="label label-danger">Web Browser</span> Crome</li> 
+      <li class="list-group-item"><span class="label label-danger">WAS</span> apache-tomcat-8.0.38</li> 
+      <li class="list-group-item"><span class="label label-danger">DB</span> Mysql</li> 
+      <li class="list-group-item"><span class="label label-danger">DB관리툴</span> HeidiSQL9.4.0</li> 
+      <li class="list-group-item"><span class="label label-danger">협업툴</span> GitHub</li> 
+      <li class="list-group-item"><span class="label label-danger">java</span> java1.8</li> 
+      <li class="list-group-item"><span class="label label-danger">Framework</span> spring-tool-suite-3.8.4, springframework 4.3.9, spring-webmvc 4.3.9, Maven, myatis 3.3.1, mybatis-spring 1.2.2. bootstrap</li> 
+      <li class="list-group-item"><span class="label label-danger">API</span> jackson.core 2.8.8, commons-dbcp 1.4, spring-jdbc 4.3.8, mysql-connector-java5.1.39, jstl 1.2, maven-compiler-plugin 3.1 maven-eclipse-plugin 2.9, javax.inject 1, log4j 1.2.15, commons-io 2.0.1, commons-fileupload 1.2.2</li> 
     </ul>
     
     <div class="row text-center">
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="paris.jpg" alt="Paris" width="400" height="300">
+			<br>
           <p><strong>지배인</strong></p>
           <p>지배인 권한으로 들어가기</p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
+          <button id="managerBtn" class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="newyork.jpg" alt="New York" width="400" height="300">
+        	<br>
           <p><strong>프론트</strong></p>
           <p>프론트 권한으로 들어가기</p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
+          <button id="frontBtn" class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
+        	<br>
           <p><strong>청소팀</strong></p>
           <p>청소팀 권한으로 들어가기</p>
-          <button class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
+          <button id="cleanBtn" class="btn" data-toggle="modal" data-target="#myModal">AMS 바로가기</button>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
-              <input type="number" class="form-control" id="psw" placeholder="How many?">
-            </div>
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-              <button type="submit" class="btn btn-block">Pay 
-                <span class="glyphicon glyphicon-ok"></span>
-              </button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-            <span class="glyphicon glyphicon-remove"></span> Cancel
-          </button>
-          <p>Need <a href="#">help?</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Container (Contact Section) -->
-<div id="contact" class="container">
-  <h3 class="text-center">Contact</h3>
-  <p class="text-center"><em>We love our fans!</em></p>
-
-  <div class="row">
-    <div class="col-md-4">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
-    </div>
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
-      </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
-      <br>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Send</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <h3 class="text-center">From The Blog</h3>  
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Mike</a></li>
-    <li><a data-toggle="tab" href="#menu1">Chandler</a></li>
-    <li><a data-toggle="tab" href="#menu2">Peter</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h2>Mike Ross, Manager</h2>
-      <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      <h2>Chandler Bing, Guitarist</h2>
-      <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h2>Peter Griffin, Bass player</h2>
-      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Add Google Maps -->
-<div id="googleMap"></div>
-<script>
-function myMap() {
-var myCenter = new google.maps.LatLng(41.878114, -87.629798);
-var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-var marker = new google.maps.Marker({position:myCenter});
-marker.setMap(map);
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 <!-- Footer -->
 <footer class="text-center">
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br><br>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a></p> 
+  </a><br><br> 
 </footer>
 
 <script>
