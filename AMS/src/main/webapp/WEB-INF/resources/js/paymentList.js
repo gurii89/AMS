@@ -7,7 +7,9 @@ $(function(){
 	})
 	
 	// 초기 검색창 연동
-	input()
+	if(condi){
+		input()
+	}
 	
 	// 검색조건 검색창 연동 함수
 	function input(){

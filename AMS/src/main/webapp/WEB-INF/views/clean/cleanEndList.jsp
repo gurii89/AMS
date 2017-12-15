@@ -15,7 +15,7 @@
 		<th>객실코드</th>
 		<th>담당자</th>
 		<th>청소시작</th>
-		<th>객실종료</th>
+		<th>청소종료</th>
 	</tr>
 	<c:forEach items="${cleanListR}" var="cleanListR">
 	<tr>

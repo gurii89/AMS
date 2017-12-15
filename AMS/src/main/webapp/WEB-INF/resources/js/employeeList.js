@@ -7,7 +7,9 @@ $(function(){
 	})
 	
 	// 페이지 진입시 검색조건과 검색창 연동
-	input()
+	if(condi){
+		input()
+	}
 	
 	$('#cate').on('change', function(){
 		input()

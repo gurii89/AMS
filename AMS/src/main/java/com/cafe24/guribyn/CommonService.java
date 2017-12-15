@@ -32,12 +32,42 @@ public class CommonService {
         }else {
         	map = new HashMap<String, String>();
         }		
-		int lastPage = count / pagePerRow;
-		if((count % pagePerRow) != 0) {
-        	lastPage += 1;
-        }
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("lastPage", lastPage);
+ 		// totalPage : 전체 페이지 수
+ 		int totalPage = count/pagePerRow;
+ 		//현재 화면에서 보여줄 페이지 수, 상수
+ 		int PAGEPERPAGE = 5;
+ 		//totalPage가 정수가 아닐 경우, 페이지를 추가
+		if(count%pagePerRow == 0){
+			System.out.println("추가없음"+totalPage);
+		}else if(count%pagePerRow != 0){
+			int na = count%pagePerRow;
+			totalPage = (count - na)/pagePerRow +1;
+			System.out.println("추가 후 :"+totalPage);
+		}
+ 		//한 화면에 보여주는 페이지 개수의 시작
+ 		int startPage = currentPage/pagePerRow;
+		if(startPage <= 1) {
+			startPage = 1;
+		}else if(currentPage%PAGEPERPAGE == 0){
+			startPage = (currentPage - PAGEPERPAGE)/PAGEPERPAGE *PAGEPERPAGE +1;
+		}
+		else {
+			int na2 = currentPage%PAGEPERPAGE;
+			System.out.println("나머지 :"+na2);
+			startPage = (currentPage - na2)/PAGEPERPAGE *PAGEPERPAGE +1; 
+		}
+ 		//한 화면에 보여주는 페이지 개수의 마지막
+ 		int lastPage = (startPage + PAGEPERPAGE) -1;
+		if(lastPage > totalPage) {
+			lastPage = totalPage;
+		}
+ 		
+ 		model.addAttribute("lastPage", lastPage);
+ 		model.addAttribute("startPage", startPage);
+ 		model.addAttribute("currentPage", currentPage);
+ 		model.addAttribute("totalCount", count);
+ 		model.addAttribute("pagePerRow", pagePerRow);
+ 		
         map.put("start", Integer.toString((currentPage-1)*pagePerRow));
         map.put("pagePerRow", Integer.toString(pagePerRow));
 		return map;

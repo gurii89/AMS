@@ -61,12 +61,8 @@
 			</c:if>
 			
 			<c:if test="${loginfor.eDepartment != 'clean' }">
-			<li><a class="loginfo drop-top"><span
+			<li><a class="loginfo drop-top" href="frontMain" class="loginfo"><span
 					class="glyphicon glyphicon-chevron-right"></span> 프론트</a></li>
-				<li class="front drop"><a href="frontMain" class="loginfo"><span 
-					class="glyphicon glyphicon-minus"></span>객실 프론트</a></li>
-				<li class="front drop"><a href="frontService" class="loginfo"><span 
-					class="glyphicon glyphicon-minus"></span>서비스 프론트</a></li>
 			</c:if>
 			
 			<li><a class="loginfo drop-top"><span

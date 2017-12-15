@@ -11,11 +11,23 @@
 			})			
 		})
 	</script>
-	<ul class="pager">
-	    <c:if test="${currentPage > 1}">
-	        <li class="previous"><a class="paging btn-default btn-sm" href="?currentPage=${currentPage-1}">이전</a></li>
-	    </c:if>
-	    <c:if test="${currentPage < lastPage}">
-	        <li class="next"><a class="paging btn-default btn-sm" href="?currentPage=${currentPage+1}">다음</a></li>
-	    </c:if>
-	</ul>
+	<div class="pagebtn">&nbsp;
+		<c:if test="${startPage != 1 }">
+			<a class="paging btn btn-default btn-sm" href="?currentPage=${startPage-1}">이전</a>
+		</c:if>
+	</div>
+	<div class="pagebtnNumber">
+	
+		<c:forEach var="perPage" begin="${startPage}" end="${lastPage}">
+		<c:if test="${perPage == currentPage}">
+			<span><a class="paging nowPage" href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		</c:if>
+		<c:if test="${perPage != currentPage}">
+			<span><a class="paging otherPage" href="?currentPage=${perPage}">${perPage}&nbsp;&nbsp;</a></span>
+		</c:if>
+		</c:forEach>
+	
+	</div>
+	<c:if test="${lastPage*pagePerRow < totalCount}">
+		<div class="pagebtn"><a class="paging btn btn-default btn-sm" href="?currentPage=${lastPage+1}">다음</a></div>
+	</c:if>
