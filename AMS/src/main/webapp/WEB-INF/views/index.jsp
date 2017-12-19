@@ -385,13 +385,13 @@
     <ul class="list-group">
       <li class="list-group-item"><span class="label label-danger">OS</span> Windows7</li>
       <li class="list-group-item"><span class="label label-danger">Web Browser</span> Crome</li> 
-      <li class="list-group-item"><span class="label label-danger">WAS</span> apache-tomcat-8.0.38</li> 
+      <li class="list-group-item"><span class="label label-danger">WAS</span> apache-tomcat-8.0.47</li> 
       <li class="list-group-item"><span class="label label-danger">DB</span> Mysql</li> 
-      <li class="list-group-item"><span class="label label-danger">DB관리툴</span> HeidiSQL9.4.0</li> 
+      <li class="list-group-item"><span class="label label-danger">DB관리툴</span> HeidiSQL8.0</li> 
       <li class="list-group-item"><span class="label label-danger">협업툴</span> GitHub</li> 
-      <li class="list-group-item"><span class="label label-danger">java</span> java1.8</li> 
-      <li class="list-group-item"><span class="label label-danger">Framework</span> spring-tool-suite-3.8.4, springframework 4.3.9, spring-webmvc 4.3.9, Maven, myatis 3.3.1, mybatis-spring 1.2.2. bootstrap</li> 
-      <li class="list-group-item"><span class="label label-danger">API</span> jackson.core 2.8.8, commons-dbcp 1.4, spring-jdbc 4.3.8, mysql-connector-java5.1.39, jstl 1.2, maven-compiler-plugin 3.1 maven-eclipse-plugin 2.9, javax.inject 1, log4j 1.2.15, commons-io 2.0.1, commons-fileupload 1.2.2</li> 
+      <li class="list-group-item"><span class="label label-danger">java</span> java1.8.0_151</li> 
+      <li class="list-group-item"><span class="label label-danger">Framework</span> spring-tool-suite-3.9.1, springframework 4.3.12.RELEASE, spring-webmvc 4.3.9, Maven, mybatis 3.4.1, mybatis-spring 1.3.0, bootstrap</li> 
+      <li class="list-group-item"><span class="label label-danger">API</span> jackson-databind 2.9.2, tiles-jsp 3.0.5, tiles-core 3.0.5, commons-dbcp 1.4, spring-jdbc 4.3.8, aspectjrt 1.6.10, mysql-connector-java5.1.41, logback-classic 1.1.3, jcl-over-slf4j 1.7.7, jstl 1.2, gson 2.8.0, maven-compiler-plugin 2.5.1, maven-eclipse-plugin 2.9, exec-maven-plugin 1.2.1, javax.inject 1, log4j 1.2.16, slf4j-log4j12 1.7.6, log4jdbc-remix 0.2.7</li> 
     </ul>
     
     <div class="row text-center">
