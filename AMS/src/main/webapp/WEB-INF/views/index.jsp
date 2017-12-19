@@ -404,7 +404,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="thumbnail">
+        <div class="thumbnail"> 
         	<br>
           <p><strong>프론트</strong></p>
           <p>프론트 권한으로 들어가기</p>
